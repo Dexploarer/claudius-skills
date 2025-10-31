@@ -1,0 +1,7 @@
+{
+  "name": "test-enforcement",
+  "event": "user-prompt-submit",
+  "description": "Ensures tests exist and pass before allowing certain operations",
+  "enabled": true,
+  "prompt": "When user attempts to:\n- Create pull request\n- Deploy\n- Merge to main\n- Tag release\n\nEnforce test requirements:\n\n1. Check if tests exist:\n   - For new code files, look for corresponding test files\n   - File.js should have File.test.js\n   - component.py should have test_component.py\n\n2. Run tests:\n   - Execute test suite\n   - Report results\n\n3. If tests missing:\n   ⚠️  Warn about missing tests\n   Suggest creating tests\n   Optionally block action\n\n4. If tests fail:\n   ❌ Block action\n   Show failures\n   Require fixes\n\n5. If tests pass:\n   ✅ Allow action\n\nExample:\n```\n⚠️  Test Enforcement\n\nYou're creating a PR but:\n\n  ❌ src/auth/login.js - No tests found\n  ❌ src/utils/validation.js - No tests found\n  ✅ src/api/users.js - Tests exist and pass\n\nPlease add tests for:\n  - src/auth/login.test.js\n  - src/utils/validation.test.js\n\nOr proceed without tests (not recommended)? (yes/no)\n```"
+}

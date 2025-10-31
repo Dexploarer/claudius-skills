@@ -1,0 +1,7 @@
+{
+  "name": "pre-commit-lint",
+  "event": "user-prompt-submit",
+  "description": "Runs linting before allowing commits",
+  "enabled": true,
+  "prompt": "When user attempts to commit code:\n\n1. Detect commit attempt (git commit, /commit commands)\n\n2. Before allowing commit:\n   - Run appropriate linter based on file types:\n     * JavaScript/TypeScript: eslint\n     * Python: pylint or flake8\n     * Go: golint\n     * Ruby: rubocop\n\n3. If linting errors found:\n   ❌ Block commit\n   Show errors with file:line\n   Suggest fixes\n   Offer to auto-fix if possible\n\n4. If only warnings:\n   ⚠️  Show warnings\n   Ask to proceed anyway\n\n5. If clean:\n   ✅ Allow commit\n\nExample output:\n```\n❌ Lint Errors Found - Commit Blocked\n\nErrors in 2 files:\n\nsrc/app.js:\n  Line 23: 'user' is not defined (no-undef)\n  Line 45: Missing semicolon (semi)\n  \nsrc/utils.js:\n  Line 12: Unexpected console.log (no-console)\n\nFix these errors before committing.\n\nAuto-fix available:\n  Run: npm run lint:fix\n\nThen try committing again.\n```"
+}

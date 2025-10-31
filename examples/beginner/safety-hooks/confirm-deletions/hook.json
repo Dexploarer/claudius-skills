@@ -1,0 +1,7 @@
+{
+  "name": "confirm-deletions",
+  "event": "user-prompt-submit",
+  "description": "Asks for confirmation before deleting files or directories",
+  "enabled": true,
+  "prompt": "Before executing file deletion commands, ask for user confirmation:\n\n1. Detect deletion operations:\n   - rm, rm -rf (bash commands)\n   - Delete file(s)\n   - Remove directory\n   - Delete folder\n   - Unlink file\n\n2. Analyze what will be deleted:\n   - Number of files\n   - Important files (.git, node_modules, src, etc.)\n   - Size of deletion (if many files)\n\n3. Show confirmation prompt:\n   \n   ```\n   ⚠️  Deletion Confirmation Required\n   \n   You're about to delete:\n   • src/components/ (45 files)\n   • tests/ (23 files)\n   \n   This will permanently remove:\n   • 68 files total\n   • Approximately 150 KB\n   \n   ⚠️  This operation cannot be easily undone!\n   \n   Are you absolutely sure? (yes/no)\n   Type 'yes' to confirm deletion.\n   ```\n\n4. Special warnings for critical paths:\n   - .git/ → Critical: Deletes entire repository history\n   - node_modules/ → Usually safe but will need reinstall\n   - src/ → Contains source code, are you sure?\n   - dist/ or build/ → Usually safe, can be rebuilt\n\n5. If user confirms 'yes':\n   ✅ Allow deletion\n\n6. If user says 'no' or seems uncertain:\n   ❌ Cancel deletion\n   Ask if they meant something else\n\n7. For small, non-critical deletions (1-2 files, not in critical dirs):\n   ✅ Allow without prompt (don't be too annoying)"
+}

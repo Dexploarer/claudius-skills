@@ -10,15 +10,23 @@ Easy-to-understand, single-purpose skills perfect for learning.
 **Teaches:** Skill basics, language detection, tool restrictions
 **Use when:** "Add comments to this code"
 
-### 2. TODO Finder (Coming Soon)
+### 2. TODO Finder
+**Location:** `todo-finder/`
 **Purpose:** Finds TODO, FIXME, HACK comments in codebase
 **Teaches:** Using Grep, organizing output, read-only skills
 **Use when:** "Find all TODOs"
 
-### 3. File Organizer (Coming Soon)
+### 3. File Organizer
+**Location:** `file-organizer/`
 **Purpose:** Organizes files by type into folders
 **Teaches:** File operations, user confirmation, safety
 **Use when:** "Organize these files"
+
+### 4. Calculator Helper
+**Location:** `calculator-helper/`
+**Purpose:** Performs mathematical calculations and unit conversions
+**Teaches:** Computational skills, clear output formatting, read-only operations
+**Use when:** "Calculate 25% of 200" or "Convert 100 km to miles"
 
 ## How to Use These Examples
 
