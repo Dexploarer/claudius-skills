@@ -1,0 +1,41 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "command": "echo '\n🚀 Claude Code Session Started! 🚀\n📅 Date: '$(date '+%Y-%m-%d %H:%M:%S')'\n📂 Directory: '$(pwd)'\n'",
+        "description": "Welcome message when starting a session"
+      }
+    ],
+    "PreToolUse": [
+      {
+        "pattern": "Bash.*git commit",
+        "command": "if git diff --cached | grep -qE '(password|api_key|secret|token)\\s*='; then echo '⚠️  WARNING: Potential secret detected in commit!' >&2; exit 2; fi",
+        "timeout": 5000,
+        "description": "Check for common secret patterns before committing"
+      },
+      {
+        "pattern": "Bash.*git push.*-f",
+        "command": "echo '⚠️  WARNING: Force push detected! Are you sure you want to do this?' >&2; read -p 'Type YES to continue: ' confirm; if [ \"$confirm\" != \"YES\" ]; then exit 2; fi",
+        "timeout": 30000,
+        "description": "Warn before force pushing"
+      }
+    ],
+    "PostToolUse": [
+      {
+        "pattern": "Edit|Write",
+        "command": "echo '✅ File modified: '$(date '+%H:%M:%S')",
+        "description": "Log file modifications with timestamp"
+      }
+    ],
+    "SessionEnd": [
+      {
+        "command": "echo '\n👋 Session Ended\n⏱️  Time: '$(date '+%H:%M:%S')'\n'",
+        "description": "Goodbye message when ending session"
+      }
+    ]
+  },
+  "allowedTools": {
+    "default": "ask"
+  },
+  "dangerousCommandsRequireApproval": true
+}

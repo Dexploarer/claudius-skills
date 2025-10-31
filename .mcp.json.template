@@ -1,0 +1,94 @@
+{
+  "$schema": "https://modelcontextprotocol.io/schema/mcp.json",
+  "mcpServers": {
+    "example-github": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-github"
+      ],
+      "env": {
+        "GITHUB_TOKEN": "your-github-token-here"
+      },
+      "disabled": true,
+      "description": "GitHub MCP server - provides access to GitHub repositories, issues, PRs, etc."
+    },
+    "example-filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/path/to/allowed/directory"
+      ],
+      "disabled": true,
+      "description": "Filesystem MCP server - provides access to read/write files in specified directories"
+    },
+    "example-postgres": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-postgres",
+        "postgresql://user:password@localhost/dbname"
+      ],
+      "disabled": true,
+      "description": "PostgreSQL MCP server - query and interact with PostgreSQL databases"
+    },
+    "example-slack": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-slack"
+      ],
+      "env": {
+        "SLACK_BOT_TOKEN": "xoxb-your-token-here",
+        "SLACK_TEAM_ID": "T01234567"
+      },
+      "disabled": true,
+      "description": "Slack MCP server - read and post messages to Slack"
+    },
+    "example-google-drive": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-gdrive"
+      ],
+      "env": {
+        "GOOGLE_CLIENT_ID": "your-client-id",
+        "GOOGLE_CLIENT_SECRET": "your-client-secret"
+      },
+      "disabled": true,
+      "description": "Google Drive MCP server - access Google Drive files and folders"
+    }
+  },
+  "notes": [
+    "This is a template file showing example MCP server configurations.",
+    "To use MCP servers:",
+    "1. Copy this file to .mcp.json (remove the .template extension)",
+    "2. Enable the servers you want by setting 'disabled': false",
+    "3. Add your actual credentials/tokens to the 'env' section",
+    "4. Update paths and connection strings as needed",
+    "5. NEVER commit .mcp.json with real credentials to git!",
+    "",
+    "To install MCP servers, you can also use:",
+    "  claude mcp add <server-name>",
+    "",
+    "Popular MCP servers:",
+    "- @modelcontextprotocol/server-github - GitHub integration",
+    "- @modelcontextprotocol/server-filesystem - File system access",
+    "- @modelcontextprotocol/server-postgres - PostgreSQL database",
+    "- @modelcontextprotocol/server-sqlite - SQLite database",
+    "- @modelcontextprotocol/server-slack - Slack integration",
+    "- @modelcontextprotocol/server-gdrive - Google Drive",
+    "- @modelcontextprotocol/server-memory - Persistent memory/notes",
+    "- @modelcontextprotocol/server-fetch - Web fetching capabilities",
+    "",
+    "Security Warning:",
+    "MCP servers have access to the services they connect to.",
+    "Only install MCP servers from trusted sources.",
+    "Use read-only credentials when possible.",
+    "Review the code before installing unknown servers.",
+    "",
+    "For more MCP servers, visit:",
+    "https://github.com/modelcontextprotocol/servers"
+  ]
+}
