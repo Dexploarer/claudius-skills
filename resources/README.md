@@ -1,18 +1,46 @@
 # Resources
 
-Additional documentation, guides, and learning materials for Claude Code.
+Comprehensive guides, tutorials, and learning materials for Claude Code.
 
-## Coming Soon
+## 📖 Guides (4 Complete!)
 
-### Guides
-- **Getting Started Guide** - Step-by-step introduction for complete beginners
-- **Best Practices Guide** - Proven patterns and techniques
-- **Troubleshooting Guide** - Common issues and solutions
-- **Security Guide** - Safe practices for hooks and MCP servers
-- **Team Collaboration Guide** - Using Claude Code in teams
+### ✅ [Getting Started Guide](./guides/getting-started.md)
+**Perfect for complete beginners** - 9,000+ words
+- Installation and first steps
+- Understanding the Five Pillars
+- Daily workflow examples
+- Common tasks walkthrough
 
-### Tutorials
-- **Building Your First Skill** - Hands-on tutorial
+### ✅ [Best Practices Guide](./guides/best-practices.md)
+**Level up your skills** - 6,000+ words
+- Skills, commands, hooks, subagents, MCP best practices
+- Team collaboration patterns
+- Performance optimization
+- Complete checklists
+
+### ✅ [Troubleshooting Guide](./guides/troubleshooting.md)
+**When things go wrong** - 5,000+ words
+- Common issues and solutions
+- Debug mode usage
+- Step-by-step fixes
+- Prevention tips
+
+### ✅ [Security Guide](./guides/security.md)
+**Keep your setup secure** - 4,000+ words
+- Secrets management
+- Hook safety
+- MCP server security
+- Incident response
+
+## 🎓 Tutorials (1 Complete!)
+
+### ✅ [Building Your First Skill](./tutorials/building-your-first-skill.md)
+**Hands-on tutorial** - 2,500+ words
+- Create gitignore-generator skill from scratch
+- Learn skill structure and best practices
+- Complete working example
+
+### Coming Soon
 - **Creating Effective Commands** - Command design patterns
 - **Mastering Hooks** - Event-driven automation
 - **Subagent Architecture** - Designing specialist agents
