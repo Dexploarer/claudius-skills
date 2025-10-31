@@ -1,683 +1,376 @@
-# Claude Code Starter Kit - The Complete Guide
+# Claudius Skills - Claude Code Enhancement Collection
 
-Welcome! This repository contains a complete, beginner-to-moderate friendly setup for Claude Code's **Five Pillars of Extensibility**. Think of this as your starter pack for supercharging your AI coding assistant.
+> A curated collection of Claude Code configurations, skills, commands, hooks, subagents, and MCP integrations for all skill levels - from beginner to master.
 
-## What's Inside?
+## 🎯 What is This Repository?
 
-This starter kit includes:
+This is a comprehensive learning and reference repository for **Claude Code's Five Pillars of Extensibility**:
 
-- **5 Skills** - Automatic, context-aware capabilities
-- **12 Slash Commands** - Quick shortcuts for common tasks
-- **Hooks Configuration** - Automatic safety checks and logging
-- **4 Subagents** - Expert specialists for different tasks
-- **MCP Template** - Ready to connect external services
+1. **Skills** - Automatic, context-aware capabilities
+2. **Slash Commands** - Manual shortcuts for common tasks
+3. **Hooks** - Event-driven automation
+4. **Subagents** - Specialized AI consultants
+5. **MCP Servers** - External service integrations
 
-Everything is pre-configured, documented, and ready to use!
+Whether you're just getting started with Claude Code or you're a power user looking for advanced configurations, you'll find useful examples here.
 
 ---
 
-## Quick Start
+## 📚 Repository Structure
 
-### 1. Clone or Copy This Repository
-
-```bash
-# If you're starting a new project
-git clone <this-repo-url>
-cd claudius-skills
-
-# OR just copy the .claude folder to your existing project
-cp -r .claude /path/to/your/project/
+```
+claudius-skills/
+├── starter-kit/           # Complete beginner-friendly setup (START HERE!)
+│   ├── .claude/
+│   │   ├── skills/       # 5 essential skills
+│   │   ├── commands/     # 12 useful slash commands
+│   │   ├── agents/       # 4 specialist subagents
+│   │   └── settings.json # Hooks configuration
+│   ├── README.md         # Comprehensive guide
+│   └── QUICK_REFERENCE.md
+│
+├── examples/
+│   ├── beginner/         # Simple, single-purpose examples
+│   ├── intermediate/     # More complex, real-world examples
+│   ├── advanced/         # Advanced techniques and patterns
+│   └── master/           # Complex integrations and workflows
+│
+├── templates/            # Reusable templates for creating your own
+│
+└── resources/            # Additional documentation and guides
 ```
 
-### 2. Start Using It!
+---
+
+## 🚀 Quick Start
+
+### For Complete Beginners
+
+**Start with the Starter Kit:**
 
 ```bash
-cd your-project
+# Clone this repository
+git clone <repo-url>
+cd claudius-skills
+
+# Copy the starter kit to your project
+cp -r starter-kit/.claude /path/to/your/project/
+
+# Or use it directly in the starter-kit directory
+cd starter-kit
 claude
 ```
 
-That's it! Claude Code will automatically detect and load all the skills, commands, hooks, and subagents.
-
-### 3. Try It Out
-
-```bash
-# Try a slash command
-/explain console.log("Hello, world!")
-
-# Claude will automatically use skills when appropriate
-# Just work naturally and the skills activate when needed
-
-# Try a subagent
-"Use the code-reviewer subagent to review my recent changes"
-```
-
----
-
-## What Are The Five Pillars?
-
-Think of the Five Pillars as different ways to customize and extend Claude Code:
-
-| Pillar | What It Does | When To Use | How It Works |
-|--------|--------------|-------------|--------------|
-| **Skills** | Teach Claude specialized knowledge | For reusable capabilities you use often | Claude decides when to use them automatically |
-| **Slash Commands** | Quick shortcuts for tasks | For tasks you do repeatedly | You type `/command` to trigger |
-| **Hooks** | Automatic actions on events | For enforcing rules and logging | Runs automatically on events |
-| **Subagents** | Expert consultants | For specialized analysis/work | Claude or you can call them in |
-| **MCP Servers** | Connect to external tools | For accessing outside services | Bridge to external APIs/data |
-
----
-
-## The Skills (Automatic Helpers)
-
-Skills are like teaching Claude specialized knowledge that it uses automatically when appropriate.
-
-### Included Skills:
-
-1. **readme-generator** - Creates professional README files
-2. **code-explainer** - Explains code in simple, beginner-friendly terms
-3. **bug-finder** - Identifies common bugs and potential issues
-4. **test-helper** - Helps write comprehensive tests
-5. **git-helper** - Assists with git operations and workflows
-
-### How Skills Work:
-
-You don't call skills explicitly - Claude recognizes when they're needed:
-
-```bash
-# You say:
-"I need a README for this project"
-
-# Claude thinks:
-"This matches the readme-generator skill's description"
-
-# Claude automatically uses the skill to generate a great README
-```
-
-### Creating Your Own Skills:
-
-```bash
-# Create a new skill file
-touch .claude/skills/my-skill.md
-```
-
-```markdown
----
-name: my-skill
-description: Clear description of what this does and when to use it
----
-
-# Your skill instructions here
-
-When doing X, follow these steps:
-1. Step one
-2. Step two
-...
-```
-
-**Pro tip:** The `description` field is crucial - it tells Claude when to activate the skill!
-
----
-
-## The Slash Commands (Quick Shortcuts)
-
-Slash commands are manual shortcuts. You type `/command` and Claude runs that task.
-
-### Included Commands:
-
-| Command | What It Does |
-|---------|--------------|
-| `/explain [code]` | Explains code in simple terms |
-| `/test` | Runs all tests and summarizes results |
-| `/commit` | Creates a professional commit message |
-| `/review` | Reviews your uncommitted changes |
-| `/clean` | Cleans up current file (removes unused imports, fixes formatting) |
-| `/todo` | Finds all TODO/FIXME comments in codebase |
-| `/setup` | Sets up a new project with best practices |
-| `/debug [issue]` | Helps debug a specific issue |
-| `/refactor [code]` | Refactors code for better quality |
-| `/docs [item]` | Generates documentation |
-| `/deps` | Analyzes project dependencies |
-| `/quickfix` | Quickly fixes common issues |
-
-### How To Use:
-
-```bash
-# In Claude Code, just type the command:
-/explain const user = { name: "Alice", age: 30 };
-
-# Or with arguments:
-/debug login button doesn't work
-```
-
-### Creating Your Own Commands:
-
-```bash
-# Create a new command file
-touch .claude/commands/mycommand.md
-```
-
-```markdown
-Do something specific with: $ARGUMENTS
-
-Step 1: ...
-Step 2: ...
-```
-
-Now you can use `/mycommand whatever` and Claude will run those instructions.
-
----
-
-## The Hooks (Automatic Watchdogs)
-
-Hooks are like security cameras - they watch for specific events and automatically do something.
-
-### Included Hooks:
-
-1. **Session Start** - Welcome message when you start Claude Code
-2. **Secret Detection** - Warns before committing passwords/API keys
-3. **Force Push Warning** - Confirms before force pushing to git
-4. **File Modification Log** - Logs when files are modified
-5. **Session End** - Goodbye message when you exit
-
-### How Hooks Work:
-
-```bash
-# You run:
-git commit -m "Add new feature"
-
-# Hook automatically runs BEFORE commit:
-# Checks for secrets in the code
-# If found, blocks the commit with warning
-# If safe, allows commit to proceed
-```
-
-### Hooks Configuration:
-
-Hooks are configured in `.claude/settings.json`. Each hook has:
-- **Event**: When to trigger (SessionStart, PreToolUse, etc.)
-- **Pattern**: What to watch for (optional)
-- **Command**: What bash command to run
-- **Description**: What this hook does
-
-### Example Hook:
-
-```json
-{
-  "hooks": {
-    "PreToolUse": [
-      {
-        "pattern": "Bash.*git commit",
-        "command": "echo 'Checking for secrets...' && git diff --cached | grep -i 'password'",
-        "description": "Check for passwords before committing"
-      }
-    ]
-  }
-}
-```
-
-**Safety Note:** Hooks run bash commands automatically. Only add hooks you understand and trust!
-
----
-
-## The Subagents (Expert Consultants)
-
-Subagents are specialized versions of Claude with specific expertise and their own context window.
-
-### Included Subagents:
-
-1. **code-reviewer** - Thorough code review expert (read-only)
-2. **test-writer** - Testing specialist who writes comprehensive tests
-3. **doc-writer** - Technical documentation expert
-4. **debug-helper** - Debugging specialist
-
-### Why Use Subagents?
-
-**Separate Context:** Each subagent has its own "memory" that doesn't clutter your main conversation.
-
-**Specialized Expertise:** Each subagent is pre-configured with specific instructions for their domain.
-
-**Tool Restrictions:** Some subagents are read-only (like code-reviewer) for safety.
-
-### How To Use Subagents:
-
-```bash
-# Automatic (Claude decides):
-"Review my code for bugs and security issues"
-# Claude may automatically use the code-reviewer subagent
-
-# Explicit (you choose):
-"Use the test-writer subagent to write tests for the UserController"
-
-# Via interface:
-/agents
-# Opens interface to create/manage subagents
-```
-
-### Creating Your Own Subagents:
-
-```bash
-touch .claude/agents/my-expert.md
-```
-
-```markdown
----
-name: my-expert
-description: What this expert does
-allowed-tools: [Read, Grep, Glob]  # Optional: restrict tools
----
-
-You are an expert in [domain].
-
-When working on [tasks]:
-1. Do this
-2. Then that
-3. Always check for...
-```
-
----
-
-## MCP Servers (External Connections)
-
-MCP servers connect Claude to external services like GitHub, databases, Slack, etc.
-
-### Setting Up MCP:
-
-1. **Copy the template:**
-   ```bash
-   cp .mcp.json.template .mcp.json
-   ```
-
-2. **Enable a server:**
-   ```json
-   {
-     "mcpServers": {
-       "github": {
-         "command": "npx",
-         "args": ["-y", "@modelcontextprotocol/server-github"],
-         "env": {
-           "GITHUB_TOKEN": "your-actual-token-here"
-         },
-         "disabled": false  // Change to false
-       }
-     }
-   }
-   ```
-
-3. **Add your credentials:**
-   - Replace `"your-actual-token-here"` with real credentials
-   - **NEVER commit `.mcp.json` to git!** (it's in .gitignore)
-
-4. **Use it:**
-   ```bash
-   # Claude can now access GitHub!
-   "Check for high-priority issues in my repo"
-   "Create a GitHub issue for the bug I just found"
-   ```
-
-### Popular MCP Servers:
-
-- **GitHub** - Issues, PRs, repos
-- **PostgreSQL/SQLite** - Database queries
-- **Slack** - Messages, channels
-- **Google Drive** - Files, folders
-- **Filesystem** - Local file access
-- **Memory** - Persistent notes
-
-### Installing MCP Servers:
-
-```bash
-# Easy way:
-claude mcp add github
-
-# Or manually add to .mcp.json
-```
-
-**Security Warning:** MCP servers have access to your external services. Only use trusted servers and use read-only credentials when possible!
-
----
-
-## Directory Structure
-
-```
-your-project/
-├── .claude/
-│   ├── skills/              # Skills (automatic)
-│   │   ├── readme-generator.md
-│   │   ├── code-explainer.md
-│   │   ├── bug-finder.md
-│   │   ├── test-helper.md
-│   │   └── git-helper.md
-│   │
-│   ├── commands/            # Slash commands (manual)
-│   │   ├── explain.md
-│   │   ├── test.md
-│   │   ├── commit.md
-│   │   ├── review.md
-│   │   ├── clean.md
-│   │   ├── todo.md
-│   │   ├── setup.md
-│   │   ├── debug.md
-│   │   ├── refactor.md
-│   │   ├── docs.md
-│   │   ├── deps.md
-│   │   └── quickfix.md
-│   │
-│   ├── agents/              # Subagents (specialists)
-│   │   ├── code-reviewer.md
-│   │   ├── test-writer.md
-│   │   ├── doc-writer.md
-│   │   └── debug-helper.md
-│   │
-│   └── settings.json        # Hooks configuration
-│
-├── .mcp.json.template       # MCP server template
-├── .mcp.json               # Your MCP config (gitignored)
-├── .gitignore              # Protects sensitive files
-└── README.md               # This file!
-```
-
----
-
-## Common Use Cases
-
-### "I want to understand some code"
-
-```bash
-# Use the slash command:
-/explain [paste code here]
-
-# Or just ask naturally:
-"Explain this function to me in simple terms"
-# The code-explainer skill activates automatically
-```
-
-### "I want to write tests"
-
-```bash
-# Explicit subagent call:
-"Use the test-writer subagent to write tests for my UserController class"
-
-# Or just ask:
-"Write tests for this function"
-# The test-helper skill may activate
-```
-
-### "I want to review my code before committing"
-
-```bash
-# Use the slash command:
-/review
-
-# This will check for bugs, security issues, code quality, etc.
-```
-
-### "I want to commit my changes"
-
-```bash
-# Use the slash command:
-/commit
-
-# Claude will:
-# 1. Review your changes
-# 2. Write a professional commit message
-# 3. Show it to you for approval
-# 4. Commit (if you approve)
-
-# Plus, hooks automatically check for secrets before committing!
-```
-
-### "I need to debug something"
-
-```bash
-# Use the slash command:
-/debug login button doesn't work
-
-# Or call the subagent explicitly:
-"Use the debug-helper subagent to help me figure out this error"
-```
-
-### "I need a README for my project"
-
-```bash
-# Just ask:
-"Create a README for this project"
-
-# The readme-generator skill activates automatically
-```
-
----
-
-## Customization Guide
-
-### For Beginners
-
-Start by just using what's provided:
-1. Use the slash commands
-2. Work naturally and let skills activate
-3. Observe what happens
-4. Gradually learn how each piece works
+**Read the guide:**
+- 📖 [Starter Kit README](./starter-kit/README.md) - Complete beginner's guide
+- 📋 [Quick Reference](./starter-kit/QUICK_REFERENCE.md) - Command lookup
 
 ### For Intermediate Users
 
-Start customizing:
-1. Modify existing skills/commands to fit your workflow
-2. Add your own simple commands
-3. Adjust hooks for your team's practices
-4. Create a subagent for your specific domain
+Browse the `examples/` directory to find specific use cases and patterns.
 
 ### For Advanced Users
 
-Go all out:
-1. Create comprehensive skills for your tech stack
-2. Build complex hooks for automation
-3. Set up multiple specialized subagents
-4. Connect MCP servers for your tools
-5. Share your setup with your team via git
+Check out the `advanced/` and `master/` examples for complex integrations and custom workflows.
 
 ---
 
-## Team Usage
+## 🎓 Learning Path
 
-### Sharing With Your Team
+### Level 1: Beginner (Start Here)
+1. **Read** the [Starter Kit README](./starter-kit/README.md)
+2. **Install** the starter kit in a test project
+3. **Try** the slash commands (`/explain`, `/test`, `/commit`)
+4. **Observe** how skills activate automatically
+5. **Experiment** with calling subagents
 
-This entire setup is designed to be shared via git:
+### Level 2: Intermediate
+1. **Customize** the starter kit for your needs
+2. **Create** your own simple slash commands
+3. **Modify** existing skills
+4. **Add** basic hooks for your workflow
+5. **Browse** examples in `examples/intermediate/`
 
-```bash
-# Everything in .claude/ is team-shared
-git add .claude/
-git commit -m "Add Claude Code configuration"
-git push
+### Level 3: Advanced
+1. **Build** complex skills with multiple files
+2. **Create** specialized subagents for your domain
+3. **Design** hook-based workflows
+4. **Integrate** MCP servers
+5. **Combine** multiple pillars for powerful automation
 
-# Teammates pull and get everything automatically!
-git pull
-# Their Claude Code now has all your skills, commands, and subagents
-```
-
-### Personal Customizations
-
-For personal tweaks that shouldn't be shared:
-
-```bash
-# Put personal stuff in:
-~/.claude/skills/         # Personal skills (all projects)
-~/.claude/commands/       # Personal commands (all projects)
-~/.claude/agents/         # Personal subagents (all projects)
-~/.claude/settings.json   # Personal settings (all projects)
-
-# Or use local settings in project:
-.claude/settings.local.json  # Personal project settings (gitignored)
-```
+### Level 4: Master
+1. **Architect** complete development environments
+2. **Create** plugin-quality configurations
+3. **Share** your work with the community
+4. **Contribute** back to this repository
 
 ---
 
-## Troubleshooting
+## 📦 What's Included
 
-### "Skills aren't activating"
+### Starter Kit (Beginner-Friendly)
 
-1. Check the skill's `description` field - is it clear and specific?
-2. Try asking in a way that matches the description
-3. Check for syntax errors in the SKILL.md file
+A complete, ready-to-use setup with:
+- **5 Skills**: README generation, code explanation, bug finding, testing help, git assistance
+- **12 Slash Commands**: Common tasks like `/explain`, `/test`, `/commit`, `/review`, etc.
+- **4 Subagents**: Code reviewer, test writer, doc writer, debug helper
+- **Hooks**: Safety checks, logging, session management
+- **MCP Template**: Ready to connect external services
 
-### "Slash command not found"
+### Examples (Coming Soon)
 
-1. Make sure the file is in `.claude/commands/`
-2. File name should be `commandname.md`
-3. Use it as `/commandname`
-4. Restart Claude Code if needed
+**Beginner Examples:**
+- Single-purpose skills
+- Simple slash commands
+- Basic hooks
+- Starter subagents
 
-### "Hooks not running"
+**Intermediate Examples:**
+- Framework-specific skills (React, Python, etc.)
+- Project workflow commands
+- Advanced hooks patterns
+- Specialized subagents
 
-1. Check `.claude/settings.json` for syntax errors
-2. Make sure the hook pattern matches the tool use
-3. Test the bash command separately to ensure it works
-4. Check exit codes (0 = success, 2 = block, other = warning)
+**Advanced Examples:**
+- Multi-file complex skills
+- Plugin-style configurations
+- Advanced MCP integrations
+- Custom agent architectures
 
-### "Subagent not available"
+**Master Examples:**
+- Complete development environments
+- Team workflow systems
+- Advanced automation pipelines
+- Complex MCP orchestrations
 
-1. Check that the `.md` file is in `.claude/agents/`
-2. Verify the YAML frontmatter is correct
-3. Try calling it explicitly: "Use the [name] subagent to..."
-4. Check `/agents` to see all available subagents
+### Templates
 
-### "MCP server not working"
+Blank templates for creating your own:
+- Skill template
+- Slash command template
+- Subagent template
+- Hooks configuration template
+- MCP server configuration template
 
-1. Make sure `.mcp.json` exists (copied from template)
-2. Check that `"disabled": false`
-3. Verify credentials are correct
-4. Check that the server package is accessible
-5. Look for errors with `claude --debug`
+### Resources
 
----
-
-## Best Practices
-
-### Do's ✅
-
-- ✅ Start simple, add complexity as needed
-- ✅ Write clear descriptions for skills
-- ✅ Test commands before sharing with team
-- ✅ Document any custom hooks
-- ✅ Use meaningful names for everything
-- ✅ Keep skills focused on one thing
-- ✅ Share useful configurations with your team
-- ✅ Review hooks for security before running them
-
-### Don'ts ❌
-
-- ❌ Don't commit `.mcp.json` with real credentials
-- ❌ Don't create overly complex skills
-- ❌ Don't use hooks for tasks that should be manual
-- ❌ Don't trust hooks/MCP servers from unknown sources
-- ❌ Don't make skills/commands too generic
-- ❌ Don't skip testing your configurations
+- Guides and tutorials
+- Best practices
+- Troubleshooting tips
+- Community contributions
 
 ---
 
-## Learning Resources
+## 🛠️ The Five Pillars Explained
 
-### Understanding Each Pillar
+### 1. Skills (Automatic)
+Skills are like teaching Claude specialized knowledge that activates automatically when needed.
 
-1. **Skills** - Read the included skills to see how they work
-2. **Slash Commands** - Check `.claude/commands/` for examples
-3. **Hooks** - Review `.claude/settings.json` to see hook patterns
-4. **Subagents** - Look at `.claude/agents/` for specialist examples
-5. **MCP** - Check `.mcp.json.template` for server examples
+**Example:** A skill for generating README files activates when you say "I need a README"
 
-### Experimentation Ideas
+**Best for:** Reusable capabilities you use frequently
 
-- Create a skill for your favorite framework
-- Make a slash command for your most repeated task
-- Add a hook to enforce your team's code standards
-- Build a subagent expert in your domain
-- Connect an MCP server to your tools
+### 2. Slash Commands (Manual)
+Quick shortcuts you trigger explicitly by typing `/command`.
+
+**Example:** `/test` runs all tests in your project
+
+**Best for:** Tasks you do repeatedly
+
+### 3. Hooks (Event-Driven)
+Automatic scripts that run when specific events occur.
+
+**Example:** A hook that checks for secrets before every git commit
+
+**Best for:** Enforcing rules and automating workflows
+
+### 4. Subagents (Specialists)
+Pre-configured AI personalities with specific expertise and separate context.
+
+**Example:** A code-reviewer subagent that only has read access
+
+**Best for:** Specialized analysis and keeping main conversation clean
+
+### 5. MCP Servers (External)
+Connections to external services like GitHub, databases, Slack, etc.
+
+**Example:** An MCP server that lets Claude access your GitHub issues
+
+**Best for:** Integrating with tools and services outside Claude Code
 
 ---
 
-## What's Next?
+## 🎯 Use Cases
 
-### Immediate Next Steps
+### For Individual Developers
+- Set up your personal development environment
+- Automate repetitive tasks
+- Learn best practices through examples
+- Customize workflows to your preferences
 
-1. ✅ Clone/copy this repo to your project
-2. ✅ Try the slash commands
-3. ✅ Watch skills activate automatically
-4. ✅ Experiment with calling subagents
-5. ✅ Optionally set up MCP servers
+### For Teams
+- Share standardized configurations via git
+- Enforce code quality with hooks
+- Create team-specific skills and commands
+- Build collaborative workflows
 
-### Going Further
+### For Educators
+- Teach programming concepts with skills
+- Provide students with helpful subagents
+- Create assignment-specific commands
+- Build learning-focused environments
 
-- Customize existing skills for your needs
-- Create commands for your specific workflow
-- Add hooks that make sense for your team
-- Build subagents for your tech stack
-- Connect to your external tools via MCP
+### For Open Source Projects
+- Provide contributors with project-specific tools
+- Automate contribution workflows
+- Create project documentation helpers
+- Standardize code review processes
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions! Here's how you can help:
+
+### Add Your Examples
+Have a useful skill, command, or configuration? Share it!
+
+1. Fork this repository
+2. Add your example to the appropriate directory
+3. Include clear documentation
+4. Submit a pull request
+
+### Improve Documentation
+- Fix typos or unclear explanations
+- Add more examples
+- Create tutorials
+- Translate to other languages
 
 ### Share Your Experience
+- Report what works well
+- Suggest improvements
+- Share use cases
+- Help other users
 
-This is a learning tool! As you use it:
-- Note what works well
-- Identify what could be better
-- Create your own configurations
-- Share improvements with others
+### Contribution Guidelines
+- **Document everything** - Clear explanations help everyone
+- **Test your code** - Make sure it actually works
+- **Follow the structure** - Keep things organized
+- **Be beginner-friendly** - Remember, many users are learning
 
 ---
 
-## FAQ
+## 📖 Additional Resources
+
+### Official Documentation
+- [Claude Code Docs](https://docs.claude.com/en/docs/claude-code/)
+- [Model Context Protocol (MCP)](https://modelcontextprotocol.io/)
+
+### Learning Resources
+- [Starter Kit Guide](./starter-kit/README.md) - Start here!
+- [Quick Reference](./starter-kit/QUICK_REFERENCE.md) - Command lookup
+- Templates directory - Create your own
+
+### Community
+- GitHub Issues - Ask questions, report bugs
+- Discussions - Share ideas and examples
+- Pull Requests - Contribute your work
+
+---
+
+## 🗺️ Roadmap
+
+### Current (v1.0)
+- ✅ Complete starter kit with all five pillars
+- ✅ Comprehensive documentation
+- ✅ Beginner-friendly setup
+
+### Upcoming (v1.1)
+- [ ] Add beginner examples
+- [ ] Add intermediate examples
+- [ ] Create templates directory
+- [ ] Add framework-specific skills
+
+### Future (v2.0)
+- [ ] Advanced examples
+- [ ] Master-level examples
+- [ ] Video tutorials
+- [ ] Interactive examples
+- [ ] Plugin marketplace integration
+
+---
+
+## 📝 License
+
+This repository is provided as-is for educational and practical use. Feel free to use, modify, and share.
+
+---
+
+## 🙏 Acknowledgments
+
+- The Claude Code team for building an amazing extensible AI assistant
+- The MCP community for creating useful integrations
+- Contributors who share their configurations and examples
+
+---
+
+## 🚀 Get Started Now!
+
+1. **Clone this repository**
+   ```bash
+   git clone <repo-url>
+   cd claudius-skills
+   ```
+
+2. **Check out the starter kit**
+   ```bash
+   cd starter-kit
+   cat README.md
+   ```
+
+3. **Copy to your project**
+   ```bash
+   cp -r .claude /path/to/your/project/
+   ```
+
+4. **Start Claude Code**
+   ```bash
+   cd /path/to/your/project
+   claude
+   ```
+
+5. **Try a command**
+   ```bash
+   /explain console.log("Hello, world!")
+   ```
+
+**Welcome to the world of enhanced Claude Code! 🎉**
+
+---
+
+## ❓ FAQ
 
 **Q: Do I need to use all five pillars?**
-A: No! Use what makes sense for you. Start with slash commands (easiest) and skills (most useful), then explore the others.
+A: No! Start with what makes sense for you. Skills and slash commands are the easiest to begin with.
 
-**Q: Can I use this with existing projects?**
-A: Yes! Just copy the `.claude/` folder to your project.
+**Q: Can I use these in existing projects?**
+A: Yes! Just copy the `.claude/` directory to your project.
 
 **Q: Will this work with my team?**
 A: Yes! Everything in `.claude/` is designed to be shared via git.
 
-**Q: Is this safe?**
-A: The included configurations are safe, but be careful with:
-- Custom hooks (they run bash commands)
-- MCP servers (they access external services)
-- Hooks/servers from unknown sources
+**Q: Is this safe to use?**
+A: The included configurations are safe, but always review hooks and MCP servers before using them, as they run code and access external services.
 
-**Q: What if something breaks?**
-A: You can always remove/disable parts:
-- Delete a skill: remove the file
-- Disable a command: delete or rename the file
-- Turn off hooks: edit settings.json
-- Disable MCP: set `"disabled": true`
+**Q: How do I create my own skills/commands?**
+A: Check the templates directory and look at existing examples. Start simple and build from there!
 
-**Q: Can I see examples of each pillar in action?**
-A: Yes! Just use Claude Code naturally. The skills will activate automatically, you can try the slash commands, and hooks will trigger on their events.
+**Q: Where can I find more examples?**
+A: Check the `examples/` directory. More examples are being added regularly.
+
+**Q: Can I contribute?**
+A: Absolutely! We welcome contributions. See the Contributing section above.
 
 ---
 
-## Contributing
-
-Found a bug? Have an improvement? Created a cool skill or command?
-
-Feel free to:
-- Open an issue
-- Submit a pull request
-- Share your configurations
-- Help improve the documentation
-
----
-
-## License
-
-This starter kit is provided as-is for educational and practical use. Use, modify, and share as you see fit!
-
----
-
-## Final Thoughts
-
-The Five Pillars give you incredible power to customize Claude Code:
-
-- **Skills** teach Claude domain knowledge
-- **Slash Commands** give you instant shortcuts
-- **Hooks** enforce rules automatically
-- **Subagents** bring in specialists
-- **MCP Servers** connect to the world
-
-Start simple, experiment, and build your perfect development environment!
-
-**Happy coding with Claude! 🚀**
+**Built with ❤️ for the Claude Code community**

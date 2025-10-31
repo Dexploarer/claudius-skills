@@ -1,8 +1,8 @@
-# MCP configuration with credentials
-.mcp.json
+# MCP configuration with credentials (in any subdirectory)
+**/.mcp.json
 
 # Local settings with sensitive data
-.claude/settings.local.json
+**/.claude/settings.local.json
 
 # Logs
 *.log
