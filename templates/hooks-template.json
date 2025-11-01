@@ -1,0 +1,92 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "command": "echo 'Session started at '$(date '+%Y-%m-%d %H:%M:%S')",
+        "description": "Welcome message on session start"
+      }
+    ],
+    "PreToolUse": [
+      {
+        "pattern": "Bash.*git commit",
+        "command": "if git diff --cached | grep -qE '(password|api_key|secret|token|private_key)\\s*='; then echo '⚠️  WARNING: Potential secret detected!' >&2; exit 2; fi",
+        "timeout": 5000,
+        "description": "Secret detection before commits"
+      },
+      {
+        "pattern": "Bash.*git push.*(-f|--force)",
+        "command": "BRANCH=$(git branch --show-current); if [ \"$BRANCH\" = \"main\" ] || [ \"$BRANCH\" = \"master\" ]; then echo '❌ BLOCKED: Force push to main/master!' >&2; exit 2; fi",
+        "timeout": 5000,
+        "description": "Prevent force push to main/master"
+      },
+      {
+        "pattern": "Write.*\\.env$",
+        "command": "if ! grep -q '^\\.env$' .gitignore 2>/dev/null; then echo '⚠️  WARNING: .env not in .gitignore!' >&2; fi",
+        "description": "Warn if .env is not in .gitignore"
+      },
+      {
+        "pattern": "Bash.*rm.*-rf",
+        "command": "echo '⚠️  WARNING: Recursive delete operation!' >&2; read -p 'Type DELETE to confirm: ' confirm; if [ \"$confirm\" != \"DELETE\" ]; then exit 2; fi",
+        "timeout": 30000,
+        "description": "Confirm dangerous recursive deletes"
+      }
+    ],
+    "PostToolUse": [
+      {
+        "pattern": "Write|Edit",
+        "command": "echo '✅ File modified at '$(date '+%H:%M:%S')",
+        "description": "Log file modifications"
+      },
+      {
+        "pattern": "Bash.*(npm test|pytest|jest)",
+        "command": "if echo \"$TOOL_RESULT\" | grep -q 'FAIL\\|failed\\|Error'; then echo '❌ Tests failed!' >&2; else echo '✅ Tests passed'; fi",
+        "description": "Alert on test failures"
+      }
+    ],
+    "SessionEnd": [
+      {
+        "command": "echo 'Session ended at '$(date '+%H:%M:%S')",
+        "description": "Goodbye message on session end"
+      }
+    ]
+  },
+  "allowedTools": {
+    "default": "ask"
+  },
+  "dangerousCommandsRequireApproval": true,
+  "_comments": {
+    "usage": [
+      "Copy this file to your project's .claude/settings.json",
+      "Customize hooks for your specific workflow",
+      "Test hook commands separately before adding them",
+      "Use appropriate exit codes: 0=allow, 2=block",
+      "Set timeouts for interactive hooks (default: 5000ms)"
+    ],
+    "hook_types": {
+      "SessionStart": "Runs when Claude Code session starts",
+      "SessionEnd": "Runs when Claude Code session ends",
+      "PreToolUse": "Runs before a tool is executed (can block with exit 2)",
+      "PostToolUse": "Runs after a tool completes"
+    },
+    "pattern_matching": {
+      "info": "Patterns are regex matched against tool use",
+      "examples": [
+        "Bash.*git commit - Matches any Bash command containing 'git commit'",
+        "Write.*\\.env$ - Matches Write tool on files ending with .env",
+        "Edit.*package\\.json - Matches Edit tool on package.json"
+      ]
+    },
+    "exit_codes": {
+      "0": "Success - allow the operation",
+      "1": "Warning - show output but allow",
+      "2": "Block - prevent the operation"
+    },
+    "security_tips": [
+      "Always validate user input in interactive hooks",
+      "Use timeouts for confirmation prompts",
+      "Test commands thoroughly before deployment",
+      "Keep hook commands simple and focused",
+      "Log important operations for audit trails"
+    ]
+  }
+}

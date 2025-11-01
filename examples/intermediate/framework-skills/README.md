@@ -12,22 +12,61 @@ Framework skills provide specialized knowledge for specific frameworks and libra
 - **File**: `react-component-generator/SKILL.md`
 - **Purpose**: Generate React components with TypeScript, hooks, and tests
 - **Use When**: Building React applications
-- **Key Features**:
-  - TypeScript support
-  - React Hooks (useState, useEffect, useCallback)
-  - Props typing
-  - CSS Modules
-  - Unit tests with React Testing Library
+- **Key Features**: TypeScript, React Hooks, Props typing, CSS Modules, Tests
+
+### Vue Component Generator
+- **File**: `vue-component-generator/SKILL.md`
+- **Purpose**: Create Vue 3 components with Composition API
+- **Use When**: Building Vue applications
+- **Key Features**: Composition API, TypeScript, Reactive state, Scoped styles
+
+### Express API Generator
+- **File**: `express-api-generator/SKILL.md`
+- **Purpose**: Generate Express.js REST APIs
+- **Use When**: Building Node.js backend APIs
+- **Key Features**: MVC architecture, Validation, Error handling, Auth patterns
+
+### FastAPI Generator
+- **File**: `fastapi-generator/SKILL.md`
+- **Purpose**: Create FastAPI endpoints with Pydantic
+- **Use When**: Building Python APIs
+- **Key Features**: Pydantic validation, Async/await, OpenAPI docs, Type hints
+
+### Next.js Page Generator
+- **File**: `nextjs-page-generator/SKILL.md`
+- **Purpose**: Generate Next.js 13+ pages
+- **Use When**: Building Next.js applications
+- **Key Features**: Server/Client Components, SSR/SSG, Metadata API
+
+### GraphQL Schema Generator
+- **File**: `graphql-schema-generator/SKILL.md`
+- **Purpose**: Design GraphQL schemas
+- **Use When**: Building GraphQL APIs
+- **Key Features**: Types, Queries/Mutations, Resolvers, DataLoader
 
 ### Django Model Helper
 - **File**: `django-model-helper/SKILL.md`
-- **Purpose**: Create Django ORM models with relationships and migrations
+- **Purpose**: Create Django ORM models
 - **Use When**: Building Django backends
-- **Key Features**:
-  - Proper field types
-  - Relationships (ForeignKey, ManyToMany)
-  - Indexes and Meta configuration
-  - Admin interface setup
+- **Key Features**: Field types, Relationships, Indexes, Admin interface
+
+### API Documentation Generator
+- **File**: `api-documentation-generator/SKILL.md`
+- **Purpose**: Generate OpenAPI/Swagger docs
+- **Use When**: Documenting REST APIs
+- **Key Features**: OpenAPI 3.0, Schemas, Auth docs, Examples
+
+### Database Migration Helper
+- **File**: `database-migration-helper/SKILL.md`
+- **Purpose**: Create database migrations
+- **Use When**: Changing database schema
+- **Key Features**: Up/down migrations, Indexes, Data transforms, Rollback
+
+### Testing Framework Helper
+- **File**: `testing-framework-helper/SKILL.md`
+- **Purpose**: Generate comprehensive test suites
+- **Use When**: Writing tests for any framework
+- **Key Features**: Multiple frameworks, Unit/Integration/E2E, Mocking, Coverage
 
 ## How to Use
 
