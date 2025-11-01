@@ -11,12 +11,30 @@ This directory contains beginner-friendly examples that demonstrate:
 - Introductory subagents
 - Basic MCP configurations
 
-## Coming Soon
+## Available Examples
 
-- **Simple Skills**: Calculator helper, file organizer, comment generator
-- **Basic Commands**: Quick git shortcuts, simple refactorings
-- **Safety Hooks**: Prevent common mistakes
-- **Helper Subagents**: Simple review helpers, formatters
+### Simple Skills (`simple-skills/`)
+- **Comment Generator**: Adds code comments and docstrings
+- **TODO Finder**: Finds TODO, FIXME, HACK comments in codebase
+- **File Organizer**: Organizes files by type into folders
+- **Calculator Helper**: Performs calculations and unit conversions
+
+### Basic Commands (`basic-commands/`)
+- **Git Status**: Formatted git status with helpful next steps
+- **Git Commit Quick**: Quick commit with auto-generated message
+- **Git Undo**: Safely undo last commit
+- **Git Sync**: Pull and push in one command
+- **Extract Function**: Extract code into well-named function
+- **Rename Variable**: Rename variables consistently
+
+### Safety Hooks (`safety-hooks/`)
+- **Prevent Main Push**: Blocks accidental pushes to main/master
+- **Check Sensitive Files**: Warns before committing secrets/keys
+- **Confirm Deletions**: Asks confirmation before deleting files
+
+### Helper Subagents (`helper-subagents/`)
+- **Code Formatter**: Formats code to language best practices
+- **Quick Reviewer**: Fast code review for common issues
 
 ## How to Use
 

@@ -1,0 +1,7 @@
+{
+  "name": "prevent-main-push",
+  "event": "user-prompt-submit",
+  "description": "Prevents accidental pushes to main/master branch",
+  "enabled": true,
+  "prompt": "Before executing any command, check if it involves pushing to main/master branch:\n\n1. Look for commands like:\n   - git push origin main\n   - git push origin master\n   - git push to main\n   - git push to master\n\n2. If detected:\n   ❌ Block the command\n   Show this message:\n   \n   ```\n   🚫 Push to Main Branch Blocked\n   \n   You're attempting to push to the main/master branch.\n   This is usually not recommended.\n   \n   Why this is blocked:\n   • main/master should be protected\n   • Changes should go through pull requests\n   • Direct pushes bypass code review\n   \n   Recommended workflow:\n   1. Create a feature branch:\n      git checkout -b feature/your-feature\n   \n   2. Push to feature branch:\n      git push origin feature/your-feature\n   \n   3. Create pull request for review\n   \n   If you really need to push to main:\n   • Disable this hook temporarily\n   • Or use: git push origin main --force-with-lease (⚠️ caution)\n   ```\n\n3. If NOT a main/master push:\n   ✅ Allow the command to proceed\n\nDo NOT block:\n- Pushes to other branches\n- Pull requests to main\n- Viewing main branch\n- Switching to main branch\n- Merging into main (locally)"
+}
