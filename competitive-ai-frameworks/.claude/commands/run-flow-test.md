@@ -1,86 +1,118 @@
----
-description: Run competitive user flow olympics with 3 AI teams
----
+Run competitive user flow olympics with three specialized AI teams competing to optimize UX, conversion, and accessibility.
 
-You are running the User Flow Olympics command.
-
-## Command Purpose
-
-Execute a competitive user flow olympics where three specialized AI teams compete to optimize user flows for completion, accessibility, and integration.
-
-## Arguments
-
-- `--flows <list>` - Flows to test (required): registration,login,checkout,profile,search
-- `--rounds <n>` - Number of rounds (default: 4)
-- `--output <path>` - Output directory (default: ./results)
-- `--team <name>` - Run only specific team (optional: happy-path/edge-case/integration)
-- `--target <path>` - Target application path (optional)
-
-## Execution
+## Instructions
 
 1. **Select Flows**
-   ```
-   Testing flows:
-   - User Registration
-   - Checkout Process
-   - Profile Management
-   ```
+   - Ask user which flows to test (registration, checkout, etc.)
+   - Or accept flows as arguments
+   - Establish baseline metrics
 
-2. **Measure Baseline**
-   ```
-   Baseline metrics:
-   - Completion rates
-   - Time to complete
-   - Error rates
-   - Friction points
-   ```
+2. **Parse Arguments**
+   - `$1` or `--flows`: Comma-separated flow names (required)
+   - `$2` or `--rounds`: Number of rounds (default: 4)
+   - `--base-url`: Application URL for testing (required)
+   - `--output`: Output directory for results (default: ./flow-results)
+   - `--focus`: Specific area (conversion/accessibility/performance)
 
-3. **Run Olympics**
+3. **Execute Olympics**
    ```bash
-   python frameworks/user-flows/coordinator.py \
-     --flows [list] \
-     --rounds [n]
+   cd competitive-ai-frameworks/frameworks/user-flows
+   python coordinator.py \
+     --flows $FLOWS \
+     --rounds $ROUNDS \
+     --base-url $BASE_URL \
+     --output $OUTPUT \
+     ${FOCUS:+--focus $FOCUS}
    ```
 
-4. **Display Results**
-   ```
-   🥇 WINNER: Team 1 - Happy Path Optimizers
-      Score: 189 points
-      
-   FLOW IMPROVEMENTS:
-   
-   Registration:
-   - Completion: 68% → 92% (+24 pts)
-   - Time: 3m 45s → 1m 30s (-60%)
-   - Friction: 5 → 1 point
-   
-   Checkout:
-   - Completion: 71% → 88% (+17 pts)
-   - Time: 4m 30s → 2m 15s (-50%)
-   - Abandonment: 29% → 12%
-   
-   RECOMMENDATIONS:
-   1. Reduce form fields (Team 1)
-   2. Add error recovery (Team 2)
-   3. Improve API reliability (Team 3)
-   ```
+4. **Display Progress**
+   - Show each round with optimizations applied
+   - Display flow metrics improving
+   - Show current team scores
+
+5. **Present Results**
+   - Winner announcement
+   - Before/after flow metrics
+   - Key optimizations made
+   - Implementation recommendations
 
 ## Example Usage
 
 ```bash
-# Test critical flows
-/run-flow-test --flows registration,checkout
+# Test registration flow
+/run-flow-test registration --base-url https://staging.example.com
 
-# All flows
-/run-flow-test --flows registration,login,checkout,profile,search
+# Multiple flows
+/run-flow-test registration,checkout,profile
 
-# Focus on accessibility
-/run-flow-test --flows registration --team edge-case
+# Focus on conversion
+/run-flow-test --flows checkout --focus conversion --rounds 5
+
+# Specify everything
+/run-flow-test --flows login,signup --base-url http://localhost:3000 --rounds 4
 ```
 
-## Success Criteria
+## What This Does
 
-- All flows tested
-- Improvements measured  
-- Winner determined
-- Recommendations provided
+1. Measures baseline flow metrics (completion rate, time, errors, accessibility)
+2. Initializes three competing AI teams (Happy Path, Edge Cases, Integration)
+3. Runs olympics for specified number of rounds
+4. Teams optimize flows in their specialty areas
+5. Applies reinforcement learning to improve strategies
+6. Scores based on completion rate, time reduction, error decrease
+7. Presents comprehensive optimization recommendations
+
+## Options
+
+- **--flows <names>:** Which flows to optimize (registration/login/checkout/profile/etc.)
+- **--base-url <url>:** Application URL (staging recommended)
+- **--rounds <n>:** Number of optimization rounds (default: 4)
+- **--focus <area>:** Emphasize conversion/accessibility/performance
+- **--output <path>:** Custom output directory
+
+## Output Format
+
+```markdown
+🎯 User Flow Olympics Results - Registration
+
+🥇 Winner: Team 1 - Happy Path Optimizers (189 pts)
+
+Improvements:
+- Completion Rate: 68% → 92% (+24%)
+- Time to Complete: 3m45s → 1m25s (-62%)
+- Friction Points: 5 → 1
+
+Key Optimizations:
+✅ Reduced form fields: 12 → 6
+✅ Added social auth (Google, GitHub)
+✅ Improved error messages
+✅ Added progress indicator
+
+🥈 Team 2 - Edge Cases (165 pts)
+- Error Rate: 12% → 3%
+- WCAG Score: 65 → 95
+- Mobile Completion: 52% → 86%
+
+🥉 Team 3 - Integration (142 pts)
+- API Response Time: -35%
+- Fixed 3 race conditions
+
+Recommended Implementation:
+1. Deploy form simplification (highest impact)
+2. Add accessibility improvements (compliance)
+3. Apply API optimizations (reliability)
+
+Expected: ~90%+ completion, <2min avg time
+
+Results: ./flow-results/olympics_*.json
+```
+
+## Notes
+
+- **Staging first:** Test on staging, not production
+- **Baseline critical:** Measure before/after to prove improvements
+- **Teams compete:** Happy Path (conversion), Edge Cases (accessibility), Integration (reliability)
+- **Best rounds:** 4-6 rounds optimal for flow optimization
+- **A/B test:** Validate major changes before production deployment
+- **Metrics:** Completion rate, time, errors, accessibility, mobile performance
+- **Follow-up:** Review recommendations, A/B test, deploy incrementally

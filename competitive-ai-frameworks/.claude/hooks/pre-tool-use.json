@@ -1,0 +1,41 @@
+{
+  "hooks": [
+    {
+      "name": "security-testing-authorization",
+      "description": "Confirm authorization before running bug hunting championships",
+      "trigger": {
+        "tool": "Bash",
+        "pattern": ".*bug-hunting.*coordinator\\.py.*|.*run-bug-hunt.*"
+      },
+      "action": {
+        "type": "confirm",
+        "message": "⚠️  Security Testing Authorization Required\n\nBefore running bug hunting championship:\n\n1. Do you have authorization to test this codebase?\n2. Is this for defensive security or educational purposes only?\n3. Is this your own code or an authorized test environment?\n\nProceed with security testing?",
+        "default": false
+      }
+    },
+    {
+      "name": "code-modification-warning",
+      "description": "Warn before code quality championships that make code changes",
+      "trigger": {
+        "tool": "Bash",
+        "pattern": ".*code-quality.*coordinator\\.py.*|.*run-quality-check.*"
+      },
+      "action": {
+        "type": "notify",
+        "message": "💡 Code Quality Championship will make code changes.\n\nRecommendation: Ensure you're on a clean git branch so changes can be reviewed.\n\nCurrent branch: $(git branch --show-current 2>/dev/null || echo 'unknown')"
+      }
+    },
+    {
+      "name": "flow-testing-staging-reminder",
+      "description": "Remind to test flows on staging, not production",
+      "trigger": {
+        "tool": "Bash",
+        "pattern": ".*user-flows.*coordinator\\.py.*|.*run-flow-test.*"
+      },
+      "action": {
+        "type": "notify",
+        "message": "💡 User Flow Olympics Testing\n\nReminder: Always test flows on staging environment first, not production.\n\nMake sure --base-url points to your staging environment."
+      }
+    }
+  ]
+}

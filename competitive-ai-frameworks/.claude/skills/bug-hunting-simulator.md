@@ -1,274 +1,217 @@
+---
+name: bug-hunting-simulator
+description: Orchestrate competitive bug hunting where three specialized AI teams compete to find security vulnerabilities. Activates when user wants to find vulnerabilities, run security audits, bug hunts, penetration tests (authorized only), or mentions competitive security testing.
+allowed-tools: [Read, Grep, Glob, Bash, Task]
+---
+
 # Bug Hunting Championship Simulator
 
-## Skill Activation
-
-This skill automatically activates when the user mentions:
-- "find security vulnerabilities"
-- "hunt for bugs"
-- "security audit"
-- "penetration test" (authorized only)
-- "run bug hunt"
-- "competitive bug hunting"
-
-## Skill Description
-
-Orchestrates a competitive bug hunting simulation where three specialized AI teams compete to find vulnerabilities in a target codebase using reinforcement learning to adapt their strategies.
+Orchestrates a competitive multi-agent simulation where three specialized AI teams compete to find vulnerabilities in your codebase using different strategies and reinforcement learning to continuously improve.
 
 ## When to Use
 
-Activate this skill when:
+This skill should be used when:
 - User wants to find security vulnerabilities comprehensively
-- User requests a security audit or assessment
-- User wants to compare different vulnerability detection approaches
-- User mentions bug hunting or security testing
+- User requests a security audit or penetration test (authorized only)
+- User needs to compare different vulnerability detection approaches
+- User mentions bug hunting, security testing, or competitive security analysis
+- User wants to leverage multiple AI strategies for better vulnerability coverage
 
-## How It Works
+## Instructions
 
-1. **Initialize Championship**
-   - Set up three competing teams (Automated, Manual, Fuzzing)
-   - Configure target codebase
-   - Initialize scoring engine
+### Step 1: Confirm Authorization
 
-2. **Run Rounds**
-   - Each team searches for vulnerabilities independently
-   - Teams use their specialized strategies
-   - Bugs are scored based on severity, uniqueness, quality
+**Before starting any security testing, you MUST confirm:**
 
-3. **Apply Reinforcement Learning**
-   - Successful strategies are strengthened
-   - False positives are penalized
-   - Weights adapt based on performance
+```markdown
+⚠️  Security Testing Authorization Required
 
-4. **Declare Winner**
-   - Aggregate scores across rounds
-   - Identify best overall team
-   - Extract winning strategies
-   - Generate recommendations
+Please confirm:
+1. Do you have authorization to test this codebase?
+2. Is this for defensive security or educational purposes?
+3. Is this your own code or an authorized test environment?
 
-## Execution Steps
+Type 'yes' to proceed or 'no' to cancel.
+```
 
-When activated:
+Only proceed if user explicitly confirms authorization.
 
-1. **Confirm Authorization**
-   ```
-   Before starting, confirm:
-   - User has authorization to test this codebase
-   - This is for defensive security/education
-   - Target is user's own code or authorized test environment
-   ```
+### Step 2: Gather Configuration
 
-2. **Get Configuration**
-   ```
-   Ask user:
-   - Target directory/codebase path
-   - Number of rounds (default: 5)
-   - Specific focus areas (optional)
-   - Visualization preference
-   ```
+Ask the user for:
+- **Target path:** Directory or codebase to analyze (required)
+- **Rounds:** Number of competition rounds (default: 5)
+- **Focus areas:** Specific vulnerability types to prioritize (optional)
+- **Output:** Where to save results (default: ./results)
+- **Visualization:** Whether to generate charts and graphs (optional)
 
-3. **Launch Championship**
-   ```python
-   cd competitive-ai-frameworks/frameworks/bug-hunting
-   python coordinator.py \
-     --target /path/to/codebase \
-     --rounds 5 \
-     --output ./results \
-     --visualize
-   ```
+Example:
+```bash
+Target: ./src
+Rounds: 5
+Focus: authentication, sql-injection
+Output: ./security-audit-results
+Visualize: yes
+```
 
-4. **Monitor Progress**
-   ```
-   Display real-time updates:
-   - Round number and progress
-   - Bugs found per team
-   - Current scores
-   - Time remaining
-   ```
+### Step 3: Initialize Championship
 
-5. **Present Results**
-   ```
-   Show final results:
-   - Winner announcement
-   - Score breakdown
-   - Top vulnerabilities found
-   - Strategy analysis
-   - Combined recommendations
-   ```
+Set up the competitive framework:
 
-## Team Strategies
+1. Load three competing teams:
+   - **Team 1:** Automated Scanners (pattern matching, static analysis)
+   - **Team 2:** Manual Reviewers (logic flaws, business logic)
+   - **Team 3:** Fuzzers (runtime bugs, race conditions)
 
-### Team 1: Automated Scanners
-- **Strength:** Speed and coverage
-- **Focus:** Pattern matching, known vulnerabilities
-- **Tools:** grep, static analysis, dependency scanning
-- **Best at:** SQL injection, XSS, command injection
+2. Configure the scoring engine (CVSS-based)
 
-### Team 2: Manual Reviewers
-- **Strength:** Critical logic flaws
-- **Focus:** Business logic, auth/authz
-- **Tools:** Deep code review, flow analysis
-- **Best at:** Auth bypasses, IDOR, privilege escalation
+3. Initialize reinforcement learning weights
 
-### Team 3: Fuzzers
-- **Strength:** Runtime bugs and edge cases
-- **Focus:** Race conditions, memory issues
-- **Tools:** Fuzzing, concurrency testing
-- **Best at:** Race conditions, buffer overflows, DoS
+Example command:
+```bash
+cd competitive-ai-frameworks/frameworks/bug-hunting
+python coordinator.py \
+  --target /path/to/codebase \
+  --rounds 5 \
+  --output ./results \
+  --visualize
+```
 
-## Scoring System
+### Step 4: Run Competition Rounds
 
-**Base Scores:**
-- Critical (CVSS 9.0-10.0): 100 points
+For each round (typically 5 rounds):
+
+1. **Team 1 hunts** using automated pattern matching
+2. **Team 2 hunts** using deep code review
+3. **Team 3 hunts** using fuzzing and behavioral analysis
+4. **Score bugs** based on:
+   - Severity (CVSS score)
+   - Uniqueness (first to find bonus)
+   - Quality (report completeness)
+   - Speed (time to discover)
+5. **Update weights** via reinforcement learning
+6. **Display progress** to user
+
+### Step 5: Analyze and Present Results
+
+Generate comprehensive report showing:
+- 🥇 Winner and final standings
+- 📊 Score breakdown by team
+- 🔴 Top critical vulnerabilities discovered
+- 📈 Strategy analysis (what worked best)
+- 💡 Combined recommendations (best of all approaches)
+
+## Best Practices
+
+- ✅ Always confirm authorization before starting security testing
+- ✅ Run at least 3-5 rounds to allow reinforcement learning to improve strategies
+- ✅ Combine findings from all three teams for comprehensive coverage
+- ✅ Verify critical vulnerabilities manually before reporting to stakeholders
+- ✅ Use the winning team's strategy as primary approach in future audits
+- ✅ Save and review the JSON results for detailed analysis
+- ✅ Re-run the championship after fixes to verify remediation
+- ✅ Focus on unique discoveries - they often represent the most critical issues
+
+## Examples
+
+### Example 1: Basic Security Audit
+
+**User Input:**
+```
+I need to find security vulnerabilities in my web application
+```
+
+**Skill Process:**
+1. Confirm authorization with user
+2. Detect current working directory as target: `./src`
+3. Use default configuration (5 rounds, all 3 teams)
+4. Run championship with real-time progress updates
+5. Present final results with winner, top vulnerabilities, and recommendations
+
+**Output:**
+```markdown
+🎯 Bug Hunting Championship Results
+
+🥇 Winner: Team 2 - Manual Reviewers (1,450 points)
+   - 12 bugs found (2 Critical, 5 High, 5 Medium)
+   - 5% false positive rate
+
+Top Vulnerabilities:
+1. 🔴 CRITICAL - Authentication Bypass (CVSS 9.8)
+   Location: src/auth/middleware.py:78
+   Impact: Complete authentication bypass via JWT 'none' algorithm
+
+2. 🟠 HIGH - SQL Injection (CVSS 8.5)
+   Location: src/db/queries.py:45
+   Impact: Data exfiltration possible
+
+Recommendation: Start with automated scanning, follow with manual review
+of authentication/authorization, then apply fuzzing to critical operations.
+```
+
+**Explanation:** The championship found critical auth and injection flaws by combining all three team strategies, with Manual Reviewers excelling at finding the most impactful business logic vulnerability.
+
+### Example 2: Focused Security Testing
+
+**User Input:**
+```
+Run bug hunt on ./api focusing on authentication bugs
+```
+
+**Skill Process:**
+1. Confirm authorization
+2. Target: `./api` directory
+3. Focus: authentication vulnerabilities
+4. Team 2 (Manual Reviewers) weight increased for auth focus
+5. Results emphasize auth-related findings
+
+**Output:**
+Focused results showing 8 authentication-related vulnerabilities including IDOR, session fixation, and privilege escalation issues.
+
+## Common Mistakes to Avoid
+
+- ❌ Running bug hunts without proper authorization
+- ❌ Testing production systems without approval
+- ❌ Ignoring false positives (they'll reduce team effectiveness via RL)
+- ❌ Using only one round (prevents reinforcement learning from improving strategies)
+- ❌ Not verifying critical findings manually before reporting
+- ❌ Skipping the combined approach recommendations
+- ✅ Always get authorization, run multiple rounds, verify findings, and use insights from all teams
+
+## Tips
+
+- 💡 **First time users:** Start with 3 rounds on a small codebase to understand the process
+- 💡 **Performance:** Increase Team 1 weight for faster scans, Team 2 for deeper analysis
+- 💡 **Learning:** Watch how team weights evolve - successful strategies get reinforced
+- 💡 **Best results:** 5-7 rounds provides optimal balance of coverage and RL improvement
+- 💡 **Prioritization:** Critical CVSS scores (9.0+) should be fixed immediately
+- 💡 **Validation:** Use the test application in `examples/bug-hunting/vulnerable-app/` to practice
+
+## Related Skills/Commands
+
+- `/run-bug-hunt` - Quick start bug hunting championship
+- `/run-quality-check` - Code quality championship
+- `security-auditor` subagent - Security audit specialist
+- `code-reviewer` skill - General code review
+
+## Notes
+
+**Scoring System:**
+- Critical (CVSS 9.0-10.0): 100 points base
 - High (CVSS 7.0-8.9): 50 points
 - Medium (CVSS 4.0-6.9): 25 points
 - Low (CVSS 0.1-3.9): 10 points
+- First discovery bonus: +50%
+- Quality report bonus: +0 to +20 points
+- False positive penalty: -20 points
 
-**Bonuses:**
-- First discovery: +50%
-- Quality report: +0 to +20 points
-- Fast discovery: +0 to +30%
+**Team Specialties:**
+- Team 1 (Automated): Fast pattern matching, good for known vulns (SQL injection, XSS)
+- Team 2 (Manual): Best for logic flaws, auth bypasses, business logic
+- Team 3 (Fuzzers): Excels at race conditions, memory bugs, runtime issues
 
-**Penalties:**
-- False positive: -20 points
+**Reinforcement Learning:**
+The framework uses Q-learning to adapt team strategies. Successful approaches are reinforced, unsuccessful ones are de-emphasized. This means later rounds are typically more effective than early rounds.
 
-## Output Format
-
-Present results as:
-
-```markdown
-# Bug Hunting Championship Results
-
-## Final Standings
-
-🥇 **Winner: [Team Name]**
-   - Total Score: [score]
-   - Bugs Found: [count]
-   - Critical Bugs: [count]
-   - False Positive Rate: [percentage]
-
-🥈 **Second Place: [Team Name]**
-   ...
-
-🥉 **Third Place: [Team Name]**
-   ...
-
-## Top Vulnerabilities Discovered
-
-1. **[Vulnerability Type]** (CVSS [score])
-   - Location: [file:line]
-   - Discovered by: [Team]
-   - Impact: [description]
-
-2. ...
-
-## Winning Strategy Analysis
-
-[Team Name] won by:
-- [Key success factor 1]
-- [Key success factor 2]
-- [Key success factor 3]
-
-## Recommended Combined Approach
-
-Based on all teams' performance:
-
-1. [Best practice from analysis]
-2. [Best practice from analysis]
-3. [Best practice from analysis]
-```
-
-## Example Usage
-
-**User:** "I need to find security vulnerabilities in my application"
-
-**Assistant:**
-```
-I'll run a competitive bug hunting championship with three specialized teams!
-
-🎯 Bug Hunting Championship Initialized
-
-Configuration:
-- Target: ./src
-- Rounds: 5
-- Teams: 3 (Automated, Manual Review, Fuzzing)
-
-Starting Round 1/5...
-
-[Shows progress and results]
-```
-
-## Integration with Claude Code
-
-This skill uses:
-
-**Subagents:**
-- `.claude/subagents/team1-automated-scanner.md` - Team 1 strategy
-- `.claude/subagents/team2-manual-reviewer.md` - Team 2 strategy
-- `.claude/subagents/team3-fuzzer.md` - Team 3 strategy
-
-**Tools:**
-- `Grep` - Pattern matching for Team 1
-- `Read` - Code analysis for Team 2
-- `Bash` - Running tests for Team 3
-
-**Frameworks:**
-- `frameworks/bug-hunting/coordinator.py` - Main orchestrator
-- `frameworks/bug-hunting/scoring_engine.py` - Scoring logic
-- `frameworks/bug-hunting/reinforcement.py` - Strategy adaptation
-
-## Safety and Ethics
-
-**Always:**
-- ✅ Confirm user has authorization
-- ✅ Verify defensive/educational purpose
-- ✅ Target only user's own code or authorized systems
-- ✅ Follow responsible disclosure for findings
-
-**Never:**
-- ❌ Test unauthorized systems
-- ❌ Provide exploitation assistance for malicious purposes
-- ❌ Bypass security controls without authorization
-- ❌ Assist with attacks on production systems
-
-## Advanced Features
-
-**Multi-Round Evolution:**
-- Watch strategies improve over rounds
-- See reinforcement learning in action
-- Track weight adaptations
-
-**Custom Configuration:**
-- Adjust team weights
-- Focus on specific vulnerability types
-- Set custom scoring rules
-
-**Detailed Reporting:**
-- Export results to JSON
-- Generate visualizations
-- Create executive summaries
-
-## Troubleshooting
-
-**Issue:** Teams finding too many false positives
-**Solution:** Increase validation strictness, penalize false positives more
-
-**Issue:** Not enough critical bugs found
-**Solution:** Increase Team 2 (Manual Review) weight, add more rounds
-
-**Issue:** Simulation too slow
-**Solution:** Reduce rounds, increase Team 1 (Automated) weight
-
-## Related Commands
-
-- `/run-bug-hunt` - Quick start bug hunting
-- `/security-audit` - Focused security audit
-- `/vulnerability-scan` - Fast automated scan only
-
-## Success Criteria
-
-Skill succeeds when:
-- All rounds complete successfully
-- Results are clearly presented
-- Winner is determined
-- Recommendations are actionable
-- User understands findings
+**Integration:**
+Uses subagents in `.claude/subagents/team[1-3]-*.md` and Python framework in `frameworks/bug-hunting/`.
