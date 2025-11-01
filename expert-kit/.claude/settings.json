@@ -1,0 +1,120 @@
+{
+  "hooks": {
+    "sessionStart": [
+      {
+        "name": "enterprise-context-loader",
+        "description": "Load enterprise context and compliance mode",
+        "content": "\n🏢 **Expert Pack Loaded** - Enterprise Configuration Active\n\nEnterprise Features Enabled:\n✅ 15 Enterprise Skills (Architecture, Compliance, Observability)\n✅ 20 Advanced Commands (Deployment, Incident Response, Compliance)\n✅ 10 Specialist Agents (Architects, SRE, Compliance, Security)\n✅ Production-Critical Hooks (Compliance, Security, Cost)\n\n**Quick Start:**\n- Design: Use enterprise-architect agent\n- Compliance: /compliance-scan\n- Document: /adr-create\n- Deploy: /canary-deploy\n\nℹ️ Type '/help' for available commands or 'list skills' for all capabilities\n"
+      }
+    ],
+    "preToolUse": [
+      {
+        "name": "production-deployment-approval",
+        "description": "Require confirmation for production deployments",
+        "pattern": "(deploy|push).*production|production.*(deploy|push)",
+        "type": "Bash",
+        "content": "⚠️  **Production Deployment Detected**\n\nYou are about to deploy to PRODUCTION.\n\n**Pre-Deployment Checklist:**\n□ All tests passing?\n□ Security scan clean?\n□ Code review approved?\n□ Rollback plan ready?\n□ Stakeholders notified?\n□ Monitoring alerts configured?\n\n**Type 'yes' to confirm production deployment:**"
+      },
+      {
+        "name": "phi-pii-detection",
+        "description": "Detect PHI/PII in code and commits",
+        "pattern": "(ssn|social.security|patient|medical.record|diagnosis|prescription|birthdate|credit.card|card.number|cvv)",
+        "type": "Write",
+        "content": "🔒 **Sensitive Data Detected**\n\nPotential PHI/PII found in content:\n- HIPAA Violation Risk\n- GDPR Violation Risk\n- PCI-DSS Violation Risk\n\n**⚠️ WARNING:** Do not commit sensitive data to source control.\n\n**Actions Required:**\n1. Remove sensitive data\n2. Use environment variables for secrets\n3. Implement encryption for PHI/PII\n4. Review compliance requirements\n\n**Continue anyway?** (Type 'yes' to override - will be logged for audit)"
+      },
+      {
+        "name": "compliance-policy-enforcement",
+        "description": "Enforce compliance policies (SOC2, HIPAA)",
+        "pattern": "commit.*\\.env|commit.*\\.pem|commit.*\\.key|commit.*credentials|commit.*password",
+        "type": "Bash",
+        "content": "🚫 **Compliance Policy Violation**\n\n**Blocked:** Attempting to commit sensitive files\n\n**Files Blocked:**\n- .env files (environment variables)\n- .pem files (private keys)\n- .key files (encryption keys)\n- credentials files\n- files containing 'password'\n\n**SOC2/HIPAA Compliance:**\nThese files must NEVER be committed to version control.\n\n**Required Actions:**\n1. Add files to .gitignore\n2. Use secret management (AWS Secrets Manager, HashiCorp Vault)\n3. Use environment variables\n4. Rotate any exposed credentials\n\n**This operation is BLOCKED for security compliance.**"
+      },
+      {
+        "name": "cost-threshold-warning",
+        "description": "Warn about high cloud cost operations",
+        "pattern": "(ec2|rds|elasticache).*create.*\\.(xlarge|2xlarge|4xlarge|8xlarge)|create.*cluster",
+        "type": "Bash",
+        "content": "💰 **High Cost Operation Detected**\n\nYou are about to provision expensive cloud resources.\n\n**Estimated Monthly Cost:** $500 - $5,000+\n\n**Cost Optimization Checklist:**\n□ Right-sized instance for workload?\n□ Reserved instances considered?\n□ Spot instances feasible?\n□ Auto-scaling configured?\n□ Budget alerts set up?\n□ Approved by FinOps team?\n\n**Recommendation:** Use finops-analyst agent for cost optimization.\n\n**Proceed with high-cost operation?**"
+      },
+      {
+        "name": "breaking-change-detection",
+        "description": "Detect API breaking changes",
+        "pattern": "(remove|delete|rename).*(endpoint|api|route)|change.*response.*format",
+        "type": "Edit",
+        "content": "⚠️  **Potential Breaking Change Detected**\n\n**API Contract Change:** This may break existing clients.\n\n**Required Actions:**\n1. Increment API version (v1 → v2)\n2. Maintain backward compatibility\n3. Deprecation notice (minimum 90 days)\n4. Update API documentation\n5. Notify API consumers\n6. Create migration guide\n\n**Questions:**\n- Is this a major version bump?\n- Have consumers been notified?\n- Is there a deprecation timeline?\n\n**Continue with breaking change?**"
+      },
+      {
+        "name": "license-compliance-check",
+        "description": "Check for license compliance issues",
+        "pattern": "npm install|pip install|cargo add|go get",
+        "type": "Bash",
+        "content": "📜 **License Compliance Check**\n\nRunning license compliance scan for new dependencies...\n\n**Checking for:**\n- GPL licenses (copyleft restrictions)\n- Incompatible license combinations\n- Commercial use restrictions\n- Attribution requirements\n\n**Recommendation:** Review licenses before production use.\n\n**Run full scan:** /dependency-scan --licenses"
+      },
+      {
+        "name": "security-policy-enforcement",
+        "description": "Enforce security policies",
+        "pattern": "http://|disable.*ssl|verify.*false|security.*false",
+        "type": "Write",
+        "content": "🔐 **Security Policy Violation**\n\n**Detected:**\n- HTTP (non-encrypted) connection\n- SSL verification disabled\n- Security features disabled\n\n**Security Requirements:**\n✅ All connections must use HTTPS/TLS\n✅ SSL certificate verification required\n✅ Security features must be enabled\n\n**Exceptions:**\n- Local development only\n- Must not be deployed to production\n- Must be documented in ADR\n\n**This violates enterprise security policy.**\n\n**Proceed?** (Will be flagged in security audit)"
+      },
+      {
+        "name": "data-retention-policy",
+        "description": "Validate data retention policies",
+        "pattern": "delete.*user.*data|purge.*records|truncate.*table",
+        "type": "Bash",
+        "content": "🗂️  **Data Retention Policy Check**\n\n**Data deletion operation detected.**\n\n**Compliance Requirements:**\n□ GDPR right to erasure (30 days)\n□ HIPAA retention (6 years minimum)\n□ SOC2 audit trail (7 years)\n□ Legal hold check\n\n**Required Before Deletion:**\n1. Verify retention period met\n2. Check legal hold status\n3. Create backup for audit\n4. Log deletion for audit trail\n5. Notify data protection officer\n\n**Proceed with data deletion?**"
+      }
+    ],
+    "postToolUse": [
+      {
+        "name": "deployment-notification",
+        "description": "Notify on deployment success/failure",
+        "pattern": "deploy.*success|deployment.*complete",
+        "type": "Bash",
+        "content": "✅ **Deployment Successful**\n\nNotifying stakeholders...\n- Slack: #deployments channel\n- PagerDuty: Deployment event logged\n- Datadog: Deployment marker created\n\n**Post-Deployment:**\n□ Monitor error rates (next 30 min)\n□ Check performance metrics\n□ Verify health checks passing\n□ Review logs for errors\n\n**Rollback command:** /rollback-emergency"
+      },
+      {
+        "name": "performance-regression-detection",
+        "description": "Detect performance regressions",
+        "pattern": "benchmark|performance test|load test",
+        "type": "Bash",
+        "content": "⚡ **Performance Metrics**\n\nComparing to baseline...\n\n**Thresholds:**\n- P50 latency: +10% acceptable\n- P99 latency: +20% acceptable\n- Error rate: +0.1% acceptable\n\n**Action if regression:**\n1. Investigate cause\n2. Consider rollback\n3. Create performance ADR\n4. Update capacity plan"
+      },
+      {
+        "name": "cost-anomaly-alert",
+        "description": "Alert on cost anomalies",
+        "pattern": "create.*instance|provision.*resource",
+        "type": "Bash",
+        "content": "💰 **Cost Tracking**\n\nResource provisioned. Updating cost tracking...\n\n**Daily Cost Impact:** $XX.XX\n**Monthly Projection:** $XXX.XX\n\n**Budget Status:**\n- Current: $X,XXX / $XX,XXX (XX%)\n- Projected: $XX,XXX / $XX,XXX (XXX%)\n\n⚠️ Alert if > 90% of budget"
+      },
+      {
+        "name": "sla-breach-warning",
+        "description": "Warning on SLA breaches",
+        "pattern": "error rate|latency|downtime",
+        "type": "Bash",
+        "content": "🚨 **SLA Monitoring**\n\n**Current SLOs:**\n- Availability: 99.9% (Target: 99.95%)\n- Latency P99: 250ms (Target: 200ms)\n- Error Rate: 0.5% (Target: 0.1%)\n\n⚠️ **SLA Risk:** Approaching error budget limit\n\n**Actions:**\n1. Use sre-consultant agent\n2. Review incident runbooks\n3. Prepare postmortem template"
+      },
+      {
+        "name": "security-incident-creation",
+        "description": "Create security incident on violations",
+        "pattern": "security.*violation|unauthorized.*access|injection.*detected",
+        "type": "Bash",
+        "content": "🔴 **Security Incident**\n\n**Severity:** HIGH\n**Type:** [Security Violation]\n\n**Automatic Actions:**\n✅ Incident created in PagerDuty\n✅ Security team notified\n✅ Audit log entry created\n✅ Forensics data captured\n\n**Next Steps:**\n1. /incident-declare security\n2. Use incident-commander agent\n3. Follow security runbook\n4. Preserve evidence\n\n**Do NOT:** Delete logs, restart services before forensics"
+      },
+      {
+        "name": "audit-log-generation",
+        "description": "Generate comprehensive audit logs",
+        "pattern": ".*",
+        "type": "*",
+        "content": "[Audit Log] Timestamp: {timestamp} | User: {user} | Action: {action} | Resource: {resource} | Status: {status}"
+      }
+    ],
+    "sessionEnd": [
+      {
+        "name": "enterprise-session-summary",
+        "description": "Provide enterprise session summary with audit info",
+        "content": "\n📊 **Enterprise Session Summary**\n\n**Session Duration:** {duration}\n**Commands Executed:** {command_count}\n**ADRs Created:** {adr_count}\n**Compliance Scans:** {scan_count}\n\n**Actions Taken:**\n- Files modified: {file_count}\n- Deployments: {deploy_count}\n- Security checks: {security_count}\n\n**Compliance Status:**\n✅ No policy violations detected\n\n**Cost Impact:**\n💰 Estimated session cost: ${cost_estimate}\n\n**Recommendations:**\n- Review session audit log\n- Update documentation\n- Share ADRs with team\n\n**Audit Log:** Saved to audit/session-{session_id}.log\n\nThank you for using Expert Pack! 🚀\n"
+      }
+    ]
+  }
+}
