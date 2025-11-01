@@ -14,8 +14,23 @@ Framework-specific and project-oriented examples:
 ## Available Examples
 
 ### Framework Skills (`framework-skills/`)
-- **React Component Generator**: Creates React components with TypeScript and best practices
-- **Django Model Helper**: Generates Django models with relationships and migrations
+10 production-ready framework-specific skills:
+- **React Component Generator**: React components with TypeScript and hooks
+- **Vue Component Generator**: Vue 3 with Composition API
+- **Express API Generator**: Node.js REST APIs with proper architecture
+- **FastAPI Generator**: Python APIs with Pydantic validation
+- **Next.js Page Generator**: Next.js 13+ App Router pages
+- **GraphQL Schema Generator**: GraphQL schemas with resolvers
+- **Django Model Helper**: Django ORM models with relationships
+- **API Documentation Generator**: OpenAPI/Swagger specifications
+- **Database Migration Helper**: Database schema migrations
+- **Testing Framework Helper**: Comprehensive test suites
+
+### Workflow Automation (`workflow-automation/`)
+- **Release Automation**: Complete release workflow with version bumping, changelog, GitHub releases, and notifications
+- **Code Review Workflow**: Automated review process with subagents and hooks
+- **Deployment Pipeline**: Safe deployments with validation and monitoring
+- **Documentation Sync**: Auto-generate and sync documentation
 
 ### Workflow Commands (`workflow-commands/`)
 - **PR Creator**: Creates pull requests with auto-generated descriptions

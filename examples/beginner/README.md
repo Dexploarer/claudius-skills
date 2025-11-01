@@ -18,6 +18,7 @@ This directory contains beginner-friendly examples that demonstrate:
 - **TODO Finder**: Finds TODO, FIXME, HACK comments in codebase
 - **File Organizer**: Organizes files by type into folders
 - **Calculator Helper**: Performs calculations and unit conversions
+- **Import Organizer**: Sorts and organizes import statements
 
 ### Basic Commands (`basic-commands/`)
 - **Git Status**: Formatted git status with helpful next steps
@@ -26,6 +27,14 @@ This directory contains beginner-friendly examples that demonstrate:
 - **Git Sync**: Pull and push in one command
 - **Extract Function**: Extract code into well-named function
 - **Rename Variable**: Rename variables consistently
+- **Create Component**: Scaffold new components with boilerplate
+
+### Tutorials (`tutorials/`)
+- **Your First Skill**: Step-by-step guide to creating a skill
+- **Your First Command**: Learn to create slash commands
+- **Creating a Subagent**: Build specialized AI consultants
+- **Setting Up Hooks**: Automate workflows with hooks
+- **Complete Workflow**: Combine all five pillars
 
 ### Safety Hooks (`safety-hooks/`)
 - **Prevent Main Push**: Blocks accidental pushes to main/master

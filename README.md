@@ -286,10 +286,10 @@ Have a useful skill, command, or configuration? Share it!
 - ✅ Beginner-friendly setup
 
 ### Upcoming (v1.1)
-- [ ] Add beginner examples
-- [ ] Add intermediate examples
-- [ ] Create templates directory
-- [ ] Add framework-specific skills
+- ✅ Add beginner examples
+- ✅ Add intermediate examples
+- ✅ Create templates directory
+- ✅ Add framework-specific skills
 
 ### Future (v2.0)
 - [ ] Advanced examples

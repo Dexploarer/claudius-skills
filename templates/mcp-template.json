@@ -1,0 +1,123 @@
+{
+  "mcpServers": {
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_TOKEN": "${GITHUB_TOKEN}"
+      },
+      "disabled": true,
+      "description": "GitHub integration for issues, PRs, and repositories"
+    },
+    "gitlab": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-gitlab"],
+      "env": {
+        "GITLAB_TOKEN": "${GITLAB_TOKEN}",
+        "GITLAB_URL": "https://gitlab.com"
+      },
+      "disabled": true,
+      "description": "GitLab integration"
+    },
+    "postgresql": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-postgres"],
+      "env": {
+        "DATABASE_URL": "postgresql://user:password@localhost:5432/dbname"
+      },
+      "disabled": true,
+      "description": "PostgreSQL database access"
+    },
+    "sqlite": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-sqlite"],
+      "env": {
+        "SQLITE_DB_PATH": "./database.sqlite"
+      },
+      "disabled": true,
+      "description": "SQLite database access"
+    },
+    "slack": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-slack"],
+      "env": {
+        "SLACK_BOT_TOKEN": "${SLACK_BOT_TOKEN}",
+        "SLACK_TEAM_ID": "${SLACK_TEAM_ID}"
+      },
+      "disabled": true,
+      "description": "Slack integration for notifications"
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem"],
+      "env": {
+        "ALLOWED_DIRECTORIES": "/path/to/allowed/directory"
+      },
+      "disabled": true,
+      "description": "Access files outside project directory"
+    },
+    "memory": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-memory"],
+      "disabled": true,
+      "description": "Persistent memory across sessions"
+    },
+    "aws": {
+      "command": "npx",
+      "args": ["-y", "mcp-server-aws"],
+      "env": {
+        "AWS_ACCESS_KEY_ID": "${AWS_ACCESS_KEY_ID}",
+        "AWS_SECRET_ACCESS_KEY": "${AWS_SECRET_ACCESS_KEY}",
+        "AWS_REGION": "us-east-1"
+      },
+      "disabled": true,
+      "description": "AWS cloud resource management"
+    },
+    "docker": {
+      "command": "npx",
+      "args": ["-y", "mcp-server-docker"],
+      "disabled": true,
+      "description": "Docker container management"
+    }
+  },
+  "_README": {
+    "setup_instructions": [
+      "1. Copy this file to your project root as .mcp.json",
+      "2. Replace ${VARIABLE} placeholders with actual values",
+      "3. Set 'disabled: false' for servers you want to use",
+      "4. NEVER commit .mcp.json with real credentials!"
+    ],
+    "security_best_practices": [
+      "✅ Add .mcp.json to .gitignore immediately",
+      "✅ Use environment variables for sensitive data",
+      "✅ Use read-only tokens whenever possible",
+      "✅ Rotate credentials regularly",
+      "✅ Audit MCP server packages before installation",
+      "❌ Never hardcode credentials",
+      "❌ Never commit .mcp.json with real values"
+    ],
+    "common_servers": {
+      "github": "Access GitHub issues, PRs, code search",
+      "gitlab": "Access GitLab projects and CI/CD",
+      "postgresql": "Query PostgreSQL databases",
+      "sqlite": "Query SQLite databases",
+      "slack": "Send messages and read channels",
+      "filesystem": "Access files outside project directory",
+      "memory": "Persistent memory across Claude sessions",
+      "aws": "Manage AWS resources",
+      "docker": "Manage Docker containers"
+    },
+    "getting_tokens": {
+      "github": "https://github.com/settings/tokens - Create personal access token",
+      "gitlab": "Settings > Access Tokens",
+      "slack": "https://api.slack.com/apps - Create app and get bot token",
+      "aws": "IAM > Users > Security Credentials"
+    },
+    "examples": {
+      "using_github": "\"List all open issues in my repo\"",
+      "using_slack": "\"Post message to #general channel\"",
+      "using_postgres": "\"Query users table in production database\"",
+      "using_memory": "\"Remember that the API endpoint is https://api.example.com\""
+    }
+  }
+}
