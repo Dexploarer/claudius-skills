@@ -124,7 +124,7 @@ class CodeQualityCoordinator:
             accessibility_score=55.0  # Placeholder (needs axe-core)
         )
 
-    def _run_round(self, round_num: int, baseline: QualityMetrics) -> Dict:
+    def _run_round(self, _round_num: int, baseline: QualityMetrics) -> Dict:
         """Execute one round"""
         results = {}
 
