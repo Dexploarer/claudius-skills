@@ -1,4 +1,4 @@
-# Expert Pack - Quick Reference
+# Advanced Pack - Quick Reference
 
 Fast lookup guide for all enterprise capabilities.
 
@@ -295,20 +295,20 @@ Use finops-analyst agent
 ## 🔗 Documentation Locations
 
 ### Main Docs
-- **README:** `expert-kit/README.md`
-- **Rules:** `expert-kit/.claude/rules/CLAUDE.md`
-- **Architecture:** `expert-kit/ARCHITECTURE.md`
-- **Compliance:** `expert-kit/COMPLIANCE_GUIDE.md`
+- **README:** `advanced-kit/README.md`
+- **Rules:** `advanced-kit/.claude/rules/CLAUDE.md`
+- **Architecture:** `advanced-kit/ARCHITECTURE.md`
+- **Compliance:** `advanced-kit/COMPLIANCE_GUIDE.md`
 
 ### Runbooks
-- `expert-kit/RUNBOOKS/incident-response.md`
-- `expert-kit/RUNBOOKS/disaster-recovery.md`
-- `expert-kit/RUNBOOKS/security-incident.md`
+- `advanced-kit/RUNBOOKS/incident-response.md`
+- `advanced-kit/RUNBOOKS/disaster-recovery.md`
+- `advanced-kit/RUNBOOKS/security-incident.md`
 
 ### Rules & Workflows
-- **Frameworks:** `expert-kit/.claude/rules/frameworks/`
-- **Workflows:** `expert-kit/.claude/rules/workflows/`
-- **Domains:** `expert-kit/.claude/rules/domains/`
+- **Frameworks:** `advanced-kit/.claude/rules/frameworks/`
+- **Workflows:** `advanced-kit/.claude/rules/workflows/`
+- **Domains:** `advanced-kit/.claude/rules/domains/`
 
 ---
 
@@ -322,13 +322,13 @@ list skills
 /help
 
 # View specific agent
-Read expert-kit/.claude/agents/<agent-name>.md
+Read advanced-kit/.claude/agents/<agent-name>.md
 
 # View specific skill
-Read expert-kit/.claude/skills/<skill-name>.md
+Read advanced-kit/.claude/skills/<skill-name>.md
 
 # View command details
-Read expert-kit/.claude/commands/<command-name>.md
+Read advanced-kit/.claude/commands/<command-name>.md
 ```
 
 ---
@@ -350,4 +350,4 @@ Read expert-kit/.claude/commands/<command-name>.md
 
 **Emergency:** `/incident-declare severity-1`
 
-**Documentation:** `expert-kit/README.md`
+**Documentation:** `advanced-kit/README.md`

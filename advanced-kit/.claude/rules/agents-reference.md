@@ -1,4 +1,4 @@
-# Expert Pack Agents Reference
+# Advanced Pack Agents Reference
 
 Complete reference for all 10 specialist consultant agents.
 

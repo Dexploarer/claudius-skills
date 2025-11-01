@@ -1,4 +1,4 @@
-# Expert Pack Commands Reference
+# Advanced Pack Commands Reference
 
 Complete reference for all 20 advanced automation commands.
 

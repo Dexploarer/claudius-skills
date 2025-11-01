@@ -1,10 +1,10 @@
-# release management Workflow
+# disaster recovery Workflow
 
-Release planning, deployment, and rollback procedures
+Disaster recovery planning, testing, and execution procedures
 
 ## Overview
 
-This workflow provides comprehensive guidance for release planning, deployment, and rollback procedures.
+This workflow provides comprehensive guidance for disaster recovery planning, testing, and execution procedures.
 
 ## Prerequisites
 
@@ -227,4 +227,4 @@ This workflow provides comprehensive guidance for release planning, deployment, 
 
 **Last Updated:** 2025-11-01
 **Status:** Production-Ready
-**Maintainer:** Expert Pack Team
+**Maintainer:** Advanced Pack Team

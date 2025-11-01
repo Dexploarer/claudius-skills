@@ -15,7 +15,7 @@
 4. **Subagents** - Specialized AI consultants
 5. **MCP Servers** - External service integrations
 
-**Current Status:** 75% Complete (25/25 niche skills + Expert Pack implemented) ✨
+**Current Status:** 75% Complete (25/25 niche skills + Advanced Pack implemented) ✨
 
 ---
 
@@ -25,12 +25,12 @@
 claudius-skills/
 ├── starter-kit/          # Beginner-friendly (5 skills, 12 commands, 4 agents)
 ├── intermediate-kit/     # Production-ready (10 skills, 15 commands, 6 agents)
-├── expert-kit/          # Enterprise-grade (15 skills, 20 commands, 10 agents) ✨ NEW
-├── examples/            # Multi-level examples (Beginner → Master)
+├── advanced-kit/         # Enterprise-grade (15 skills, 20 commands, 10 agents) ✨
+├── examples/             # Multi-level examples (Beginner → Master)
 │   ├── beginner/        # Learning-focused examples
 │   ├── intermediate/    # Production patterns
 │   ├── advanced/        # Complex integrations
-│   └── master/          # Expert-level (planned)
+│   └── master/          # Advanced-level (planned)
 ├── templates/           # Reusable templates
 ├── resources/           # Guides and tutorials
 └── .claude/rules/       # Project-wide rules (this directory structure)
@@ -74,7 +74,7 @@ claudius-skills/
 - Web3: `smart-contract-generator`
 - Graphics: `threejs-scene-builder`
 
-**Expert Kit (15 enterprise skills):**
+**Advanced Kit (15 enterprise skills):**
 - Architecture: `microservices-orchestrator`, `api-gateway-configurator`, `event-driven-architect`, `service-mesh-integrator`
 - Compliance: `compliance-auditor`, `architecture-decision-recorder`, `sla-monitor-generator`, `disaster-recovery-planner`
 - Observability: `distributed-tracing-setup`, `metrics-pipeline-builder`, `log-aggregation-configurator`, `chaos-engineering-setup`
@@ -88,7 +88,7 @@ claudius-skills/
 **Intermediate Kit Commands:**
 `/api-docs-generate`, `/bundle-analyze`, `/changelog-update`, `/coverage-report`, `/db-backup`, `/deploy`, `/dependency-update`, `/docker-build`, `/env-setup`, `/health-check`, `/migration-create`, `/performance-profile`, `/pr-creator`, `/security-audit`, `/version-bump`
 
-**Expert Kit Commands (20 advanced):**
+**Advanced Kit Commands (20 advanced):**
 `/release-orchestrator`, `/canary-deploy`, `/blue-green-deploy`, `/rollback-emergency`, `/feature-flag-toggle`, `/compliance-scan`, `/adr-create`, `/sla-report`, `/security-posture`, `/cost-analysis`, `/incident-declare`, `/runbook-execute`, `/postmortem-generate`, `/oncall-schedule`, `/environment-clone`, `/data-migration`, `/traffic-replay`, `/load-test-suite`, `/dependency-graph`, `/tech-debt-audit`
 
 ### Subagents (14 Total)
@@ -107,7 +107,7 @@ claudius-skills/
 - `security-auditor` - Security analysis
 - `system-architect` - System design patterns
 
-**Expert Kit Agents (10 consultants):**
+**Advanced Kit Agents (10 consultants):**
 - Architecture: `enterprise-architect`, `distributed-systems-architect`, `data-architect`, `platform-engineer`
 - Operations: `sre-consultant`, `incident-commander`, `chaos-engineer`, `finops-analyst`
 - Compliance: `compliance-officer`, `security-architect`
@@ -174,10 +174,10 @@ Use when:
 - Performance optimization at scale
 - Complex DevOps workflows
 
-### Level 4: Expert Pack (Enterprise) ✨ NEW
-**Location:** `expert-kit/.claude/`
+### Level 4: Advanced Pack (Enterprise) ✨
+**Location:** `advanced-kit/.claude/`
 **Focus:** Enterprise-grade systems
-**Rules:** `expert-kit/.claude/rules/CLAUDE.md`
+**Rules:** `advanced-kit/.claude/rules/CLAUDE.md`
 
 Use when:
 - Building enterprise distributed systems (microservices, event-driven)
@@ -197,14 +197,14 @@ Use when:
 
 **Quick Start:**
 ```bash
-cp -r expert-kit/.claude /path/to/enterprise/project/
+cp -r advanced-kit/.claude /path/to/enterprise/project/
 Use enterprise-architect to design the architecture
 /compliance-scan soc2
 ```
 
 ### Level 5: Master (Examples)
 **Location:** `examples/master/.claude/`
-**Focus:** Expert-level patterns and plugin ecosystems
+**Focus:** Advanced-level patterns and plugin ecosystems
 **Rules:** `examples/master/.claude/rules/`
 
 Use when:

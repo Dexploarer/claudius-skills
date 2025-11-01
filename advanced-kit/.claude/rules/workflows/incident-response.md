@@ -1,10 +1,10 @@
-# disaster recovery Workflow
+# incident response Workflow
 
-Disaster recovery planning, testing, and execution procedures
+Production incident response procedures and communication protocols
 
 ## Overview
 
-This workflow provides comprehensive guidance for disaster recovery planning, testing, and execution procedures.
+This workflow provides comprehensive guidance for production incident response procedures and communication protocols.
 
 ## Prerequisites
 
@@ -227,4 +227,4 @@ This workflow provides comprehensive guidance for disaster recovery planning, te
 
 **Last Updated:** 2025-11-01
 **Status:** Production-Ready
-**Maintainer:** Expert Pack Team
+**Maintainer:** Advanced Pack Team

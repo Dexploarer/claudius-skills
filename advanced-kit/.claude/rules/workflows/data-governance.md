@@ -1,10 +1,10 @@
-# architecture design Workflow
+# data governance Workflow
 
-Comprehensive workflow for designing enterprise architectures
+Data quality, lineage, cataloging, and governance policies
 
 ## Overview
 
-This workflow provides comprehensive guidance for comprehensive workflow for designing enterprise architectures.
+This workflow provides comprehensive guidance for data quality, lineage, cataloging, and governance policies.
 
 ## Prerequisites
 
@@ -227,4 +227,4 @@ This workflow provides comprehensive guidance for comprehensive workflow for des
 
 **Last Updated:** 2025-11-01
 **Status:** Production-Ready
-**Maintainer:** Expert Pack Team
+**Maintainer:** Advanced Pack Team

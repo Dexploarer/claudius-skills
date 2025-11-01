@@ -1,10 +1,10 @@
-# cost optimization Workflow
+# release management Workflow
 
-Cloud cost optimization strategies and FinOps practices
+Release planning, deployment, and rollback procedures
 
 ## Overview
 
-This workflow provides comprehensive guidance for cloud cost optimization strategies and finops practices.
+This workflow provides comprehensive guidance for release planning, deployment, and rollback procedures.
 
 ## Prerequisites
 
@@ -227,4 +227,4 @@ This workflow provides comprehensive guidance for cloud cost optimization strate
 
 **Last Updated:** 2025-11-01
 **Status:** Production-Ready
-**Maintainer:** Expert Pack Team
+**Maintainer:** Advanced Pack Team

@@ -1,10 +1,10 @@
-# incident response Workflow
+# security governance Workflow
 
-Production incident response procedures and communication protocols
+Security controls, threat modeling, and governance frameworks
 
 ## Overview
 
-This workflow provides comprehensive guidance for production incident response procedures and communication protocols.
+This workflow provides comprehensive guidance for security controls, threat modeling, and governance frameworks.
 
 ## Prerequisites
 
@@ -227,4 +227,4 @@ This workflow provides comprehensive guidance for production incident response p
 
 **Last Updated:** 2025-11-01
 **Status:** Production-Ready
-**Maintainer:** Expert Pack Team
+**Maintainer:** Advanced Pack Team

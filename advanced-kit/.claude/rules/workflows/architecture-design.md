@@ -1,10 +1,10 @@
-# chaos engineering Workflow
+# architecture design Workflow
 
-Chaos engineering practices for resilience testing
+Comprehensive workflow for designing enterprise architectures
 
 ## Overview
 
-This workflow provides comprehensive guidance for chaos engineering practices for resilience testing.
+This workflow provides comprehensive guidance for comprehensive workflow for designing enterprise architectures.
 
 ## Prerequisites
 
@@ -227,4 +227,4 @@ This workflow provides comprehensive guidance for chaos engineering practices fo
 
 **Last Updated:** 2025-11-01
 **Status:** Production-Ready
-**Maintainer:** Expert Pack Team
+**Maintainer:** Advanced Pack Team
