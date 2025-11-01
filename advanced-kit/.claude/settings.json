@@ -4,7 +4,7 @@
       {
         "name": "enterprise-context-loader",
         "description": "Load enterprise context and compliance mode",
-        "content": "\n🏢 **Expert Pack Loaded** - Enterprise Configuration Active\n\nEnterprise Features Enabled:\n✅ 15 Enterprise Skills (Architecture, Compliance, Observability)\n✅ 20 Advanced Commands (Deployment, Incident Response, Compliance)\n✅ 10 Specialist Agents (Architects, SRE, Compliance, Security)\n✅ Production-Critical Hooks (Compliance, Security, Cost)\n\n**Quick Start:**\n- Design: Use enterprise-architect agent\n- Compliance: /compliance-scan\n- Document: /adr-create\n- Deploy: /canary-deploy\n\nℹ️ Type '/help' for available commands or 'list skills' for all capabilities\n"
+        "content": "\n🏢 **Advanced Pack Loaded** - Enterprise Configuration Active\n\nEnterprise Features Enabled:\n✅ 15 Enterprise Skills (Architecture, Compliance, Observability)\n✅ 20 Advanced Commands (Deployment, Incident Response, Compliance)\n✅ 10 Specialist Agents (Architects, SRE, Compliance, Security)\n✅ Production-Critical Hooks (Compliance, Security, Cost)\n\n**Quick Start:**\n- Design: Use enterprise-architect agent\n- Compliance: /compliance-scan\n- Document: /adr-create\n- Deploy: /canary-deploy\n\nℹ️ Type '/help' for available commands or 'list skills' for all capabilities\n"
       }
     ],
     "preToolUse": [
@@ -113,7 +113,7 @@
       {
         "name": "enterprise-session-summary",
         "description": "Provide enterprise session summary with audit info",
-        "content": "\n📊 **Enterprise Session Summary**\n\n**Session Duration:** {duration}\n**Commands Executed:** {command_count}\n**ADRs Created:** {adr_count}\n**Compliance Scans:** {scan_count}\n\n**Actions Taken:**\n- Files modified: {file_count}\n- Deployments: {deploy_count}\n- Security checks: {security_count}\n\n**Compliance Status:**\n✅ No policy violations detected\n\n**Cost Impact:**\n💰 Estimated session cost: ${cost_estimate}\n\n**Recommendations:**\n- Review session audit log\n- Update documentation\n- Share ADRs with team\n\n**Audit Log:** Saved to audit/session-{session_id}.log\n\nThank you for using Expert Pack! 🚀\n"
+        "content": "\n📊 **Enterprise Session Summary**\n\n**Session Duration:** {duration}\n**Commands Executed:** {command_count}\n**ADRs Created:** {adr_count}\n**Compliance Scans:** {scan_count}\n\n**Actions Taken:**\n- Files modified: {file_count}\n- Deployments: {deploy_count}\n- Security checks: {security_count}\n\n**Compliance Status:**\n✅ No policy violations detected\n\n**Cost Impact:**\n💰 Estimated session cost: ${cost_estimate}\n\n**Recommendations:**\n- Review session audit log\n- Update documentation\n- Share ADRs with team\n\n**Audit Log:** Saved to audit/session-{session_id}.log\n\nThank you for using Advanced Pack! 🚀\n"
       }
     ]
   }

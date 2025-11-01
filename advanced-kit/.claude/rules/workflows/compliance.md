@@ -1,10 +1,10 @@
-# data governance Workflow
+# compliance Workflow
 
-Data quality, lineage, cataloging, and governance policies
+Step-by-step compliance implementation for SOC2, HIPAA, GDPR, PCI-DSS
 
 ## Overview
 
-This workflow provides comprehensive guidance for data quality, lineage, cataloging, and governance policies.
+This workflow provides comprehensive guidance for step-by-step compliance implementation for soc2, hipaa, gdpr, pci-dss.
 
 ## Prerequisites
 
@@ -227,4 +227,4 @@ This workflow provides comprehensive guidance for data quality, lineage, catalog
 
 **Last Updated:** 2025-11-01
 **Status:** Production-Ready
-**Maintainer:** Expert Pack Team
+**Maintainer:** Advanced Pack Team

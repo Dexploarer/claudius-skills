@@ -143,7 +143,7 @@ claudius-skills/
 - Advanced security implementations
 
 **Documentation:**
-- `CLAUDE.md` - Expert-level guide for distributed systems
+- `CLAUDE.md` - Advanced-level guide for distributed systems
 - Distributed systems patterns (planned)
 - Microservices workflows (planned)
 - Multi-cloud deployment patterns (planned)
@@ -278,7 +278,7 @@ claudius-skills/
 
 **Coverage:**
 1. **CLAUDE.md** (400+ lines)
-   - Expert-level guide
+   - Advanced-level guide
    - Distributed systems focus
    - Microservices patterns
    - Multi-cloud architectures

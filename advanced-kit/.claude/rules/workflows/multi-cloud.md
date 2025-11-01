@@ -1,10 +1,10 @@
-# observability Workflow
+# multi cloud Workflow
 
-Setting up comprehensive observability with metrics, logs, and traces
+Multi-cloud strategy, deployment, and management workflows
 
 ## Overview
 
-This workflow provides comprehensive guidance for setting up comprehensive observability with metrics, logs, and traces.
+This workflow provides comprehensive guidance for multi-cloud strategy, deployment, and management workflows.
 
 ## Prerequisites
 
@@ -227,4 +227,4 @@ This workflow provides comprehensive guidance for setting up comprehensive obser
 
 **Last Updated:** 2025-11-01
 **Status:** Production-Ready
-**Maintainer:** Expert Pack Team
+**Maintainer:** Advanced Pack Team

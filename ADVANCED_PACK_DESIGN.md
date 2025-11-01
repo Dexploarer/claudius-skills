@@ -1,4 +1,4 @@
-# Expert Pack - Design Document
+# Advanced Pack - Design Document
 
 **Level 4: Master/Enterprise Configuration**
 **Status**: Design Complete → Ready for Implementation
@@ -8,7 +8,7 @@
 
 ## 🎯 Executive Summary
 
-The **Expert Pack** is the ultimate Claude Code configuration for enterprise developers, architects, and teams building production-critical systems at scale. It represents Level 4 in the Claudius Skills progression path.
+The **Advanced Pack** is the ultimate Claude Code configuration for enterprise developers, architects, and teams building production-critical systems at scale. It represents Level 4 in the Claudius Skills progression path.
 
 ### Positioning in Skill Progression:
 
@@ -16,7 +16,7 @@ The **Expert Pack** is the ultimate Claude Code configuration for enterprise dev
 Level 1: Starter Kit      → Learning AI-assisted development
 Level 2: Intermediate Kit → Production-ready frameworks
 Level 3: Advanced Examples → Complex domain patterns
-Level 4: Expert Pack      → Enterprise systems & governance ✨
+Level 4: Advanced Pack    → Enterprise systems & governance ✨
 ```
 
 ### Target Audience:
@@ -29,7 +29,7 @@ Level 4: Expert Pack      → Enterprise systems & governance ✨
 
 ---
 
-## 📊 Expert Pack Capabilities Overview
+## 📊 Advanced Pack Capabilities Overview
 
 ### Comprehensive Inventory:
 
@@ -45,7 +45,7 @@ Level 4: Expert Pack      → Enterprise systems & governance ✨
 
 ### Differentiators from Intermediate Kit:
 
-| Aspect | Intermediate Kit | Expert Pack |
+| Aspect | Intermediate Kit | Advanced Pack |
 |--------|------------------|-------------|
 | **Scale** | Single applications | Distributed systems |
 | **Team Size** | 1-10 developers | 10-1000+ developers |
@@ -179,11 +179,11 @@ Enterprise-grade automation and safety:
 
 ---
 
-## 📁 Expert Pack Structure
+## 📁 Advanced Pack Structure
 
 ```
-expert-kit/
-├── README.md                          # Comprehensive expert pack guide
+advanced-kit/
+├── README.md                          # Comprehensive advanced pack guide
 ├── QUICK_REFERENCE.md                 # Quick command/skill lookup
 ├── ARCHITECTURE.md                    # Architecture philosophy
 ├── COMPLIANCE_GUIDE.md                # Compliance requirements guide
@@ -248,7 +248,7 @@ expert-kit/
     ├── settings.json                  # Enterprise hooks configuration
     │
     └── rules/                         # Comprehensive rule system
-        ├── CLAUDE.md                  # Expert-level overview
+        ├── CLAUDE.md                  # Advanced-level overview
         ├── skills-reference.md        # All 15 skills documented
         ├── commands-reference.md      # All 20 commands documented
         ├── agents-reference.md        # All 10 agents documented
@@ -575,7 +575,7 @@ Commands Used:
 - Complete all domain-specific rules
 - Comprehensive examples and tutorials
 
-**Deliverable**: Production-ready expert pack
+**Deliverable**: Production-ready advanced pack
 
 ---
 
@@ -619,7 +619,7 @@ Intermediate Kit (Week 3-8)
     ↓ When building production apps
 Advanced Examples (Week 9-12)
     ↓ When mastering complex patterns
-Expert Pack (Week 13+)
+Advanced Pack (Week 13+)
     ↓ When leading enterprise systems
 ```
 
@@ -634,16 +634,16 @@ Expert Pack (Week 13+)
 ```
 Individual Developers → Starter/Intermediate Kit
 Tech Leads → Intermediate Kit + Advanced Examples
-Architects → Expert Pack (Architecture + Design skills)
-SREs/DevOps → Expert Pack (Operations + Reliability skills)
-Compliance → Expert Pack (Governance + Compliance skills)
+Architects → Advanced Pack (Architecture + Design skills)
+SREs/DevOps → Advanced Pack (Operations + Reliability skills)
+Compliance → Advanced Pack (Governance + Compliance skills)
 ```
 
 ---
 
 ## 💡 Best Practices
 
-### For Expert Pack Users:
+### For Advanced Pack Users:
 
 1. **Start with Architecture** - Use enterprise-architect agent first
 2. **Document Decisions** - Always create ADRs for major choices
@@ -674,7 +674,7 @@ Compliance → Expert Pack (Governance + Compliance skills)
 
 ## 📚 Documentation Structure
 
-### Expert Pack Documentation:
+### Advanced Pack Documentation:
 
 1. **README.md** - Overview and quick start
 2. **ARCHITECTURE.md** - Architecture philosophy

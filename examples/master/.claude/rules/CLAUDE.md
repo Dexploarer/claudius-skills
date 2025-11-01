@@ -1,13 +1,13 @@
-# Master Level - Expert Rules
+# Master Level - Advanced Rules
 
-> **Level 4: Expert-Level Claude Code Configuration**
+> **Level 4: Advanced-Level Claude Code Configuration**
 > Distributed systems, advanced architectural patterns, and custom framework development.
 
 ---
 
 ## 🎯 Purpose
 
-The Master Level provides **expert-level capabilities** for complex enterprise systems:
+The Master Level provides **advanced-level capabilities** for complex enterprise systems:
 - Distributed system design patterns
 - Microservices architecture
 - Custom framework development

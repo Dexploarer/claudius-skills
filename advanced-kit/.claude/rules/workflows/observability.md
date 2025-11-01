@@ -1,10 +1,10 @@
-# security governance Workflow
+# observability Workflow
 
-Security controls, threat modeling, and governance frameworks
+Setting up comprehensive observability with metrics, logs, and traces
 
 ## Overview
 
-This workflow provides comprehensive guidance for security controls, threat modeling, and governance frameworks.
+This workflow provides comprehensive guidance for setting up comprehensive observability with metrics, logs, and traces.
 
 ## Prerequisites
 
@@ -227,4 +227,4 @@ This workflow provides comprehensive guidance for security controls, threat mode
 
 **Last Updated:** 2025-11-01
 **Status:** Production-Ready
-**Maintainer:** Expert Pack Team
+**Maintainer:** Advanced Pack Team

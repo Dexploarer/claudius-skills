@@ -1,4 +1,4 @@
-# Expert Kit - Enterprise-Level Rules
+# Advanced Kit - Enterprise-Level Rules
 
 > **Level 4: Enterprise/Master Claude Code Configuration**
 > Enterprise-grade tools for distributed systems, compliance, and platform engineering.
@@ -7,7 +7,7 @@
 
 ## 🎯 Purpose
 
-The Expert Kit provides **enterprise-grade capabilities** for technical leaders and architects:
+The Advanced Kit provides **enterprise-grade capabilities** for technical leaders and architects:
 - 15 enterprise skills (microservices, compliance, observability, platform engineering)
 - 20 advanced automation commands (deployment, incident response, compliance)
 - 10 specialist consultant subagents (architects, SRE, compliance, security)
@@ -22,188 +22,188 @@ The Expert Kit provides **enterprise-grade capabilities** for technical leaders 
 ## 📚 Available Capabilities
 
 ### Enterprise Skills (15 Total)
-All skills located in: `expert-kit/.claude/skills/`
+All skills located in: `advanced-kit/.claude/skills/`
 
 #### Architecture & Design (4 skills):
 
 1. **microservices-orchestrator** - Design and manage microservices architectures
    - Auto-invoked: "design microservices", "split into microservices", "service architecture"
    - Features: Service decomposition, bounded contexts, API contracts, service mesh
-   - Reference: `@expert-kit/.claude/skills/microservices-orchestrator.md`
+   - Reference: `@advanced-kit/.claude/skills/microservices-orchestrator.md`
 
 2. **api-gateway-configurator** - Configure API gateways
    - Auto-invoked: "configure API gateway", "set up Kong", "API gateway patterns"
    - Features: Kong, Tyk, AWS API Gateway, rate limiting, authentication
-   - Reference: `@expert-kit/.claude/skills/api-gateway-configurator.md`
+   - Reference: `@advanced-kit/.claude/skills/api-gateway-configurator.md`
 
 3. **event-driven-architect** - Design event-driven systems
    - Auto-invoked: "design event-driven", "Kafka architecture", "event sourcing"
    - Features: Kafka, RabbitMQ, event sourcing, CQRS, saga patterns
-   - Reference: `@expert-kit/.claude/skills/event-driven-architect.md`
+   - Reference: `@advanced-kit/.claude/skills/event-driven-architect.md`
 
 4. **service-mesh-integrator** - Configure service meshes
    - Auto-invoked: "configure service mesh", "set up Istio", "Linkerd setup"
    - Features: Istio, Linkerd, Consul, traffic management, security policies
-   - Reference: `@expert-kit/.claude/skills/service-mesh-integrator.md`
+   - Reference: `@advanced-kit/.claude/skills/service-mesh-integrator.md`
 
 #### Compliance & Governance (4 skills):
 
 5. **compliance-auditor** - SOC2, HIPAA, GDPR, PCI-DSS compliance
    - Auto-invoked: "compliance audit", "SOC2 check", "HIPAA compliance", "GDPR audit"
    - Features: Automated compliance scanning, evidence collection, gap analysis
-   - Reference: `@expert-kit/.claude/skills/compliance-auditor.md`
+   - Reference: `@advanced-kit/.claude/skills/compliance-auditor.md`
 
 6. **architecture-decision-recorder** - Create and manage ADRs
    - Auto-invoked: "create ADR", "document decision", "architecture decision"
    - Features: ADR templates, decision documentation, traceability
-   - Reference: `@expert-kit/.claude/skills/architecture-decision-recorder.md`
+   - Reference: `@advanced-kit/.claude/skills/architecture-decision-recorder.md`
 
 7. **sla-monitor-generator** - SLA/SLO/SLI monitoring
    - Auto-invoked: "create SLO", "define SLA", "error budget", "reliability targets"
    - Features: SLO/SLI definitions, error budgets, alerting rules
-   - Reference: `@expert-kit/.claude/skills/sla-monitor-generator.md`
+   - Reference: `@advanced-kit/.claude/skills/sla-monitor-generator.md`
 
 8. **disaster-recovery-planner** - DR strategy and automation
    - Auto-invoked: "disaster recovery plan", "DR strategy", "backup strategy"
    - Features: RTO/RPO calculation, backup automation, failover procedures
-   - Reference: `@expert-kit/.claude/skills/disaster-recovery-planner.md`
+   - Reference: `@advanced-kit/.claude/skills/disaster-recovery-planner.md`
 
 #### Observability & Performance (4 skills):
 
 9. **distributed-tracing-setup** - Configure distributed tracing
    - Auto-invoked: "set up tracing", "configure Jaeger", "distributed tracing"
    - Features: Jaeger, Zipkin, Datadog APM, AWS X-Ray, OpenTelemetry
-   - Reference: `@expert-kit/.claude/skills/distributed-tracing-setup.md`
+   - Reference: `@advanced-kit/.claude/skills/distributed-tracing-setup.md`
 
 10. **metrics-pipeline-builder** - Build metrics pipelines
     - Auto-invoked: "metrics pipeline", "Prometheus setup", "Grafana dashboards"
     - Features: Prometheus, Grafana, Datadog, CloudWatch, custom metrics
-    - Reference: `@expert-kit/.claude/skills/metrics-pipeline-builder.md`
+    - Reference: `@advanced-kit/.claude/skills/metrics-pipeline-builder.md`
 
 11. **log-aggregation-configurator** - Centralized logging
     - Auto-invoked: "centralize logs", "ELK stack", "log aggregation"
     - Features: ELK, Loki, Splunk, Fluentd, structured logging
-    - Reference: `@expert-kit/.claude/skills/log-aggregation-configurator.md`
+    - Reference: `@advanced-kit/.claude/skills/log-aggregation-configurator.md`
 
 12. **chaos-engineering-setup** - Chaos testing framework
     - Auto-invoked: "chaos engineering", "resilience testing", "chaos experiment"
     - Features: Chaos Monkey, Litmus, chaos experiments, resilience patterns
-    - Reference: `@expert-kit/.claude/skills/chaos-engineering-setup.md`
+    - Reference: `@advanced-kit/.claude/skills/chaos-engineering-setup.md`
 
 #### Platform Engineering (3 skills):
 
 13. **internal-platform-builder** - Build internal developer platforms
     - Auto-invoked: "build platform", "developer platform", "internal platform"
     - Features: Platform architecture, self-service, golden paths
-    - Reference: `@expert-kit/.claude/skills/internal-platform-builder.md`
+    - Reference: `@advanced-kit/.claude/skills/internal-platform-builder.md`
 
 14. **developer-portal-generator** - Create developer portals
     - Auto-invoked: "developer portal", "Backstage setup", "API catalog"
     - Features: Backstage, documentation portals, API catalogs
-    - Reference: `@expert-kit/.claude/skills/developer-portal-generator.md`
+    - Reference: `@advanced-kit/.claude/skills/developer-portal-generator.md`
 
 15. **golden-path-creator** - Define and enforce golden paths
     - Auto-invoked: "golden path", "platform standards", "best practices"
     - Features: Standard templates, scaffolding, enforcement patterns
-    - Reference: `@expert-kit/.claude/skills/golden-path-creator.md`
+    - Reference: `@advanced-kit/.claude/skills/golden-path-creator.md`
 
 ---
 
 ### Advanced Commands (20 Total)
-All commands located in: `expert-kit/.claude/commands/`
+All commands located in: `advanced-kit/.claude/commands/`
 
 #### Deployment & Release (5 commands):
 
 - `/release-orchestrator` - Multi-service coordinated releases
   - Usage: `/release-orchestrator <services>` → Orchestrate multi-service release
-  - Reference: `@expert-kit/.claude/commands/release-orchestrator.md`
+  - Reference: `@advanced-kit/.claude/commands/release-orchestrator.md`
 
 - `/canary-deploy` - Canary deployment automation
   - Usage: `/canary-deploy <service>` → Progressive canary rollout
-  - Reference: `@expert-kit/.claude/commands/canary-deploy.md`
+  - Reference: `@advanced-kit/.claude/commands/canary-deploy.md`
 
 - `/blue-green-deploy` - Blue-green deployment
   - Usage: `/blue-green-deploy <service>` → Zero-downtime deployment
-  - Reference: `@expert-kit/.claude/commands/blue-green-deploy.md`
+  - Reference: `@advanced-kit/.claude/commands/blue-green-deploy.md`
 
 - `/rollback-emergency` - Emergency rollback procedures
   - Usage: `/rollback-emergency <service>` → Immediate rollback
-  - Reference: `@expert-kit/.claude/commands/rollback-emergency.md`
+  - Reference: `@advanced-kit/.claude/commands/rollback-emergency.md`
 
 - `/feature-flag-toggle` - Feature flag management
   - Usage: `/feature-flag-toggle <flag>` → Toggle feature flags
-  - Reference: `@expert-kit/.claude/commands/feature-flag-toggle.md`
+  - Reference: `@advanced-kit/.claude/commands/feature-flag-toggle.md`
 
 #### Compliance & Audit (4 commands):
 
 - `/compliance-scan` - Full compliance audit
   - Usage: `/compliance-scan [framework]` → SOC2/HIPAA/GDPR/PCI audit
-  - Reference: `@expert-kit/.claude/commands/compliance-scan.md`
+  - Reference: `@advanced-kit/.claude/commands/compliance-scan.md`
 
 - `/adr-create` - Create architecture decision record
   - Usage: `/adr-create <title>` → Document architectural decision
-  - Reference: `@expert-kit/.claude/commands/adr-create.md`
+  - Reference: `@advanced-kit/.claude/commands/adr-create.md`
 
 - `/sla-report` - Generate SLA compliance report
   - Usage: `/sla-report [service]` → SLA/SLO compliance reporting
-  - Reference: `@expert-kit/.claude/commands/sla-report.md`
+  - Reference: `@advanced-kit/.claude/commands/sla-report.md`
 
 - `/security-posture` - Comprehensive security assessment
   - Usage: `/security-posture` → Full security posture audit
-  - Reference: `@expert-kit/.claude/commands/security-posture.md`
+  - Reference: `@advanced-kit/.claude/commands/security-posture.md`
 
 #### Incident Response (4 commands):
 
 - `/incident-declare` - Declare and track incidents
   - Usage: `/incident-declare <severity>` → Start incident response
-  - Reference: `@expert-kit/.claude/commands/incident-declare.md`
+  - Reference: `@advanced-kit/.claude/commands/incident-declare.md`
 
 - `/runbook-execute` - Execute incident runbooks
   - Usage: `/runbook-execute <runbook>` → Execute predefined runbook
-  - Reference: `@expert-kit/.claude/commands/runbook-execute.md`
+  - Reference: `@advanced-kit/.claude/commands/runbook-execute.md`
 
 - `/postmortem-generate` - Generate postmortem templates
   - Usage: `/postmortem-generate <incident-id>` → Create postmortem doc
-  - Reference: `@expert-kit/.claude/commands/postmortem-generate.md`
+  - Reference: `@advanced-kit/.claude/commands/postmortem-generate.md`
 
 - `/oncall-schedule` - Manage on-call schedules
   - Usage: `/oncall-schedule` → View/manage on-call rotation
-  - Reference: `@expert-kit/.claude/commands/oncall-schedule.md`
+  - Reference: `@advanced-kit/.claude/commands/oncall-schedule.md`
 
 #### Platform Operations (7 commands):
 
 - `/environment-clone` - Clone entire environments
   - Usage: `/environment-clone <source> <target>` → Clone environment
-  - Reference: `@expert-kit/.claude/commands/environment-clone.md`
+  - Reference: `@advanced-kit/.claude/commands/environment-clone.md`
 
 - `/data-migration` - Orchestrate data migrations
   - Usage: `/data-migration <plan>` → Execute data migration
-  - Reference: `@expert-kit/.claude/commands/data-migration.md`
+  - Reference: `@advanced-kit/.claude/commands/data-migration.md`
 
 - `/traffic-replay` - Replay production traffic
   - Usage: `/traffic-replay <source>` → Replay traffic for testing
-  - Reference: `@expert-kit/.claude/commands/traffic-replay.md`
+  - Reference: `@advanced-kit/.claude/commands/traffic-replay.md`
 
 - `/load-test-suite` - Comprehensive load testing
   - Usage: `/load-test-suite <target>` → Execute load tests
-  - Reference: `@expert-kit/.claude/commands/load-test-suite.md`
+  - Reference: `@advanced-kit/.claude/commands/load-test-suite.md`
 
 - `/dependency-graph` - Service dependency visualization
   - Usage: `/dependency-graph` → Generate dependency graph
-  - Reference: `@expert-kit/.claude/commands/dependency-graph.md`
+  - Reference: `@advanced-kit/.claude/commands/dependency-graph.md`
 
 - `/tech-debt-audit` - Analyze and prioritize tech debt
   - Usage: `/tech-debt-audit` → Assess technical debt
-  - Reference: `@expert-kit/.claude/commands/tech-debt-audit.md`
+  - Reference: `@advanced-kit/.claude/commands/tech-debt-audit.md`
 
 - `/cost-analysis` - Multi-cloud cost analysis
   - Usage: `/cost-analysis [cloud]` → Analyze cloud costs
-  - Reference: `@expert-kit/.claude/commands/cost-analysis.md`
+  - Reference: `@advanced-kit/.claude/commands/cost-analysis.md`
 
 ---
 
 ### Specialist Subagents (10 Total)
-All agents located in: `expert-kit/.claude/agents/`
+All agents located in: `advanced-kit/.claude/agents/`
 
 #### Architecture & Design Consultants (4 agents):
 
@@ -211,25 +211,25 @@ All agents located in: `expert-kit/.claude/agents/`
    - Invocation: "Use enterprise-architect to design the architecture"
    - Expertise: Distributed systems, scalability, design patterns
    - Tools: Read, Grep, Glob
-   - Reference: `@expert-kit/.claude/agents/enterprise-architect.md`
+   - Reference: `@advanced-kit/.claude/agents/enterprise-architect.md`
 
 2. **distributed-systems-architect** - Microservices and distributed patterns
    - Invocation: "Use distributed-systems-architect for microservices design"
    - Expertise: Microservices, event-driven, CQRS, saga patterns
    - Tools: Read, Grep, Glob
-   - Reference: `@expert-kit/.claude/agents/distributed-systems-architect.md`
+   - Reference: `@advanced-kit/.claude/agents/distributed-systems-architect.md`
 
 3. **data-architect** - Data modeling and pipelines
    - Invocation: "Use data-architect to design the data architecture"
    - Expertise: Data warehouses, lakes, pipelines, modeling
    - Tools: Read, Grep, Glob
-   - Reference: `@expert-kit/.claude/agents/data-architect.md`
+   - Reference: `@advanced-kit/.claude/agents/data-architect.md`
 
 4. **platform-engineer** - Internal platform specialist
    - Invocation: "Use platform-engineer to build the developer platform"
    - Expertise: Platform engineering, golden paths, self-service
    - Tools: Read, Write, Bash, Grep
-   - Reference: `@expert-kit/.claude/agents/platform-engineer.md`
+   - Reference: `@advanced-kit/.claude/agents/platform-engineer.md`
 
 #### Operations & Reliability Consultants (4 agents):
 
@@ -237,25 +237,25 @@ All agents located in: `expert-kit/.claude/agents/`
    - Invocation: "Use sre-consultant for SLO design"
    - Expertise: SRE, SLO/SLI, error budgets, reliability
    - Tools: Read, Grep, Bash
-   - Reference: `@expert-kit/.claude/agents/sre-consultant.md`
+   - Reference: `@advanced-kit/.claude/agents/sre-consultant.md`
 
 6. **incident-commander** - Incident response expert
    - Invocation: "Use incident-commander for incident response"
    - Expertise: Incident management, runbooks, postmortems
    - Tools: Read, Bash, Grep
-   - Reference: `@expert-kit/.claude/agents/incident-commander.md`
+   - Reference: `@advanced-kit/.claude/agents/incident-commander.md`
 
 7. **chaos-engineer** - Resilience testing specialist
    - Invocation: "Use chaos-engineer to design chaos experiments"
    - Expertise: Chaos engineering, resilience, failure modes
    - Tools: Read, Bash, Grep
-   - Reference: `@expert-kit/.claude/agents/chaos-engineer.md`
+   - Reference: `@advanced-kit/.claude/agents/chaos-engineer.md`
 
 8. **finops-analyst** - Cloud cost optimization expert
    - Invocation: "Use finops-analyst to reduce cloud costs"
    - Expertise: FinOps, cost optimization, multi-cloud
    - Tools: Read, Grep, Bash
-   - Reference: `@expert-kit/.claude/agents/finops-analyst.md`
+   - Reference: `@advanced-kit/.claude/agents/finops-analyst.md`
 
 #### Compliance & Security Consultants (2 agents):
 
@@ -263,18 +263,18 @@ All agents located in: `expert-kit/.claude/agents/`
    - Invocation: "Use compliance-officer for SOC2 compliance"
    - Expertise: SOC2, HIPAA, GDPR, PCI-DSS, auditing
    - Tools: Read, Grep
-   - Reference: `@expert-kit/.claude/agents/compliance-officer.md`
+   - Reference: `@advanced-kit/.claude/agents/compliance-officer.md`
 
 10. **security-architect** - Security architecture expert
     - Invocation: "Use security-architect for zero-trust design"
     - Expertise: Zero-trust, threat modeling, defense-in-depth
     - Tools: Read, Grep
-    - Reference: `@expert-kit/.claude/agents/security-architect.md`
+    - Reference: `@advanced-kit/.claude/agents/security-architect.md`
 
 ---
 
 ### Production-Critical Hooks
-Configuration: `expert-kit/.claude/settings.json`
+Configuration: `advanced-kit/.claude/settings.json`
 
 **PreToolUse Hooks (Enterprise Safety):**
 - ✅ Production deployment multi-stage approval
@@ -516,7 +516,7 @@ Use chaos-engineering-setup skill
 
 ## 📊 Progression Path
 
-**Current Level:** Expert (Enterprise)
+**Current Level:** Advanced (Enterprise)
 
 **What You've Mastered:**
 - ✅ Enterprise architecture patterns
@@ -548,43 +548,43 @@ Use chaos-engineering-setup skill
 ## 🔗 Detailed Rule References
 
 ### Comprehensive Documentation:
-- **Skills Reference:** `@expert-kit/.claude/rules/skills-reference.md`
-- **Commands Reference:** `@expert-kit/.claude/rules/commands-reference.md`
-- **Agents Reference:** `@expert-kit/.claude/rules/agents-reference.md`
-- **Hooks Reference:** `@expert-kit/.claude/rules/hooks-reference.md`
-- **MCP Reference:** `@expert-kit/.claude/rules/mcp-reference.md`
+- **Skills Reference:** `@advanced-kit/.claude/rules/skills-reference.md`
+- **Commands Reference:** `@advanced-kit/.claude/rules/commands-reference.md`
+- **Agents Reference:** `@advanced-kit/.claude/rules/agents-reference.md`
+- **Hooks Reference:** `@advanced-kit/.claude/rules/hooks-reference.md`
+- **MCP Reference:** `@advanced-kit/.claude/rules/mcp-reference.md`
 
 ### Framework-Specific Rules:
-- Microservices: `@expert-kit/.claude/rules/frameworks/microservices.md`
-- Event-Driven: `@expert-kit/.claude/rules/frameworks/event-driven.md`
-- Service Mesh: `@expert-kit/.claude/rules/frameworks/service-mesh.md`
-- API Gateway: `@expert-kit/.claude/rules/frameworks/api-gateway.md`
-- Serverless: `@expert-kit/.claude/rules/frameworks/serverless.md`
-- GraphQL Federation: `@expert-kit/.claude/rules/frameworks/graphql-federation.md`
-- CQRS/ES: `@expert-kit/.claude/rules/frameworks/cqrs-event-sourcing.md`
-- Platform Engineering: `@expert-kit/.claude/rules/frameworks/platform-engineering.md`
+- Microservices: `@advanced-kit/.claude/rules/frameworks/microservices.md`
+- Event-Driven: `@advanced-kit/.claude/rules/frameworks/event-driven.md`
+- Service Mesh: `@advanced-kit/.claude/rules/frameworks/service-mesh.md`
+- API Gateway: `@advanced-kit/.claude/rules/frameworks/api-gateway.md`
+- Serverless: `@advanced-kit/.claude/rules/frameworks/serverless.md`
+- GraphQL Federation: `@advanced-kit/.claude/rules/frameworks/graphql-federation.md`
+- CQRS/ES: `@advanced-kit/.claude/rules/frameworks/cqrs-event-sourcing.md`
+- Platform Engineering: `@advanced-kit/.claude/rules/frameworks/platform-engineering.md`
 
 ### Workflow Rules:
-- Architecture Design: `@expert-kit/.claude/rules/workflows/architecture-design.md`
-- Compliance: `@expert-kit/.claude/rules/workflows/compliance.md`
-- Incident Response: `@expert-kit/.claude/rules/workflows/incident-response.md`
-- Disaster Recovery: `@expert-kit/.claude/rules/workflows/disaster-recovery.md`
-- Release Management: `@expert-kit/.claude/rules/workflows/release-management.md`
-- Observability: `@expert-kit/.claude/rules/workflows/observability.md`
-- Cost Optimization: `@expert-kit/.claude/rules/workflows/cost-optimization.md`
-- Security Governance: `@expert-kit/.claude/rules/workflows/security-governance.md`
-- Data Governance: `@expert-kit/.claude/rules/workflows/data-governance.md`
-- Platform Operations: `@expert-kit/.claude/rules/workflows/platform-operations.md`
-- Chaos Engineering: `@expert-kit/.claude/rules/workflows/chaos-engineering.md`
-- Multi-Cloud: `@expert-kit/.claude/rules/workflows/multi-cloud.md`
+- Architecture Design: `@advanced-kit/.claude/rules/workflows/architecture-design.md`
+- Compliance: `@advanced-kit/.claude/rules/workflows/compliance.md`
+- Incident Response: `@advanced-kit/.claude/rules/workflows/incident-response.md`
+- Disaster Recovery: `@advanced-kit/.claude/rules/workflows/disaster-recovery.md`
+- Release Management: `@advanced-kit/.claude/rules/workflows/release-management.md`
+- Observability: `@advanced-kit/.claude/rules/workflows/observability.md`
+- Cost Optimization: `@advanced-kit/.claude/rules/workflows/cost-optimization.md`
+- Security Governance: `@advanced-kit/.claude/rules/workflows/security-governance.md`
+- Data Governance: `@advanced-kit/.claude/rules/workflows/data-governance.md`
+- Platform Operations: `@advanced-kit/.claude/rules/workflows/platform-operations.md`
+- Chaos Engineering: `@advanced-kit/.claude/rules/workflows/chaos-engineering.md`
+- Multi-Cloud: `@advanced-kit/.claude/rules/workflows/multi-cloud.md`
 
 ### Domain-Specific Rules:
-- FinTech: `@expert-kit/.claude/rules/domains/fintech.md`
-- Healthcare: `@expert-kit/.claude/rules/domains/healthcare.md`
-- E-Commerce: `@expert-kit/.claude/rules/domains/ecommerce.md`
-- SaaS Platforms: `@expert-kit/.claude/rules/domains/saas-platforms.md`
-- Data Platforms: `@expert-kit/.claude/rules/domains/data-platforms.md`
-- IoT/Edge: `@expert-kit/.claude/rules/domains/iot-edge.md`
+- FinTech: `@advanced-kit/.claude/rules/domains/fintech.md`
+- Healthcare: `@advanced-kit/.claude/rules/domains/healthcare.md`
+- E-Commerce: `@advanced-kit/.claude/rules/domains/ecommerce.md`
+- SaaS Platforms: `@advanced-kit/.claude/rules/domains/saas-platforms.md`
+- Data Platforms: `@advanced-kit/.claude/rules/domains/data-platforms.md`
+- IoT/Edge: `@advanced-kit/.claude/rules/domains/iot-edge.md`
 
 ---
 
@@ -593,7 +593,7 @@ Use chaos-engineering-setup skill
 **Project Root:**
 - Main Overview: `@CLAUDE.md`
 - Project README: `@README.md`
-- Expert Pack Design: `@EXPERT_PACK_DESIGN.md`
+- Advanced Pack Design: `@ADVANCED_PACK_DESIGN.md`
 
 **Previous Levels:**
 - Starter Kit: `@starter-kit/.claude/rules/CLAUDE.md`
@@ -605,21 +605,21 @@ Use chaos-engineering-setup skill
 - Command Template: `@templates/command-template.md`
 - Subagent Template: `@templates/subagent-template.md`
 
-**Expert Pack Documentation:**
-- Main README: `@expert-kit/README.md`
-- Architecture Guide: `@expert-kit/ARCHITECTURE.md`
-- Compliance Guide: `@expert-kit/COMPLIANCE_GUIDE.md`
-- Quick Reference: `@expert-kit/QUICK_REFERENCE.md`
+**Advanced Pack Documentation:**
+- Main README: `@advanced-kit/README.md`
+- Architecture Guide: `@advanced-kit/ARCHITECTURE.md`
+- Compliance Guide: `@advanced-kit/COMPLIANCE_GUIDE.md`
+- Quick Reference: `@advanced-kit/QUICK_REFERENCE.md`
 
 **Runbooks:**
-- Incident Response: `@expert-kit/RUNBOOKS/incident-response.md`
-- Disaster Recovery: `@expert-kit/RUNBOOKS/disaster-recovery.md`
-- Security Incident: `@expert-kit/RUNBOOKS/security-incident.md`
-- Data Breach: `@expert-kit/RUNBOOKS/data-breach.md`
+- Incident Response: `@advanced-kit/RUNBOOKS/incident-response.md`
+- Disaster Recovery: `@advanced-kit/RUNBOOKS/disaster-recovery.md`
+- Security Incident: `@advanced-kit/RUNBOOKS/security-incident.md`
+- Data Breach: `@advanced-kit/RUNBOOKS/data-breach.md`
 
 ---
 
-**Level:** Expert (Enterprise/Master)
+**Level:** Advanced (Enterprise/Master)
 **Last Updated:** 2025-11-01
 **Capabilities:** 15 skills, 20 commands, 10 agents, 15+ hooks
 **Enterprise Support:** SOC2, HIPAA, GDPR, PCI-DSS

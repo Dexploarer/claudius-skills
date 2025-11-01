@@ -1,10 +1,10 @@
-# compliance Workflow
+# cost optimization Workflow
 
-Step-by-step compliance implementation for SOC2, HIPAA, GDPR, PCI-DSS
+Cloud cost optimization strategies and FinOps practices
 
 ## Overview
 
-This workflow provides comprehensive guidance for step-by-step compliance implementation for soc2, hipaa, gdpr, pci-dss.
+This workflow provides comprehensive guidance for cloud cost optimization strategies and finops practices.
 
 ## Prerequisites
 
@@ -227,4 +227,4 @@ This workflow provides comprehensive guidance for step-by-step compliance implem
 
 **Last Updated:** 2025-11-01
 **Status:** Production-Ready
-**Maintainer:** Expert Pack Team
+**Maintainer:** Advanced Pack Team

@@ -1,10 +1,10 @@
-# multi cloud Workflow
+# chaos engineering Workflow
 
-Multi-cloud strategy, deployment, and management workflows
+Chaos engineering practices for resilience testing
 
 ## Overview
 
-This workflow provides comprehensive guidance for multi-cloud strategy, deployment, and management workflows.
+This workflow provides comprehensive guidance for chaos engineering practices for resilience testing.
 
 ## Prerequisites
 
@@ -227,4 +227,4 @@ This workflow provides comprehensive guidance for multi-cloud strategy, deployme
 
 **Last Updated:** 2025-11-01
 **Status:** Production-Ready
-**Maintainer:** Expert Pack Team
+**Maintainer:** Advanced Pack Team

@@ -1,4 +1,4 @@
-# Expert Pack Skills Reference
+# Advanced Pack Skills Reference
 
 Complete reference for all 15 enterprise-grade skills.
 
