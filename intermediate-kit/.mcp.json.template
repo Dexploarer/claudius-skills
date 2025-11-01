@@ -1,0 +1,114 @@
+{
+  "mcpServers": {
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_TOKEN": "${GITHUB_TOKEN}"
+      },
+      "disabled": true,
+      "description": "GitHub integration for issues, PRs, and repositories"
+    },
+    "gitlab": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-gitlab"],
+      "env": {
+        "GITLAB_TOKEN": "${GITLAB_TOKEN}",
+        "GITLAB_URL": "https://gitlab.com"
+      },
+      "disabled": true,
+      "description": "GitLab integration"
+    },
+    "postgresql": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-postgres"],
+      "env": {
+        "DATABASE_URL": "${DATABASE_URL}"
+      },
+      "disabled": true,
+      "description": "PostgreSQL database access for queries and analysis"
+    },
+    "slack": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-slack"],
+      "env": {
+        "SLACK_BOT_TOKEN": "${SLACK_BOT_TOKEN}",
+        "SLACK_TEAM_ID": "${SLACK_TEAM_ID}"
+      },
+      "disabled": true,
+      "description": "Slack integration for notifications and communication"
+    },
+    "jira": {
+      "command": "npx",
+      "args": ["-y", "mcp-server-jira"],
+      "env": {
+        "JIRA_URL": "${JIRA_URL}",
+        "JIRA_EMAIL": "${JIRA_EMAIL}",
+        "JIRA_API_TOKEN": "${JIRA_API_TOKEN}"
+      },
+      "disabled": true,
+      "description": "Jira integration for issue tracking and project management"
+    },
+    "aws": {
+      "command": "npx",
+      "args": ["-y", "mcp-server-aws"],
+      "env": {
+        "AWS_ACCESS_KEY_ID": "${AWS_ACCESS_KEY_ID}",
+        "AWS_SECRET_ACCESS_KEY": "${AWS_SECRET_ACCESS_KEY}",
+        "AWS_REGION": "${AWS_REGION}"
+      },
+      "disabled": true,
+      "description": "AWS integration for cloud resource management"
+    },
+    "docker": {
+      "command": "npx",
+      "args": ["-y", "mcp-server-docker"],
+      "disabled": true,
+      "description": "Docker integration for container management"
+    },
+    "kubernetes": {
+      "command": "npx",
+      "args": ["-y", "mcp-server-kubernetes"],
+      "env": {
+        "KUBECONFIG": "${HOME}/.kube/config"
+      },
+      "disabled": true,
+      "description": "Kubernetes integration for cluster management"
+    },
+    "sentry": {
+      "command": "npx",
+      "args": ["-y", "mcp-server-sentry"],
+      "env": {
+        "SENTRY_AUTH_TOKEN": "${SENTRY_AUTH_TOKEN}",
+        "SENTRY_ORG": "${SENTRY_ORG}"
+      },
+      "disabled": true,
+      "description": "Sentry integration for error tracking and monitoring"
+    },
+    "datadog": {
+      "command": "npx",
+      "args": ["-y", "mcp-server-datadog"],
+      "env": {
+        "DATADOG_API_KEY": "${DATADOG_API_KEY}",
+        "DATADOG_APP_KEY": "${DATADOG_APP_KEY}"
+      },
+      "disabled": true,
+      "description": "Datadog integration for monitoring and metrics"
+    }
+  },
+  "README": {
+    "setup": [
+      "1. Copy this file to .mcp.json",
+      "2. Replace ${VARIABLE} placeholders with actual values",
+      "3. Set disabled: false for servers you want to use",
+      "4. NEVER commit .mcp.json with real credentials to git"
+    ],
+    "security": [
+      "- Add .mcp.json to .gitignore",
+      "- Use environment variables when possible",
+      "- Rotate credentials regularly",
+      "- Use read-only tokens when possible",
+      "- Audit MCP server packages before use"
+    ]
+  }
+}
