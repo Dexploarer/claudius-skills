@@ -1,0 +1,88 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "command": "echo '\n🚀 Intermediate Dev Environment Loaded! 🚀\n📅 '$(date '+%Y-%m-%d %H:%M:%S')'\n📂 '$(pwd)'\n💡 Use /help to see available commands\n'",
+        "description": "Welcome message for intermediate developers"
+      }
+    ],
+    "PreToolUse": [
+      {
+        "pattern": "Bash.*git commit",
+        "command": "if git diff --cached | grep -qE '(password|api_key|secret|token|private_key)\\s*=\\s*[\"'\\''`]'; then echo '⚠️  WARNING: Potential secret detected in commit!' >&2; echo 'Files with secrets:' >&2; git diff --cached --name-only | xargs grep -l -E '(password|api_key|secret|token)' >&2; exit 2; fi",
+        "timeout": 5000,
+        "description": "Comprehensive secret detection before commits"
+      },
+      {
+        "pattern": "Bash.*git push.*-f",
+        "command": "BRANCH=$(git branch --show-current); if [ \"$BRANCH\" = \"main\" ] || [ \"$BRANCH\" = \"master\" ]; then echo '❌ BLOCKED: Force push to main/master is not allowed!' >&2; exit 2; fi; echo '⚠️  Force push detected on branch: '$BRANCH >&2; read -p 'Type FORCE to confirm: ' confirm; if [ \"$confirm\" != \"FORCE\" ]; then echo 'Force push cancelled' >&2; exit 2; fi",
+        "timeout": 30000,
+        "description": "Prevent force push to main/master, confirm for other branches"
+      },
+      {
+        "pattern": "Write.*\\.env$",
+        "command": "if ! grep -q '^\\.env$' .gitignore 2>/dev/null; then echo '⚠️  WARNING: .env is not in .gitignore!' >&2; echo 'Add .env to .gitignore before committing' >&2; fi",
+        "description": "Warn if .env is not in .gitignore"
+      },
+      {
+        "pattern": "Bash.*npm install [^-]|Bash.*yarn add [^-]",
+        "command": "echo '📦 Installing package...' && echo 'Remember to commit package.json and lock file'",
+        "description": "Reminder to commit dependency changes"
+      },
+      {
+        "pattern": "Bash.*docker.*rm|Bash.*docker.*prune",
+        "command": "echo '⚠️  WARNING: Docker cleanup operation detected' >&2; read -p 'This will remove Docker resources. Continue? (y/N): ' confirm; if [ \"$confirm\" != \"y\" ]; then exit 2; fi",
+        "timeout": 30000,
+        "description": "Confirm before Docker cleanup operations"
+      },
+      {
+        "pattern": "Bash.*(migrate|migration).*(?!status|show)",
+        "command": "echo '⚠️  Database migration detected' >&2; echo 'Current branch: '$(git branch --show-current) >&2; read -p 'Run migration? (y/N): ' confirm; if [ \"$confirm\" != \"y\" ]; then exit 2; fi",
+        "timeout": 30000,
+        "description": "Confirm before running database migrations"
+      },
+      {
+        "pattern": "Edit.*package\\.json",
+        "command": "if git diff package.json | grep -q '\"version\":'; then echo '📦 Version change detected in package.json' && echo 'Consider running /version-bump instead for proper version management'; fi",
+        "description": "Suggest using version-bump command"
+      },
+      {
+        "pattern": "Bash.*rm.*-rf",
+        "command": "echo '⚠️  DANGER: Recursive delete operation!' >&2; echo 'Files/folders to be deleted:' >&2; echo \"$(echo \"$TOOL_USE\" | grep -o 'rm.*' | sed 's/rm -rf //')\" >&2; read -p 'Type DELETE to confirm: ' confirm; if [ \"$confirm\" != \"DELETE\" ]; then exit 2; fi",
+        "timeout": 30000,
+        "description": "Confirm dangerous recursive delete operations"
+      }
+    ],
+    "PostToolUse": [
+      {
+        "pattern": "Write|Edit",
+        "command": "FILES_MODIFIED=$((FILES_MODIFIED + 1)); echo '✅ File modified ['$FILES_MODIFIED'] at '$(date '+%H:%M:%S')",
+        "description": "Track file modifications with counter"
+      },
+      {
+        "pattern": "Bash.*npm test|Bash.*pytest|Bash.*go test",
+        "command": "if echo \"$TOOL_RESULT\" | grep -q 'FAIL\\|failed\\|Error'; then echo '❌ Tests failed - review before committing' >&2; else echo '✅ Tests passed'; fi",
+        "description": "Alert on test failures"
+      },
+      {
+        "pattern": "Bash.*npm run build|Bash.*yarn build",
+        "command": "if [ -d 'dist' ] || [ -d 'build' ]; then SIZE=$(du -sh dist build 2>/dev/null | head -1 | cut -f1); echo '📦 Build size: '$SIZE; if du -sb dist build 2>/dev/null | head -1 | awk '{if ($1 > 1048576) exit 1}'; then echo '⚠️  Build size exceeds 1MB - consider optimization'; fi; fi",
+        "description": "Report build size and warn if too large"
+      }
+    ],
+    "SessionEnd": [
+      {
+        "command": "echo '\n👋 Session Complete\n⏱️  '$(date '+%H:%M:%S')'\n📊 Files modified: '${FILES_MODIFIED:-0}'\n💾 Remember to commit your changes!\n'",
+        "description": "Summary on session end"
+      }
+    ]
+  },
+  "allowedTools": {
+    "default": "ask"
+  },
+  "dangerousCommandsRequireApproval": true,
+  "experimental": {
+    "enableTypeChecking": true,
+    "performanceMonitoring": true
+  }
+}
