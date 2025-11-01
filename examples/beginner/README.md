@@ -36,6 +36,12 @@ This directory contains beginner-friendly examples that demonstrate:
 - **Code Formatter**: Formats code to language best practices
 - **Quick Reviewer**: Fast code review for common issues
 
+### MCP Basics (`mcp-basics/`)
+- **Memory Server**: Give Claude persistent memory across sessions
+- **Filesystem Server**: Access files outside your project
+- **GitHub Server**: Integrate with GitHub issues and PRs
+- **SQLite Server**: Query and analyze SQLite databases
+
 ## How to Use
 
 Each example will have:
