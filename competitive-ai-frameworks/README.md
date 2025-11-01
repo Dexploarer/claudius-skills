@@ -1,0 +1,427 @@
+# Competitive AI Team Simulations Framework
+
+> Multi-agent competitive frameworks for bug hunting, code quality assessment, and user flow testing using Claude Code's extensibility features
+
+## 🎯 Overview
+
+This framework leverages Claude Code's **Five Pillars of Extensibility** to create competitive team-based AI simulations:
+
+1. **Bug Hunting Arena** - 3 teams compete to find vulnerabilities
+2. **Code Quality Championship** - Teams race to improve code metrics
+3. **User Flow Olympics** - Teams optimize complete user journeys
+
+Each framework uses:
+- **Subagents** - Specialized AI team members with unique strategies
+- **Skills** - Automated capabilities for analysis and testing
+- **Slash Commands** - Quick simulation execution
+- **Hooks** - Event-driven scoring and tracking
+- **Reinforcement Learning** - Adaptive strategy improvement
+
+## 🏆 Framework Architecture
+
+### Bug Hunting Simulation
+
+**Three Competing Teams:**
+
+- **Team 1: Automated Scanners**
+  - Pattern recognition and static analysis
+  - SAST/DAST tool integration
+  - Dependency vulnerability scanning
+
+- **Team 2: Manual Reviewers**
+  - Deep code review and logic flaw detection
+  - Business logic vulnerabilities
+  - Authentication/authorization issues
+
+- **Team 3: Fuzzers & Behavioral Analysts**
+  - Input fuzzing and edge case testing
+  - Runtime behavior analysis
+  - Race condition detection
+
+**Scoring System:**
+- CVSS severity ratings (Critical: 100pts, High: 50pts, Medium: 25pts, Low: 10pts)
+- Uniqueness bonus (first to find: +50%)
+- False positive penalty (-20 pts)
+- Quality of report (0-20 bonus points)
+- Time to discovery bonus (faster = higher multiplier)
+
+### Code Quality Championship
+
+**Three Competing Teams:**
+
+- **Team 1: Performance Optimizers**
+  - Runtime complexity analysis
+  - Memory usage optimization
+  - Bundle size reduction
+
+- **Team 2: Maintainability Engineers**
+  - Code complexity metrics
+  - Documentation coverage
+  - Design pattern enforcement
+
+- **Team 3: Best Practices Auditors**
+  - Style guide compliance
+  - Test coverage analysis
+  - Accessibility standards
+
+**Scoring System:**
+- Metrics improvement percentage
+- Number of issues resolved
+- Impact on overall quality score
+- Regression prevention
+
+### User Flow Olympics
+
+**Three Competing Teams:**
+
+- **Team 1: Happy Path Optimizers**
+  - Core flow completion time
+  - Conversion rate optimization
+  - UX friction reduction
+
+- **Team 2: Edge Case Handlers**
+  - Error state coverage
+  - Accessibility compliance
+  - Mobile responsiveness
+
+- **Team 3: Integration Specialists**
+  - Cross-system flows
+  - API integration testing
+  - State management validation
+
+**Scoring System:**
+- Flow completion success rate
+- User experience metrics
+- Error handling coverage
+- Performance benchmarks
+
+## 🚀 Quick Start
+
+### Installation
+
+```bash
+# Copy to your project
+cp -r competitive-ai-frameworks/.claude /path/to/your/project/
+
+# Or use specific framework
+cp -r competitive-ai-frameworks/frameworks/bug-hunting /path/to/your/project/
+```
+
+### Running Simulations
+
+```bash
+# Using slash commands (from your project)
+/run-bug-hunt --rounds 5 --target ./src
+/run-quality-check --rounds 3 --baseline main
+/run-flow-test --rounds 4 --flows user-registration,checkout
+
+# Using Python coordinator
+cd competitive-ai-frameworks/frameworks/bug-hunting
+python coordinator.py --target /path/to/codebase --rounds 5
+
+# Using skills (automatic)
+# Just mention: "I need to find security vulnerabilities in this codebase"
+# The bug-hunting-simulator skill will activate automatically
+```
+
+## 📊 Reinforcement Learning System
+
+### Learning Mechanism
+
+Each team maintains:
+- **Strategy weights** - Adjusted based on success rates
+- **Pattern library** - Successful detection patterns
+- **False positive memory** - Avoid repeated mistakes
+- **Time efficiency metrics** - Optimize discovery speed
+
+### Adaptation Cycle
+
+```
+Round N:
+1. Teams execute with current strategies
+2. Scoring engine evaluates results
+3. Reinforcement algorithm updates weights
+4. Successful patterns strengthened
+5. Failed approaches deprioritized
+
+Round N+1:
+6. Teams use adapted strategies
+7. Repeat cycle with improved tactics
+```
+
+### Strategy Evolution
+
+```python
+# Simplified reinforcement learning formula
+new_weight = old_weight + learning_rate * (reward - baseline) * action_frequency
+
+# Rewards:
+# - Successful bug discovery: +reward based on severity
+# - False positive: -penalty
+# - Duplicate finding: 0 (neutral)
+# - Quality report: +bonus
+```
+
+## 🎓 Educational Value
+
+### Learn About:
+- Multi-agent coordination
+- Competitive AI strategies
+- Reinforcement learning basics
+- Security vulnerability assessment
+- Code quality metrics
+- User experience testing
+
+### Use Cases:
+- **Security Training** - Learn bug hunting methodologies
+- **Code Review** - Improve review processes
+- **Testing Strategy** - Optimize testing approaches
+- **Team Performance** - Compare different strategies
+
+## 🔧 Configuration
+
+### Customize Team Strategies
+
+Edit subagent configurations in `.claude/subagents/`:
+
+```markdown
+# .claude/subagents/team1-automated-scanner.md
+
+You are Team 1: Automated Scanner specialist.
+
+**Your Strategy:**
+- Focus on pattern-based vulnerability detection
+- Prioritize high-severity issues
+- Use static analysis techniques
+- Scan dependencies for known CVEs
+
+**Tools at your disposal:**
+- grep/ripgrep for pattern matching
+- AST parsing for code structure
+- Dependency graph analysis
+- OWASP Top 10 checklist
+```
+
+### Adjust Scoring Weights
+
+Edit `frameworks/*/scoring_engine.py`:
+
+```python
+SEVERITY_SCORES = {
+    'critical': 100,
+    'high': 50,
+    'medium': 25,
+    'low': 10
+}
+
+BONUS_MULTIPLIERS = {
+    'first_discovery': 1.5,
+    'quality_report': 1.2,
+    'speed': lambda seconds: max(1.0, 2.0 - seconds/3600)
+}
+```
+
+## 📁 Project Structure
+
+```
+competitive-ai-frameworks/
+├── .claude/                          # Claude Code configurations
+│   ├── skills/                       # Automated capabilities
+│   │   ├── bug-hunting-simulator.md
+│   │   ├── code-quality-analyzer.md
+│   │   └── user-flow-tester.md
+│   ├── commands/                     # Manual shortcuts
+│   │   ├── run-bug-hunt.md
+│   │   ├── run-quality-check.md
+│   │   └── run-flow-test.md
+│   ├── subagents/                    # Team AI specialists
+│   │   ├── team1-automated-scanner.md
+│   │   ├── team2-manual-reviewer.md
+│   │   ├── team3-fuzzer.md
+│   │   └── [9 more team agents]
+│   ├── hooks/                        # Event-driven automation
+│   │   └── scoring-tracker.json
+│   └── rules/                        # Framework rules
+│       └── CLAUDE.md
+├── frameworks/                       # Core implementations
+│   ├── bug-hunting/
+│   │   ├── coordinator.py           # Orchestrates teams
+│   │   ├── scoring_engine.py        # Calculates scores
+│   │   ├── metrics.py               # Tracks performance
+│   │   ├── reinforcement.py         # RL algorithm
+│   │   └── teams/                   # Team implementations
+│   ├── code-quality/
+│   └── user-flows/
+├── examples/                         # Example targets
+│   ├── bug-hunting/
+│   │   ├── vulnerable-app/          # Intentionally buggy
+│   │   └── sample-reports/
+│   ├── code-quality/
+│   │   └── sample-codebases/
+│   └── user-flows/
+│       └── sample-apps/
+├── docs/                             # Documentation
+│   ├── bug-hunting-guide.md
+│   ├── scoring-system.md
+│   ├── reinforcement-learning.md
+│   └── extending-frameworks.md
+└── scripts/                          # Utility scripts
+    ├── setup.sh
+    ├── run-simulation.sh
+    └── analyze-results.py
+```
+
+## 📈 Example Results
+
+### Bug Hunting Round 5 Results:
+
+```
+┌──────────────────────────────────────────────────────┐
+│  Bug Hunting Championship - Final Standings         │
+├──────────────────────────────────────────────────────┤
+│  🥇 Team 2: Manual Reviewers          Score: 1,250  │
+│     - 2 Critical bugs (CVSS 9+)                      │
+│     - 5 High severity bugs                           │
+│     - 3 Medium severity bugs                         │
+│     - False positive rate: 5%                        │
+│     - Avg time to discovery: 12 min                  │
+├──────────────────────────────────────────────────────┤
+│  🥈 Team 3: Fuzzers                   Score: 1,100  │
+│     - 1 Critical bug (race condition)                │
+│     - 6 High severity bugs                           │
+│     - 8 Medium severity bugs                         │
+│     - False positive rate: 15%                       │
+│     - Avg time to discovery: 8 min                   │
+├──────────────────────────────────────────────────────┤
+│  🥉 Team 1: Automated Scanners        Score: 950    │
+│     - 0 Critical bugs                                │
+│     - 8 High severity bugs                           │
+│     - 12 Medium severity bugs                        │
+│     - False positive rate: 25%                       │
+│     - Avg time to discovery: 3 min                   │
+└──────────────────────────────────────────────────────┘
+
+Winning Strategy Analysis:
+Team 2 excelled by focusing on business logic flaws that
+automated tools miss. Key techniques:
+- Authentication flow analysis
+- Authorization boundary testing
+- Input validation deep-dive
+- SQL injection in complex queries
+
+Recommended Combined Approach:
+1. Start with Team 1's automated scanning (fast coverage)
+2. Apply Team 2's manual review to critical paths
+3. Use Team 3's fuzzing on identified attack surfaces
+```
+
+## 🔬 Advanced Features
+
+### Multi-Round Evolution
+
+Watch strategies improve over 10+ rounds:
+
+```bash
+python frameworks/bug-hunting/coordinator.py --rounds 10 --visualize
+```
+
+Teams learn:
+- Which vulnerability types they excel at
+- Time vs quality tradeoffs
+- Pattern recognition improvements
+- False positive reduction
+
+### Custom Team Creation
+
+Add your own team with unique strategy:
+
+```bash
+cp .claude/subagents/team-template.md .claude/subagents/team4-ml-detector.md
+# Edit to define ML-based detection strategy
+```
+
+### Integration with CI/CD
+
+```yaml
+# .github/workflows/security-championship.yml
+name: Weekly Bug Hunt Championship
+
+on:
+  schedule:
+    - cron: '0 0 * * 0'  # Every Sunday
+
+jobs:
+  bug-hunt:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run Bug Hunting Championship
+        run: |
+          cd competitive-ai-frameworks
+          python frameworks/bug-hunting/coordinator.py --rounds 5
+      - name: Post Results
+        run: python scripts/post-to-slack.py results.json
+```
+
+## 🛡️ Security & Ethics
+
+### Responsible Use
+
+This framework is designed for:
+- ✅ Educational purposes
+- ✅ Authorized security testing
+- ✅ CTF competitions
+- ✅ Defensive security research
+- ✅ Code quality improvement
+
+**NOT for:**
+- ❌ Unauthorized penetration testing
+- ❌ Malicious exploitation
+- ❌ Production system attacks
+- ❌ Privacy violations
+
+### Built-in Safeguards
+
+- Requires explicit target specification
+- Logs all activities
+- No automatic exploitation
+- Read-only analysis by default
+
+## 🤝 Contributing
+
+Want to add new teams or strategies?
+
+1. Fork the repository
+2. Create team subagent in `.claude/subagents/`
+3. Implement strategy in `frameworks/*/teams/`
+4. Add tests and documentation
+5. Submit pull request
+
+## 📚 Documentation
+
+- [Bug Hunting Guide](docs/bug-hunting-guide.md) - Detailed methodology
+- [Scoring System](docs/scoring-system.md) - How points are calculated
+- [Reinforcement Learning](docs/reinforcement-learning.md) - RL algorithm details
+- [Extending Frameworks](docs/extending-frameworks.md) - Add your own teams
+
+## 📝 License
+
+MIT License - See LICENSE file
+
+## 🎯 Roadmap
+
+- [ ] Team 4: AI/ML-based detection
+- [ ] Web dashboard for live results
+- [ ] Multi-language support (currently Python-focused)
+- [ ] Cloud deployment templates
+- [ ] Real-time collaboration mode
+- [ ] Integration with popular security tools
+
+## 💡 Inspiration
+
+This framework demonstrates how Claude Code's extensibility can create sophisticated multi-agent systems that learn and compete, providing both educational value and practical security/quality improvements.
+
+---
+
+**Built with Claude Code's Five Pillars of Extensibility**
+**Part of the Claudius Skills Project**
