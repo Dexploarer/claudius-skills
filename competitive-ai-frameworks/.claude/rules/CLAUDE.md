@@ -3,6 +3,8 @@
 > **Multi-Agent Competitive Simulation Framework**
 > Three specialized AI teams compete using reinforcement learning to adapt strategies
 
+**Format:** All configurations follow the standard Claudius Skills template format with proper frontmatter, structured sections, and comprehensive documentation.
+
 ---
 
 ## 🎯 Framework Overview
