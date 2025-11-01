@@ -1,0 +1,59 @@
+{
+  "name": "code-quality-enforcement",
+  "description": "Enforce code quality standards automatically",
+  "enabled": true,
+  "hooks": {
+    "PreToolUse": [
+      {
+        "name": "lint-before-commit",
+        "pattern": "Bash.*git commit",
+        "description": "Run linter before allowing commits",
+        "command": "bash -c 'if command -v npm >/dev/null && [ -f package.json ] && grep -q eslint package.json; then echo \"🔍 Running ESLint...\" >&2; npm run lint --silent || { echo \"❌ Lint errors found. Fix them before committing.\" >&2; exit 2; }; echo \"✅ Lint passed\" >&2; fi'",
+        "timeout": 30000
+      },
+      {
+        "name": "type-check-typescript",
+        "pattern": "(Write|Edit).*\\.tsx?$",
+        "description": "Type check TypeScript files after edit",
+        "command": "bash -c 'if command -v tsc >/dev/null && [ -f tsconfig.json ]; then echo \"🔍 Type checking...\" >&2; tsc --noEmit --pretty false || echo \"⚠️  TypeScript errors detected\" >&2; fi'",
+        "timeout": 20000
+      },
+      {
+        "name": "test-coverage-threshold",
+        "pattern": "Bash.*npm run test:coverage",
+        "description": "Ensure test coverage meets threshold",
+        "command": "bash -c 'npm run test:coverage --silent | tee /tmp/coverage.txt; coverage=$(grep \"All files\" /tmp/coverage.txt | awk \"{print \\$4}\" | tr -d \"%\"); if [ \"$coverage\" -lt 80 ]; then echo \"❌ Coverage ${coverage}% is below 80% threshold\" >&2; exit 2; fi; echo \"✅ Coverage: ${coverage}%\" >&2'",
+        "timeout": 120000
+      }
+    ]
+  },
+  "configuration": {
+    "linting": {
+      "command": "npm run lint",
+      "failOnError": true,
+      "timeout": 30000
+    },
+    "typeChecking": {
+      "command": "tsc --noEmit",
+      "failOnError": false,
+      "timeout": 20000
+    },
+    "testing": {
+      "command": "npm test",
+      "coverageThreshold": 80,
+      "timeout": 120000
+    }
+  },
+  "examples": {
+    "customLinter": {
+      "pattern": "Bash.*git commit",
+      "command": "your-custom-linter-command",
+      "description": "Run your custom linting tool"
+    },
+    "securityScan": {
+      "pattern": "Bash.*npm install",
+      "command": "npm audit --audit-level=high",
+      "description": "Check for security vulnerabilities after install"
+    }
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "mcpServers": {
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_TOKEN": "${GITHUB_TOKEN}",
+        "GITHUB_OWNER": "${GITHUB_OWNER}",
+        "GITHUB_REPO": "${GITHUB_REPO}"
+      },
+      "disabled": false,
+      "description": "GitHub integration",
+      "healthCheck": "Verify token has repo:read permissions"
+    },
+    "postgres-readonly": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-postgres"],
+      "env": {
+        "DATABASE_URL": "${DATABASE_URL_READONLY}"
+      },
+      "disabled": false,
+      "description": "Read-only database access for queries",
+      "healthCheck": "Ensure connection uses readonly user"
+    },
+    "sentry": {
+      "command": "npx",
+      "args": ["-y", "mcp-server-sentry"],
+      "env": {
+        "SENTRY_DSN": "${SENTRY_DSN}",
+        "SENTRY_ORG": "${SENTRY_ORG}",
+        "SENTRY_PROJECT": "${SENTRY_PROJECT}"
+      },
+      "disabled": false,
+      "description": "Error tracking and monitoring"
+    },
+    "slack": {
+      "command": "npx",
+      "args": ["-y", "mcp-server-slack"],
+      "env": {
+        "SLACK_TOKEN": "${SLACK_TOKEN}",
+        "SLACK_CHANNEL": "${SLACK_CHANNEL}"
+      },
+      "disabled": true,
+      "description": "Slack notifications (enable when needed)"
+    }
+  },
+  "production": {
+    "checklist": [
+      "✅ All tokens are read-only where possible",
+      "✅ Tokens are rotated regularly (quarterly)",
+      "✅ .mcp.json is in .gitignore",
+      "✅ Environment variables are documented",
+      "✅ Health checks are configured",
+      "✅ Monitoring is enabled for all servers",
+      "✅ Backup credentials are stored securely",
+      "✅ Team has access to credential vault"
+    ],
+    "monitoring": {
+      "logLocation": "~/.claude/logs/mcp-servers.log",
+      "healthCheckInterval": "5 minutes",
+      "alertOnFailure": true
+    },
+    "security": {
+      "tokenRotation": "Every 90 days",
+      "auditLog": "All MCP operations logged",
+      "accessControl": "Principle of least privilege",
+      "encryptionAtRest": "Use system keychain for tokens"
+    }
+  },
+  "environmentVariables": {
+    "GITHUB_TOKEN": "GitHub Personal Access Token (repo:read)",
+    "DATABASE_URL_READONLY": "PostgreSQL connection (readonly user)",
+    "SENTRY_DSN": "Sentry Data Source Name",
+    "SLACK_TOKEN": "Slack Bot Token (chat:write)",
+    "_note": "Store in .env file and source before running Claude"
+  },
+  "documentation": {
+    "setupGuide": "See docs/mcp-setup.md",
+    "troubleshooting": "See docs/mcp-troubleshooting.md",
+    "serverList": "https://github.com/modelcontextprotocol/servers"
+  }
+}

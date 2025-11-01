@@ -1,0 +1,46 @@
+{
+  "name": "workflow-automation-hooks",
+  "description": "Automate common workflow tasks",
+  "enabled": true,
+  "hooks": {
+    "PostToolUse": [
+      {
+        "name": "auto-format-on-save",
+        "pattern": "Write.*\\.(ts|tsx|js|jsx)$",
+        "description": "Auto-format code files after writing",
+        "command": "bash -c 'file=\"$1\"; if command -v prettier >/dev/null; then prettier --write \"$file\" 2>/dev/null || true; fi' -- ",
+        "timeout": 10000
+      },
+      {
+        "name": "run-tests-after-code-change",
+        "pattern": "(Write|Edit).*/src/.*\\.(ts|js)$",
+        "description": "Run tests after modifying source code",
+        "command": "bash -c 'echo \"🧪 Running tests...\" >&2; npm test --silent 2>&1 | head -n 20 || echo \"⚠️  Some tests failed\" >&2'",
+        "timeout": 60000
+      }
+    ],
+    "SessionStart": [
+      {
+        "name": "welcome-message",
+        "description": "Show welcome message at session start",
+        "command": "bash -c 'echo \"👋 Welcome! Project: $(basename $(pwd))\" >&2; echo \"Branch: $(git branch --show-current 2>/dev/null || echo \"not a git repo\")\" >&2'",
+        "timeout": 5000
+      }
+    ],
+    "SessionEnd": [
+      {
+        "name": "cleanup-temp-files",
+        "description": "Clean up temporary files on exit",
+        "command": "bash -c 'find . -name \"*.tmp\" -type f -delete 2>/dev/null || true; echo \"✅ Cleaned up temporary files\" >&2'",
+        "timeout": 10000
+      }
+    ]
+  },
+  "bestPractices": [
+    "Keep hook commands fast (< 5 seconds when possible)",
+    "Use timeouts to prevent hanging",
+    "Silent failures with || true for non-critical hooks",
+    "Write user-facing output to stderr (>&2)",
+    "Test hooks independently before adding to config"
+  ]
+}
