@@ -1,0 +1,49 @@
+{
+  "name": "safety-hook-example",
+  "description": "Prevents dangerous operations and protects against common mistakes",
+  "enabled": true,
+  "hooks": {
+    "PreToolUse": [
+      {
+        "name": "prevent-main-push",
+        "pattern": "Bash.*git push.*origin (main|master)",
+        "description": "Prevent accidental pushes to main/master branch",
+        "command": "bash -c 'echo \"⛔ Blocked: Do not push directly to main/master. Use a feature branch and create a PR.\" >&2; exit 2'",
+        "timeout": 5000
+      },
+      {
+        "name": "check-secrets",
+        "pattern": "Bash.*git (add|commit)",
+        "description": "Check for accidentally staged secrets before commit",
+        "command": "bash -c 'if git diff --cached --name-only | grep -E \"\\.(env|pem|key|cert)$\" ; then echo \"⚠️  Warning: You are committing files that may contain secrets!\" >&2; echo \"Files: $(git diff --cached --name-only | grep -E \"\\.(env|pem|key|cert)$\")\" >&2; echo \"Continue? (yes/no):\" >&2; read answer; if [ \"$answer\" != \"yes\" ]; then exit 2; fi; fi'",
+        "timeout": 30000
+      },
+      {
+        "name": "confirm-force-push",
+        "pattern": "Bash.*git push.*--force",
+        "description": "Require confirmation for force push",
+        "command": "bash -c 'echo \"⚠️  WARNING: Force push detected!\" >&2; echo \"This will rewrite history. Continue? (yes/no):\" >&2; read answer; [ \"$answer\" = \"yes\" ] || exit 2'",
+        "timeout": 30000
+      },
+      {
+        "name": "prevent-large-deletions",
+        "pattern": "Bash.*(rm -rf|rmdir).*",
+        "description": "Confirm before large deletions",
+        "command": "bash -c 'echo \"⚠️  Deletion detected. Confirm deletion? (yes/no):\" >&2; read answer; [ \"$answer\" = \"yes\" ] || exit 2'",
+        "timeout": 30000
+      }
+    ]
+  },
+  "exitCodes": {
+    "0": "Allow operation to proceed",
+    "2": "Block operation (show error to user)",
+    "other": "Show warning but allow operation"
+  },
+  "notes": [
+    "Hooks run BEFORE the tool is used",
+    "Exit code 2 blocks the operation",
+    "Exit code 0 allows operation",
+    "Timeout prevents hanging on user input",
+    "Use >&2 to write to stderr (visible to user)"
+  ]
+}

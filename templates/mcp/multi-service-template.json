@@ -1,0 +1,47 @@
+{
+  "mcpServers": {
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_TOKEN": "${GITHUB_TOKEN}"
+      },
+      "disabled": false,
+      "description": "GitHub integration for issues, PRs, repos"
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/home/user/docs"],
+      "disabled": false,
+      "description": "Access files outside project directory"
+    },
+    "memory": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-memory"],
+      "disabled": false,
+      "description": "Persistent memory across sessions"
+    },
+    "postgres": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-postgres"],
+      "env": {
+        "DATABASE_URL": "${DATABASE_URL}"
+      },
+      "disabled": true,
+      "description": "PostgreSQL database access (disabled by default)"
+    }
+  },
+  "security": {
+    "bestPractices": [
+      "Use read-only database credentials when possible",
+      "Rotate tokens regularly",
+      "Use minimal required permissions",
+      "Never commit .mcp.json with real credentials",
+      "Create .mcp.json.template for sharing"
+    ]
+  },
+  "environmentVariables": {
+    "GITHUB_TOKEN": "Get from: https://github.com/settings/tokens",
+    "DATABASE_URL": "Format: postgresql://user:pass@host:5432/dbname"
+  }
+}
