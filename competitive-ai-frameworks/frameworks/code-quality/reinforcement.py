@@ -201,7 +201,7 @@ class QualityReinforcementLearner:
         top_3_weight = sum(w for _, w in sorted_weights[:3])
         total_weight = sum(current_weights.values())
 
-        if top_3_weight / total_weight > 0.7:
+        if total_weight > 0 and top_3_weight / total_weight > 0.7:
             top_types = [t for t, _ in sorted_weights[:3]]
             recommendations.append(
                 f"Heavily focused on: {', '.join(top_types)}. "
