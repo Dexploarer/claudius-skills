@@ -1,132 +1,94 @@
 # Claudius Skills
 
-> A comprehensive collection of Claude Code configurations spanning all skill levels - from beginner to enterprise
+> My personal collection of Claude Code configurations - from beginner experiments to advanced setups
 
 <div align="center">
 
-[![Status](https://img.shields.io/badge/Status-Production%20Ready-brightgreen)]()
-[![Progress](https://img.shields.io/badge/Progress-75%25-blue)]()
-[![Skills](https://img.shields.io/badge/Skills-55-orange)]()
+[![Skills](https://img.shields.io/badge/Skills-30-orange)]()
 [![Commands](https://img.shields.io/badge/Commands-47-purple)]()
-[![Subagents](https://img.shields.io/badge/Subagents-20-red)]()
+[![Agents](https://img.shields.io/badge/Agents-20-red)]()
 [![License](https://img.shields.io/badge/License-MIT-green)]()
 
-[Quick Start](#-quick-start) • [Documentation](#-documentation) • [Examples](#-examples) • [Contributing](#-contributing)
+[Quick Start](#-quick-start) • [What's Inside](#-whats-inside) • [Examples](#-examples)
 
 </div>
 
 ---
 
-## 📖 Overview
+## 📖 What This Is
 
-**Claudius Skills** is a production-ready collection of Claude Code extensibility configurations covering all **Five Pillars of Extensibility**:
+This is my personal playground for **Claude Code extensibility**. I've built configurations across all five pillars:
 
-| Pillar | Description | Type |
-|--------|-------------|------|
-| **1. Skills** | Automatic, context-aware capabilities | Automatic |
-| **2. Slash Commands** | Manual workflow shortcuts | Manual |
-| **3. Hooks** | Event-driven automation | Event-based |
-| **4. Subagents** | Specialized AI consultants | Isolated context |
-| **5. MCP Servers** | External service integrations | External |
+| Pillar | What It Does |
+|--------|-------------|
+| **Skills** | Automatically activate based on what you're doing |
+| **Slash Commands** | Manual shortcuts you invoke with `/command` |
+| **Hooks** | React to events (before/after file edits, etc.) |
+| **Agents** | Specialized AI assistants with focused expertise |
+| **MCP Servers** | Connect to external tools and services |
 
-Whether you're just starting with Claude Code or building enterprise systems, you'll find ready-to-use configurations here.
+Feel free to use what's here, but I built this for me. If it helps you too, cool.
 
 ---
 
 ## 🎯 What's Inside
 
-### 📦 Three Complete Kits
+### 📦 Three Kits
 
-#### **Starter Kit** (Beginner-Friendly)
-Perfect for learning Claude Code fundamentals.
+#### **Starter Kit**
+Basic configs for learning.
 
-- ✅ **5 Skills**: README generation, code explanation, bug finding, testing, git help
-- ✅ **12 Commands**: `/explain`, `/test`, `/commit`, `/review`, `/refactor`, and more
-- ✅ **4 Subagents**: Code reviewer, test writer, doc writer, debug helper
-- ✅ **Safety Hooks**: Secret detection, force push prevention, security checks
-- ✅ **MCP Template**: Ready for service integration
+- **5 Skills**: README generation, code explanation, bug finding, testing, git help
+- **12 Commands**: `/explain`, `/test`, `/commit`, `/review`, `/refactor`, `/docs`, `/debug`, `/quickfix`, `/setup`, `/todo`, `/clean`, `/deps`
+- **4 Agents**: Code reviewer, test writer, doc writer, debug helper
 
-**Use when:** Learning Claude Code, building simple projects, understanding fundamentals
+Copy the `.claude/` folder to your project and go.
 
-#### **Intermediate Kit** (Production-Ready)
-Framework-specific configurations for real-world applications.
+#### **Intermediate Kit**
+Framework-specific stuff.
 
-- ✅ **10 Framework Skills**: React, Vue, Next.js, Django, FastAPI, Express, GraphQL, OpenAPI
-- ✅ **15 Commands**: API docs, bundle analysis, migrations, deployments, security audits
-- ✅ **6 Specialist Agents**: API designer, database architect, DevOps engineer, performance optimizer
-- ✅ **Advanced Hooks**: Test automation, build monitoring, dependency checks
+- **10 Skills**: React, Vue, Next.js, Django, FastAPI, Express, GraphQL, OpenAPI, database migrations, testing frameworks
+- **15 Commands**: `/api-docs-generate`, `/bundle-analyze`, `/changelog-update`, `/coverage-report`, `/db-backup`, `/deploy`, `/dependency-update`, `/docker-build`, `/env-setup`, `/health-check`, `/migration-create`, `/performance-profile`, `/pr-creator`, `/security-audit`, `/version-bump`
+- **6 Agents**: API designer, database architect, DevOps engineer, performance optimizer, security auditor, system architect
 
-**Use when:** Building production apps, working with frameworks, implementing CI/CD
+For when you're actually building something.
 
-#### **Advanced Kit** (Enterprise-Grade) ⭐
-Enterprise-level capabilities for distributed systems.
+#### **Advanced Kit**
+Enterprise/distributed systems configurations.
 
-- ✅ **15 Enterprise Skills**: Microservices, compliance (SOC2/HIPAA/GDPR/PCI-DSS), observability, platform engineering
-- ✅ **20 Advanced Commands**: Release orchestration, canary/blue-green deploys, incident response, compliance scanning
-- ✅ **10 Consultant Agents**: Enterprise architect, SRE, compliance officer, security architect, chaos engineer
-- ✅ **Production Hooks**: Compliance enforcement, cost monitoring, audit logging
-- ✅ **Full Observability**: Distributed tracing, metrics pipelines, log aggregation
+- **15 Skills**: Microservices orchestration, compliance automation, observability, platform engineering, disaster recovery, etc.
+- **20 Commands**: Release orchestration, canary/blue-green deploys, incident management, compliance scanning, cost analysis, runbook execution, and more
+- **10 Agents**: Enterprise architect, distributed systems architect, data architect, platform engineer, SRE consultant, incident commander, chaos engineer, FinOps analyst, compliance officer, security architect
 
-**Use when:** Building enterprise systems, requiring compliance, managing microservices, leading technical teams
+For complex systems and compliance requirements.
 
 ---
 
 ## 🚀 Quick Start
 
-### For Complete Beginners
-
 ```bash
-# Clone the repository
+# Clone this repo
 git clone https://github.com/Dexploarer/claudius-skills.git
 cd claudius-skills
 
-# Copy starter kit to your project
-cp -r starter-kit/.claude /path/to/your/project/
+# Pick a kit and copy to your project
+cp -r starter-kit/.claude /path/to/your/project/          # Start here
+cp -r intermediate-kit/.claude /path/to/your/project/     # Or this
+cp -r advanced-kit/.claude /path/to/your/project/         # Or this
 
-# Start Claude Code in your project
+# Go use Claude Code
 cd /path/to/your/project
 claude
-
-# Try your first command
-> /explain console.log("Hello, world!")
 ```
 
-**Next Steps:**
-1. Read [`starter-kit/README.md`](./starter-kit/README.md) for complete guide
-2. Try slash commands: `/test`, `/commit`, `/review`
-3. See skills activate automatically when you work
-4. Browse [`examples/beginner/`](./examples/beginner/) for more
+That's it. Skills activate automatically. Commands are `/command-name`. Agents are available when you need them.
 
-### For Intermediate Users
+### Examples
 
-```bash
-# Copy intermediate kit
-cp -r intermediate-kit/.claude /path/to/your/project/
-
-# Or copy specific framework skills
-cp intermediate-kit/.claude/skills/react-component-generator.md \
-   /path/to/your/project/.claude/skills/
-```
-
-**Explore:** [`examples/intermediate/`](./examples/intermediate/) for framework-specific examples
-
-### For Advanced Users
-
-```bash
-# Copy advanced/enterprise kit
-cp -r advanced-kit/.claude /path/to/enterprise/project/
-
-# Start with architecture
-> Use enterprise-architect to design microservices architecture
-
-# Run compliance scans
-> /compliance-scan soc2
-
-# Set up observability
-> Use distributed-tracing-setup
-```
-
-**Explore:** [`examples/advanced/`](./examples/advanced/) for enterprise patterns
+Check `examples/` for specific use cases:
+- `examples/beginner/` - Simple examples to learn from
+- `examples/intermediate/` - Framework-specific configs (React, Django, etc.)
+- `examples/advanced/` - Complex setups (microservices, compliance, observability)
 
 ---
 
@@ -134,690 +96,65 @@ cp -r advanced-kit/.claude /path/to/enterprise/project/
 
 ```
 claudius-skills/
-│
-├── 📁 starter-kit/              # START HERE (5 skills, 12 commands, 4 agents)
-│   ├── .claude/                 # Complete beginner setup
-│   ├── README.md                # Comprehensive guide
-│   └── QUICK_REFERENCE.md       # Command cheatsheet
-│
-├── 📁 intermediate-kit/         # Production-ready (10 skills, 15 commands, 6 agents)
-│   ├── .claude/                 # Framework configurations
-│   └── README.md                # Framework guide
-│
-├── 📁 advanced-kit/             # Enterprise (15 skills, 20 commands, 10 agents)
-│   ├── .claude/                 # Enterprise configurations
-│   └── README.md                # Enterprise guide
-│
-├── 📁 examples/                 # Learning by example
-│   ├── beginner/                # Single-purpose examples
-│   ├── intermediate/            # Framework-specific examples
-│   ├── advanced/                # Complex integrations
-│   └── master/                  # Complete environments (planned)
-│
-├── 📁 templates/                # Create your own
-│   ├── skill-template.md
-│   ├── command-template.md
-│   ├── subagent-template.md
-│   └── hooks-template.md
-│
-├── 📁 resources/                # Guides and documentation
-│   ├── guides/
-│   ├── best-practices/
-│   └── troubleshooting/
-│
-└── 📄 README.md                 # This file
+├── starter-kit/          # 5 skills, 12 commands, 4 agents
+├── intermediate-kit/     # 10 skills, 15 commands, 6 agents
+├── advanced-kit/         # 15 skills, 20 commands, 10 agents
+├── examples/             # Lots of specific examples
+│   ├── beginner/
+│   ├── intermediate/
+│   ├── advanced/
+│   └── master/
+├── templates/            # Templates for making your own
+└── resources/            # Guides and docs
 ```
 
 ---
 
-## 🎓 Learning Path
+## 💡 What's Actually Here
 
-### Level 1: Beginner → **Starter Kit**
-**Goal:** Understand Claude Code fundamentals
+### The Kits
+Each kit (starter/intermediate/advanced) has its own `.claude/` directory with:
+- Skills that auto-activate
+- Commands you can call with `/command-name`
+- Agents for specialized help
+- Rules and configurations
 
-**You'll learn:**
-- ✅ What skills are and how they activate
-- ✅ Creating and using slash commands
-- ✅ Understanding subagents and context isolation
-- ✅ Basic hook configuration for safety
-- ✅ Project structure and organization
+### Plus Examples
+The `examples/` directory has 25+ specialized skills organized by category:
+- Performance: image optimization, bundle analysis, Lighthouse CI, query optimization
+- Security: header generation, dependency scanning, PII detection, WCAG compliance
+- Testing: mock generation, property-based testing, visual regression
+- DevOps: Dockerfiles, GitHub Actions, Kubernetes, Terraform
+- i18n: translation extraction, i18n setup
+- Mobile: app icons, React Native components
+- Data Science: Jupyter assistance, data cleaning
+- Web3: smart contract generation
+- 3D Graphics: Three.js scenes
+- And more...
 
-**Time:** 1-2 hours
-**Start:** [`starter-kit/README.md`](./starter-kit/README.md)
-
-### Level 2: Intermediate → **Intermediate Kit**
-**Goal:** Build production applications with frameworks
-
-**You'll learn:**
-- ✅ Framework-specific skills (React, Vue, Django, FastAPI)
-- ✅ Advanced command workflows
-- ✅ Specialized subagent usage
-- ✅ Hook-based automation
-- ✅ MCP server integration basics
-
-**Time:** 1-2 days
-**Start:** [`intermediate-kit/README.md`](./intermediate-kit/README.md)
-
-### Level 3: Advanced → **Advanced Kit**
-**Goal:** Enterprise systems and compliance
-
-**You'll learn:**
-- ✅ Microservices architecture
-- ✅ Compliance automation (SOC2, HIPAA, GDPR, PCI-DSS)
-- ✅ Distributed systems observability
-- ✅ Platform engineering
-- ✅ Complex deployment strategies (canary, blue-green)
-- ✅ Incident response and SRE practices
-
-**Time:** 1 week
-**Start:** [`advanced-kit/README.md`](./advanced-kit/README.md)
-
-### Level 4: Master → **Examples & Custom**
-**Goal:** Create your own extensibility ecosystem
-
-**You'll learn:**
-- ✅ Building custom development environments
-- ✅ Creating plugin-quality configurations
-- ✅ Advanced MCP orchestrations
-- ✅ Team workflow systems
-- ✅ Contributing to the community
-
-**Time:** Ongoing
-**Start:** [`examples/master/`](./examples/master/) (in development)
+### And Templates
+The `templates/` directory has templates for creating your own skills, commands, agents, and hooks.
 
 ---
 
-## 💡 Complete Skills Catalog
-
-### Starter Kit Skills (5)
-
-| Skill | Triggers On | Purpose |
-|-------|-------------|---------|
-| `readme-generator` | "create README", "need documentation" | Professional README generation |
-| `code-explainer` | "explain this code" | Beginner-friendly explanations |
-| `bug-finder` | "find bugs", "review for issues" | Common bug identification |
-| `test-helper` | "write tests", "test this" | Comprehensive test generation |
-| `git-helper` | "git help", "commit message" | Git operation assistance |
-
-### Intermediate Kit Skills (10)
-
-| Skill | Framework | Purpose |
-|-------|-----------|---------|
-| `react-component-generator` | React | Modern React with TypeScript & hooks |
-| `vue-component-generator` | Vue | Vue 3 Composition API components |
-| `nextjs-page-generator` | Next.js | App Router pages and layouts |
-| `express-api-generator` | Express | RESTful API endpoints |
-| `fastapi-generator` | FastAPI | Python async API endpoints |
-| `django-model-helper` | Django | Models, relationships, migrations |
-| `graphql-schema-generator` | GraphQL | Schema definitions and resolvers |
-| `api-documentation-generator` | OpenAPI | Swagger/OpenAPI documentation |
-| `database-migration-helper` | General | Database migration scripts |
-| `testing-framework-helper` | Jest/pytest | Test suite configuration |
-
-### Niche Skills (25)
-
-**Performance Optimization (4)**
-- `image-optimizer` - Image compression & format conversion
-- `bundle-analyzer` - Webpack/Vite bundle analysis
-- `lighthouse-ci-integrator` - Lighthouse CI automation
-- `database-query-optimizer` - Query performance tuning
-
-**Security & Compliance (4)**
-- `security-header-generator` - HTTP security headers
-- `dependency-scanner` - CVE and vulnerability scanning
-- `pii-detector` - PII/sensitive data detection
-- `wcag-compliance-checker` - Accessibility compliance
-
-**Testing (3)**
-- `mock-generator` - Test mock generation
-- `property-based-test-generator` - Property-based testing
-- `visual-regression-setup` - Visual regression testing
-
-**DevOps & Infrastructure (5)**
-- `dockerfile-generator` - Multi-stage Dockerfiles
-- `github-actions-builder` - CI/CD workflows
-- `kubernetes-manifest-generator` - K8s YAML configs
-- `terraform-module-builder` - Infrastructure as code
-- `service-mesh-integrator` - Service mesh setup
-
-**Internationalization (2)**
-- `translation-key-extractor` - i18n key extraction
-- `i18n-setup-wizard` - i18n framework setup
-
-**Mobile Development (2)**
-- `app-icon-generator` - Multi-size app icons
-- `react-native-component-generator` - React Native components
-
-**Productivity (1)**
-- `regex-pattern-builder` - Regex pattern creation
-
-**Data Science (2)**
-- `jupyter-assistant` - Jupyter notebook help
-- `data-cleaning-pipeline` - Data preprocessing
-
-**Web3 (1)**
-- `smart-contract-generator` - Solidity contracts
-
-**3D Graphics (1)**
-- `threejs-scene-builder` - Three.js scenes
-
-### Advanced Kit Skills (15)
-
-**Architecture (4)**
-- `microservices-orchestrator` - Microservices design patterns
-- `api-gateway-configurator` - API gateway setup
-- `event-driven-architect` - Event-driven architecture
-- `service-mesh-integrator` - Service mesh integration
-
-**Compliance & Governance (4)**
-- `compliance-auditor` - SOC2/HIPAA/GDPR/PCI-DSS automation
-- `architecture-decision-recorder` - ADR documentation
-- `sla-monitor-generator` - SLA monitoring setup
-- `disaster-recovery-planner` - DR/BC planning
-
-**Observability (4)**
-- `distributed-tracing-setup` - Jaeger/Zipkin integration
-- `metrics-pipeline-builder` - Prometheus/Grafana setup
-- `log-aggregation-configurator` - ELK/Loki configuration
-- `chaos-engineering-setup` - Chaos testing frameworks
-
-**Platform Engineering (3)**
-- `internal-platform-builder` - Developer platforms
-- `developer-portal-generator` - API/service portals
-- `golden-path-creator` - Standardized workflows
-
----
-
-## ⚙️ Complete Commands Reference
-
-### Starter Kit Commands (12)
-
-```bash
-/commit          # Smart commit with auto-generated messages
-/debug           # Debug assistance
-/docs            # Generate documentation
-/explain         # Explain code clearly
-/quickfix        # Fast bug fixes
-/refactor        # Code refactoring
-/review          # Code review
-/setup           # Project setup
-/test            # Run tests
-/todo            # Task management
-/clean           # Code cleanup
-/deps            # Dependency management
-```
-
-### Intermediate Kit Commands (15)
-
-```bash
-/api-docs-generate      # Generate OpenAPI docs
-/bundle-analyze         # Analyze bundle size
-/changelog-update       # Update CHANGELOG
-/coverage-report        # Test coverage analysis
-/db-backup              # Database backup
-/deploy                 # Deployment automation
-/dependency-update      # Update dependencies
-/docker-build           # Build Docker images
-/env-setup              # Environment configuration
-/health-check           # Service health checks
-/migration-create       # Create DB migration
-/performance-profile    # Performance profiling
-/pr-creator             # Create pull requests
-/security-audit         # Security analysis
-/version-bump           # Version management
-```
-
-### Advanced Kit Commands (20)
-
-```bash
-# Deployment & Release
-/release-orchestrator   # Multi-service release coordination
-/canary-deploy          # Canary deployment
-/blue-green-deploy      # Blue-green deployment
-/rollback-emergency     # Emergency rollback
-/feature-flag-toggle    # Feature flag management
-
-# Compliance & Governance
-/compliance-scan        # SOC2/HIPAA/GDPR/PCI-DSS scanning
-/adr-create             # Architecture Decision Record
-/sla-report             # SLA compliance reporting
-/security-posture       # Security posture assessment
-/cost-analysis          # Cloud cost analysis
-
-# Incident Management
-/incident-declare       # Declare incidents
-/runbook-execute        # Execute runbooks
-/postmortem-generate    # Generate postmortems
-/oncall-schedule        # On-call management
-
-# Advanced Operations
-/environment-clone      # Clone environments
-/data-migration         # Data migration orchestration
-/traffic-replay         # Traffic replay testing
-/load-test-suite        # Load testing
-/dependency-graph       # Service dependency mapping
-/tech-debt-audit        # Technical debt analysis
-```
-
----
-
-## 🤖 Subagent Reference
-
-### Starter Kit Agents (4)
-
-- `code-reviewer` - Comprehensive code review with best practices
-- `test-writer` - Test generation expert (unit, integration, e2e)
-- `doc-writer` - Documentation specialist (README, API docs, guides)
-- `debug-helper` - Debugging assistance and troubleshooting
-
-### Intermediate Kit Agents (6)
-
-- `api-designer` - REST/GraphQL API design consultant
-- `database-architect` - Database schema and optimization expert
-- `devops-engineer` - Infrastructure and deployment specialist
-- `performance-optimizer` - Performance tuning consultant
-- `security-auditor` - Security analysis and vulnerability assessment
-- `system-architect` - System design patterns and architecture
-
-### Advanced Kit Agents (10)
-
-**Architecture Consultants (4)**
-- `enterprise-architect` - Distributed systems and enterprise architecture
-- `distributed-systems-architect` - Microservices and event-driven design
-- `data-architect` - Data modeling and big data systems
-- `platform-engineer` - Internal platform and tooling design
-
-**Operations Consultants (4)**
-- `sre-consultant` - Site Reliability Engineering practices
-- `incident-commander` - Incident response and management
-- `chaos-engineer` - Chaos engineering and resilience testing
-- `finops-analyst` - Cloud cost optimization
-
-**Compliance Consultants (2)**
-- `compliance-officer` - SOC2, HIPAA, GDPR, PCI-DSS compliance
-- `security-architect` - Zero-trust, security architecture, threat modeling
-
----
-
-## 🔧 Examples Gallery
-
-### Beginner Examples
-
-**Location:** `examples/beginner/`
-
-- **Simple Skills**: Single-purpose skill examples
-- **Basic Commands**: Command creation patterns
-- **Hook Patterns**: Simple automation examples
-- **First Subagents**: Creating basic specialists
-
-### Intermediate Examples
-
-**Location:** `examples/intermediate/`
-
-**Framework Skills:**
-- React component generation with TypeScript
-- Vue 3 Composition API patterns
-- Django model and API development
-- FastAPI async endpoint creation
-
-**Workflow Automation:**
-- Testing automation pipelines
-- Deployment workflows
-- Documentation generation
-- Performance monitoring
-
-### Advanced Examples
-
-**Location:** `examples/advanced/`
-
-**Enterprise Patterns:**
-- Microservices orchestration
-- Multi-cloud deployments
-- Compliance automation
-- Full observability stacks
-- Incident response workflows
-- Platform engineering
-
-**Complex Integrations:**
-- MCP server orchestrations
-- Multi-agent workflows
-- Hook-based CI/CD
-- Custom development environments
-
----
-
-## 🛡️ Security Features
-
-### Built-in Safety Hooks
-
-**Pre-Tool Use Hooks:**
-- ✅ **Secret Detection**: Prevent committing API keys, passwords, tokens
-- ✅ **Force Push Prevention**: Block force pushes to main/master
-- ✅ **.env Protection**: Warn before committing environment files
-- ✅ **Destructive Operation Confirmations**: Require confirmation for dangerous operations
-
-**Post-Tool Use Hooks:**
-- ✅ **File Modification Tracking**: Log all file changes
-- ✅ **Test Failure Alerts**: Notify on test failures
-- ✅ **Build Size Monitoring**: Track bundle size changes
-
-### Security Best Practices
-
-All intermediate and advanced configurations include:
-- Dependency vulnerability scanning
-- Security header configuration
-- Authentication/authorization patterns
-- Input validation examples
-- Secure secret management
-- OWASP Top 10 coverage
-
----
-
-## 🔗 MCP Server Support
-
-Ready-to-use integrations with 20+ external services:
-
-**Development Tools:**
-- GitHub, GitLab, Bitbucket
-- Jira, Linear, Asana
-
-**Databases:**
-- PostgreSQL, MySQL, MongoDB, Redis, SQLite
-
-**Cloud Platforms:**
-- AWS, Google Cloud, Azure, Cloudflare
-
-**Communication:**
-- Slack, Discord, Microsoft Teams
-
-**Monitoring & Observability:**
-- Datadog, New Relic, Sentry, Prometheus, Grafana
-
-**See:** `resources/mcp-integrations.md` for setup guides
-
----
-
-## 📖 Documentation
-
-### Getting Started Guides
-
-- **Absolute Beginner**: [`resources/guides/getting-started.md`](./resources/guides/getting-started.md)
-- **Intermediate Developer**: [`resources/guides/intermediate-guide.md`](./resources/guides/intermediate-guide.md)
-- **Enterprise User**: [`resources/guides/enterprise-guide.md`](./resources/guides/enterprise-guide.md)
-
-### Reference Documentation
-
-- **Skills Reference**: [`IMPLEMENTATION_PROGRESS.md`](./IMPLEMENTATION_PROGRESS.md) - All 55 skills documented
-- **Commands Reference**: Each kit's README contains complete command documentation
-- **Hooks Guide**: [`resources/guides/hooks.md`](./resources/guides/hooks.md)
-- **Subagents Guide**: [`resources/guides/subagents.md`](./resources/guides/subagents.md)
-- **MCP Integration**: [`resources/guides/mcp-setup.md`](./resources/guides/mcp-setup.md)
-
-### Best Practices
-
-- **Security**: [`resources/best-practices/security.md`](./resources/best-practices/security.md)
-- **Testing**: [`resources/best-practices/testing.md`](./resources/best-practices/testing.md)
-- **Performance**: [`resources/best-practices/performance.md`](./resources/best-practices/performance.md)
-- **Team Workflows**: [`resources/best-practices/team-workflows.md`](./resources/best-practices/team-workflows.md)
-
-### Troubleshooting
-
-- [`resources/troubleshooting/common-issues.md`](./resources/troubleshooting/common-issues.md)
-- [`resources/troubleshooting/faq.md`](./resources/troubleshooting/faq.md)
-
----
-
-## 🤝 Contributing
-
-We welcome contributions! Here's how you can help:
-
-### Ways to Contribute
-
-1. **Add Skills**: Share your custom skills
-2. **Improve Documentation**: Fix typos, add examples, translate
-3. **Report Issues**: Bug reports and feature requests
-4. **Share Use Cases**: Tell us how you're using Claudius Skills
-5. **Create Examples**: Add real-world implementation examples
-
-### Contribution Process
-
-```bash
-# 1. Fork the repository
-# 2. Create a feature branch
-git checkout -b feature/my-new-skill
-
-# 3. Make your changes
-# - Add your skill/command/example
-# - Update relevant documentation
-# - Test thoroughly
-
-# 4. Commit with clear messages
-git commit -m "feat: add advanced logging skill for Node.js"
-
-# 5. Push and create PR
-git push origin feature/my-new-skill
-```
-
-### Contribution Guidelines
-
-- ✅ **Test Everything**: All code must work as documented
-- ✅ **Document Thoroughly**: Clear README and inline comments
-- ✅ **Follow Structure**: Use existing templates and patterns
-- ✅ **Be Beginner-Friendly**: Write for all skill levels
-- ✅ **Security First**: No secrets, safe defaults, validate inputs
-
-**See:** [`CONTRIBUTING.md`](./CONTRIBUTING.md) for detailed guidelines
-
----
-
-## 🗺️ Roadmap
-
-### ✅ Completed (v1.2 - Current)
-
-- ✅ Starter Kit with all 5 pillars
-- ✅ Intermediate Kit with 10 framework skills
-- ✅ Advanced Kit with 15 enterprise skills
-- ✅ 25 niche skills across 10 domains
-- ✅ 47 slash commands
-- ✅ 20 specialized subagents
-- ✅ Comprehensive documentation
-- ✅ 50+ examples
-
-### 🚧 In Progress (v2.0 - Target: Q2 2025)
-
-- 🚧 Master-level examples
-- 🚧 Advanced MCP orchestrations
-- 🚧 Video tutorial series
-- 🚧 Interactive playground
-- 🚧 Community plugin gallery
-
-### 📋 Planned (v2.1+)
-
-- 📋 VS Code extension
-- 📋 Plugin marketplace
-- 📋 Multi-language support (Spanish, French, German, Japanese)
-- 📋 Team collaboration features
-- 📋 Advanced analytics and insights
-- 📋 Custom skill builder UI
-
----
-
-## 📊 Project Statistics
-
-```
-┌─────────────────────────────────────────────────────────────┐
-│                  CLAUDIUS SKILLS STATS                      │
-├─────────────────────────────────────────────────────────────┤
-│                                                             │
-│  Total Skills:          55   Total Commands:         47    │
-│  Total Subagents:       20   Total Hooks:           30+    │
-│  Total Examples:        50+  MCP Integrations:      20+    │
-│                                                             │
-│  Skill Levels:          4    Frameworks Supported:  25+    │
-│  Languages Supported:   12+  Documentation Pages:   100+   │
-│                                                             │
-│  Status:         Production Ready                          │
-│  Progress:       75% Complete                              │
-│  Version:        1.2                                        │
-│  Last Updated:   2025-11-01                                 │
-│                                                             │
-└─────────────────────────────────────────────────────────────┘
-```
-
----
-
-## ❓ FAQ
-
-<details>
-<summary><b>Q: Do I need to use all five pillars?</b></summary>
-
-No! Start with what makes sense for your workflow. Skills and slash commands are the easiest entry points. Add hooks, subagents, and MCP servers as needed.
-</details>
-
-<details>
-<summary><b>Q: Can I use this in existing projects?</b></summary>
-
-Absolutely! Just copy the `.claude/` directory from the appropriate kit to your project root. Everything is designed to work alongside your existing code.
-</details>
-
-<details>
-<summary><b>Q: Will this work with my team?</b></summary>
-
-Yes! Everything in `.claude/` can be committed to git and shared with your team. Teams can standardize workflows, enforce best practices, and share custom configurations.
-</details>
-
-<details>
-<summary><b>Q: Is this safe to use in production?</b></summary>
-
-The intermediate and advanced kits are production-ready and include security best practices. However, always review configurations (especially hooks and MCP servers) before deploying to production environments.
-</details>
-
-<details>
-<summary><b>Q: How do I create custom skills?</b></summary>
-
-Use the templates in `templates/` as starting points. Study existing examples, start simple, and gradually add complexity. The documentation includes step-by-step guides for creating each pillar type.
-</details>
-
-<details>
-<summary><b>Q: What frameworks are supported?</b></summary>
-
-**Frontend**: React, Vue, Angular, Svelte, Next.js, Nuxt
-**Backend**: Express, FastAPI, Django, Flask, NestJS, Spring Boot
-**Mobile**: React Native, Flutter
-**Data**: Jupyter, Pandas, NumPy, TensorFlow
-**DevOps**: Docker, Kubernetes, Terraform, GitHub Actions, GitLab CI
-
-More being added regularly!
-</details>
-
-<details>
-<summary><b>Q: How often is this updated?</b></summary>
-
-The repository is actively maintained. New skills, examples, and documentation are added weekly. Major releases happen quarterly with new kits and capabilities.
-</details>
-
-<details>
-<summary><b>Q: Can I contribute my own configurations?</b></summary>
-
-Yes! We welcome contributions. See the [Contributing](#-contributing) section for guidelines. Share your skills, commands, examples, and use cases with the community.
-</details>
-
-<details>
-<summary><b>Q: What's the difference between starter, intermediate, and advanced kits?</b></summary>
-
-- **Starter Kit**: Learning-focused, simple examples, fundamental concepts
-- **Intermediate Kit**: Production-ready, framework-specific, real-world applications
-- **Advanced Kit**: Enterprise-grade, distributed systems, compliance, observability
-
-Choose based on your experience level and project requirements.
-</details>
-
-<details>
-<summary><b>Q: Do I need MCP servers?</b></summary>
-
-No, MCP servers are optional. They're useful for integrating external services (GitHub, databases, Slack, etc.) but not required for using skills, commands, hooks, or subagents.
-</details>
-
----
-
-## 📚 Additional Resources
-
-### Official Documentation
-
-- 📖 [Claude Code Documentation](https://docs.claude.com/en/docs/claude-code/)
-- 🔌 [Model Context Protocol (MCP)](https://modelcontextprotocol.io/)
-- 💬 [Claude Code Community](https://github.com/anthropics/claude-code/discussions)
-
-### Community Resources
-
-- 🐛 [Report Issues](https://github.com/Dexploarer/claudius-skills/issues)
-- 💡 [Feature Requests](https://github.com/Dexploarer/claudius-skills/issues/new)
-- 💬 [Discussions](https://github.com/Dexploarer/claudius-skills/discussions)
-
-### Learning Resources
-
-- 🎓 [Getting Started Guide](./resources/guides/getting-started.md)
-- 📺 [Video Tutorials](./resources/tutorials/) (coming soon)
-- 📝 [Blog Posts & Articles](./resources/articles/)
-- 🎯 [Use Case Studies](./resources/case-studies/)
+## 📚 Resources
+
+**Official Docs:**
+- [Claude Code Documentation](https://docs.claude.com/en/docs/claude-code/)
+- [Model Context Protocol (MCP)](https://modelcontextprotocol.io/)
+
+**In This Repo:**
+- `resources/guides/getting-started.md` - Start here if you're new
+- `resources/guides/best-practices.md` - Useful patterns
+- `resources/guides/security.md` - Security considerations
+- `templates/` - Templates for making your own stuff
 
 ---
 
 ## 📜 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-You are free to:
-- ✅ Use commercially
-- ✅ Modify and create derivatives
-- ✅ Distribute
-- ✅ Use privately
-
-Just include the original license and copyright notice.
+MIT License. Use it however you want. See [LICENSE](LICENSE) for details.
 
 ---
 
-## 🙏 Acknowledgments
-
-- **Anthropic Team** - For building Claude Code and the extensibility framework
-- **MCP Community** - For creating valuable service integrations
-- **Contributors** - Everyone who shares configurations, reports issues, and improves documentation
-- **Users** - The community using and providing feedback on these configurations
-
----
-
-## 🚀 Get Started Now
-
-```bash
-# 1. Clone the repository
-git clone https://github.com/Dexploarer/claudius-skills.git
-cd claudius-skills
-
-# 2. Choose your level and copy to your project
-cp -r starter-kit/.claude /path/to/your/project/      # Beginner
-# OR
-cp -r intermediate-kit/.claude /path/to/your/project/ # Intermediate
-# OR
-cp -r advanced-kit/.claude /path/to/your/project/     # Advanced
-
-# 3. Start Claude Code
-cd /path/to/your/project
-claude
-
-# 4. Try it out!
-> /explain console.log("Hello, world!")
-> Use readme-generator to create a professional README
-> /test
-```
-
----
-
-<div align="center">
-
-## ⭐ Star this repository if you find it useful!
-
-**Built with ❤️ for the Claude Code community**
-
-[⬆ Back to Top](#claudius-skills)
-
-</div>
+**Built with Claude Code** • [Report Issues](https://github.com/Dexploarer/claudius-skills/issues)
