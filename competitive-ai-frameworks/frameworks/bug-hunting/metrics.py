@@ -40,9 +40,12 @@ class TeamMetrics:
     false_positives: int = 0
     false_positive_rate: float = 0.0
     average_report_quality: float = 0.0
+    quality_score_total: float = 0.0
+    quality_score_samples: int = 0
 
     # Efficiency metrics
     average_time_to_discovery: float = 0.0
+    time_to_discovery_per_round: List[float] = field(default_factory=list)
     bugs_per_minute: float = 0.0
 
     # Vulnerability type distribution
@@ -103,20 +106,20 @@ class MetricsTracker:
                 metrics.total_score / len(metrics.scores_per_round)
             )
 
-            # Bug discovery metrics
-            bugs_found = len(result.bugs_found)
-            metrics.total_bugs += bugs_found
-            metrics.bugs_per_round.append(bugs_found)
+            # Bug discovery metrics (filter out false positives)
+            valid_bugs = [bug for bug in result.bugs_found if not bug.is_false_positive]
+            valid_bug_count = len(valid_bugs)
+
+            metrics.total_bugs += valid_bug_count
+            metrics.bugs_per_round.append(valid_bug_count)
             metrics.unique_bugs += result.unique_discoveries
-            metrics.duplicate_bugs += (
-                bugs_found - result.unique_discoveries
+            metrics.duplicate_bugs += max(
+                0,
+                valid_bug_count - result.unique_discoveries
             )
 
             # Severity metrics
-            for bug in result.bugs_found:
-                if bug.is_false_positive:
-                    continue
-
+            for bug in valid_bugs:
                 if bug.severity == "critical":
                     metrics.critical_bugs += 1
                 elif bug.severity == "high":
@@ -133,24 +136,28 @@ class MetricsTracker:
 
             # Quality metrics
             metrics.false_positives += result.false_positives
-            if metrics.total_bugs > 0:
+            total_reports = metrics.total_bugs + metrics.false_positives
+            if total_reports > 0:
                 metrics.false_positive_rate = (
-                    metrics.false_positives / metrics.total_bugs
+                    metrics.false_positives / total_reports
                 )
 
-            # Calculate average report quality
-            quality_scores = [
-                bug.quality_score
-                for bug in result.bugs_found
-                if not bug.is_false_positive
-            ]
+            # Calculate cumulative average report quality
+            quality_scores = [bug.quality_score for bug in valid_bugs]
             if quality_scores:
+                metrics.quality_score_total += sum(quality_scores)
+                metrics.quality_score_samples += len(quality_scores)
                 metrics.average_report_quality = (
-                    sum(quality_scores) / len(quality_scores)
+                    metrics.quality_score_total / metrics.quality_score_samples
                 )
 
-            # Efficiency metrics
-            metrics.average_time_to_discovery = result.avg_time_to_discovery
+            # Efficiency metrics - cumulative average
+            if result.avg_time_to_discovery is not None and result.avg_time_to_discovery > 0:
+                metrics.time_to_discovery_per_round.append(result.avg_time_to_discovery)
+                metrics.average_time_to_discovery = (
+                    sum(metrics.time_to_discovery_per_round)
+                    / len(metrics.time_to_discovery_per_round)
+                )
 
             # Ranking metrics
             rank = rankings[team_id]
@@ -411,8 +418,11 @@ class MetricsTracker:
             "comparative_analysis": self.generate_comparative_analysis()
         }
 
-        with open(filepath, 'w') as f:
-            json.dump(data, f, indent=2)
+        try:
+            with open(filepath, 'w') as f:
+                json.dump(data, f, indent=2)
+        except (IOError, PermissionError) as e:
+            print(f"Error exporting metrics to {filepath}: {e}")
 
     def print_summary(self):
         """Print a summary of metrics"""

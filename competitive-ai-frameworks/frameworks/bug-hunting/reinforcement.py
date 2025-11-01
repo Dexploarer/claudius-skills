@@ -10,6 +10,7 @@ from typing import Dict, List, Optional
 from dataclasses import dataclass
 import math
 import json
+import random
 
 
 @dataclass
@@ -218,12 +219,10 @@ class ReinforcementLearner:
 
     def _should_explore(self) -> bool:
         """Determine if we should explore (vs exploit)"""
-        import random
         return random.random() < self.exploration_rate
 
     def _random_exploration_delta(self) -> float:
         """Generate random exploration delta"""
-        import random
         # Random value between -0.1 and 0.1
         return (random.random() - 0.5) * 0.2
 
@@ -303,7 +302,7 @@ class ReinforcementLearner:
         top_3_weight = sum(w for _, w in sorted_weights[:3])
         total_weight = sum(current_weights.values())
 
-        if top_3_weight / total_weight > 0.7:
+        if total_weight > 0 and top_3_weight / total_weight > 0.7:
             recommendations.append(
                 f"Heavily focused on: {', '.join(v for v, _ in sorted_weights[:3])}. " +
                 "Consider broadening coverage."
@@ -348,8 +347,11 @@ class ReinforcementLearner:
             "strategy_performance": self.strategy_performance
         }
 
-        with open(filepath, 'w') as f:
-            json.dump(data, f, indent=2)
+        try:
+            with open(filepath, 'w') as f:
+                json.dump(data, f, indent=2)
+        except (IOError, PermissionError) as e:
+            print(f"Error exporting learning data to {filepath}: {e}")
 
     def import_learning_data(self, filepath: str):
         """Import learning history from JSON"""

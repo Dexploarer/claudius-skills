@@ -8,6 +8,7 @@ Adapts team strategies based on improvement success rates across rounds.
 from typing import Dict, List
 from dataclasses import dataclass
 import json
+import random
 
 
 @dataclass
@@ -161,12 +162,10 @@ class QualityReinforcementLearner:
 
     def _should_explore(self) -> bool:
         """Determine if we should explore (vs exploit)"""
-        import random
         return random.random() < self.exploration_rate
 
     def _random_exploration_delta(self) -> float:
         """Generate random exploration delta"""
-        import random
         return (random.random() - 0.5) * 0.2
 
     def get_strategy_recommendations(

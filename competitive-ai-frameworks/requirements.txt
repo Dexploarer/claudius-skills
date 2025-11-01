@@ -1,31 +1,39 @@
 # Competitive AI Frameworks - Python Dependencies
 
-# Core dependencies (minimal for basic functionality)
-# Note: This framework is designed to work with Claude Code,
-# which provides most functionality through its tools and subagents
+# Core runtime dependencies
+Flask>=2.3.0
+PyJWT>=2.8.0
 
-# Data handling (for results and metrics)
-# These are all standard library in Python 3.8+, included for reference
+# Code analysis tools (required for code quality framework)
+radon>=5.1.0          # Complexity metrics
+bandit>=1.7.0         # Python security scanner
+pylint>=2.12.0        # Code quality checker
 
-# Optional: For enhanced functionality
+# Optional but recommended for enhanced functionality
 
-# Visualization (optional - only needed if --visualize flag is used)
-# matplotlib>=3.5.0
-# seaborn>=0.11.0
+# Visualization (for --visualize flag)
+matplotlib>=3.5.0
+seaborn>=0.11.0
 
-# Advanced metrics (optional)
-# numpy>=1.21.0
-# pandas>=1.3.0
+# Advanced metrics and data processing
+numpy>=1.21.0
+pandas>=1.3.0
 
-# Testing (optional - for development)
-# pytest>=7.0.0
-# pytest-cov>=3.0.0
+# Testing framework
+pytest>=7.0.0
+pytest-cov>=3.0.0
 
-# Code analysis tools (optional - for more sophisticated scanning)
-# bandit>=1.7.0  # Python security scanner
-# pylint>=2.12.0  # Code quality checker
-# radon>=5.1.0   # Code complexity metrics
+# Browser automation for user flow testing
+playwright>=1.40.0
 
-# Note: The framework is designed to work with minimal dependencies
-# All core functionality uses Python standard library only
-# Install optional packages only if you need specific features
+# Additional code quality tools
+flake8>=6.0.0
+black>=23.0.0
+mypy>=1.0.0
+
+# Performance profiling
+memory-profiler>=0.61.0
+
+# Note: Install with: pip install -r requirements.txt
+# For minimal install (just example app): pip install Flask PyJWT
+# For full functionality: pip install -r requirements.txt
