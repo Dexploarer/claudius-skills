@@ -6,12 +6,13 @@
 
 ## 📚 Overview
 
-This collection contains **20 production-ready hooks** organized into 4 categories:
+This collection contains **25 production-ready hooks** organized into 5 categories:
 
 1. **Development Safety** (5 hooks) - Prevent common mistakes
 2. **Production Deployment** (5 hooks) - Ensure safe deployments
 3. **Code Quality** (5 hooks) - Maintain high code standards
 4. **Security Enforcement** (5 hooks) - Enforce security best practices
+5. **Performance Monitoring** (5 hooks) - Monitor and optimize performance
 
 ---
 
@@ -120,6 +121,25 @@ Enforce security best practices automatically.
 **Install Security Hooks:**
 ```bash
 cp hooks-collection/security-enforcement/*.json /path/to/project/.claude/hooks/
+```
+
+---
+
+### ⚡ Performance Monitoring Hooks
+
+Monitor and optimize application performance.
+
+| Hook | Purpose | Event | Critical |
+|------|---------|-------|----------|
+| `build-size-alert` | Monitors bundle size increases | pre-submit | No |
+| `ci-time-tracking` | Tracks CI/CD pipeline duration | post-submit | No |
+| `memory-leak-warning` | Detects potential memory leaks | pre-submit | No |
+| `n-plus-one-query-detection` | Identifies N+1 query patterns | pre-submit | ⚠️ Yes |
+| `slow-test-detection` | Flags slow test execution | post-submit | No |
+
+**Install Performance Hooks:**
+```bash
+cp hooks-collection/performance-monitoring/*.json /path/to/project/.claude/hooks/
 ```
 
 ---
@@ -352,9 +372,9 @@ ls .claude/hooks/
 
 ### Coverage
 
-- **Total Hooks**: 20
-- **Categories**: 4
-- **Critical Hooks**: 11
+- **Total Hooks**: 25
+- **Categories**: 5
+- **Critical Hooks**: 12
 - **Events Covered**: 2 (pre-submit, post-submit)
 
 ### By Category
@@ -365,6 +385,7 @@ ls .claude/hooks/
 | Production Deployment | 5 | 3 |
 | Code Quality | 5 | 0 |
 | Security Enforcement | 5 | 5 |
+| Performance Monitoring | 5 | 1 |
 
 ---
 
@@ -443,6 +464,7 @@ cp hooks-collection/code-quality/* .claude/hooks/
 ```bash
 cp hooks-collection/production-deployment/* .claude/hooks/
 cp hooks-collection/security-enforcement/* .claude/hooks/
+cp hooks-collection/performance-monitoring/* .claude/hooks/
 ```
 
 **Open Source Project:**
