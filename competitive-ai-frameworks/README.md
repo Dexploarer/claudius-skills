@@ -1,6 +1,6 @@
 # Competitive AI Team Simulations Framework
 
-> Multi-agent competitive frameworks for bug hunting, code quality assessment, and user flow testing using Claude Code's extensibility features
+> Multi-agent competitive frameworks for bug hunting, code quality assessment, and user flow testing using Claude Code's extensibility features. **Built with TypeScript** for type safety and modern development.
 
 ## 🎯 Overview
 
@@ -100,6 +100,13 @@ Each framework uses:
 ### Installation
 
 ```bash
+# Install dependencies
+cd competitive-ai-frameworks
+npm install
+
+# Build TypeScript
+npm run build
+
 # Copy to your project
 cp -r competitive-ai-frameworks/.claude /path/to/your/project/
 
@@ -115,9 +122,17 @@ cp -r competitive-ai-frameworks/frameworks/bug-hunting /path/to/your/project/
 /run-quality-check --rounds 3 --baseline main
 /run-flow-test --rounds 4 --flows user-registration,checkout
 
-# Using Python coordinator
-cd competitive-ai-frameworks/frameworks/bug-hunting
-python coordinator.py --target /path/to/codebase --rounds 5
+# Using TypeScript coordinator
+cd competitive-ai-frameworks
+
+# Run bug hunting
+npm run bug-hunt -- --target /path/to/codebase --rounds 5
+
+# Run code quality analysis
+npm run code-quality -- --target /path/to/codebase --rounds 3
+
+# Run user flow testing
+npm run user-flow -- --target /path/to/codebase --rounds 4
 
 # Using skills (automatic)
 # Just mention: "I need to find security vulnerabilities in this codebase"
@@ -151,15 +166,58 @@ Round N+1:
 
 ### Strategy Evolution
 
-```python
-# Simplified reinforcement learning formula
-new_weight = old_weight + learning_rate * (reward - baseline) * action_frequency
+```typescript
+// Simplified reinforcement learning formula
+const new_weight = old_weight + learning_rate * (reward - baseline) * action_frequency;
 
-# Rewards:
-# - Successful bug discovery: +reward based on severity
-# - False positive: -penalty
-# - Duplicate finding: 0 (neutral)
-# - Quality report: +bonus
+// Rewards:
+// - Successful bug discovery: +reward based on severity
+// - False positive: -penalty
+// - Duplicate finding: 0 (neutral)
+// - Quality report: +bonus
+```
+
+## 🛠️ Tech Stack
+
+### TypeScript Implementation
+
+This framework is built entirely in **TypeScript** for:
+- **Type Safety** - Catch errors at compile time
+- **Modern Development** - ES2022+ features with full IDE support
+- **Maintainability** - Clear interfaces and strong typing
+- **Performance** - Compiled to optimized JavaScript
+
+### Dependencies
+
+```json
+{
+  "runtime": {
+    "Node.js": ">=18.0.0",
+    "TypeScript": "^5.3.3"
+  },
+  "development": {
+    "ts-node": "^10.9.2",
+    "jest": "^29.7.0",
+    "eslint": "^8.56.0",
+    "prettier": "^3.1.1"
+  }
+}
+```
+
+### Build & Run
+
+```bash
+# Development mode (with ts-node)
+npm run dev
+
+# Production build
+npm run build
+
+# Run tests
+npm test
+
+# Lint code
+npm run lint
 ```
 
 ## 🎓 Educational Value
@@ -171,6 +229,8 @@ new_weight = old_weight + learning_rate * (reward - baseline) * action_frequency
 - Security vulnerability assessment
 - Code quality metrics
 - User experience testing
+- **TypeScript best practices**
+- **Type-safe AI frameworks**
 
 ### Use Cases:
 - **Security Training** - Learn bug hunting methodologies
@@ -204,21 +264,21 @@ You are Team 1: Automated Scanner specialist.
 
 ### Adjust Scoring Weights
 
-Edit `frameworks/*/scoring_engine.py`:
+Edit `frameworks/*/scoring_engine.ts`:
 
-```python
-SEVERITY_SCORES = {
-    'critical': 100,
-    'high': 50,
-    'medium': 25,
-    'low': 10
-}
+```typescript
+const SEVERITY_SCORES: Record<Severity, number> = {
+  [Severity.CRITICAL]: 100,
+  [Severity.HIGH]: 50,
+  [Severity.MEDIUM]: 25,
+  [Severity.LOW]: 10,
+  [Severity.INFO]: 5
+};
 
-BONUS_MULTIPLIERS = {
-    'first_discovery': 1.5,
-    'quality_report': 1.2,
-    'speed': lambda seconds: max(1.0, 2.0 - seconds/3600)
-}
+// Bonus multipliers
+const UNIQUENESS_BONUS = 0.5;      // 50% bonus for first discovery
+const QUALITY_BONUS_MAX = 20;       // Up to 20 points for report quality
+const SPEED_BONUS_MAX = 1.3;        // Up to 30% bonus for fast discovery
 ```
 
 ## 📁 Project Structure
