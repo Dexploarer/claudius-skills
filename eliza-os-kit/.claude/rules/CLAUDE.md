@@ -50,6 +50,7 @@ eliza-os-kit/.claude/
 ├── hooks.json                   # Event automation
 └── rules/                       # Documentation
     ├── CLAUDE.md               # This file
+    ├── plugin-registry.md      # 200+ official plugins
     ├── frameworks/             # Framework guides
     ├── workflows/              # Workflow patterns
     └── domains/                # Domain expertise
@@ -93,6 +94,16 @@ elizaOS Agent System
 - **Evaluators**: Response quality assessment
 - **Services**: Long-running platform integrations
 - **Models**: Custom LLM handlers
+
+**📦 Plugin Registry:** See `plugin-registry.md` for the complete list of 200+ official elizaOS plugins including:
+- 8 database adapters (PostgreSQL, MongoDB, SQLite, etc.)
+- 15 platform clients (Discord, Telegram, Twitter, etc.)
+- 8 LLM providers (OpenAI, Anthropic, Groq, etc.)
+- 60+ blockchain integrations (Solana, Ethereum, NEAR, etc.)
+- 15 data & analytics plugins
+- 12 AI & ML tools
+- 20 developer tools
+- And much more...
 
 #### Memory System
 - **Short-term**: Current conversation (working memory)
@@ -717,6 +728,7 @@ PINECONE_API_KEY=
 - [elizaOS Docs](https://docs.elizaos.ai)
 - [Plugin Development Guide](https://docs.elizaos.ai/plugins)
 - [API Reference](https://docs.elizaos.ai/api)
+- **[Plugin Registry](./plugin-registry.md)** - Complete list of 200+ official plugins
 
 ### Community
 - [Discord Community](https://discord.gg/elizaos)
