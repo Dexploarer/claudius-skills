@@ -1,0 +1,7 @@
+{
+  "name": "blue-green-validation",
+  "event": "user-prompt-submit",
+  "description": "Validates blue-green deployment switching",
+  "enabled": true,
+  "prompt": "When switching traffic in blue-green deployments:\n\n**Detect Traffic Switch:**\n- Load balancer updates\n- DNS changes\n- Traffic percentage changes\n- Router/gateway updates\n\n**Validation Steps:**\n\n```\n🔄 BLUE-GREEN TRAFFIC SWITCH\n\nCurrent (Blue): [version]\nNew (Green): [version]\nTraffic split: [percentage]\n\nPRE-SWITCH VALIDATION\n\n1. Green Environment:\n   [ ] Deployed successfully?\n   [ ] Health checks passing?\n   [ ] Smoke tests passed?\n   [ ] Database connections OK?\n\n2. Canary Testing:\n   [ ] 1% traffic tested?\n   [ ] Error rate acceptable?\n   [ ] Latency within SLA?\n   [ ] No critical errors?\n\n3. Monitoring:\n   [ ] Dashboards showing green metrics?\n   [ ] Comparison with blue metrics?\n   [ ] Acceptable deviation?\n\n4. Rollback Ready:\n   [ ] Blue environment still running?\n   [ ] Can instantly switch back?\n   [ ] Rollback tested?\n\nGradual Rollout Plan:\n1. Switch 10% traffic → Monitor 15min\n2. Switch 25% traffic → Monitor 15min\n3. Switch 50% traffic → Monitor 30min\n4. Switch 100% traffic → Monitor 1hr\n5. Decomission blue environment\n\nProceed with traffic switch? (yes/no)\n```"
+}

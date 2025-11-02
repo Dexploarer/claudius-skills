@@ -1,0 +1,7 @@
+{
+  "name": "feature-flag-deployment",
+  "event": "user-prompt-submit",
+  "description": "Ensures new features are deployed behind feature flags",
+  "enabled": true,
+  "prompt": "When deploying code with new features:\n\n**Detect Feature Changes:**\n- New routes/endpoints\n- New UI components\n- New database tables\n- Significant logic changes\n\n**Feature Flag Check:**\n\n```\n🚩 NEW FEATURE DEPLOYMENT\n\nFeature: [feature-name]\nType: [backend/frontend/full-stack]\n\n⚠️  FEATURE FLAG RECOMMENDATION\n\nWhy use feature flags:\n• Safe gradual rollout\n• Easy rollback without redeployment\n• A/B testing capability\n• User targeting\n• Kill switch if issues arise\n\nFeature Flag Checklist:\n\n[ ] Feature flag created?\n    Flag name: [name]\n    Default: OFF\n\n[ ] Targeting configured?\n    • Internal users first?\n    • Beta users?\n    • Percentage rollout?\n\n[ ] Monitoring setup?\n    • Feature usage metrics\n    • Error tracking\n    • Performance impact\n\n[ ] Rollout plan defined?\n    Phase 1: Internal (1%)\n    Phase 2: Beta (10%)\n    Phase 3: Gradual (50%)\n    Phase 4: Full (100%)\n\n[ ] Rollback plan?\n    • Toggle flag OFF\n    • Verify system stable\n    • Investigate issues\n\nExample feature flag implementation:\n\n```typescript\n// Backend\nif (await featureFlags.isEnabled('new-feature', user)) {\n  // New feature code\n} else {\n  // Existing behavior\n}\n\n// Frontend\nconst showNewFeature = useFeatureFlag('new-feature');\n```\n\nDeploy without feature flag? (yes/no/add-flag)\n```"
+}
