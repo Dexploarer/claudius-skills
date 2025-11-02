@@ -4,11 +4,11 @@
 
 <div align="center">
 
-[![Skills](https://img.shields.io/badge/Skills-50-orange)]()
-[![Commands](https://img.shields.io/badge/Commands-57-purple)]()
-[![Hooks](https://img.shields.io/badge/Hooks-35-blue)]()
-[![Agents](https://img.shields.io/badge/Agents-18-red)]()
-[![Frameworks](https://img.shields.io/badge/Frameworks-14-yellow)]()
+[![Skills](https://img.shields.io/badge/Skills-55-orange)]()
+[![Commands](https://img.shields.io/badge/Commands-80+-purple)]()
+[![Hooks](https://img.shields.io/badge/Hooks-25-blue)]()
+[![Agents](https://img.shields.io/badge/Agents-46-red)]()
+[![Frameworks](https://img.shields.io/badge/Frameworks-17-yellow)]()
 [![Status](https://img.shields.io/badge/Status-100%25%20Complete-brightgreen)]()
 [![License](https://img.shields.io/badge/License-MIT-green)]()
 
@@ -36,7 +36,7 @@ Feel free to use what's here, but I built this for me. If it helps you too, cool
 
 ## 🎯 What's Inside
 
-### 📦 Three Kits
+### 📦 Core Development Kits
 
 #### **Starter Kit**
 Basic configs for learning.
@@ -65,6 +65,33 @@ Enterprise/distributed systems configurations.
 
 For complex systems and compliance requirements.
 
+### 📦 Specialized Kits
+
+#### **Productivity Skills Kit**
+Personal and team productivity workflows.
+
+- **6 Skills**: Brainstorming, email composition, meeting notes, reports, task breakdown, strategic planning
+- **13 Commands**: `/agenda`, `/decision`, `/email`, `/journal`, `/minutes`, `/presentation`, `/prioritize`, `/schedule`, and more
+- **4 Agents**: Content writer, creative consultant, productivity coach, project coordinator
+
+#### **Competitive AI Frameworks Kit** 🆕
+AI-powered code competitions and testing.
+
+- **3 Skills**: Bug hunting simulator, code quality analyzer, user flow tester
+- **3 Commands**: `/run-bug-hunt`, `/run-flow-test`, `/run-quality-check`
+- **12 Team Agents**: Organized into 3 teams with specialized roles (coordinator, tester, reviewer, documenter)
+
+For competitive programming and team-based challenges.
+
+#### **Eliza OS Kit** 🆕
+Complete ElizaOS agent and character development toolkit.
+
+- **6 Skills**: Character generation, deployment, knowledge base management, memory optimization, plugin building, testing
+- **8 Commands**: `/dev-agent`, `/build-plugin`, `/deploy-agent`, `/test-character`, `/analyze-conversations`, and more
+- **6 Specialist Agents**: Character designer, deployment engineer, integration specialist, memory architect, plugin architect, testing specialist
+
+For building AI agents with the ElizaOS framework.
+
 ---
 
 ## 🚀 Quick Start
@@ -75,9 +102,12 @@ git clone https://github.com/Dexploarer/claudius-skills.git
 cd claudius-skills
 
 # Pick a kit and copy to your project
-cp -r starter-kit/.claude /path/to/your/project/          # Start here
-cp -r intermediate-kit/.claude /path/to/your/project/     # Or this
-cp -r advanced-kit/.claude /path/to/your/project/         # Or this
+cp -r starter-kit/.claude /path/to/your/project/                    # Start here
+cp -r intermediate-kit/.claude /path/to/your/project/               # Production apps
+cp -r advanced-kit/.claude /path/to/your/project/                   # Enterprise
+cp -r productivity-skills/starter-kit/.claude /path/to/your/project/ # Productivity
+cp -r competitive-ai-frameworks/.claude /path/to/your/project/      # Competitions
+cp -r eliza-os-kit/.claude /path/to/your/project/                   # ElizaOS agents
 
 # Go use Claude Code
 cd /path/to/your/project
@@ -99,16 +129,25 @@ Check `examples/` for specific use cases:
 
 ```
 claudius-skills/
-├── starter-kit/          # 5 skills, 12 commands, 4 agents
-├── intermediate-kit/     # 10 skills, 15 commands, 6 agents
-├── advanced-kit/         # 15 skills, 20 commands, 10 agents
-├── examples/             # Lots of specific examples
-│   ├── beginner/
-│   ├── intermediate/
-│   ├── advanced/
-│   └── master/
-├── templates/            # Templates for making your own
-└── resources/            # Guides and docs
+├── starter-kit/                  # 5 skills, 12 commands, 4 agents
+├── intermediate-kit/             # 10 skills, 15 commands, 6 agents
+├── advanced-kit/                 # 15 skills, 20 commands, 10 agents
+├── productivity-skills/          # 6 skills, 13 commands, 4 agents
+├── competitive-ai-frameworks/    # 3 skills, 3 commands, 12 agents 🆕
+├── eliza-os-kit/                # 6 skills, 8 commands, 6 agents 🆕
+├── examples/                     # Lots of specific examples
+│   ├── beginner/                # Learning-focused examples
+│   ├── intermediate/            # Production patterns
+│   ├── advanced/                # Emerging tech & complex setups
+│   └── master/                  # Master-level patterns
+├── framework-rules/             # 8 modern framework rules (Angular, Astro, etc.)
+├── hooks-collection/            # 25 production hooks (5 categories)
+├── modern-commands/             # 10 modern workflow commands
+├── specialized-agents/          # 4 specialized consultant agents
+├── skool/                       # Educational content & tutorials
+├── skool-courses/               # Structured course curriculum
+├── templates/                   # Templates for making your own
+└── resources/                   # Guides and docs
 ```
 
 ---
