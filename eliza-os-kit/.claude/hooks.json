@@ -1,0 +1,84 @@
+{
+  "hooks": [
+    {
+      "type": "pre-tool-use",
+      "name": "prevent-secret-commit",
+      "description": "Prevent committing files with API keys or secrets",
+      "tool": "Bash",
+      "filter": {
+        "command": "git.*commit"
+      },
+      "command": "if git diff --cached | grep -iE '(api[_-]?key|secret|password|token).*='; then echo '⚠️  WARNING: Potential secrets detected in staged files. Please review and use environment variables instead.'; exit 1; fi"
+    },
+    {
+      "type": "pre-tool-use",
+      "name": "validate-character-before-start",
+      "description": "Validate character configuration before starting agent",
+      "tool": "Bash",
+      "filter": {
+        "command": "(npm|pnpm|yarn).*(start|dev)"
+      },
+      "command": "if [ -f validate-character.js ]; then node validate-character.js || echo '⚠️  Character validation failed. Please fix errors before starting.'; fi"
+    },
+    {
+      "type": "pre-tool-use",
+      "name": "check-env-vars",
+      "description": "Check required environment variables are set",
+      "tool": "Bash",
+      "filter": {
+        "command": "(npm|pnpm|yarn).*(start|dev)"
+      },
+      "command": "if [ ! -f .env ]; then echo '⚠️  .env file not found. Copy .env.example to .env and configure.'; exit 1; fi"
+    },
+    {
+      "type": "pre-tool-use",
+      "name": "confirm-plugin-publish",
+      "description": "Confirm before publishing plugin to npm",
+      "tool": "Bash",
+      "filter": {
+        "command": "(npm|pnpm|yarn).*publish"
+      },
+      "command": "echo '⚠️  About to publish plugin to npm. Ensure version is bumped and changelog is updated. Continue? (yes/no)'; read answer; if [ \"$answer\" != 'yes' ]; then exit 1; fi"
+    },
+    {
+      "type": "pre-tool-use",
+      "name": "test-before-build",
+      "description": "Run tests before building plugin",
+      "tool": "Bash",
+      "filter": {
+        "command": "(npm|pnpm|yarn).*build(?!:)"
+      },
+      "command": "npm test || (echo '⚠️  Tests failed. Fix tests before building.'; exit 1)"
+    },
+    {
+      "type": "post-tool-use",
+      "name": "remind-update-knowledge",
+      "description": "Remind to sync knowledge after updating docs",
+      "tool": "Write",
+      "filter": {
+        "file_path": "knowledge/.*\\.md$"
+      },
+      "command": "echo '💡 Knowledge file updated. Run /sync-knowledge to update agent knowledge base.'"
+    },
+    {
+      "type": "post-tool-use",
+      "name": "validate-after-character-edit",
+      "description": "Validate character configuration after editing",
+      "tool": "Edit",
+      "filter": {
+        "file_path": "character(s)?/.*\\.(ts|js|json)$"
+      },
+      "command": "echo '💡 Character file modified. Run /validate-character to verify configuration.'"
+    },
+    {
+      "type": "post-tool-use",
+      "name": "remind-test-plugin",
+      "description": "Remind to test plugin after code changes",
+      "tool": "Edit",
+      "filter": {
+        "file_path": "src/.*\\.(ts|js)$"
+      },
+      "command": "echo '💡 Plugin code modified. Run npm test to verify changes.'"
+    }
+  ]
+}
