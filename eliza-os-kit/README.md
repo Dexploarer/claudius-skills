@@ -81,16 +81,36 @@ A comprehensive, production-ready Claude Code configuration providing complete s
 | `deployment-engineer` | Production operations |
 | `testing-specialist` | Quality assurance |
 
-### Hooks (8 Automations)
+### Hooks (17 Automations)
 
+**Pre-Tool-Use (Safety & Prevention):**
 - **Secret detection** in commits
 - **Character validation** before start
 - **Environment variable** checks
 - **Plugin publish** confirmation
 - **Test enforcement** before build
+
+**Post-Tool-Use (Validation & Reminders):**
 - **Knowledge sync** reminders
 - **Validation prompts** after edits
 - **Test reminders** after code changes
+- **Plugin structure validation** (NPM naming, dependencies, init())
+- **Service lifecycle validation** (extends Service, start(), stop())
+- **Action pattern validation** (validate(), handler(), similes, examples)
+- **Character completeness check** (name, bio, adjectives, examples)
+- **Error handling verification** (try-catch for async functions)
+- **Zod validation check** (input validation for actions)
+- **Import path validation** (@elizaos/* imports)
+- **TypeScript config validation** (strict mode, esModuleInterop)
+- **Package dependencies check** (@elizaos/core presence)
+
+### Official elizaOS Rules (Aligned with Core Framework)
+
+**Based on official elizaOS v2 architecture:**
+- `elizaos-core-runtime.md` - Runtime lifecycle and character configuration patterns
+- `elizaos-plugin-patterns.md` - Plugin, service, action, provider implementation standards
+- Comprehensive code examples showing ✅ correct vs ❌ incorrect patterns
+- Validation checklist for production readiness
 
 ---
 

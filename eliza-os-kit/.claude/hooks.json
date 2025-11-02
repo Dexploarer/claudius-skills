@@ -79,6 +79,96 @@
         "file_path": "src/.*\\.(ts|js)$"
       },
       "command": "echo '💡 Plugin code modified. Run npm test to verify changes.'"
+    },
+    {
+      "type": "post-tool-use",
+      "name": "validate-plugin-structure",
+      "description": "Validate plugin follows elizaOS patterns after creation/edit",
+      "tool": "Write",
+      "filter": {
+        "file_path": ".*plugin.*\\.ts$"
+      },
+      "command": "echo '🔍 Validating plugin structure...'; if grep -q 'export.*Plugin.*{' \"$FILE_PATH\" && grep -q 'name:.*@.*/' \"$FILE_PATH\" && grep -q 'dependencies:' \"$FILE_PATH\" && grep -q 'async init(' \"$FILE_PATH\"; then echo '✅ Plugin structure looks good'; else echo '⚠️  Plugin may be missing required fields: name (NPM-style), dependencies, or init() function. Review elizaos-plugin-patterns.md'; fi"
+    },
+    {
+      "type": "post-tool-use",
+      "name": "validate-service-pattern",
+      "description": "Validate service follows elizaOS lifecycle patterns",
+      "tool": "Write",
+      "filter": {
+        "file_path": ".*[Ss]ervice.*\\.ts$"
+      },
+      "command": "echo '🔍 Validating service pattern...'; if grep -q 'extends Service' \"$FILE_PATH\" && grep -q 'static.*start.*Promise<Service>' \"$FILE_PATH\" && grep -q 'async stop()' \"$FILE_PATH\"; then echo '✅ Service lifecycle pattern looks good'; else echo '⚠️  Service may be missing: extends Service, static start(), or async stop(). Review elizaos-core-runtime.md'; fi"
+    },
+    {
+      "type": "post-tool-use",
+      "name": "validate-action-pattern",
+      "description": "Validate action has required validate() and handler()",
+      "tool": "Write",
+      "filter": {
+        "file_path": ".*[Aa]ction.*\\.ts$"
+      },
+      "command": "echo '🔍 Validating action pattern...'; if grep -q 'validate:.*async' \"$FILE_PATH\" && grep -q 'handler:.*async' \"$FILE_PATH\" && grep -q 'similes:' \"$FILE_PATH\" && grep -q 'examples:' \"$FILE_PATH\"; then echo '✅ Action pattern looks good'; else echo '⚠️  Action may be missing: validate(), handler(), similes[], or examples[]. Review elizaos-plugin-patterns.md'; fi"
+    },
+    {
+      "type": "post-tool-use",
+      "name": "validate-character-completeness",
+      "description": "Validate character has all recommended fields",
+      "tool": "Write",
+      "filter": {
+        "file_path": "character.*\\.(ts|js)$"
+      },
+      "command": "echo '🔍 Validating character completeness...'; missing=''; grep -q 'name:' \"$FILE_PATH\" || missing=\"$missing name\"; grep -q 'bio:' \"$FILE_PATH\" || missing=\"$missing bio\"; grep -q 'adjectives:' \"$FILE_PATH\" || missing=\"$missing adjectives\"; grep -q 'messageExamples:' \"$FILE_PATH\" || missing=\"$missing messageExamples\"; grep -q 'plugins:' \"$FILE_PATH\" || missing=\"$missing plugins\"; if [ -z \"$missing\" ]; then echo '✅ Character has all core fields'; else echo \"⚠️  Character missing:$missing. Review elizaos-core-runtime.md\"; fi"
+    },
+    {
+      "type": "post-tool-use",
+      "name": "check-error-handling",
+      "description": "Check if critical code has error handling",
+      "tool": "Write",
+      "filter": {
+        "file_path": "src/.*\\.(ts|js)$"
+      },
+      "command": "echo '🔍 Checking error handling...'; if grep -q 'async.*function\\|async.*=>\\|async.*(' \"$FILE_PATH\"; then if grep -q 'try.*{' \"$FILE_PATH\" && grep -q 'catch' \"$FILE_PATH\"; then echo '✅ Error handling present'; else echo '⚠️  Async functions should have try-catch error handling'; fi; fi"
+    },
+    {
+      "type": "post-tool-use",
+      "name": "check-zod-validation",
+      "description": "Check if action uses Zod for input validation",
+      "tool": "Write",
+      "filter": {
+        "file_path": ".*[Aa]ction.*\\.ts$"
+      },
+      "command": "echo '🔍 Checking input validation...'; if grep -q 'from.*zod' \"$FILE_PATH\" && grep -q 'z\\.object' \"$FILE_PATH\" && grep -q '\\.parse(' \"$FILE_PATH\"; then echo '✅ Zod validation implemented'; else echo '⚠️  Actions should use Zod for input validation'; fi"
+    },
+    {
+      "type": "post-tool-use",
+      "name": "check-runtime-imports",
+      "description": "Validate imports use correct elizaOS paths",
+      "tool": "Write",
+      "filter": {
+        "file_path": "src/.*\\.(ts|js)$"
+      },
+      "command": "echo '🔍 Validating imports...'; if grep -qE \"from ['\\\"]@elizaos/(core|plugin-|adapter-)\" \"$FILE_PATH\"; then echo '✅ Using correct @elizaos/* imports'; else echo '💡 Remember to use @elizaos/* imports for core functionality'; fi"
+    },
+    {
+      "type": "post-tool-use",
+      "name": "validate-typescript-config",
+      "description": "Check TypeScript configuration follows best practices",
+      "tool": "Write",
+      "filter": {
+        "file_path": "tsconfig\\.json$"
+      },
+      "command": "echo '🔍 Validating TypeScript config...'; if grep -q '\"strict\".*:.*true' \"$FILE_PATH\" && grep -q '\"esModuleInterop\".*:.*true' \"$FILE_PATH\"; then echo '✅ TypeScript strict mode enabled'; else echo '⚠️  Enable strict mode and esModuleInterop in tsconfig.json'; fi"
+    },
+    {
+      "type": "post-tool-use",
+      "name": "check-package-dependencies",
+      "description": "Validate package.json has required elizaOS dependencies",
+      "tool": "Write",
+      "filter": {
+        "file_path": "package\\.json$"
+      },
+      "command": "echo '🔍 Checking dependencies...'; if grep -q '@elizaos/core' \"$FILE_PATH\"; then echo '✅ Core elizaOS dependency present'; else echo '⚠️  Add @elizaos/core to dependencies'; fi"
     }
   ]
 }
