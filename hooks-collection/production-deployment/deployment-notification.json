@@ -1,0 +1,7 @@
+{
+  "name": "deployment-notification",
+  "event": "post-tool-use",
+  "description": "Notifies team after successful deployments",
+  "enabled": true,
+  "prompt": "After successful deployment command execution, create notification:\n\n**Track These Deployments:**\n- Kubernetes applies to prod\n- Docker deployments to prod\n- Serverless deployments\n- Cloud function deployments\n- Static site deployments to prod\n\n**Generate Notification:**\n\n```\n✅ DEPLOYMENT SUCCESSFUL\n\nEnvironment: PRODUCTION\nService: [service-name]\nVersion: [version]\nDeployed by: [user]\nTime: [timestamp]\nDuration: [deploy-time]\n\nChanges:\n[List of changes from git log or CHANGELOG]\n\nHealth Check:\n✓ Service responding\n✓ Health endpoint: 200 OK\n✓ No errors in logs (last 5min)\n\nMonitoring:\n• Dashboard: [link]\n• Logs: [link]\n• Metrics: [link]\n\nRollback command (if needed):\n[Provide exact rollback command]\n\n---\n\nRecommended actions:\n1. Monitor for next 30 minutes\n2. Watch error rates\n3. Check performance metrics\n4. Verify key user flows\n\nIncident response:\nIf issues detected, run: /rollback [version]\n```\n\n**Notification Channels:**\n- Log to deployment tracking file\n- Slack channel notification (if configured)\n- Create git tag for deployment\n- Update status page"
+}

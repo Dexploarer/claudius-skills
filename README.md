@@ -4,9 +4,10 @@
 
 <div align="center">
 
-[![Skills](https://img.shields.io/badge/Skills-30-orange)]()
-[![Commands](https://img.shields.io/badge/Commands-47-purple)]()
-[![Agents](https://img.shields.io/badge/Agents-20-red)]()
+[![Skills](https://img.shields.io/badge/Skills-50-orange)]()
+[![Commands](https://img.shields.io/badge/Commands-51-purple)]()
+[![Hooks](https://img.shields.io/badge/Hooks-30-blue)]()
+[![Agents](https://img.shields.io/badge/Agents-14-red)]()
 [![License](https://img.shields.io/badge/License-MIT-green)]()
 
 [Quick Start](#-quick-start) • [What's Inside](#-whats-inside) • [Examples](#-examples)
