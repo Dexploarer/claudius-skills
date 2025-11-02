@@ -613,10 +613,12 @@ npm install --save-dev @types/three
 
 ```tsx
 // App.tsx
-import { Canvas } from '@react-three/fiber';
+import { useRef, useState } from 'react';
+import { Canvas, useFrame, MeshProps } from '@react-three/fiber';
 import { OrbitControls, Environment, Sky } from '@react-three/drei';
+import * as THREE from 'three';
 
-function Box(props: any) {
+function Box(props: MeshProps) {
   const meshRef = useRef<THREE.Mesh>(null);
   const [hovered, setHover] = useState(false);
   const [active, setActive] = useState(false);
@@ -751,8 +753,7 @@ export default function App() {
 
 ```tsx
 // hooks/useAnimatedModel.ts
-import { useRef } from 'react';
-import { useFrame } from '@react-three/fiber';
+import { useRef, useEffect } from 'react';
 import { useGLTF, useAnimations } from '@react-three/drei';
 import * as THREE from 'three';
 
@@ -774,7 +775,7 @@ export function useAnimatedModel(modelPath: string, animationName?: string) {
 
 // Usage
 function AnimatedCharacter() {
-  const { group } = useAnimatedModel('/models/character.glb', 'Idle');
+  const { group, scene } = useAnimatedModel('/models/character.glb', 'Idle');
 
   return (
     <group ref={group}>
@@ -1084,7 +1085,6 @@ async function setupMixamoCharacter() {
 // ReadyPlayerMeAvatar.tsx
 import { useEffect, useRef } from 'react';
 import { useGLTF, useAnimations } from '@react-three/drei';
-import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 
 interface AvatarProps {
@@ -1217,8 +1217,8 @@ export class NPCController {
   }
 
   // Obstacle avoidance
-  enableObstacleAvoidance(obstacles: THREE.Mesh[]) {
-    const obstacleAvoidance = new YUKA.ObstacleAvoidanceBehavior(obstacles as any);
+  enableObstacleAvoidance(obstacles: YUKA.GameEntity[]) {
+    const obstacleAvoidance = new YUKA.ObstacleAvoidanceBehavior(obstacles);
     this.vehicle.steering.add(obstacleAvoidance);
   }
 
@@ -1239,16 +1239,16 @@ export class NPCController {
 // npcStateMachine.ts
 import * as YUKA from 'yuka';
 
-enum NPCState {
-  IDLE = 'idle',
-  PATROL = 'patrol',
-  CHASE = 'chase',
-  ATTACK = 'attack',
-  FLEE = 'flee',
-}
-
 export class NPCWithStates extends YUKA.GameEntity {
   private stateMachine: YUKA.StateMachine<NPCWithStates>;
+  private states: {
+    idle: YUKA.State<NPCWithStates>;
+    patrol: YUKA.State<NPCWithStates>;
+    chase: YUKA.State<NPCWithStates>;
+    attack: YUKA.State<NPCWithStates>;
+    flee: YUKA.State<NPCWithStates>;
+  };
+
   public target: YUKA.GameEntity | null = null;
   public health: number = 100;
   public detectionRadius: number = 10;
@@ -1257,7 +1257,8 @@ export class NPCWithStates extends YUKA.GameEntity {
   constructor() {
     super();
     this.stateMachine = new YUKA.StateMachine(this);
-    this.setupStates();
+    this.states = this.setupStates();
+    this.stateMachine.currentState = this.states.idle;
   }
 
   private setupStates() {
@@ -1267,7 +1268,7 @@ export class NPCWithStates extends YUKA.GameEntity {
     idleState.execute = (npc: NPCWithStates) => {
       // Check for nearby targets
       if (npc.detectTarget()) {
-        npc.stateMachine.changeTo('chase');
+        npc.stateMachine.changeState(npc.states.chase);
       }
     };
 
@@ -1276,7 +1277,7 @@ export class NPCWithStates extends YUKA.GameEntity {
     patrolState.execute = (npc: NPCWithStates) => {
       // Patrol logic
       if (npc.detectTarget()) {
-        npc.stateMachine.changeTo('chase');
+        npc.stateMachine.changeState(npc.states.chase);
       }
     };
 
@@ -1285,16 +1286,16 @@ export class NPCWithStates extends YUKA.GameEntity {
     chaseState.enter = () => console.log('NPC is chasing');
     chaseState.execute = (npc: NPCWithStates) => {
       if (!npc.target) {
-        npc.stateMachine.changeTo('idle');
+        npc.stateMachine.changeState(npc.states.idle);
         return;
       }
 
       const distance = npc.position.distanceTo(npc.target.position);
 
       if (distance <= npc.attackRange) {
-        npc.stateMachine.changeTo('attack');
+        npc.stateMachine.changeState(npc.states.attack);
       } else if (distance > npc.detectionRadius) {
-        npc.stateMachine.changeTo('idle');
+        npc.stateMachine.changeState(npc.states.idle);
       }
     };
 
@@ -1302,13 +1303,13 @@ export class NPCWithStates extends YUKA.GameEntity {
     const attackState = new YUKA.State('attack');
     attackState.execute = (npc: NPCWithStates) => {
       if (!npc.target) {
-        npc.stateMachine.changeTo('idle');
+        npc.stateMachine.changeState(npc.states.idle);
         return;
       }
 
       const distance = npc.position.distanceTo(npc.target.position);
       if (distance > npc.attackRange) {
-        npc.stateMachine.changeTo('chase');
+        npc.stateMachine.changeState(npc.states.chase);
       }
     };
 
@@ -1317,17 +1318,17 @@ export class NPCWithStates extends YUKA.GameEntity {
     fleeState.enter = () => console.log('NPC is fleeing');
     fleeState.execute = (npc: NPCWithStates) => {
       if (npc.health > 30) {
-        npc.stateMachine.changeTo('idle');
+        npc.stateMachine.changeState(npc.states.idle);
       }
     };
 
-    this.stateMachine.add('idle', idleState);
-    this.stateMachine.add('patrol', patrolState);
-    this.stateMachine.add('chase', chaseState);
-    this.stateMachine.add('attack', attackState);
-    this.stateMachine.add('flee', fleeState);
-
-    this.stateMachine.changeTo('idle');
+    return {
+      idle: idleState,
+      patrol: patrolState,
+      chase: chaseState,
+      attack: attackState,
+      flee: fleeState,
+    };
   }
 
   detectTarget(): boolean {
@@ -1374,7 +1375,17 @@ export function NPC({
   useEffect(() => {
     if (!groupRef.current) return;
 
-    const mesh = groupRef.current.children[0] as THREE.Mesh;
+    // Find the first mesh in the scene hierarchy
+    // For production, use scene.getObjectByName() or traverse to find specific mesh
+    let mesh: THREE.Mesh | undefined;
+    scene.traverse((child) => {
+      if (!mesh && child instanceof THREE.Mesh) {
+        mesh = child;
+      }
+    });
+
+    if (!mesh) return;
+
     npcController.current = new NPCController(mesh);
 
     // Setup behavior
@@ -1394,7 +1405,7 @@ export function NPC({
         }
         break;
     }
-  }, [behavior, waypoints, target]);
+  }, [behavior, waypoints, target, scene]);
 
   useFrame(() => {
     npcController.current?.update();
@@ -1544,6 +1555,10 @@ scene.add(character);
 
 ### Procedural Terrain Generation
 
+```bash
+npm install simplex-noise
+```
+
 ```typescript
 // proceduralTerrain.ts
 import * as THREE from 'three';
@@ -1647,7 +1662,7 @@ export class BuildingGenerator {
       building.add(floor);
 
       // Add windows
-      this.addWindows(floor, width, depth, floorHeight);
+      BuildingGenerator.addWindows(floor, width, depth, floorHeight);
     }
 
     // Roof
@@ -1797,8 +1812,7 @@ export function CharacterController({ position = [0, 2, 0] }: CharacterControlle
     <RigidBody
       ref={rigidBodyRef}
       position={position}
-      enabledRotations={[false, false, false]}
-      lockRotations
+      lockRotations={true}
     >
       <CapsuleCollider args={[0.5, 0.5]} />
       <mesh castShadow>
@@ -1856,7 +1870,8 @@ function App() {
 
 ### Parametric Body Models
 
-**SMPL (Skinned Multi-Person Linear)**
+#### SMPL (Skinned Multi-Person Linear)
+
 - Parametric model encoding body shape and pose with ~100 parameters
 - Applications: avatar creation, virtual try-on, motion capture
 - Web implementation possible with SMPL-X JavaScript libraries
@@ -1975,22 +1990,22 @@ function App() {
 ## 🔗 Essential Resources
 
 ### Documentation
-- Three.js: https://threejs.org/docs/
-- React Three Fiber: https://docs.pmnd.rs/react-three-fiber
-- Drei: https://github.com/pmndrs/drei
-- Yuka.js: https://mugen87.github.io/yuka/
-- Rapier: https://rapier.rs/
+- [Three.js](https://threejs.org/docs/)
+- [React Three Fiber](https://docs.pmnd.rs/react-three-fiber)
+- [Drei](https://github.com/pmndrs/drei)
+- [Yuka.js](https://mugen87.github.io/yuka/)
+- [Rapier](https://rapier.rs/)
 
 ### Model Resources
-- Ready Player Me: https://readyplayer.me/
-- Mixamo: https://www.mixamo.com/
-- Sketchfab: https://sketchfab.com/
-- Poly Haven: https://polyhaven.com/
+- [Ready Player Me](https://readyplayer.me/)
+- [Mixamo](https://www.mixamo.com/)
+- [Sketchfab](https://sketchfab.com/)
+- [Poly Haven](https://polyhaven.com/)
 
 ### Learning
-- Three.js Journey: https://threejs-journey.com/
-- Discover Three.js: https://discoverthreejs.com/
-- Bruno Simon's Portfolio: https://bruno-simon.com/
+- [Three.js Journey](https://threejs-journey.com/)
+- [Discover Three.js](https://discoverthreejs.com/)
+- [Bruno Simon's Portfolio](https://bruno-simon.com/)
 
 ---
 
