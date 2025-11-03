@@ -15,7 +15,7 @@
 4. **Subagents** - Specialized AI consultants
 5. **MCP Servers** - External service integrations
 
-**Current Status:** 🎉 100% COMPLETE (55 skills + 25 hooks + 80+ commands + 46 agents + 17 frameworks) ✨
+**Current Status:** 🎉 100% COMPLETE (56 skills + 30 hooks + 80+ commands + 46 agents + 17 frameworks) ✨
 
 ---
 
@@ -51,6 +51,9 @@ claudius-skills/
 ## 🛠️ Available Capabilities
 
 ### Skills (55 Total Across All Kits)
+
+**Core Skills (1 essential skill - use across all kits):**
+- `version-checker` - Verifies package versions, API compatibility, and breaking changes to ensure knowledge cutoff assumptions are accurate
 
 **Starter Kit (5 skills):**
 - `readme-generator` - Professional README creation
@@ -250,8 +253,15 @@ claudius-skills/
 - `n-plus-one-query-detection` - Identifies N+1 query patterns
 - `slow-test-detection` - Flags slow test execution
 
+**Knowledge Cutoff Awareness (5 NEW!) 🆕:**
+- `package-installation-verification` - Verifies package versions before installation
+- `import-usage-verification` - Checks import/export structure before writing code
+- `api-endpoint-verification` - Validates API endpoints before use
+- `framework-feature-verification` - Confirms framework features before implementation
+- `type-definition-verification` - Verifies TypeScript types before use
+
 **Location:** `hooks-collection/` with comprehensive README
-**Total:** 25 hooks across 5 categories
+**Total:** 30 hooks across 6 categories
 
 ---
 
@@ -411,6 +421,102 @@ Use character-generator to create a new character
 - Sensitive file warnings
 - Destructive operation confirmations
 - Package installation validation
+
+---
+
+## ⚠️ Knowledge Cutoff Awareness
+
+### CRITICAL: AI Model Knowledge Has Cutoff Dates
+
+**Your knowledge cutoff:** January 2025 (Claude Sonnet 4.5) or July 2025 (future models)
+
+**What this means:**
+- Package versions, APIs, and types may have changed since your training
+- Framework features may be deprecated or replaced
+- Security vulnerabilities may exist in versions you suggest
+- Breaking changes may have occurred in dependencies
+
+### Verification Protocol - ALWAYS FOLLOW
+
+**Before using ANY package, API, or framework feature:**
+
+1. **Check current versions** - Don't assume your knowledge is current
+   ```bash
+   npm view <package> version
+   pip index versions <package>
+   ```
+
+2. **Verify API compatibility** - Endpoints and methods change
+   ```bash
+   npm view <package> readme
+   # Or use WebFetch to check official docs
+   ```
+
+3. **Review breaking changes** - Check changelogs since cutoff
+   ```bash
+   npm view <package> versions --json
+   # Look for major version bumps
+   ```
+
+4. **Ask users about their versions** - When uncertain, confirm
+   ```
+   "What version of [framework] are you using? My knowledge
+   cutoff is [date], so I want to ensure compatibility."
+   ```
+
+### Knowledge Cutoff Hooks
+
+**Automatic reminders via hooks:**
+- `package-installation-verification` - Before npm/pip/yarn commands
+- `import-usage-verification` - Before writing import statements
+- `api-endpoint-verification` - Before using third-party APIs
+- `framework-feature-verification` - Before framework-specific code
+- `type-definition-verification` - Before TypeScript type usage
+
+**Location:** `hooks-collection/knowledge-cutoff/`
+
+### Version Checker Skill
+
+**Use the `version-checker` skill to:**
+- Verify package versions before installation
+- Check for breaking changes since cutoff
+- Validate API endpoint compatibility
+- Confirm TypeScript type definitions are current
+- Review framework feature compatibility
+
+**Activation:**
+- "check version of [package]"
+- "verify [API] is still valid"
+- "check for breaking changes in [package]"
+
+### High-Risk Areas - ALWAYS Verify
+
+**Critical packages that change frequently:**
+- 🔐 **Security/Auth:** Auth0, NextAuth, Passport, OAuth libraries
+- 💳 **Payments:** Stripe, PayPal, Square (errors = financial loss)
+- ☁️ **Cloud SDKs:** AWS, GCP, Azure (breaking changes common)
+- ⚛️ **Frameworks:** React, Next.js, Vue, Angular (rapid evolution)
+- 🗄️ **ORMs:** Prisma, TypeORM, Sequelize (query syntax changes)
+- 🔨 **Build Tools:** Vite, Webpack, esbuild (config changes)
+- 🧪 **Testing:** Jest, Vitest, Playwright (API updates)
+
+### The Golden Rule
+
+**"When in doubt, verify. Never assume your knowledge is current."**
+
+Better to:
+1. Acknowledge uncertainty
+2. Verify current information
+3. Implement with confidence
+
+Than to:
+1. Assume knowledge is current
+2. Implement outdated patterns
+3. Cause bugs and frustration
+
+### Documentation
+
+**See:** `.claude/rules/knowledge-cutoff-awareness.md` for complete verification protocol
 
 ---
 

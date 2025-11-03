@@ -1,0 +1,30 @@
+{
+  "name": "import-usage-verification",
+  "description": "Reminds to verify import statements and package exports before writing code, as they may have changed since knowledge cutoff",
+  "type": "user-prompt-submit",
+  "enabled": true,
+  "config": {
+    "trigger_patterns": [
+      "import {",
+      "import * as",
+      "from '",
+      "from \"",
+      "require(",
+      "use ",
+      "create component",
+      "add feature using"
+    ],
+    "verification_required_for": [
+      "react",
+      "next",
+      "vue",
+      "angular",
+      "svelte",
+      "@types/",
+      "typescript",
+      "framework",
+      "library"
+    ],
+    "prompt_injection": "\n\n⚠️ IMPORT/EXPORT VERIFICATION REQUIRED:\nYour knowledge cutoff is January 2025 (or July 2025 for newer models).\n\nBefore writing import statements or using package exports:\n1. Verify the package's current export structure\n2. Check if the imports you're suggesting still exist\n3. Look for renamed or deprecated exports\n4. Verify TypeScript types if using @types packages\n\nPackage APIs change frequently. Verify before writing code.\n\nExample verification:\n```bash\nnpm view <package> version\nnpm view <package> readme\n# Or check the package's official documentation\n```\n\nSee: .claude/rules/knowledge-cutoff-awareness.md for full protocol."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "name": "package-installation-verification",
+  "description": "Verifies package versions and APIs before installation to ensure knowledge cutoff assumptions are correct",
+  "type": "user-prompt-submit",
+  "enabled": true,
+  "config": {
+    "trigger_patterns": [
+      "npm install",
+      "npm i ",
+      "yarn add",
+      "pnpm add",
+      "pip install",
+      "pip3 install",
+      "poetry add",
+      "bundle add",
+      "composer require",
+      "cargo add",
+      "go get",
+      "gem install"
+    ],
+    "verification_steps": [
+      "Check current package version",
+      "Review recent breaking changes",
+      "Verify API compatibility",
+      "Check for security advisories"
+    ],
+    "prompt_injection": "\n\n⚠️ KNOWLEDGE CUTOFF REMINDER:\nYour knowledge cutoff is January 2025 (or July 2025 for newer models).\n\nBefore installing packages, you MUST:\n1. Check the current version: npm view <package> version\n2. Review the changelog: npm view <package> readme\n3. Verify the API hasn't changed since your cutoff\n4. Check for breaking changes in recent versions\n5. Look for security advisories\n\nDo NOT assume the package API you know is still current.\nVerify first, then install.\n\nSee: .claude/rules/knowledge-cutoff-awareness.md for full protocol."
+  }
+}
