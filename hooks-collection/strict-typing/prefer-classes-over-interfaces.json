@@ -1,0 +1,27 @@
+{
+  "name": "prefer-classes-over-interfaces",
+  "description": "Enforces classes over interfaces for data structures - interfaces only for contracts",
+  "type": "user-prompt-submit",
+  "enabled": true,
+  "config": {
+    "trigger_patterns": [
+      "interface User",
+      "interface Product",
+      "interface Order",
+      "interface Customer",
+      "interface Item",
+      "interface Data",
+      "interface Model",
+      "interface Entity",
+      "export interface",
+      "create interface"
+    ],
+    "allowed_patterns": [
+      "interface IService",
+      "interface IRepository",
+      "interface IHandler",
+      "interface IProvider"
+    ],
+    "prompt_injection": "\n\n⚠️ CLASSES OVER INTERFACES:\nThis project enforces CLASS-BASED architecture.\n\nInterfaces are ONLY allowed for:\n  ✅ Service contracts (IEmailService, IUserRepository)\n  ✅ Polymorphic behavior (interface IHandler)\n  ✅ Third-party API contracts\n\nInterfaces are NOT allowed for:\n  ❌ Data structures (User, Product, Order)\n  ❌ Domain models\n  ❌ Entities\n  ❌ Value objects\n\n**Use classes for data structures because:**\n  ✅ Single source of truth for structure AND behavior\n  ✅ Encapsulation with private fields\n  ✅ Validation logic lives with data\n  ✅ Constructor guarantees valid state\n  ✅ Runtime type checking via instanceof\n\nExample:\n```typescript\n// ❌ BAD: Interface for data structure\ninterface User {\n  id: string;\n  email: string;\n}\n\n// ✅ GOOD: Class for data structure\nexport class User {\n  private readonly _id: string;\n  private _email: string;\n\n  public constructor(id: string, email: string) {\n    this.validateEmail(email);\n    this._id = id;\n    this._email = email;\n  }\n\n  public getId(): string {\n    return this._id;\n  }\n\n  public getEmail(): string {\n    return this._email;\n  }\n\n  public updateEmail(email: string): void {\n    this.validateEmail(email);\n    this._email = email;\n  }\n\n  private validateEmail(email: string): void {\n    if (!email.includes('@')) {\n      throw new Error('Invalid email');\n    }\n  }\n}\n\n// ✅ GOOD: Interface for service contract\nexport interface IEmailService {\n  sendEmail(to: string, subject: string): Promise<void>;\n}\n```\n\n**Convention:** Prefix service interfaces with 'I' (IEmailService, IUserRepository)\n\nSee: .claude/rules/strict-typing-class-patterns.md"
+  }
+}

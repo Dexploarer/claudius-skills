@@ -1,0 +1,17 @@
+{
+  "name": "class-property-initialization",
+  "description": "Enforces initialization of all class properties - no undefined properties",
+  "type": "user-prompt-submit",
+  "enabled": true,
+  "config": {
+    "trigger_patterns": [
+      "class ",
+      "export class",
+      "private ",
+      "public ",
+      "protected ",
+      "readonly "
+    ],
+    "prompt_injection": "\n\n⚠️ ALL CLASS PROPERTIES MUST BE INITIALIZED:\nThis project enforces strictPropertyInitialization.\n\nAll class properties MUST be initialized either:\n  ✅ In the constructor\n  ✅ With a default value\n  ✅ As definitely assigned (use sparingly)\n\n❌ NEVER leave properties uninitialized:\n```typescript\n// ❌ BAD: Uninitialized properties\nclass User {\n  private id: string;        // Error!\n  private email: string;     // Error!\n  private createdAt: Date;   // Error!\n}\n```\n\n✅ ALWAYS initialize properties:\n```typescript\n// ✅ GOOD: Initialize in constructor\nclass User {\n  private readonly _id: string;\n  private _email: string;\n  private readonly _createdAt: Date;\n\n  public constructor(id: string, email: string) {\n    this._id = id;\n    this._email = email;\n    this._createdAt = new Date();\n  }\n}\n\n// ✅ GOOD: Initialize with default value\nclass Counter {\n  private _count: number = 0;\n  private _items: Item[] = [];\n  private _isActive: boolean = false;\n\n  public increment(): void {\n    this._count++;\n  }\n}\n\n// ✅ GOOD: Optional properties\nclass User {\n  private readonly _id: string;\n  private _email: string;\n  private _phoneNumber?: string; // Optional - can be undefined\n\n  public constructor(id: string, email: string, phoneNumber?: string) {\n    this._id = id;\n    this._email = email;\n    this._phoneNumber = phoneNumber;\n  }\n\n  public getPhoneNumber(): string | undefined {\n    return this._phoneNumber;\n  }\n}\n\n// ✅ GOOD: Union with undefined (prefer optional)\nclass Config {\n  private _endpoint: string | undefined = undefined;\n\n  public setEndpoint(endpoint: string): void {\n    this._endpoint = endpoint;\n  }\n}\n\n// ⚠️ USE SPARINGLY: Definite assignment assertion\nclass Component {\n  private _element!: HTMLElement; // Initialized in init()\n\n  public init(): void {\n    this._element = document.createElement('div');\n  }\n\n  // Must document why ! is used\n  // Must guarantee init() is called before use\n}\n```\n\n**Property initialization guidelines:**\n  - Prefer constructor initialization for required properties\n  - Use default values for properties with sensible defaults\n  - Use readonly for immutable properties\n  - Use optional (?) for truly optional properties\n  - Document definite assignment assertions (!)\n  - Initialize collections to empty: [] or new Map()\n\n**Common patterns:**\n```typescript\n// Immutable after construction\nprivate readonly _id: string;\n\n// Mutable with validation\nprivate _email: string;\n\n// Optional data\nprivate _metadata?: Record<string, string>;\n\n// Default value\nprivate _isActive: boolean = false;\n\n// Empty collection\nprivate _items: Item[] = [];\n\n// Lazy initialization (document carefully)\nprivate _cache!: Map<string, Data>;\n```\n\nSee: .claude/rules/strict-typing-class-patterns.md"
+  }
+}

@@ -15,7 +15,7 @@
 4. **Subagents** - Specialized AI consultants
 5. **MCP Servers** - External service integrations
 
-**Current Status:** 🎉 100% COMPLETE (56 skills + 30 hooks + 80+ commands + 46 agents + 17 frameworks) ✨
+**Current Status:** 🎉 100% COMPLETE (57 skills + 36 hooks + 80+ commands + 46 agents + 17 frameworks) ✨
 
 ---
 
@@ -52,8 +52,9 @@ claudius-skills/
 
 ### Skills (55 Total Across All Kits)
 
-**Core Skills (1 essential skill - use across all kits):**
+**Core Skills (2 essential skills - use across all kits):**
 - `version-checker` - Verifies package versions, API compatibility, and breaking changes to ensure knowledge cutoff assumptions are accurate
+- `class-builder` - Generates strictly-typed TypeScript classes with encapsulation, validation, and type safety
 
 **Starter Kit (5 skills):**
 - `readme-generator` - Professional README creation
@@ -260,8 +261,16 @@ claudius-skills/
 - `framework-feature-verification` - Confirms framework features before implementation
 - `type-definition-verification` - Verifies TypeScript types before use
 
+**Strict Typing & Class Patterns (6 NEW!) 🆕:**
+- `no-any-type` - Prevents use of `any` type (ERROR)
+- `prefer-classes-over-interfaces` - Enforces classes for data structures
+- `explicit-return-types` - Requires return types on all functions
+- `no-non-null-assertions` - Prevents non-null assertions (!)
+- `explicit-variable-types` - Requires type annotations on all variables
+- `class-property-initialization` - Ensures all properties are initialized
+
 **Location:** `hooks-collection/` with comprehensive README
-**Total:** 30 hooks across 6 categories
+**Total:** 36 hooks across 7 categories
 
 ---
 
@@ -517,6 +526,102 @@ Than to:
 ### Documentation
 
 **See:** `.claude/rules/knowledge-cutoff-awareness.md` for complete verification protocol
+
+---
+
+## 🔧 Strict Type Checking & Class-Based Patterns
+
+### CRITICAL: TypeScript Strict Mode Required
+
+This project enforces **STRICT TYPE CHECKING** and **CLASS-BASED ARCHITECTURE**.
+
+**Core principles:**
+1. **Zero tolerance for `any`** - All types must be explicit
+2. **Classes over interfaces** - Use classes for all data structures
+3. **Explicit return types** - All functions must declare return types
+4. **No non-null assertions** - Handle undefined/null explicitly
+5. **Initialize all properties** - No undefined class fields
+6. **Explicit variable types** - No reliance on type inference
+
+### Strict Typing Hooks (6 NEW!) 🆕
+
+**Automatic enforcement of strict patterns:**
+- `no-any-type` - Prevents use of `any` type (ERROR)
+- `prefer-classes-over-interfaces` - Enforces classes for data structures
+- `explicit-return-types` - Requires return types on all functions
+- `no-non-null-assertions` - Prevents non-null assertions (!)
+- `explicit-variable-types` - Requires type annotations on all variables
+- `class-property-initialization` - Ensures all properties are initialized
+
+**Location:** `hooks-collection/strict-typing/`
+
+### Class Builder Skill
+
+**Use the `class-builder` skill to:**
+- Generate strictly-typed domain entities
+- Create value objects with validation
+- Build service classes with dependency injection
+- Generate repository classes
+- Create proper DTOs for serialization
+
+**Activation:**
+- "create a class for [entity]"
+- "generate [Model] class"
+- "build TypeScript class for [domain object]"
+
+### When to Use Classes vs Interfaces
+
+**✅ ALWAYS use classes for:**
+- Domain entities (User, Product, Order)
+- Value objects (Email, Money, Address)
+- Services (UserService, EmailService)
+- Repositories (UserRepository)
+- Any data structure with behavior
+
+**✅ Interfaces ONLY for:**
+- Service contracts (IEmailService, IUserRepository)
+- Polymorphic behavior (IHandler, IProcessor)
+- Third-party API contracts
+
+**❌ NEVER use interfaces for:**
+- Data structures
+- Domain models
+- DTOs (use `type` instead)
+
+### Why Classes Over Interfaces?
+
+**Benefits of classes:**
+- ✅ Encapsulation with private fields
+- ✅ Validation logic lives with data
+- ✅ Constructor guarantees valid state
+- ✅ Runtime type checking (`instanceof`)
+- ✅ Methods and data together
+- ✅ Single source of truth
+
+**Problems with interfaces:**
+- ❌ No encapsulation
+- ❌ No validation
+- ❌ No behavior/methods
+- ❌ Compile-time only
+- ❌ Easy to create invalid states
+
+### Configuration Templates
+
+**TypeScript:** `templates/tsconfig.strict.json`
+- All strict compiler options enabled
+- `strictNullChecks`, `noImplicitAny`, `strictPropertyInitialization`
+- Additional checks: `noUncheckedIndexedAccess`, `noImplicitOverride`
+
+**ESLint:** `templates/.eslintrc.strict.json`
+- Enforces explicit types everywhere
+- No `any` allowed
+- Explicit return types required
+- No non-null assertions
+- Naming conventions (private fields with `_` prefix, interfaces with `I` prefix)
+
+### Documentation
+
+**See:** `.claude/rules/strict-typing-class-patterns.md` for complete guidelines
 
 ---
 

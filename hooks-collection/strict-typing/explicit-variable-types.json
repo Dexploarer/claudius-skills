@@ -1,0 +1,16 @@
+{
+  "name": "explicit-variable-types",
+  "description": "Enforces explicit type annotations on all variable declarations",
+  "type": "user-prompt-submit",
+  "enabled": true,
+  "config": {
+    "trigger_patterns": [
+      "const ",
+      "let ",
+      "var ",
+      "declare variable",
+      "create variable"
+    ],
+    "prompt_injection": "\n\n⚠️ EXPLICIT VARIABLE TYPES REQUIRED:\nAll variables MUST have explicit type annotations.\n\nThis project does not rely on type inference - all types must be explicit.\n\n❌ NEVER omit variable types:\n```typescript\n// ❌ BAD: Implicit types\nconst user = { id: '1', name: 'John' };\nlet count = 0;\nconst items = [];\nconst result = await fetch('/api/data');\n```\n\n✅ ALWAYS specify explicit types:\n```typescript\n// ✅ GOOD: Explicit types\nconst user: User = new User('1', 'John');\nlet count: number = 0;\nconst items: Item[] = [];\nconst result: Response = await fetch('/api/data');\n\n// ✅ GOOD: Explicit array types\nconst numbers: number[] = [1, 2, 3];\nconst users: User[] = [];\nconst matrix: number[][] = [[1, 2], [3, 4]];\n\n// ✅ GOOD: Explicit object types (prefer classes)\nconst config: DatabaseConfig = {\n  host: 'localhost',\n  port: 5432,\n  database: 'mydb',\n};\n\n// ✅ GOOD: Explicit union types\nconst status: 'active' | 'inactive' | 'pending' = 'active';\nconst value: string | number = 42;\n\n// ✅ GOOD: Explicit promise types\nconst userPromise: Promise<User> = fetchUser('123');\n\n// ✅ GOOD: Explicit function types\nconst handler: (event: Event) => void = (event: Event): void => {\n  console.log(event);\n};\n\n// ✅ GOOD: Explicit Map/Set types\nconst userMap: Map<string, User> = new Map();\nconst uniqueIds: Set<string> = new Set();\n\n// ✅ GOOD: Explicit Record types\nconst config: Record<string, string> = {\n  apiKey: 'xxx',\n  endpoint: 'https://api.example.com',\n};\n```\n\n**Type annotation guidelines:**\n  - Always specify types on const/let/var declarations\n  - Use specific types, not general ones (User not object)\n  - Prefer classes over plain object types\n  - Specify array element types: Type[] or Array<Type>\n  - Specify generic types: Map<K, V>, Set<T>, Promise<T>\n  - Use union types for multiple possibilities: Type1 | Type2\n  - Use literal types for constants: 'value' not string\n\n**Exceptions (still discouraged):**\n  - Primitive literals in obvious contexts: `const x: number = 1;`\n  - But prefer: `const X: number = 1;` (explicit constant)\n\nSee: .claude/rules/strict-typing-class-patterns.md"
+  }
+}

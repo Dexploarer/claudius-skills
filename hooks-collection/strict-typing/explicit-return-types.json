@@ -1,0 +1,19 @@
+{
+  "name": "explicit-return-types",
+  "description": "Enforces explicit return types on all functions and methods",
+  "type": "user-prompt-submit",
+  "enabled": true,
+  "config": {
+    "trigger_patterns": [
+      "function ",
+      "const ",
+      "export function",
+      "async function",
+      "public ",
+      "private ",
+      "protected ",
+      "method"
+    ],
+    "prompt_injection": "\n\n⚠️ EXPLICIT RETURN TYPES REQUIRED:\nAll functions and methods MUST have explicit return types.\n\nThis project enforces explicit typing for better type safety and IDE support.\n\n❌ NEVER omit return types:\n```typescript\n// ❌ BAD\nfunction getUser(id: string) {\n  return users.find(u => u.id === id);\n}\n\n// ❌ BAD\nconst processData = (data) => {\n  return data.map(item => item.value);\n};\n```\n\n✅ ALWAYS specify return types:\n```typescript\n// ✅ GOOD\nfunction getUser(id: string): User | undefined {\n  return users.find((u: User): boolean => u.getId() === id);\n}\n\n// ✅ GOOD\nconst processData = (data: DataItem[]): number[] => {\n  return data.map((item: DataItem): number => item.getValue());\n};\n\n// ✅ GOOD: Async functions\nasync function fetchUser(id: string): Promise<User> {\n  const response: Response = await fetch(`/api/users/${id}`);\n  const data: unknown = await response.json();\n  return User.fromJSON(data);\n}\n\n// ✅ GOOD: Void for no return\npublic updateEmail(email: string): void {\n  this._email = email;\n}\n\n// ✅ GOOD: Never for functions that never return\nfunction throwError(message: string): never {\n  throw new Error(message);\n}\n```\n\n**Return type guidelines:**\n  - Use 'void' for functions with no return value\n  - Use 'Promise<Type>' for async functions\n  - Use 'Type | undefined' for nullable returns\n  - Use 'never' for functions that throw or infinite loop\n  - Specify array types: 'Type[]' not just 'Array'\n\nSee: .claude/rules/strict-typing-class-patterns.md"
+  }
+}
