@@ -1,0 +1,103 @@
+name: Bug Report
+description: Report a bug or issue with Claudius Skills
+title: "[Bug]: "
+labels: ["bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug! Please fill out the information below to help us resolve it.
+
+  - type: dropdown
+    id: kit
+    attributes:
+      label: Which kit are you using?
+      description: Select the kit where the issue occurs
+      options:
+        - Starter Kit
+        - Intermediate Kit
+        - Advanced Kit
+        - Productivity Skills
+        - Competitive AI Frameworks
+        - Eliza OS Kit
+        - Examples (specify in description)
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: Component Type
+      description: What type of component has the issue?
+      options:
+        - Skill
+        - Slash Command
+        - Hook
+        - Subagent
+        - Framework Rule
+        - Documentation
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug Description
+      description: A clear description of what the bug is
+      placeholder: When I try to use the [skill/command/hook]...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: What did you expect to happen?
+      placeholder: I expected...
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual Behavior
+      description: What actually happened?
+      placeholder: Instead...
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to Reproduce
+      description: How can we reproduce this issue?
+      placeholder: |
+        1. Copy kit to project: `cp -r starter-kit/.claude /my/project/`
+        2. Run command: `/command-name`
+        3. See error...
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Tell us about your environment
+      placeholder: |
+        - Claude Code Version:
+        - Operating System:
+        - Project Type:
+        - Framework (if applicable):
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Context
+      description: Any additional information, screenshots, or context
+      placeholder: Add any other context about the problem here
+    validations:
+      required: false
