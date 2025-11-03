@@ -1,0 +1,17 @@
+{
+  "name": "no-non-null-assertions",
+  "description": "Prevents non-null assertions (!) - requires explicit null/undefined handling",
+  "type": "user-prompt-submit",
+  "enabled": true,
+  "config": {
+    "trigger_patterns": [
+      "!.",
+      "![",
+      "!;",
+      "!)",
+      "non-null"
+    ],
+    "severity": "error",
+    "prompt_injection": "\n\n🚫 NO NON-NULL ASSERTIONS (!):\nThis project enforces EXPLICIT null/undefined handling.\n\nNon-null assertions (!) are BANNED because they bypass type safety.\n\n❌ NEVER use non-null assertions:\n```typescript\n// ❌ BAD: Non-null assertion\nconst user = users.find(u => u.id === id)!;\nuser.getName(); // Might crash at runtime!\n\n// ❌ BAD: Assertion on property\nconst name = user.name!;\n\n// ❌ BAD: Assertion on array access\nconst first = items[0]!;\n```\n\n✅ ALWAYS handle null/undefined explicitly:\n```typescript\n// ✅ GOOD: Explicit check with error\nconst user: User | undefined = users.find((u: User) => u.getId() === id);\nif (!user) {\n  throw new Error(`User ${id} not found`);\n}\nuser.getName(); // Safe - TypeScript knows user is defined\n\n// ✅ GOOD: Early return\nfunction processUser(user: User | undefined): void {\n  if (!user) {\n    return;\n  }\n  // user is definitely defined here\n  console.log(user.getName());\n}\n\n// ✅ GOOD: Optional chaining for optional operations\nfunction getUserName(user: User | undefined): string | undefined {\n  return user?.getName();\n}\n\n// ✅ GOOD: Nullish coalescing for defaults\nfunction getUserName(user: User | undefined): string {\n  return user?.getName() ?? 'Anonymous';\n}\n\n// ✅ GOOD: Type guard\nif (isUser(value)) {\n  // TypeScript knows value is User here\n  value.getName();\n}\n\n// ✅ GOOD: Array access with check\nconst firstItem: Item | undefined = items[0];\nif (!firstItem) {\n  throw new Error('Array is empty');\n}\nfirstItem.process(); // Safe\n```\n\n**Why no non-null assertions?**\n  - They bypass TypeScript's type safety\n  - They can cause runtime crashes\n  - They hide bugs instead of fixing them\n  - They make assumptions that might be wrong\n\n**Better alternatives:**\n  - Explicit null checks with if statements\n  - Optional chaining (?.) for safe property access\n  - Nullish coalescing (??) for default values\n  - Type guards for complex checks\n  - Throw errors when values must exist\n\nSee: .claude/rules/strict-typing-class-patterns.md"
+  }
+}

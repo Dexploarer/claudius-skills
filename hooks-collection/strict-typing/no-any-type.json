@@ -1,0 +1,19 @@
+{
+  "name": "no-any-type",
+  "description": "Prevents use of 'any' type - enforces strict typing with explicit types",
+  "type": "user-prompt-submit",
+  "enabled": true,
+  "config": {
+    "trigger_patterns": [
+      ": any",
+      "<any>",
+      "any[]",
+      "as any",
+      "Array<any>",
+      "Promise<any>",
+      "Record<string, any>"
+    ],
+    "severity": "error",
+    "prompt_injection": "\n\n🚫 NO 'any' TYPE ALLOWED:\nThis project enforces STRICT TYPE CHECKING.\n\nThe 'any' type is BANNED. You must use explicit types.\n\n❌ NEVER use:\n  - ': any'\n  - '<any>'\n  - 'any[]'\n  - 'as any'\n  - 'Record<string, any>'\n\n✅ ALWAYS use specific types:\n  - For unknowns: 'unknown' + type guards\n  - For objects: 'Record<string, TypeHere>'\n  - For generics: '<T extends SomeType>'\n  - For JSON: Create a proper type/class\n\nExample:\n```typescript\n// ❌ BAD\nfunction process(data: any): any {\n  return data;\n}\n\n// ✅ GOOD\nfunction process<T extends Record<string, unknown>>(data: T): T {\n  return data;\n}\n\n// ✅ GOOD with type guard\nfunction process(data: unknown): ProcessedData {\n  if (!isValidData(data)) {\n    throw new Error('Invalid data');\n  }\n  return processInternal(data);\n}\n```\n\nSee: .claude/rules/strict-typing-class-patterns.md"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "type-definition-verification",
+  "description": "Verifies TypeScript type definitions and @types packages before use, as they frequently update",
+  "type": "user-prompt-submit",
+  "enabled": true,
+  "config": {
+    "trigger_patterns": [
+      "@types/",
+      "interface",
+      "type ",
+      "typescript",
+      ": Promise<",
+      ": React.",
+      "as const",
+      "satisfies",
+      "import type"
+    ],
+    "verification_areas": [
+      "TypeScript version compatibility",
+      "@types package versions",
+      "Built-in vs external types",
+      "New TypeScript syntax features"
+    ],
+    "prompt_injection": "\n\n⚠️ TYPE DEFINITION VERIFICATION:\nYour knowledge cutoff is January 2025 (or July 2025 for newer models).\n\nTypeScript and type definitions evolve rapidly. Before using types:\n\n1. **Check if @types packages are still needed:**\n   Many packages now include built-in types\n   ```bash\n   npm view <package> types\n   # If shows a path, types are built-in\n   ```\n\n2. **Verify @types package versions match the main package:**\n   ```bash\n   npm view @types/<package> version\n   npm view <package> version\n   ```\n\n3. **Check for TypeScript version compatibility:**\n   - TypeScript 5.0+ has new syntax features\n   - Decorators, const type parameters, etc.\n   - Verify your syntax is supported in their TS version\n\n4. **Look for type definition changes:**\n   - Renamed types\n   - Deprecated interfaces\n   - New generic constraints\n   - Changed function signatures\n\n**Common issues:**\n- Using @types when package has built-in types\n- Mismatched @types and package versions\n- Using syntax from newer TS than project supports\n- Outdated type definitions\n\n**Before writing TypeScript code, verify:**\n```bash\n# Check their TypeScript version\ncat package.json | grep \"typescript\"\n\n# Check if types are built-in\nnpm view <package> types\n```\n\n**Ask if uncertain:**\n\"What TypeScript version are you using? I want to ensure I use\ncompatible syntax and type definitions.\"\n\nSee: .claude/rules/knowledge-cutoff-awareness.md for full protocol."
+  }
+}

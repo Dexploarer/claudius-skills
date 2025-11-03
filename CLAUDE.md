@@ -15,7 +15,7 @@
 4. **Subagents** - Specialized AI consultants
 5. **MCP Servers** - External service integrations
 
-**Current Status:** 🎉 100% COMPLETE (55 skills + 25 hooks + 80+ commands + 46 agents + 17 frameworks) ✨
+**Current Status:** 🎉 100% COMPLETE (57 skills + 36 hooks + 80+ commands + 46 agents + 17 frameworks) ✨
 
 ---
 
@@ -51,6 +51,10 @@ claudius-skills/
 ## 🛠️ Available Capabilities
 
 ### Skills (55 Total Across All Kits)
+
+**Core Skills (2 essential skills - use across all kits):**
+- `version-checker` - Verifies package versions, API compatibility, and breaking changes to ensure knowledge cutoff assumptions are accurate
+- `class-builder` - Generates strictly-typed TypeScript classes with encapsulation, validation, and type safety
 
 **Starter Kit (5 skills):**
 - `readme-generator` - Professional README creation
@@ -250,8 +254,23 @@ claudius-skills/
 - `n-plus-one-query-detection` - Identifies N+1 query patterns
 - `slow-test-detection` - Flags slow test execution
 
+**Knowledge Cutoff Awareness (5 NEW!) 🆕:**
+- `package-installation-verification` - Verifies package versions before installation
+- `import-usage-verification` - Checks import/export structure before writing code
+- `api-endpoint-verification` - Validates API endpoints before use
+- `framework-feature-verification` - Confirms framework features before implementation
+- `type-definition-verification` - Verifies TypeScript types before use
+
+**Strict Typing & Class Patterns (6 NEW!) 🆕:**
+- `no-any-type` - Prevents use of `any` type (ERROR)
+- `prefer-classes-over-interfaces` - Enforces classes for data structures
+- `explicit-return-types` - Requires return types on all functions
+- `no-non-null-assertions` - Prevents non-null assertions (!)
+- `explicit-variable-types` - Requires type annotations on all variables
+- `class-property-initialization` - Ensures all properties are initialized
+
 **Location:** `hooks-collection/` with comprehensive README
-**Total:** 25 hooks across 5 categories
+**Total:** 36 hooks across 7 categories
 
 ---
 
@@ -411,6 +430,198 @@ Use character-generator to create a new character
 - Sensitive file warnings
 - Destructive operation confirmations
 - Package installation validation
+
+---
+
+## ⚠️ Knowledge Cutoff Awareness
+
+### CRITICAL: AI Model Knowledge Has Cutoff Dates
+
+**Your knowledge cutoff:** January 2025 (Claude Sonnet 4.5) or July 2025 (future models)
+
+**What this means:**
+- Package versions, APIs, and types may have changed since your training
+- Framework features may be deprecated or replaced
+- Security vulnerabilities may exist in versions you suggest
+- Breaking changes may have occurred in dependencies
+
+### Verification Protocol - ALWAYS FOLLOW
+
+**Before using ANY package, API, or framework feature:**
+
+1. **Check current versions** - Don't assume your knowledge is current
+   ```bash
+   npm view <package> version
+   pip index versions <package>
+   ```
+
+2. **Verify API compatibility** - Endpoints and methods change
+   ```bash
+   npm view <package> readme
+   # Or use WebFetch to check official docs
+   ```
+
+3. **Review breaking changes** - Check changelogs since cutoff
+   ```bash
+   npm view <package> versions --json
+   # Look for major version bumps
+   ```
+
+4. **Ask users about their versions** - When uncertain, confirm
+   ```
+   "What version of [framework] are you using? My knowledge
+   cutoff is [date], so I want to ensure compatibility."
+   ```
+
+### Knowledge Cutoff Hooks
+
+**Automatic reminders via hooks:**
+- `package-installation-verification` - Before npm/pip/yarn commands
+- `import-usage-verification` - Before writing import statements
+- `api-endpoint-verification` - Before using third-party APIs
+- `framework-feature-verification` - Before framework-specific code
+- `type-definition-verification` - Before TypeScript type usage
+
+**Location:** `hooks-collection/knowledge-cutoff/`
+
+### Version Checker Skill
+
+**Use the `version-checker` skill to:**
+- Verify package versions before installation
+- Check for breaking changes since cutoff
+- Validate API endpoint compatibility
+- Confirm TypeScript type definitions are current
+- Review framework feature compatibility
+
+**Activation:**
+- "check version of [package]"
+- "verify [API] is still valid"
+- "check for breaking changes in [package]"
+
+### High-Risk Areas - ALWAYS Verify
+
+**Critical packages that change frequently:**
+- 🔐 **Security/Auth:** Auth0, NextAuth, Passport, OAuth libraries
+- 💳 **Payments:** Stripe, PayPal, Square (errors = financial loss)
+- ☁️ **Cloud SDKs:** AWS, GCP, Azure (breaking changes common)
+- ⚛️ **Frameworks:** React, Next.js, Vue, Angular (rapid evolution)
+- 🗄️ **ORMs:** Prisma, TypeORM, Sequelize (query syntax changes)
+- 🔨 **Build Tools:** Vite, Webpack, esbuild (config changes)
+- 🧪 **Testing:** Jest, Vitest, Playwright (API updates)
+
+### The Golden Rule
+
+**"When in doubt, verify. Never assume your knowledge is current."**
+
+Better to:
+1. Acknowledge uncertainty
+2. Verify current information
+3. Implement with confidence
+
+Than to:
+1. Assume knowledge is current
+2. Implement outdated patterns
+3. Cause bugs and frustration
+
+### Documentation
+
+**See:** `.claude/rules/knowledge-cutoff-awareness.md` for complete verification protocol
+
+---
+
+## 🔧 Strict Type Checking & Class-Based Patterns
+
+### CRITICAL: TypeScript Strict Mode Required
+
+This project enforces **STRICT TYPE CHECKING** and **CLASS-BASED ARCHITECTURE**.
+
+**Core principles:**
+1. **Zero tolerance for `any`** - All types must be explicit
+2. **Classes over interfaces** - Use classes for all data structures
+3. **Explicit return types** - All functions must declare return types
+4. **No non-null assertions** - Handle undefined/null explicitly
+5. **Initialize all properties** - No undefined class fields
+6. **Explicit variable types** - No reliance on type inference
+
+### Strict Typing Hooks (6 NEW!) 🆕
+
+**Automatic enforcement of strict patterns:**
+- `no-any-type` - Prevents use of `any` type (ERROR)
+- `prefer-classes-over-interfaces` - Enforces classes for data structures
+- `explicit-return-types` - Requires return types on all functions
+- `no-non-null-assertions` - Prevents non-null assertions (!)
+- `explicit-variable-types` - Requires type annotations on all variables
+- `class-property-initialization` - Ensures all properties are initialized
+
+**Location:** `hooks-collection/strict-typing/`
+
+### Class Builder Skill
+
+**Use the `class-builder` skill to:**
+- Generate strictly-typed domain entities
+- Create value objects with validation
+- Build service classes with dependency injection
+- Generate repository classes
+- Create proper DTOs for serialization
+
+**Activation:**
+- "create a class for [entity]"
+- "generate [Model] class"
+- "build TypeScript class for [domain object]"
+
+### When to Use Classes vs Interfaces
+
+**✅ ALWAYS use classes for:**
+- Domain entities (User, Product, Order)
+- Value objects (Email, Money, Address)
+- Services (UserService, EmailService)
+- Repositories (UserRepository)
+- Any data structure with behavior
+
+**✅ Interfaces ONLY for:**
+- Service contracts (IEmailService, IUserRepository)
+- Polymorphic behavior (IHandler, IProcessor)
+- Third-party API contracts
+
+**❌ NEVER use interfaces for:**
+- Data structures
+- Domain models
+- DTOs (use `type` instead)
+
+### Why Classes Over Interfaces?
+
+**Benefits of classes:**
+- ✅ Encapsulation with private fields
+- ✅ Validation logic lives with data
+- ✅ Constructor guarantees valid state
+- ✅ Runtime type checking (`instanceof`)
+- ✅ Methods and data together
+- ✅ Single source of truth
+
+**Problems with interfaces:**
+- ❌ No encapsulation
+- ❌ No validation
+- ❌ No behavior/methods
+- ❌ Compile-time only
+- ❌ Easy to create invalid states
+
+### Configuration Templates
+
+**TypeScript:** `templates/tsconfig.strict.json`
+- All strict compiler options enabled
+- `strictNullChecks`, `noImplicitAny`, `strictPropertyInitialization`
+- Additional checks: `noUncheckedIndexedAccess`, `noImplicitOverride`
+
+**ESLint:** `templates/.eslintrc.strict.json`
+- Enforces explicit types everywhere
+- No `any` allowed
+- Explicit return types required
+- No non-null assertions
+- Naming conventions (private fields with `_` prefix, interfaces with `I` prefix)
+
+### Documentation
+
+**See:** `.claude/rules/strict-typing-class-patterns.md` for complete guidelines
 
 ---
 

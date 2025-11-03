@@ -1,0 +1,40 @@
+{
+  "name": "api-endpoint-verification",
+  "description": "Ensures API endpoints and third-party services are verified before use, as they frequently change",
+  "type": "user-prompt-submit",
+  "enabled": true,
+  "config": {
+    "trigger_patterns": [
+      "api.example.com",
+      "/api/",
+      "fetch(",
+      "axios.",
+      "http.get",
+      "http.post",
+      "stripe",
+      "paypal",
+      "aws",
+      "google cloud",
+      "azure",
+      "oauth",
+      "auth0",
+      "firebase",
+      "supabase"
+    ],
+    "high_priority_services": [
+      "stripe",
+      "paypal",
+      "square",
+      "auth0",
+      "okta",
+      "aws",
+      "gcp",
+      "azure",
+      "twilio",
+      "sendgrid",
+      "mailgun",
+      "oauth"
+    ],
+    "prompt_injection": "\n\n⚠️ API ENDPOINT VERIFICATION CRITICAL:\nYour knowledge cutoff is January 2025 (or July 2025 for newer models).\n\nThird-party APIs change FREQUENTLY. Before using any API:\n\n1. **STOP and verify the current API documentation**\n2. Check if the endpoint structure has changed\n3. Verify authentication methods are still valid\n4. Look for API version updates\n5. Check for deprecation notices\n\n**ESPECIALLY CRITICAL FOR:**\n- Payment APIs (Stripe, PayPal, etc.) - errors = lost revenue\n- Authentication (OAuth, Auth0, etc.) - errors = security risks\n- Cloud SDKs (AWS, GCP, Azure) - errors = deployment failures\n\n**Verification steps:**\n```bash\n# Check package version\nnpm view <sdk-package> version\n\n# Fetch official API documentation\n# Use WebFetch to get current docs\n```\n\n**Ask the user:**\n\"I notice you're using [API/Service]. My knowledge cutoff is [date].\nShould I verify the current API documentation before proceeding?\"\n\nSee: .claude/rules/knowledge-cutoff-awareness.md for full protocol."
+  }
+}

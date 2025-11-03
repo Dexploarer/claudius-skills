@@ -1,0 +1,34 @@
+{
+  "name": "framework-feature-verification",
+  "description": "Verifies framework-specific features and best practices before implementation, as frameworks evolve rapidly",
+  "type": "user-prompt-submit",
+  "enabled": true,
+  "config": {
+    "trigger_patterns": [
+      "react hook",
+      "react component",
+      "next.js",
+      "app router",
+      "vue composition",
+      "angular signal",
+      "svelte",
+      "django",
+      "flask",
+      "express",
+      "fastapi",
+      "use client",
+      "use server",
+      "server component",
+      "client component"
+    ],
+    "framework_versions": {
+      "react": "18.x → 19.x changes",
+      "nextjs": "13.x → 14.x → 15.x changes",
+      "vue": "3.x updates",
+      "angular": "15.x → 16.x → 17.x changes",
+      "django": "4.x → 5.x changes",
+      "typescript": "4.x → 5.x changes"
+    },
+    "prompt_injection": "\n\n⚠️ FRAMEWORK FEATURE VERIFICATION:\nYour knowledge cutoff is January 2025 (or July 2025 for newer models).\n\nFrameworks evolve RAPIDLY with breaking changes. Before using framework features:\n\n1. **Ask the user for their framework version**\n   \"What version of [framework] are you using?\"\n\n2. **Check for breaking changes since your cutoff:**\n   - React 19: New hooks, compiler changes\n   - Next.js 15: App router updates, server actions\n   - Vue 3.x: Composition API improvements\n   - Angular 17+: Signals, standalone components\n   - Django 5.x: Async updates, ORM changes\n   - TypeScript 5.x: New syntax, decorators\n\n3. **Verify current best practices:**\n   ```bash\n   # Check framework version in project\n   cat package.json | grep \"react\"\n   \n   # Use WebFetch to get latest docs\n   ```\n\n4. **Look for deprecation warnings:**\n   - Deprecated hooks/APIs\n   - Removed features\n   - New recommended patterns\n\n**Common issues:**\n- Using deprecated React APIs\n- Wrong Next.js routing approach\n- Outdated Vue syntax\n- Old Angular patterns\n\n**Ask before implementing:**\n\"I'm going to implement [feature] using [framework]. Since my knowledge\ncutoff is [date], should I verify the current best practices for your\nversion first?\"\n\nSee: .claude/rules/knowledge-cutoff-awareness.md for full protocol."
+  }
+}

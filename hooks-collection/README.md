@@ -6,13 +6,14 @@
 
 ## 📚 Overview
 
-This collection contains **25 production-ready hooks** organized into 5 categories:
+This collection contains **30 production-ready hooks** organized into 6 categories:
 
 1. **Development Safety** (5 hooks) - Prevent common mistakes
 2. **Production Deployment** (5 hooks) - Ensure safe deployments
 3. **Code Quality** (5 hooks) - Maintain high code standards
 4. **Security Enforcement** (5 hooks) - Enforce security best practices
 5. **Performance Monitoring** (5 hooks) - Monitor and optimize performance
+6. **Knowledge Cutoff Awareness** (5 hooks) 🆕 - Verify assumptions before implementation
 
 ---
 
@@ -141,6 +142,52 @@ Monitor and optimize application performance.
 ```bash
 cp hooks-collection/performance-monitoring/*.json /path/to/project/.claude/hooks/
 ```
+
+---
+
+### 🧠 Knowledge Cutoff Awareness Hooks 🆕
+
+**NEW!** Prevent outdated assumptions by verifying package versions, APIs, and frameworks before implementation.
+
+AI models have knowledge cutoffs. These hooks ensure Claude Code always verifies its assumptions about:
+- Package versions and APIs
+- Framework features and patterns
+- Type definitions
+- Third-party service endpoints
+
+| Hook | Purpose | Event | Critical |
+|------|---------|-------|----------|
+| `package-installation-verification` | Verifies package versions before installation | pre-submit | ⚠️ Yes |
+| `import-usage-verification` | Checks import/export structure before writing code | pre-submit | ⚠️ Yes |
+| `api-endpoint-verification` | Validates API endpoints before use | pre-submit | ⚠️ Yes |
+| `framework-feature-verification` | Confirms framework features before implementation | pre-submit | ⚠️ Yes |
+| `type-definition-verification` | Verifies TypeScript types before use | pre-submit | ⚠️ Yes |
+
+**Why these hooks matter:**
+- ✅ Prevent "module not found" errors from outdated imports
+- ✅ Avoid security issues from old authentication patterns
+- ✅ Ensure compatibility with current package versions
+- ✅ Save hours of debugging from outdated assumptions
+
+**High-risk scenarios these hooks protect against:**
+- 💳 Payment APIs (Stripe, PayPal) - Outdated code = lost revenue
+- 🔐 Authentication (Auth0, OAuth) - Outdated code = security risks
+- ☁️ Cloud SDKs (AWS, GCP, Azure) - Outdated code = deployment failures
+- ⚛️ Frameworks (React, Next.js, Vue) - Rapid evolution, frequent breaking changes
+
+**Install Knowledge Cutoff Hooks:**
+```bash
+cp hooks-collection/knowledge-cutoff/*.json /path/to/project/.claude/hooks/
+```
+
+**See full documentation:**
+```bash
+cat hooks-collection/knowledge-cutoff/README.md
+```
+
+**Related resources:**
+- Rule file: `.claude/rules/knowledge-cutoff-awareness.md`
+- Skill: `.claude/skills/version-checker.md`
 
 ---
 
