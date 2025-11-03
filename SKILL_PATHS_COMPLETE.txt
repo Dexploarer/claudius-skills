@@ -1,0 +1,180 @@
+COMPREHENSIVE SKILL FILE PATHS
+Generated: November 3, 2025
+
+================================================================================
+CORE SKILLS (Root .claude)
+================================================================================
+class-builder: /home/user/claudius-skills/.claude/skills/class-builder.md
+version-checker: /home/user/claudius-skills/.claude/skills/version-checker.md
+
+================================================================================
+STARTER KIT SKILLS
+================================================================================
+bug-finder: /home/user/claudius-skills/starter-kit/.claude/skills/bug-finder.md
+code-explainer: /home/user/claudius-skills/starter-kit/.claude/skills/code-explainer.md
+git-helper: /home/user/claudius-skills/starter-kit/.claude/skills/git-helper.md
+readme-generator: /home/user/claudius-skills/starter-kit/.claude/skills/readme-generator.md
+test-helper: /home/user/claudius-skills/starter-kit/.claude/skills/test-helper.md
+
+================================================================================
+INTERMEDIATE KIT SKILLS
+================================================================================
+api-documentation-generator: /home/user/claudius-skills/intermediate-kit/.claude/skills/api-documentation-generator.md
+database-migration-helper: /home/user/claudius-skills/intermediate-kit/.claude/skills/database-migration-helper.md
+django-model-helper: /home/user/claudius-skills/intermediate-kit/.claude/skills/django-model-helper.md
+express-api-generator: /home/user/claudius-skills/intermediate-kit/.claude/skills/express-api-generator.md
+fastapi-generator: /home/user/claudius-skills/intermediate-kit/.claude/skills/fastapi-generator.md
+graphql-schema-generator: /home/user/claudius-skills/intermediate-kit/.claude/skills/graphql-schema-generator.md
+nextjs-page-generator: /home/user/claudius-skills/intermediate-kit/.claude/skills/nextjs-page-generator.md
+react-component-generator: /home/user/claudius-skills/intermediate-kit/.claude/skills/react-component-generator.md
+testing-framework-helper: /home/user/claudius-skills/intermediate-kit/.claude/skills/testing-framework-helper.md
+vue-component-generator: /home/user/claudius-skills/intermediate-kit/.claude/skills/vue-component-generator.md
+
+================================================================================
+ADVANCED KIT SKILLS
+================================================================================
+api-gateway-configurator: /home/user/claudius-skills/advanced-kit/.claude/skills/api-gateway-configurator.md
+architecture-decision-recorder: /home/user/claudius-skills/advanced-kit/.claude/skills/architecture-decision-recorder.md
+chaos-engineering-setup: /home/user/claudius-skills/advanced-kit/.claude/skills/chaos-engineering-setup.md
+compliance-auditor: /home/user/claudius-skills/advanced-kit/.claude/skills/compliance-auditor.md
+developer-portal-generator: /home/user/claudius-skills/advanced-kit/.claude/skills/developer-portal-generator.md
+disaster-recovery-planner: /home/user/claudius-skills/advanced-kit/.claude/skills/disaster-recovery-planner.md
+distributed-tracing-setup: /home/user/claudius-skills/advanced-kit/.claude/skills/distributed-tracing-setup.md
+event-driven-architect: /home/user/claudius-skills/advanced-kit/.claude/skills/event-driven-architect.md
+golden-path-creator: /home/user/claudius-skills/advanced-kit/.claude/skills/golden-path-creator.md
+internal-platform-builder: /home/user/claudius-skills/advanced-kit/.claude/skills/internal-platform-builder.md
+log-aggregation-configurator: /home/user/claudius-skills/advanced-kit/.claude/skills/log-aggregation-configurator.md
+metrics-pipeline-builder: /home/user/claudius-skills/advanced-kit/.claude/skills/metrics-pipeline-builder.md
+microservices-orchestrator: /home/user/claudius-skills/advanced-kit/.claude/skills/microservices-orchestrator.md
+service-mesh-integrator: /home/user/claudius-skills/advanced-kit/.claude/skills/service-mesh-integrator.md
+sla-monitor-generator: /home/user/claudius-skills/advanced-kit/.claude/skills/sla-monitor-generator.md
+
+================================================================================
+COMPETITIVE AI FRAMEWORKS SKILLS
+================================================================================
+bug-hunting-simulator: /home/user/claudius-skills/competitive-ai-frameworks/.claude/skills/bug-hunting-simulator.md
+code-quality-analyzer: /home/user/claudius-skills/competitive-ai-frameworks/.claude/skills/code-quality-analyzer.md
+user-flow-tester: /home/user/claudius-skills/competitive-ai-frameworks/.claude/skills/user-flow-tester.md
+
+================================================================================
+ELIZA OS KIT SKILLS
+================================================================================
+character-generator: /home/user/claudius-skills/eliza-os-kit/.claude/skills/character-generator.md
+deployment-helper: /home/user/claudius-skills/eliza-os-kit/.claude/skills/deployment-helper.md
+knowledge-base-builder: /home/user/claudius-skills/eliza-os-kit/.claude/skills/knowledge-base-builder.md
+memory-manager: /home/user/claudius-skills/eliza-os-kit/.claude/skills/memory-manager.md
+plugin-builder: /home/user/claudius-skills/eliza-os-kit/.claude/skills/plugin-builder.md
+testing-helper: /home/user/claudius-skills/eliza-os-kit/.claude/skills/testing-helper.md
+
+================================================================================
+PRODUCTIVITY SKILLS - STARTER KIT
+================================================================================
+brainstorm-facilitator: /home/user/claudius-skills/productivity-skills/starter-kit/.claude/skills/brainstorm-facilitator.md
+email-composer: /home/user/claudius-skills/productivity-skills/starter-kit/.claude/skills/email-composer.md
+meeting-notes-formatter: /home/user/claudius-skills/productivity-skills/starter-kit/.claude/skills/meeting-notes-formatter.md
+report-generator: /home/user/claudius-skills/productivity-skills/starter-kit/.claude/skills/report-generator.md
+task-breakdown: /home/user/claudius-skills/productivity-skills/starter-kit/.claude/skills/task-breakdown.md
+
+================================================================================
+PRODUCTIVITY SKILLS - INTERMEDIATE KIT
+================================================================================
+strategic-planner: /home/user/claudius-skills/productivity-skills/intermediate-kit/.claude/skills/strategic-planner.md
+
+================================================================================
+EMERGING TECH SKILLS
+================================================================================
+ai-ml-ops: /home/user/claudius-skills/examples/advanced/emerging-tech-skills/ai-ml-ops/.claude/skills/ai-ml-ops.md
+api-rate-limiter: /home/user/claudius-skills/examples/advanced/emerging-tech-skills/api-rate-limiter/.claude/skills/api-rate-limiter.md
+edge-deployment: /home/user/claudius-skills/examples/advanced/emerging-tech-skills/edge-deployment/.claude/skills/edge-deployment.md
+event-streaming: /home/user/claudius-skills/examples/advanced/emerging-tech-skills/event-streaming/.claude/skills/event-streaming.md
+feature-flags: /home/user/claudius-skills/examples/advanced/emerging-tech-skills/feature-flags/.claude/skills/feature-flags.md
+graphql-federation: /home/user/claudius-skills/examples/advanced/emerging-tech-skills/graphql-federation/.claude/skills/graphql-federation.md
+multi-tenant-architect: /home/user/claudius-skills/examples/advanced/emerging-tech-skills/multi-tenant-architect/.claude/skills/multi-tenant-architect.md
+quantum-setup: /home/user/claudius-skills/examples/advanced/emerging-tech-skills/quantum-setup/.claude/skills/quantum-setup.md
+serverless-patterns: /home/user/claudius-skills/examples/advanced/emerging-tech-skills/serverless-patterns/.claude/skills/serverless-patterns.md
+webassembly-optimizer: /home/user/claudius-skills/examples/advanced/emerging-tech-skills/webassembly-optimizer/.claude/skills/webassembly-optimizer.md
+
+================================================================================
+EXAMPLE SKILLS - BEGINNER SIMPLE (UNDOCUMENTED)
+================================================================================
+calculator-helper: /home/user/claudius-skills/examples/beginner/simple-skills/calculator-helper/SKILL.md
+comment-generator: /home/user/claudius-skills/examples/beginner/simple-skills/comment-generator/SKILL.md
+file-organizer: /home/user/claudius-skills/examples/beginner/simple-skills/file-organizer/SKILL.md
+import-organizer: /home/user/claudius-skills/examples/beginner/simple-skills/import-organizer/SKILL.md
+todo-finder: /home/user/claudius-skills/examples/beginner/simple-skills/todo-finder/SKILL.md
+
+================================================================================
+EXAMPLE SKILLS - BEGINNER TESTING & MOBILE
+================================================================================
+app-icon-generator: /home/user/claudius-skills/examples/beginner/mobile-skills/app-icon-generator/SKILL.md
+mock-generator: /home/user/claudius-skills/examples/beginner/testing-skills/mock-generator/SKILL.md
+
+================================================================================
+EXAMPLE SKILLS - INTERMEDIATE FRAMEWORK (also in kits)
+================================================================================
+api-documentation-generator: /home/user/claudius-skills/examples/intermediate/framework-skills/api-documentation-generator/SKILL.md
+database-migration-helper: /home/user/claudius-skills/examples/intermediate/framework-skills/database-migration-helper/SKILL.md
+django-model-helper: /home/user/claudius-skills/examples/intermediate/framework-skills/django-model-helper/SKILL.md
+express-api-generator: /home/user/claudius-skills/examples/intermediate/framework-skills/express-api-generator/SKILL.md
+fastapi-generator: /home/user/claudius-skills/examples/intermediate/framework-skills/fastapi-generator/SKILL.md
+graphql-schema-generator: /home/user/claudius-skills/examples/intermediate/framework-skills/graphql-schema-generator/SKILL.md
+nextjs-page-generator: /home/user/claudius-skills/examples/intermediate/framework-skills/nextjs-page-generator/SKILL.md
+react-component-generator: /home/user/claudius-skills/examples/intermediate/framework-skills/react-component-generator/SKILL.md
+testing-framework-helper: /home/user/claudius-skills/examples/intermediate/framework-skills/testing-framework-helper/SKILL.md
+vue-component-generator: /home/user/claudius-skills/examples/intermediate/framework-skills/vue-component-generator/SKILL.md
+
+================================================================================
+EXAMPLE SKILLS - INTERMEDIATE PERFORMANCE
+================================================================================
+bundle-analyzer: /home/user/claudius-skills/examples/intermediate/performance-skills/bundle-analyzer/SKILL.md
+database-query-optimizer: /home/user/claudius-skills/examples/intermediate/performance-skills/database-query-optimizer/SKILL.md
+image-optimizer: /home/user/claudius-skills/examples/intermediate/performance-skills/image-optimizer/SKILL.md
+lighthouse-ci-integrator: /home/user/claudius-skills/examples/intermediate/performance-skills/lighthouse-ci-integrator/SKILL.md
+
+================================================================================
+EXAMPLE SKILLS - INTERMEDIATE SECURITY
+================================================================================
+dependency-scanner: /home/user/claudius-skills/examples/intermediate/security-skills/dependency-scanner/SKILL.md
+pii-detector: /home/user/claudius-skills/examples/intermediate/security-skills/pii-detector/SKILL.md
+security-header-generator: /home/user/claudius-skills/examples/intermediate/security-skills/security-header-generator/SKILL.md
+
+================================================================================
+EXAMPLE SKILLS - INTERMEDIATE TESTING
+================================================================================
+property-based-test-generator: /home/user/claudius-skills/examples/intermediate/testing-skills/property-based-test-generator/SKILL.md
+visual-regression-setup: /home/user/claudius-skills/examples/intermediate/testing-skills/visual-regression-setup/SKILL.md
+
+================================================================================
+EXAMPLE SKILLS - INTERMEDIATE DEVOPS
+================================================================================
+dockerfile-generator: /home/user/claudius-skills/examples/intermediate/devops-skills/dockerfile-generator/SKILL.md
+github-actions-builder: /home/user/claudius-skills/examples/intermediate/devops-skills/github-actions-builder/SKILL.md
+
+================================================================================
+EXAMPLE SKILLS - INTERMEDIATE DATA SCIENCE
+================================================================================
+data-cleaning-pipeline: /home/user/claudius-skills/examples/intermediate/data-science-skills/data-cleaning-pipeline/SKILL.md
+jupyter-assistant: /home/user/claudius-skills/examples/intermediate/data-science-skills/jupyter-assistant/SKILL.md
+
+================================================================================
+EXAMPLE SKILLS - INTERMEDIATE i18n
+================================================================================
+i18n-setup-wizard: /home/user/claudius-skills/examples/intermediate/i18n-skills/i18n-setup-wizard/SKILL.md
+translation-key-extractor: /home/user/claudius-skills/examples/intermediate/i18n-skills/translation-key-extractor/SKILL.md
+
+================================================================================
+EXAMPLE SKILLS - INTERMEDIATE ACCESSIBILITY, MOBILE, PRODUCTIVITY
+================================================================================
+a11y-annotation-generator: /home/user/claudius-skills/examples/intermediate/accessibility-skills/a11y-annotation-generator/SKILL.md
+react-native-component-generator: /home/user/claudius-skills/examples/intermediate/mobile-skills/react-native-component-generator/SKILL.md
+regex-pattern-builder: /home/user/claudius-skills/examples/intermediate/developer-productivity/regex-pattern-builder/SKILL.md
+
+================================================================================
+EXAMPLE SKILLS - ADVANCED ACCESSIBILITY, DEVOPS, GRAPHICS, WEB3
+================================================================================
+wcag-compliance-checker: /home/user/claudius-skills/examples/advanced/accessibility-skills/wcag-compliance-checker/SKILL.md
+kubernetes-manifest-generator: /home/user/claudius-skills/examples/advanced/devops-skills/kubernetes-manifest-generator/SKILL.md
+terraform-module-builder: /home/user/claudius-skills/examples/advanced/devops-skills/terraform-module-builder/SKILL.md
+threejs-scene-builder: /home/user/claudius-skills/examples/advanced/graphics-skills/threejs-scene-builder/SKILL.md
+smart-contract-generator: /home/user/claudius-skills/examples/advanced/web3-skills/smart-contract-generator/SKILL.md
+
