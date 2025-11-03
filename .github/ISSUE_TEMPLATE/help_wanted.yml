@@ -1,0 +1,93 @@
+name: Help Wanted
+description: Get help using Claudius Skills
+title: "[Help]: "
+labels: ["question", "help-wanted"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Need help? We're here to assist! Please provide as much detail as possible.
+
+  - type: dropdown
+    id: help-category
+    attributes:
+      label: What do you need help with?
+      description: Select the category that best fits your question
+      options:
+        - Getting Started
+        - Choosing the Right Kit
+        - Installing/Copying Kits
+        - Using Skills
+        - Using Slash Commands
+        - Configuring Hooks
+        - Working with Subagents
+        - Framework Integration
+        - Troubleshooting
+        - Best Practices
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: experience-level
+    attributes:
+      label: Your Experience Level with Claude Code
+      description: How familiar are you with Claude Code?
+      options:
+        - Complete Beginner
+        - Some Experience
+        - Intermediate
+        - Advanced
+    validations:
+      required: true
+
+  - type: textarea
+    id: question
+    attributes:
+      label: Your Question
+      description: What would you like help with?
+      placeholder: I'm trying to... but I'm stuck on...
+    validations:
+      required: true
+
+  - type: textarea
+    id: what-tried
+    attributes:
+      label: What Have You Tried?
+      description: What steps have you already taken?
+      placeholder: |
+        1. I tried...
+        2. I also attempted...
+    validations:
+      required: false
+
+  - type: textarea
+    id: project-context
+    attributes:
+      label: Project Context
+      description: Tell us about your project
+      placeholder: |
+        - Project Type: (e.g., React app, Python API, etc.)
+        - Framework: (if applicable)
+        - What you're building:
+    validations:
+      required: false
+
+  - type: textarea
+    id: error-output
+    attributes:
+      label: Error Messages or Output
+      description: If applicable, paste any error messages or unexpected output
+      render: shell
+      placeholder: |
+        Error: ...
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Information
+      description: Any other details that might help us assist you
+    validations:
+      required: false

@@ -1,0 +1,11 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 💬 Discussions
+    url: https://github.com/Dexploarer/claudius-skills/discussions
+    about: Ask questions, share ideas, and engage with the community
+  - name: 📚 Documentation
+    url: https://github.com/Dexploarer/claudius-skills/tree/main/docs
+    about: Read the comprehensive documentation and guides
+  - name: 🚀 Quick Start Guide
+    url: https://github.com/Dexploarer/claudius-skills/blob/main/docs/getting-started/README.md
+    about: Get started with Claudius Skills in minutes

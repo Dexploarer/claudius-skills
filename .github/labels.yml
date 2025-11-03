@@ -1,0 +1,137 @@
+# GitHub Labels Configuration
+# This file can be used with https://github.com/marketplace/actions/github-labeler
+
+# Issue Type Labels
+- name: "bug"
+  color: "d73a4a"
+  description: "Something isn't working"
+
+- name: "enhancement"
+  color: "a2eeef"
+  description: "New feature or request"
+
+- name: "question"
+  color: "d876e3"
+  description: "Further information is requested"
+
+- name: "help-wanted"
+  color: "008672"
+  description: "Extra attention is needed"
+
+- name: "documentation"
+  color: "0075ca"
+  description: "Improvements or additions to documentation"
+
+# Status Labels
+- name: "needs-triage"
+  color: "fbca04"
+  description: "Needs initial review and categorization"
+
+- name: "needs-review"
+  color: "fbca04"
+  description: "Awaiting review from maintainers"
+
+- name: "in-progress"
+  color: "0e8a16"
+  description: "Currently being worked on"
+
+- name: "blocked"
+  color: "b60205"
+  description: "Blocked by dependencies or other issues"
+
+# Component Labels
+- name: "skill"
+  color: "ff7518"
+  description: "Related to skills"
+
+- name: "command"
+  color: "c5def5"
+  description: "Related to slash commands"
+
+- name: "hook"
+  color: "1d76db"
+  description: "Related to hooks"
+
+- name: "agent"
+  color: "5319e7"
+  description: "Related to subagents"
+
+- name: "framework"
+  color: "bfdadc"
+  description: "Related to framework rules"
+
+- name: "template"
+  color: "d4c5f9"
+  description: "Related to templates"
+
+# Kit Labels
+- name: "starter-kit"
+  color: "d4edda"
+  description: "Related to Starter Kit (Level 1)"
+
+- name: "intermediate-kit"
+  color: "fff3cd"
+  description: "Related to Intermediate Kit (Level 2)"
+
+- name: "advanced-kit"
+  color: "f8d7da"
+  description: "Related to Advanced Kit (Level 4)"
+
+- name: "productivity-kit"
+  color: "e7e7ff"
+  description: "Related to Productivity Skills Kit"
+
+- name: "competitive-ai-kit"
+  color: "ffe7e7"
+  description: "Related to Competitive AI Frameworks Kit"
+
+- name: "eliza-os-kit"
+  color: "f0e7ff"
+  description: "Related to Eliza OS Kit"
+
+# Priority Labels
+- name: "priority: critical"
+  color: "b60205"
+  description: "Critical priority"
+
+- name: "priority: high"
+  color: "d93f0b"
+  description: "High priority"
+
+- name: "priority: medium"
+  color: "fbca04"
+  description: "Medium priority"
+
+- name: "priority: low"
+  color: "0e8a16"
+  description: "Low priority"
+
+# Special Labels
+- name: "good first issue"
+  color: "7057ff"
+  description: "Good for newcomers"
+
+- name: "duplicate"
+  color: "cfd3d7"
+  description: "This issue or pull request already exists"
+
+- name: "invalid"
+  color: "e4e669"
+  description: "This doesn't seem right"
+
+- name: "wontfix"
+  color: "ffffff"
+  description: "This will not be worked on"
+
+# Workflow Labels
+- name: "breaking-change"
+  color: "d73a4a"
+  description: "Introduces breaking changes"
+
+- name: "dependencies"
+  color: "0366d6"
+  description: "Pull requests that update a dependency file"
+
+- name: "security"
+  color: "ee0701"
+  description: "Security-related changes"
