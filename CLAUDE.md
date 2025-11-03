@@ -15,7 +15,7 @@
 4. **Subagents** - Specialized AI consultants
 5. **MCP Servers** - External service integrations
 
-**Current Status:** 🎉 100% COMPLETE (87 skills + 36 hooks + 80+ commands + 46 agents + 17 frameworks) ✨
+**Current Status:** 🎉 100% COMPLETE (92 skills + 36 hooks + 86 commands + 50 agents + 17 frameworks) ✨
 
 ---
 
@@ -31,6 +31,7 @@ claudius-skills/
 │   └── intermediate-kit/        # Advanced productivity skills
 ├── competitive-ai-frameworks/    # AI competition tools (3 skills, 3 commands, 12 agents) 🆕
 ├── eliza-os-kit/                # ElizaOS integration (6 skills, 8 commands, 6 agents) 🆕
+├── railway-deployment-kit/      # Railway.app deployment (5 skills, 6 commands, 4 agents) 🆕
 ├── examples/                     # Multi-level examples (Beginner → Master)
 │   ├── beginner/                # Learning-focused examples (10+ categories)
 │   ├── intermediate/            # Production patterns (17+ categories)
@@ -421,6 +422,48 @@ Use character-generator to create a new character
 - `eliza-os-kit/.claude/rules/elizaos-core-runtime.md` - Runtime documentation
 - `eliza-os-kit/.claude/rules/elizaos-plugin-patterns.md` - Plugin development patterns
 - `eliza-os-kit/.claude/rules/plugin-registry.md` - Plugin registry reference
+
+#### Railway Deployment Kit 🆕
+**Location:** `railway-deployment-kit/.claude/`
+**Focus:** Railway.app deployment and infrastructure management
+**Contents:** 5 skills, 6 commands, 4 specialist agents
+
+Use when:
+- Deploying applications to Railway.app
+- Managing PostgreSQL databases on Railway
+- Setting up MinIO object storage (S3-compatible)
+- Implementing Qdrant vector databases for AI
+- Managing multi-environment deployments
+- Configuring private networking
+- Building RAG systems and AI applications
+
+**Quick Start:**
+```bash
+cp -r railway-deployment-kit/.claude /path/to/your/project/
+# Install Railway CLI
+npm i -g @railway/cli
+railway login
+# Use the initialization command
+/railway-init-project
+```
+
+**Skills:**
+- `railway-deployment-automator` - Complete deployment automation
+- `minio-storage-manager` - S3-compatible object storage management
+- `railway-postgres-manager` - PostgreSQL operations and migrations
+- `railway-qdrant-manager` - Vector database for AI applications
+- `railway-environment-manager` - Environment and variable management
+
+**Agents:**
+- `railway-deployment-specialist` - Deployment and infrastructure expert
+- `railway-database-architect` - Database design and optimization
+- `railway-storage-specialist` - MinIO and object storage expert
+- `railway-ai-specialist` - AI/ML and vector database consultant
+
+**Documentation:**
+- `railway-deployment-kit/README.md` - Complete usage guide
+- `railway-deployment-kit/.claude/rules/CLAUDE.md` - Railway platform knowledge
+- `railway-deployment-kit/templates/` - Configuration templates
 
 ---
 
