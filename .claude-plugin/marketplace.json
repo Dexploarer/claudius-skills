@@ -21,7 +21,7 @@
         "name": "Claudius Skills Team",
         "email": "dexploarer@gmail.com"
       },
-      "source": ".",
+      "source": "./.",
       "category": "development",
       "keywords": [
         "core",
@@ -40,7 +40,7 @@
         "name": "Claudius Skills Team",
         "email": "support@claudius-skills.dev"
       },
-      "source": "starter-kit",
+      "source": "./starter-kit",
       "category": "learning",
       "keywords": [
         "beginner",
@@ -62,7 +62,7 @@
         "name": "Claudius Skills Team",
         "email": "support@claudius-skills.dev"
       },
-      "source": "intermediate-kit",
+      "source": "./intermediate-kit",
       "category": "productivity",
       "keywords": [
         "intermediate",
@@ -87,7 +87,7 @@
         "name": "Claudius Skills Team",
         "email": "support@claudius-skills.dev"
       },
-      "source": "advanced-kit",
+      "source": "./advanced-kit",
       "category": "development",
       "keywords": [
         "enterprise",
@@ -111,7 +111,7 @@
         "name": "Claudius Skills Team",
         "email": "support@claudius-skills.dev"
       },
-      "source": "railway-deployment-kit",
+      "source": "./railway-deployment-kit",
       "category": "development",
       "keywords": [
         "railway",
@@ -133,7 +133,7 @@
         "name": "Claudius Skills Team",
         "email": "support@claudius-skills.dev"
       },
-      "source": "eliza-os-kit",
+      "source": "./eliza-os-kit",
       "category": "development",
       "keywords": [
         "elizaos",
@@ -155,7 +155,7 @@
         "name": "Claudius Skills Team",
         "email": "support@claudius-skills.dev"
       },
-      "source": "competitive-ai-frameworks",
+      "source": "./competitive-ai-frameworks",
       "category": "development",
       "keywords": [
         "ai",
@@ -177,7 +177,7 @@
         "name": "Claudius Skills Team",
         "email": "support@claudius-skills.dev"
       },
-      "source": "productivity-skills/starter-kit",
+      "source": "./productivity-skills/starter-kit",
       "category": "productivity",
       "keywords": [
         "productivity",
@@ -196,7 +196,7 @@
         "name": "Claudius Skills Team",
         "email": "support@claudius-skills.dev"
       },
-      "source": "productivity-skills/intermediate-kit",
+      "source": "./productivity-skills/intermediate-kit",
       "category": "productivity",
       "keywords": [
         "productivity",
@@ -215,7 +215,7 @@
         "name": "Claudius Skills Team",
         "email": "support@claudius-skills.dev"
       },
-      "source": "external-repo-bootstrap",
+      "source": "./external-repo-bootstrap",
       "category": "utility",
       "keywords": [
         "bootstrap",
@@ -234,7 +234,7 @@
         "name": "Claudius Skills Team",
         "email": "support@claudius-skills.dev"
       },
-      "source": "hooks-collection/development-safety",
+      "source": "./hooks-collection/development-safety",
       "category": "security",
       "keywords": [
         "hooks",
@@ -253,7 +253,7 @@
         "name": "Claudius Skills Team",
         "email": "support@claudius-skills.dev"
       },
-      "source": "hooks-collection/production-deployment",
+      "source": "./hooks-collection/production-deployment",
       "category": "development",
       "keywords": [
         "hooks",
@@ -272,7 +272,7 @@
         "name": "Claudius Skills Team",
         "email": "support@claudius-skills.dev"
       },
-      "source": "hooks-collection/code-quality",
+      "source": "./hooks-collection/code-quality",
       "category": "development",
       "keywords": [
         "hooks",
@@ -291,7 +291,7 @@
         "name": "Claudius Skills Team",
         "email": "support@claudius-skills.dev"
       },
-      "source": "hooks-collection/security-enforcement",
+      "source": "./hooks-collection/security-enforcement",
       "category": "security",
       "keywords": [
         "hooks",
@@ -310,7 +310,7 @@
         "name": "Claudius Skills Team",
         "email": "support@claudius-skills.dev"
       },
-      "source": "hooks-collection/knowledge-cutoff",
+      "source": "./hooks-collection/knowledge-cutoff",
       "category": "development",
       "keywords": [
         "hooks",
@@ -329,7 +329,7 @@
         "name": "Claudius Skills Team",
         "email": "support@claudius-skills.dev"
       },
-      "source": "hooks-collection/strict-typing",
+      "source": "./hooks-collection/strict-typing",
       "category": "development",
       "keywords": [
         "hooks",
@@ -348,7 +348,7 @@
         "name": "Claudius Skills Team",
         "email": "support@claudius-skills.dev"
       },
-      "source": "framework-rules/react",
+      "source": "./framework-rules/react",
       "category": "development",
       "keywords": [
         "react",
@@ -366,7 +366,7 @@
         "name": "Claudius Skills Team",
         "email": "support@claudius-skills.dev"
       },
-      "source": "framework-rules/vue",
+      "source": "./framework-rules/vue",
       "category": "development",
       "keywords": [
         "vue",
@@ -385,7 +385,7 @@
         "name": "Claudius Skills Team",
         "email": "support@claudius-skills.dev"
       },
-      "source": "framework-rules/nextjs",
+      "source": "./framework-rules/nextjs",
       "category": "development",
       "keywords": [
         "nextjs",
@@ -404,7 +404,7 @@
         "name": "Claudius Skills Team",
         "email": "support@claudius-skills.dev"
       },
-      "source": "framework-rules/django",
+      "source": "./framework-rules/django",
       "category": "development",
       "keywords": [
         "django",
@@ -423,7 +423,7 @@
         "name": "Claudius Skills Team",
         "email": "support@claudius-skills.dev"
       },
-      "source": "framework-rules/fastapi",
+      "source": "./framework-rules/fastapi",
       "category": "development",
       "keywords": [
         "fastapi",
@@ -442,7 +442,7 @@
         "name": "Claudius Skills Team",
         "email": "support@claudius-skills.dev"
       },
-      "source": "examples/beginner",
+      "source": "./examples/beginner",
       "category": "learning",
       "keywords": [
         "examples",
@@ -461,7 +461,7 @@
         "name": "Claudius Skills Team",
         "email": "support@claudius-skills.dev"
       },
-      "source": "examples/intermediate",
+      "source": "./examples/intermediate",
       "category": "learning",
       "keywords": [
         "examples",
@@ -480,7 +480,7 @@
         "name": "Claudius Skills Team",
         "email": "support@claudius-skills.dev"
       },
-      "source": "examples/advanced",
+      "source": "./examples/advanced",
       "category": "learning",
       "keywords": [
         "examples",
@@ -499,7 +499,7 @@
         "name": "Claudius Skills Team",
         "email": "support@claudius-skills.dev"
       },
-      "source": "modern-commands",
+      "source": "./modern-commands",
       "category": "productivity",
       "keywords": [
         "commands",
@@ -518,7 +518,7 @@
         "name": "Claudius Skills Team",
         "email": "support@claudius-skills.dev"
       },
-      "source": "specialized-agents",
+      "source": "./specialized-agents",
       "category": "development",
       "keywords": [
         "agents",
