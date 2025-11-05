@@ -1,295 +1,533 @@
 {
-  "name": "claudius-skills",
-  "displayName": "Claudius Skills Marketplace",
-  "description": "Production-ready Claude Code extensibility configurations for developers at every level",
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "claudius-skills-marketplace",
   "version": "1.0.0",
-  "owner": {
-    "name": "Claudius Skills Project",
-    "email": "dexploarer@gmail.com",
-    "url": "https://github.com/Dexploarer/claudius-skills"
-  },
+  "description": "Production-ready Claude Code extensibility configurations covering all five pillars: Skills (87), Slash Commands (80+), Hooks (36), Subagents (46), and MCP Servers (20+). Progressive learning from beginner to enterprise level.",
   "repository": {
     "type": "git",
     "url": "https://github.com/Dexploarer/claudius-skills.git"
   },
+  "owner": {
+    "name": "Claudius Skills Team",
+    "email": "dexploarer@gmail.com",
+    "url": "https://github.com/Dexploarer/claudius-skills"
+  },
   "plugins": [
     {
-      "name": "starter-kit",
-      "displayName": "Starter Kit",
-      "description": "5 essential skills, 12 commands, 4 agents for learning Claude Code",
+      "name": "claudius-core",
       "version": "1.0.0",
-      "source": "./starter-kit",
-      "category": "beginner",
-      "tags": ["beginner", "learning", "essentials", "starter"],
-      "stats": {
-        "skills": 5,
-        "commands": 12,
-        "agents": 4
+      "description": "Core skills and rules: version-checker, class-builder, knowledge cutoff awareness, and strict TypeScript patterns",
+      "author": {
+        "name": "Claudius Skills Team",
+        "email": "dexploarer@gmail.com"
       },
-      "bestFor": "Learning Claude Code, simple projects",
-      "includes": [
-        "README generation",
-        "Code explanation",
-        "Bug finding",
-        "Testing helpers",
-        "Git workflows"
-      ]
+      "source": ".",
+      "category": "development",
+      "keywords": [
+        "core",
+        "typescript",
+        "knowledge-cutoff",
+        "version-checking",
+        "strict-typing"
+      ],
+      "readme": "Core Claude Code configurations with critical safety systems including knowledge cutoff awareness and strict TypeScript type checking."
+    },
+    {
+      "name": "starter-kit",
+      "version": "1.0.0",
+      "description": "Beginner-friendly starter kit with 5 skills, 12 commands, 4 subagents, and 5 hooks covering essential development workflows",
+      "author": {
+        "name": "Claudius Skills Team",
+        "email": "support@claudius-skills.dev"
+      },
+      "source": "starter-kit",
+      "category": "learning",
+      "keywords": [
+        "beginner",
+        "starter",
+        "learning",
+        "git-helper",
+        "readme-generator",
+        "code-explainer",
+        "bug-finder",
+        "test-helper"
+      ],
+      "readme": "Perfect starting point for Claude Code beginners. Includes readme-generator, code-explainer, bug-finder, test-helper, and git-helper skills with intuitive slash commands."
     },
     {
       "name": "intermediate-kit",
-      "displayName": "Intermediate Kit",
-      "description": "10 framework skills, 15 commands, 6 agents for production applications",
       "version": "1.0.0",
-      "source": "./intermediate-kit",
-      "category": "intermediate",
-      "tags": ["production", "frameworks", "modern-web", "api"],
-      "stats": {
-        "skills": 10,
-        "commands": 15,
-        "agents": 6
+      "description": "Production-ready kit with 10 framework-specific skills, 15 workflow commands, 6 domain experts, and advanced hooks",
+      "author": {
+        "name": "Claudius Skills Team",
+        "email": "support@claudius-skills.dev"
       },
-      "bestFor": "Production applications, modern frameworks",
-      "includes": [
-        "React components",
-        "Vue components",
-        "Next.js pages",
-        "Django models",
-        "FastAPI endpoints",
-        "Express routes",
-        "GraphQL schemas",
-        "API documentation",
-        "Database migrations",
-        "Testing frameworks"
-      ]
+      "source": "intermediate-kit",
+      "category": "productivity",
+      "keywords": [
+        "intermediate",
+        "production",
+        "react",
+        "vue",
+        "express",
+        "fastapi",
+        "django",
+        "nextjs",
+        "graphql",
+        "testing",
+        "api-docs"
+      ],
+      "readme": "Framework-specific development with React, Vue, Express, FastAPI, Django, Next.js, GraphQL generators plus deployment, security, and performance commands."
     },
     {
       "name": "advanced-kit",
-      "displayName": "Advanced Kit",
-      "description": "15 enterprise skills, 20 commands, 10 agents for enterprise systems",
       "version": "1.0.0",
-      "source": "./advanced-kit",
-      "category": "advanced",
-      "tags": ["enterprise", "microservices", "observability", "compliance"],
-      "stats": {
-        "skills": 15,
-        "commands": 20,
-        "agents": 10
+      "description": "Enterprise-grade kit with 15 skills, 20 commands, 10 specialist agents for microservices, compliance, and platform engineering",
+      "author": {
+        "name": "Claudius Skills Team",
+        "email": "support@claudius-skills.dev"
       },
-      "bestFor": "Enterprise systems, compliance, observability",
-      "includes": [
-        "Microservices architecture",
-        "Distributed tracing",
-        "Compliance automation",
-        "Security scanning",
-        "Performance optimization",
-        "Incident management",
-        "SRE workflows",
-        "Platform engineering"
-      ]
+      "source": "advanced-kit",
+      "category": "development",
+      "keywords": [
+        "enterprise",
+        "advanced",
+        "microservices",
+        "compliance",
+        "soc2",
+        "hipaa",
+        "gdpr",
+        "observability",
+        "platform-engineering",
+        "service-mesh"
+      ],
+      "readme": "Enterprise architecture with microservices orchestration, compliance frameworks (SOC2/HIPAA/GDPR), distributed tracing, and internal platform building."
     },
     {
-      "name": "productivity-starter",
-      "displayName": "Productivity Starter Kit",
-      "description": "5 productivity skills, 13 commands, 4 agents for personal productivity",
+      "name": "railway-deployment-kit",
       "version": "1.0.0",
-      "source": "./productivity-skills/starter-kit",
-      "category": "productivity",
-      "tags": ["productivity", "workflow", "personal", "team"],
-      "stats": {
-        "skills": 5,
-        "commands": 13,
-        "agents": 4
+      "description": "Complete Railway.app deployment toolkit with 5 skills, 6 commands, 4 specialists for PostgreSQL, MinIO, Qdrant, and multi-environment management",
+      "author": {
+        "name": "Claudius Skills Team",
+        "email": "support@claudius-skills.dev"
       },
-      "bestFor": "Personal and team productivity workflows",
-      "includes": [
-        "Brainstorming sessions",
-        "Email composition",
-        "Meeting notes",
-        "Report writing",
-        "Task management"
-      ]
-    },
-    {
-      "name": "productivity-intermediate",
-      "displayName": "Productivity Intermediate Kit",
-      "description": "1 advanced productivity skill for presentation generation",
-      "version": "1.0.0",
-      "source": "./productivity-skills/intermediate-kit",
-      "category": "productivity",
-      "tags": ["productivity", "presentations", "advanced"],
-      "stats": {
-        "skills": 1,
-        "commands": 0,
-        "agents": 0
-      },
-      "bestFor": "Advanced productivity and presentation creation",
-      "includes": [
-        "Presentation generation"
-      ]
-    },
-    {
-      "name": "competitive-ai",
-      "displayName": "Competitive AI Frameworks",
-      "description": "3 competition skills, 3 commands, 12 team agents for AI competitions",
-      "version": "1.0.0",
-      "source": "./competitive-ai-frameworks",
-      "category": "specialized",
-      "tags": ["competition", "ai", "team-based", "quality"],
-      "stats": {
-        "skills": 3,
-        "commands": 3,
-        "agents": 12
-      },
-      "bestFor": "AI-powered code competitions and team challenges",
-      "includes": [
-        "Bug hunting",
-        "Code quality analysis",
-        "User flow testing",
-        "Team coordination",
-        "Competitive scoring"
-      ]
+      "source": "railway-deployment-kit",
+      "category": "development",
+      "keywords": [
+        "railway",
+        "deployment",
+        "postgres",
+        "minio",
+        "qdrant",
+        "storage",
+        "vector-db",
+        "paas"
+      ],
+      "readme": "Railway.app deployment automation with PostgreSQL management, MinIO object storage, Qdrant vector database, and production deployment workflows."
     },
     {
       "name": "eliza-os-kit",
-      "displayName": "Eliza OS Development Kit",
-      "description": "6 ElizaOS skills, 8 commands, 6 agents for building AI agents",
       "version": "1.0.0",
-      "source": "./eliza-os-kit",
-      "category": "specialized",
-      "tags": ["elizaos", "ai-agents", "framework", "deployment"],
-      "stats": {
-        "skills": 6,
-        "commands": 8,
-        "agents": 6
+      "description": "Master-level elizaOS development kit with 6 skills, 8 commands, 6 specialists, and 17 hooks for AI agent development",
+      "author": {
+        "name": "Claudius Skills Team",
+        "email": "support@claudius-skills.dev"
       },
-      "bestFor": "Building AI agents with ElizaOS framework",
-      "includes": [
-        "Character generation",
-        "Agent deployment",
-        "Knowledge base management",
-        "Memory architecture",
-        "Plugin development",
-        "Testing and debugging"
-      ]
+      "source": "eliza-os-kit",
+      "category": "development",
+      "keywords": [
+        "elizaos",
+        "ai-agents",
+        "character-generator",
+        "plugin-builder",
+        "knowledge-base",
+        "memory-management",
+        "rag",
+        "llm"
+      ],
+      "readme": "Complete elizaOS framework development with character generation, plugin scaffolding, knowledge base building, memory optimization, and production deployment."
     },
     {
-      "name": "railway-deployment",
-      "displayName": "Railway Deployment Kit",
-      "description": "5 Railway deployment skills for deployment automation",
+      "name": "competitive-ai-frameworks",
       "version": "1.0.0",
-      "source": "./railway-deployment-kit",
-      "category": "specialized",
-      "tags": ["railway", "deployment", "devops", "automation"],
-      "stats": {
-        "skills": 5,
-        "commands": 0,
-        "agents": 0
+      "description": "Multi-agent competitive simulations with 3 skills and 12 specialist agents for bug hunting, code quality, and user flow testing",
+      "author": {
+        "name": "Claudius Skills Team",
+        "email": "support@claudius-skills.dev"
       },
-      "bestFor": "Automating deployments to Railway.app",
-      "includes": [
-        "Railway configuration",
-        "Deployment automation",
-        "Environment management",
-        "Database setup",
-        "Monitoring integration"
-      ]
+      "source": "competitive-ai-frameworks",
+      "category": "development",
+      "keywords": [
+        "ai",
+        "competitive",
+        "bug-hunting",
+        "security",
+        "code-quality",
+        "testing",
+        "reinforcement-learning",
+        "multi-agent"
+      ],
+      "readme": "Team-based AI simulations for bug hunting, code quality assessment, and user flow testing with reinforcement learning and competitive scoring."
     },
     {
-      "name": "hooks-collection",
-      "displayName": "Production Hooks Collection",
-      "description": "36 production hooks across 7 categories for automation",
+      "name": "productivity-starter",
       "version": "1.0.0",
-      "source": "./hooks-collection",
-      "category": "enhancement",
-      "tags": ["hooks", "automation", "safety", "quality"],
-      "stats": {
-        "hooks": 36
+      "description": "Productivity-focused starter kit with 5 essential workflow skills for daily development tasks",
+      "author": {
+        "name": "Claudius Skills Team",
+        "email": "support@claudius-skills.dev"
       },
-      "bestFor": "Event-driven automation and safety checks",
-      "includes": [
-        "Development safety (5 hooks)",
-        "Production deployment (5 hooks)",
-        "Code quality (5 hooks)",
-        "Security enforcement (5 hooks)",
-        "Performance monitoring (5 hooks)",
-        "Knowledge cutoff awareness (5 hooks)",
-        "Strict typing (6 hooks)"
-      ]
+      "source": "productivity-skills/starter-kit",
+      "category": "productivity",
+      "keywords": [
+        "productivity",
+        "workflow",
+        "efficiency",
+        "automation",
+        "daily-tasks"
+      ],
+      "readme": "Boost daily productivity with workflow automation, task management, and efficiency-focused skills for common development tasks."
     },
     {
-      "name": "framework-rules",
-      "displayName": "Framework Integration Rules",
-      "description": "17 framework-specific configuration rules",
+      "name": "productivity-intermediate",
       "version": "1.0.0",
-      "source": "./framework-rules",
-      "category": "enhancement",
-      "tags": ["frameworks", "rules", "configuration"],
-      "stats": {
-        "frameworks": 17
+      "description": "Advanced productivity kit with sophisticated workflow automation and team collaboration features",
+      "author": {
+        "name": "Claudius Skills Team",
+        "email": "support@claudius-skills.dev"
       },
-      "bestFor": "Framework-specific best practices and configurations",
-      "includes": [
-        "React",
-        "Vue",
-        "Next.js",
-        "Nuxt3",
-        "Angular",
-        "Svelte",
-        "SvelteKit",
-        "Astro",
-        "Fresh",
-        "Qwik",
-        "Remix",
-        "SolidJS",
-        "Django",
-        "FastAPI",
-        "Express",
-        "NestJS",
-        "Spring Boot"
-      ]
+      "source": "productivity-skills/intermediate-kit",
+      "category": "productivity",
+      "keywords": [
+        "productivity",
+        "advanced",
+        "collaboration",
+        "automation",
+        "team-workflows"
+      ],
+      "readme": "Advanced productivity features with team collaboration, sophisticated automation, and enterprise workflow management."
+    },
+    {
+      "name": "external-repo-bootstrap",
+      "version": "1.0.0",
+      "description": "Bootstrap kit for accessing Claudius Skills from external repositories with 3 essential skills and commands",
+      "author": {
+        "name": "Claudius Skills Team",
+        "email": "support@claudius-skills.dev"
+      },
+      "source": "external-repo-bootstrap",
+      "category": "utility",
+      "keywords": [
+        "bootstrap",
+        "external",
+        "setup",
+        "installation",
+        "quick-start"
+      ],
+      "readme": "Quick setup for external projects to access and use Claudius Skills configurations without full repository cloning."
+    },
+    {
+      "name": "hooks-collection-development-safety",
+      "version": "1.0.0",
+      "description": "5 essential development safety hooks preventing common mistakes and enforcing best practices",
+      "author": {
+        "name": "Claudius Skills Team",
+        "email": "support@claudius-skills.dev"
+      },
+      "source": "hooks-collection/development-safety",
+      "category": "security",
+      "keywords": [
+        "hooks",
+        "safety",
+        "prevention",
+        "git",
+        "security"
+      ],
+      "readme": "Prevent common mistakes with hooks for force push protection, secret detection, destructive operation confirmation, and .env file safety."
+    },
+    {
+      "name": "hooks-collection-production-deployment",
+      "version": "1.0.0",
+      "description": "5 production deployment safety hooks ensuring safe releases and deployments",
+      "author": {
+        "name": "Claudius Skills Team",
+        "email": "support@claudius-skills.dev"
+      },
+      "source": "hooks-collection/production-deployment",
+      "category": "development",
+      "keywords": [
+        "hooks",
+        "deployment",
+        "production",
+        "safety",
+        "cicd"
+      ],
+      "readme": "Production deployment safety with pre-deployment checks, migration confirmations, and rollback protection."
+    },
+    {
+      "name": "hooks-collection-code-quality",
+      "version": "1.0.0",
+      "description": "5 code quality enforcement hooks for maintaining standards and best practices",
+      "author": {
+        "name": "Claudius Skills Team",
+        "email": "support@claudius-skills.dev"
+      },
+      "source": "hooks-collection/code-quality",
+      "category": "development",
+      "keywords": [
+        "hooks",
+        "quality",
+        "linting",
+        "testing",
+        "standards"
+      ],
+      "readme": "Enforce code quality with pre-commit linting, test requirements, coverage thresholds, and complexity checks."
+    },
+    {
+      "name": "hooks-collection-security-enforcement",
+      "version": "1.0.0",
+      "description": "5 security enforcement hooks for vulnerability scanning and compliance",
+      "author": {
+        "name": "Claudius Skills Team",
+        "email": "support@claudius-skills.dev"
+      },
+      "source": "hooks-collection/security-enforcement",
+      "category": "security",
+      "keywords": [
+        "hooks",
+        "security",
+        "vulnerabilities",
+        "compliance",
+        "scanning"
+      ],
+      "readme": "Security enforcement with dependency scanning, license compliance, CORS validation, and security header checks."
+    },
+    {
+      "name": "hooks-collection-knowledge-cutoff",
+      "version": "1.0.0",
+      "description": "5 knowledge cutoff awareness hooks for version verification and API compatibility checking",
+      "author": {
+        "name": "Claudius Skills Team",
+        "email": "support@claudius-skills.dev"
+      },
+      "source": "hooks-collection/knowledge-cutoff",
+      "category": "development",
+      "keywords": [
+        "hooks",
+        "knowledge-cutoff",
+        "version-checking",
+        "compatibility",
+        "verification"
+      ],
+      "readme": "Verify current package versions, API compatibility, and breaking changes to prevent knowledge cutoff issues."
+    },
+    {
+      "name": "hooks-collection-strict-typing",
+      "version": "1.0.0",
+      "description": "6 strict TypeScript typing hooks enforcing zero-any and explicit types",
+      "author": {
+        "name": "Claudius Skills Team",
+        "email": "support@claudius-skills.dev"
+      },
+      "source": "hooks-collection/strict-typing",
+      "category": "development",
+      "keywords": [
+        "hooks",
+        "typescript",
+        "strict-typing",
+        "type-safety",
+        "quality"
+      ],
+      "readme": "Enforce strict TypeScript patterns with no-any validation, explicit return types, class preferences, and full type safety."
+    },
+    {
+      "name": "framework-rules-react",
+      "version": "1.0.0",
+      "description": "React framework best practices and patterns",
+      "author": {
+        "name": "Claudius Skills Team",
+        "email": "support@claudius-skills.dev"
+      },
+      "source": "framework-rules/react",
+      "category": "development",
+      "keywords": [
+        "react",
+        "framework",
+        "rules",
+        "best-practices"
+      ],
+      "readme": "React-specific development rules and best practices for component architecture, hooks, and state management."
+    },
+    {
+      "name": "framework-rules-vue",
+      "version": "1.0.0",
+      "description": "Vue 3 framework best practices with Composition API",
+      "author": {
+        "name": "Claudius Skills Team",
+        "email": "support@claudius-skills.dev"
+      },
+      "source": "framework-rules/vue",
+      "category": "development",
+      "keywords": [
+        "vue",
+        "vue3",
+        "framework",
+        "composition-api",
+        "rules"
+      ],
+      "readme": "Vue 3 development patterns with Composition API, TypeScript integration, and component best practices."
+    },
+    {
+      "name": "framework-rules-nextjs",
+      "version": "1.0.0",
+      "description": "Next.js 13+ App Router patterns and best practices",
+      "author": {
+        "name": "Claudius Skills Team",
+        "email": "support@claudius-skills.dev"
+      },
+      "source": "framework-rules/nextjs",
+      "category": "development",
+      "keywords": [
+        "nextjs",
+        "react",
+        "app-router",
+        "ssr",
+        "framework"
+      ],
+      "readme": "Next.js 13+ development with App Router, Server/Client Components, and data fetching patterns."
+    },
+    {
+      "name": "framework-rules-django",
+      "version": "1.0.0",
+      "description": "Django framework patterns for Python web development",
+      "author": {
+        "name": "Claudius Skills Team",
+        "email": "support@claudius-skills.dev"
+      },
+      "source": "framework-rules/django",
+      "category": "development",
+      "keywords": [
+        "django",
+        "python",
+        "web",
+        "orm",
+        "framework"
+      ],
+      "readme": "Django development patterns with model design, view patterns, ORM best practices, and security."
+    },
+    {
+      "name": "framework-rules-fastapi",
+      "version": "1.0.0",
+      "description": "FastAPI async patterns and Pydantic models",
+      "author": {
+        "name": "Claudius Skills Team",
+        "email": "support@claudius-skills.dev"
+      },
+      "source": "framework-rules/fastapi",
+      "category": "development",
+      "keywords": [
+        "fastapi",
+        "python",
+        "async",
+        "pydantic",
+        "api"
+      ],
+      "readme": "FastAPI development with async/await patterns, Pydantic validation, and OpenAPI documentation."
+    },
+    {
+      "name": "example-skills-beginner",
+      "version": "1.0.0",
+      "description": "7 beginner-level example skills for learning Claude Code extensibility",
+      "author": {
+        "name": "Claudius Skills Team",
+        "email": "support@claudius-skills.dev"
+      },
+      "source": "examples/beginner",
+      "category": "learning",
+      "keywords": [
+        "examples",
+        "beginner",
+        "learning",
+        "tutorial",
+        "education"
+      ],
+      "readme": "Learn Claude Code basics with simple, well-documented example skills covering common development tasks."
+    },
+    {
+      "name": "example-skills-intermediate",
+      "version": "1.0.0",
+      "description": "19 intermediate-level example skills with framework-specific and niche capabilities",
+      "author": {
+        "name": "Claudius Skills Team",
+        "email": "support@claudius-skills.dev"
+      },
+      "source": "examples/intermediate",
+      "category": "learning",
+      "keywords": [
+        "examples",
+        "intermediate",
+        "frameworks",
+        "patterns",
+        "advanced"
+      ],
+      "readme": "Intermediate examples including framework generators, workflow automation, security patterns, and performance optimization."
+    },
+    {
+      "name": "example-skills-advanced",
+      "version": "1.0.0",
+      "description": "14 advanced example skills covering emerging technologies and complex patterns",
+      "author": {
+        "name": "Claudius Skills Team",
+        "email": "support@claudius-skills.dev"
+      },
+      "source": "examples/advanced",
+      "category": "learning",
+      "keywords": [
+        "examples",
+        "advanced",
+        "emerging-tech",
+        "complex",
+        "patterns"
+      ],
+      "readme": "Advanced patterns including WebAssembly, GraphQL federation, blockchain, edge computing, and complex architectures."
+    },
+    {
+      "name": "modern-commands",
+      "version": "1.0.0",
+      "description": "10 modern workflow commands for contemporary development practices",
+      "author": {
+        "name": "Claudius Skills Team",
+        "email": "support@claudius-skills.dev"
+      },
+      "source": "modern-commands",
+      "category": "productivity",
+      "keywords": [
+        "commands",
+        "workflows",
+        "modern",
+        "automation",
+        "devops"
+      ],
+      "readme": "Modern development commands including AI-assisted workflows, containerization, observability, and GitOps patterns."
+    },
+    {
+      "name": "specialized-agents",
+      "version": "1.0.0",
+      "description": "4 specialized consultant agents for expert domain guidance",
+      "author": {
+        "name": "Claudius Skills Team",
+        "email": "support@claudius-skills.dev"
+      },
+      "source": "specialized-agents",
+      "category": "development",
+      "keywords": [
+        "agents",
+        "specialists",
+        "consultants",
+        "experts",
+        "architecture"
+      ],
+      "readme": "Expert consultant agents providing specialized guidance for complex technical decisions and architecture."
     }
-  ],
-  "categories": {
-    "beginner": {
-      "name": "Beginner",
-      "description": "For learning Claude Code and simple projects",
-      "order": 1
-    },
-    "intermediate": {
-      "name": "Intermediate",
-      "description": "For production applications and modern frameworks",
-      "order": 2
-    },
-    "advanced": {
-      "name": "Advanced",
-      "description": "For enterprise systems and complex architectures",
-      "order": 3
-    },
-    "specialized": {
-      "name": "Specialized",
-      "description": "Domain-specific kits for particular use cases",
-      "order": 4
-    },
-    "productivity": {
-      "name": "Productivity",
-      "description": "For personal and team productivity workflows",
-      "order": 5
-    },
-    "enhancement": {
-      "name": "Enhancements",
-      "description": "Hooks, rules, and additional configurations",
-      "order": 6
-    }
-  },
-  "metadata": {
-    "totalPlugins": 10,
-    "totalSkills": 87,
-    "totalCommands": 86,
-    "totalAgents": 50,
-    "totalHooks": 36,
-    "totalFrameworks": 17,
-    "completionStatus": "100%",
-    "license": "MIT",
-    "lastUpdated": "2025-11-05"
-  }
+  ]
 }

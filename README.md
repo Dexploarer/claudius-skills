@@ -67,6 +67,8 @@ Choose from 10 plugins:
 curl -fsSL https://raw.githubusercontent.com/Dexploarer/claudius-skills/main/external-repo-bootstrap/install.sh | bash -s -- --merge
 ```
 
+**No SSH keys required!** All access is via HTTPS - works for everyone without any GitHub account or SSH setup.
+
 Then in Claude Code:
 ```bash
 claude
