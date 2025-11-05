@@ -28,3 +28,7 @@ Thumbs.db
 .vscode/
 .idea/
 *.sublime-*
+
+
+.cursor/rules/kluster-code-verify.mdc
+.kluster

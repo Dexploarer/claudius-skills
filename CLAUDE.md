@@ -1,861 +1,458 @@
-# Claudius Skills - Project Rules & Architecture
+# CLAUDE.md
 
-> **Project Memory for Claude Code AI Assistant**
-> This file provides architectural context, design decisions, and available capabilities for the Claudius Skills project.
-
----
-
-## 🎯 Project Overview
-
-**Claudius Skills** is a comprehensive, production-ready collection of Claude Code extensibility configurations covering **Claude Code's Five Pillars of Extensibility**:
-
-1. **Skills** - Automatic, context-aware capabilities
-2. **Slash Commands** - Manual workflow shortcuts
-3. **Hooks** - Event-driven automation
-4. **Subagents** - Specialized AI consultants
-5. **MCP Servers** - External service integrations
-
-**Current Status:** 🎉 100% COMPLETE (92 skills + 36 hooks + 86 commands + 50 agents + 17 frameworks) ✨
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ---
 
-## 📁 Project Structure
+## 🎯 Repository Purpose
+
+**Claudius Skills** is a production-ready collection of Claude Code extensibility configurations covering all five pillars of extensibility:
+- **Skills** - Context-aware capabilities (87 skills)
+- **Slash Commands** - Manual workflow shortcuts (80+ commands)
+- **Hooks** - Event-driven automation (36 hooks)
+- **Subagents** - Specialized AI consultants (46 agents)
+- **MCP Servers** - External service integrations (20+)
+
+This is a **documentation and configuration repository** - not a code repository. The "code" here consists of:
+- Markdown skill definitions
+- Markdown command definitions
+- Markdown agent definitions
+- Shell script hooks
+- JSON configuration files
+- Educational content and examples
+
+---
+
+## 🏗️ Repository Architecture
+
+### Progressive Learning Structure
+
+The repository is organized in **progressive levels** from beginner to master:
+
+```
+Level 1: Starter Kit       → 5 skills, 12 commands, 4 agents
+Level 2: Intermediate Kit  → 10 skills, 15 commands, 6 agents
+Level 3: Advanced Examples → 25 niche + 10 emerging tech skills
+Level 4: Advanced Kit      → 15 enterprise skills, 20 commands, 10 agents
+Level 5: Master Examples   → Complex patterns and architectures
+```
+
+### Directory Structure
 
 ```
 claudius-skills/
-├── starter-kit/                  # Beginner-friendly (5 skills, 12 commands, 4 agents)
-├── intermediate-kit/             # Production-ready (10 skills, 15 commands, 6 agents)
-├── advanced-kit/                 # Enterprise-grade (15 skills, 20 commands, 10 agents) ✨
-├── productivity-skills/          # Productivity workflows (6 skills, 13 commands, 4 agents)
-│   ├── starter-kit/             # Basic productivity skills
-│   └── intermediate-kit/        # Advanced productivity skills
-├── competitive-ai-frameworks/    # AI competition tools (3 skills, 3 commands, 12 agents) 🆕
-├── eliza-os-kit/                # ElizaOS integration (6 skills, 8 commands, 6 agents) 🆕
-├── railway-deployment-kit/      # Railway.app deployment (5 skills, 6 commands, 4 agents) 🆕
-├── examples/                     # Multi-level examples (Beginner → Master)
-│   ├── beginner/                # Learning-focused examples (10+ categories)
-│   ├── intermediate/            # Production patterns (17+ categories)
-│   ├── advanced/                # Complex integrations (emerging tech, devops)
-│   └── master/                  # Master-level patterns
-├── framework-rules/             # Modern web framework rules (8 frameworks)
-├── hooks-collection/            # Production hooks (25 hooks across 5 categories)
-├── modern-commands/             # Modern workflow commands (10 commands)
-├── specialized-agents/          # Specialized consultant agents (4 agents)
-├── skool/                       # Educational content & tutorials
-├── skool-courses/               # Structured course curriculum (3 levels)
-├── templates/                   # Reusable templates
-└── resources/                   # Guides and tutorials
+├── .claude/                           # Root-level core skills
+│   ├── skills/                       # 2 core skills (version-checker, class-builder)
+│   └── rules/                        # 2 critical rules
+│       ├── knowledge-cutoff-awareness.md
+│       └── strict-typing-class-patterns.md
+│
+├── starter-kit/.claude/              # Level 1: Beginner (5 skills)
+├── intermediate-kit/.claude/         # Level 2: Production (10 skills)
+├── advanced-kit/.claude/             # Level 4: Enterprise (15 skills)
+│
+├── productivity-skills/              # Specialized: Productivity workflows
+│   ├── starter-kit/.claude/         # 5 productivity skills
+│   └── intermediate-kit/.claude/    # 1 advanced productivity skill
+│
+├── competitive-ai-frameworks/.claude/ # Specialized: AI competitions (3 skills, 12 agents)
+├── eliza-os-kit/.claude/             # Specialized: ElizaOS integration (6 skills)
+├── railway-deployment-kit/.claude/   # Specialized: Railway.app deployment (5 skills)
+│
+├── examples/                         # Learning examples by level
+│   ├── beginner/                    # Level 1: 7 example skills
+│   ├── intermediate/                # Level 2: 19 niche skills
+│   ├── advanced/                    # Level 3: 14 emerging tech + complex skills
+│   └── master/                      # Level 5: Master patterns
+│
+├── hooks-collection/                 # 36 production hooks (7 categories)
+├── framework-rules/                  # 17 framework integrations
+├── modern-commands/                  # 10 modern workflow commands
+├── specialized-agents/               # 4 specialized consultants
+├── templates/                        # Templates for creating new components
+└── docs/                            # Consolidated documentation
+```
+
+### The `.claude/` Pattern
+
+Each kit follows this structure:
+```
+[kit-name]/.claude/
+├── skills/         # Skill definitions (.md files)
+├── commands/       # Slash commands (.md files)
+├── agents/         # Subagent definitions (.md files)
+├── hooks/          # Event automation (optional)
+└── rules/          # Configuration rules
+    ├── CLAUDE.md   # Kit-specific overview
+    └── frameworks/ # Framework-specific rules
 ```
 
 ---
 
-## 🛠️ Available Capabilities
+## 🔧 Common Development Tasks
 
-### Skills (87 Total Across All Kits)
+### Analyzing Skill Coverage
 
-**Core Skills (2 essential skills - use across all kits):**
-- `version-checker` - Verifies package versions, API compatibility, and breaking changes to ensure knowledge cutoff assumptions are accurate
-- `class-builder` - Generates strictly-typed TypeScript classes with encapsulation, validation, and type safety
+```bash
+# Count all skill files
+find . -name "*.md" -path "*/.claude/skills/*" | wc -l
 
-**Starter Kit (5 skills):**
-- `readme-generator` - Professional README creation
-- `code-explainer` - Beginner-friendly code explanations
-- `bug-finder` - Common bug identification
-- `test-helper` - Comprehensive test writing
-- `git-helper` - Git operation assistance
+# List skills by kit
+ls -1 starter-kit/.claude/skills/
+ls -1 intermediate-kit/.claude/skills/
+ls -1 advanced-kit/.claude/skills/
 
-**Beginner Simple Skills (6 skills):**
-- `calculator-helper` - Basic calculation assistance
-- `comment-generator` - Generate code comments and documentation
-- `file-organizer` - File organization and structure
-- `import-organizer` - Import statement sorting and organization
-- `todo-finder` - Find TODO/FIXME comments in codebase
-- `app-icon-generator` - Generate mobile app icons
+# Find example skills (SKILL.md pattern)
+find examples/ -name "SKILL.md"
+```
 
-**Intermediate Kit (10 skills):**
-- `react-component-generator` - Modern React with TypeScript
-- `vue-component-generator` - Vue 3 Composition API
-- `express-api-generator` - Express.js REST APIs
-- `fastapi-generator` - FastAPI endpoints
-- `django-model-helper` - Django models and relationships
-- `nextjs-page-generator` - Next.js pages/layouts
-- `graphql-schema-generator` - GraphQL schemas
-- `api-documentation-generator` - OpenAPI/Swagger docs
-- `database-migration-helper` - Database migrations
-- `testing-framework-helper` - Test setup (Jest, pytest, vitest)
+### Validating Structure
 
-**Niche Skills (25 implemented):**
-- **Performance (4):** `image-optimizer`, `bundle-analyzer`, `lighthouse-ci-integrator`, `database-query-optimizer`
-- **Security (3):** `security-header-generator`, `dependency-scanner`, `pii-detector`
-- **Testing (3):** `mock-generator`, `property-based-test-generator`, `visual-regression-setup`
-- **DevOps (4):** `dockerfile-generator`, `github-actions-builder`, `kubernetes-manifest-generator`, `terraform-module-builder`
-- **i18n (2):** `translation-key-extractor`, `i18n-setup-wizard`
-- **Accessibility (2):** `a11y-annotation-generator`, `wcag-compliance-checker`
-- **Mobile (1):** `react-native-component-generator`
-- **Productivity (1):** `regex-pattern-builder`
-- **Data Science (2):** `jupyter-assistant`, `data-cleaning-pipeline`
-- **Web3 (1):** `smart-contract-generator`
-- **Graphics (1):** `threejs-scene-builder`
+```bash
+# Check for required kit structure
+for kit in starter-kit intermediate-kit advanced-kit; do
+  echo "=== $kit ==="
+  ls -la $kit/.claude/
+done
 
-**Emerging Tech Skills (10 NEW!):**
-- AI/ML: `ai-ml-ops` (MLflow, Kubeflow, feature stores)
-- Edge: `edge-deployment` (Cloudflare, Vercel, Fastly)
-- Performance: `webassembly-optimizer` (Rust/WASM, browser integration)
-- API: `graphql-federation` (Apollo Federation, distributed schemas)
-- DevOps: `feature-flags`, `serverless-patterns`, `event-streaming`
-- Security: `api-rate-limiter` (Redis, token bucket, sliding window)
-- SaaS: `multi-tenant-architect` (isolation strategies, data partitioning)
-- Quantum: `quantum-setup` (Qiskit, Cirq, Q#)
+# Verify hook categories
+ls -1 hooks-collection/
 
-**Advanced Kit (15 enterprise skills):**
-- Architecture: `microservices-orchestrator`, `api-gateway-configurator`, `event-driven-architect`, `service-mesh-integrator`
-- Compliance: `compliance-auditor`, `architecture-decision-recorder`, `sla-monitor-generator`, `disaster-recovery-planner`
-- Observability: `distributed-tracing-setup`, `metrics-pipeline-builder`, `log-aggregation-configurator`, `chaos-engineering-setup`
-- Platform: `internal-platform-builder`, `developer-portal-generator`, `golden-path-creator`
+# List framework rules
+ls -1 framework-rules/
+```
 
-**Productivity Skills Kit (6 skills):**
-- `brainstorm-facilitator` - Creative brainstorming and ideation
-- `email-composer` - Professional email drafting
-- `meeting-notes-formatter` - Structured meeting notes
-- `report-generator` - Report creation and formatting
-- `task-breakdown` - Project task decomposition
-- `strategic-planner` - Strategic planning and roadmaps
+### Testing Configurations
 
-**Competitive AI Frameworks Kit (3 skills) 🆕:**
-- `bug-hunting-simulator` - Simulated bug hunting competitions
-- `code-quality-analyzer` - Competitive code quality analysis
-- `user-flow-tester` - User flow testing automation
+To test a specific kit:
+```bash
+# Copy kit to a test project
+cp -r starter-kit/.claude /path/to/test/project/
 
-**Eliza OS Kit (6 skills) 🆕:**
-- `character-generator` - ElizaOS character creation
-- `deployment-helper` - ElizaOS deployment automation
-- `knowledge-base-builder` - Knowledge base management
-- `memory-manager` - Memory system optimization
-- `plugin-builder` - Plugin scaffolding and development
-- `testing-helper` - ElizaOS testing utilities
+# Or test intermediate kit
+cp -r intermediate-kit/.claude /path/to/test/project/
 
-### Slash Commands (80+ Total Across All Kits)
+# Start Claude Code in test project
+cd /path/to/test/project && claude
+```
 
-**Starter Kit Commands:**
-`/commit`, `/debug`, `/docs`, `/explain`, `/quickfix`, `/refactor`, `/review`, `/setup`, `/test`, `/todo`, `/clean`, `/deps`
+### Documentation Updates
 
-**Intermediate Kit Commands:**
-`/api-docs-generate`, `/bundle-analyze`, `/changelog-update`, `/coverage-report`, `/db-backup`, `/deploy`, `/dependency-update`, `/docker-build`, `/env-setup`, `/health-check`, `/migration-create`, `/performance-profile`, `/pr-creator`, `/security-audit`, `/version-bump`
+When updating documentation:
+```bash
+# Main documentation files to update:
+# - README.md (user-facing overview)
+# - CLAUDE.md (this file - Claude Code guidance)
+# - IMPLEMENTATION_PROGRESS.md (detailed skill tracking)
+# - SKILLS_REFERENCE.md (complete skills directory)
+# - CHANGELOG.md (version history)
 
-**Advanced Kit Commands (20 advanced):**
-`/release-orchestrator`, `/canary-deploy`, `/blue-green-deploy`, `/rollback-emergency`, `/feature-flag-toggle`, `/compliance-scan`, `/adr-create`, `/sla-report`, `/security-posture`, `/cost-analysis`, `/incident-declare`, `/runbook-execute`, `/postmortem-generate`, `/oncall-schedule`, `/environment-clone`, `/data-migration`, `/traffic-replay`, `/load-test-suite`, `/dependency-graph`, `/tech-debt-audit`
-
-**Productivity Skills Commands (13):**
-`/agenda`, `/decision`, `/email`, `/goal-setting`, `/journal`, `/minutes`, `/outline`, `/presentation`, `/prioritize`, `/schedule`, `/summarize`, `/weekly-review`
-
-**Competitive AI Frameworks Commands (3) 🆕:**
-`/run-bug-hunt`, `/run-flow-test`, `/run-quality-check`
-
-**Eliza OS Kit Commands (8) 🆕:**
-`/analyze-conversations`, `/build-plugin`, `/deploy-agent`, `/dev-agent`, `/optimize-memory`, `/sync-knowledge`, `/test-character`, `/validate-character`
-
-**Modern Commands (10):**
-`/train-model`, `/evaluate-model`, `/optimize-pipeline`, `/setup-data-pipeline`, `/deploy-edge`, `/setup-dashboards`, `/trace-request`, `/create-golden-path`, `/scaffold-service`, `/audit-security`
-
-### Subagents (46 Total Across All Kits)
-
-**Generalist Agents:**
-- `code-reviewer` - Comprehensive code review
-- `test-writer` - Test generation expert
-- `doc-writer` - Documentation specialist
-- `debug-helper` - Debugging assistance
-
-**Specialist Agents:**
-- `api-designer` - REST/GraphQL API design
-- `database-architect` - Database schema design
-- `devops-engineer` - Infrastructure and deployment
-- `performance-optimizer` - Performance tuning
-- `security-auditor` - Security analysis
-- `system-architect` - System design patterns
-
-**Advanced Kit Agents (10 consultants):**
-- Architecture: `enterprise-architect`, `distributed-systems-architect`, `data-architect`, `platform-engineer`
-- Operations: `sre-consultant`, `incident-commander`, `chaos-engineer`, `finops-analyst`
-- Compliance: `compliance-officer`, `security-architect`
-
-**Productivity Skills Agents (4):**
-- `content-writer` - Content creation and writing
-- `creative-consultant` - Creative ideation and brainstorming
-- `productivity-coach` - Workflow optimization
-- `project-coordinator` - Project management assistance
-
-**Competitive AI Frameworks Agents (12) 🆕:**
-- **Team 1:** `team-1-coordinator`, `team-1-tester`, `team-1-reviewer`, `team-1-documenter`
-- **Team 2:** `team-2-coordinator`, `team-2-tester`, `team-2-reviewer`, `team-2-documenter`
-- **Team 3:** `team-3-coordinator`, `team-3-tester`, `team-3-reviewer`, `team-3-documenter`
-
-**Eliza OS Kit Agents (6) 🆕:**
-- `character-designer` - Character design and personality
-- `deployment-engineer` - Deployment and infrastructure
-- `integration-specialist` - Third-party integrations
-- `memory-architect` - Memory system design
-- `plugin-architect` - Plugin architecture and design
-- `testing-specialist` - Testing strategies and automation
-
-**Specialized Agents (4):**
-- `edge-computing-specialist` - Edge deployment and optimization
-- `ml-ops-engineer` - MLOps and model deployment
-- `platform-architect` - Platform engineering
-- `webassembly-expert` - WebAssembly optimization
-
-### MCP Integrations (20+ Available)
-
-**Source Control:** GitHub, GitLab
-**Databases:** PostgreSQL, MongoDB, MySQL, SQLite
-**Communication:** Slack, Discord
-**Cloud:** AWS, GCP, Azure
-**Monitoring:** Sentry, Datadog, New Relic
-**DevOps:** Docker, Kubernetes, Terraform
-
-### Hooks (Event-Driven Automation)
-
-**Example Hooks (10):**
-- Secret detection (git commit)
-- Force push prevention (main/master)
-- .env file security checks
-- Package installation reminders
-- Docker cleanup confirmations
-- Database migration confirmations
-- Recursive delete protection
-- File modification tracking
-- Test failure alerts
-- Build size monitoring
-
-**Production Hooks Collection (20 NEW!):**
-
-*Development Safety (5):*
-- `prevent-force-push` - Blocks force pushes to protected branches
-- `env-file-protection` - Prevents committing .env and credentials
-- `large-file-warning` - Warns about files >10MB (Git LFS suggestion)
-- `destructive-operation-confirm` - Confirms rm -rf, DROP TABLE, etc.
-- `package-install-check` - Validates package installations
-
-*Production Deployment (5):*
-- `pre-deploy-checklist` - Enforces comprehensive deployment checklist
-- `database-migration-safety` - Ensures backups before migrations
-- `deployment-notification` - Notifies team after deployments
-- `blue-green-validation` - Validates traffic switching
-- `feature-flag-deployment` - Encourages feature flag usage
-
-*Code Quality (5):*
-- `test-coverage-enforcement` - Enforces minimum coverage (80%)
-- `linting-enforcement` - Blocks commits with lint errors
-- `commit-message-standards` - Enforces conventional commits
-- `documentation-check` - Ensures code documentation
-- `code-complexity-warning` - Warns about high cyclomatic complexity
-
-*Security Enforcement (5):*
-- `secret-scanning` - Detects API keys, tokens, passwords
-- `dependency-vulnerability-scan` - Checks for CVEs
-- `security-headers-check` - Validates CSP, CORS, security headers
-- `license-compliance-check` - Checks for incompatible licenses (GPL, etc.)
-- `cors-configuration-check` - Validates CORS settings
-
-*Performance Monitoring (5):*
-- `build-size-alert` - Monitors bundle size increases
-- `ci-time-tracking` - Tracks CI/CD pipeline duration
-- `memory-leak-warning` - Detects potential memory leaks
-- `n-plus-one-query-detection` - Identifies N+1 query patterns
-- `slow-test-detection` - Flags slow test execution
-
-**Knowledge Cutoff Awareness (5 NEW!) 🆕:**
-- `package-installation-verification` - Verifies package versions before installation
-- `import-usage-verification` - Checks import/export structure before writing code
-- `api-endpoint-verification` - Validates API endpoints before use
-- `framework-feature-verification` - Confirms framework features before implementation
-- `type-definition-verification` - Verifies TypeScript types before use
-
-**Strict Typing & Class Patterns (6 NEW!) 🆕:**
-- `no-any-type` - Prevents use of `any` type (ERROR)
-- `prefer-classes-over-interfaces` - Enforces classes for data structures
-- `explicit-return-types` - Requires return types on all functions
-- `no-non-null-assertions` - Prevents non-null assertions (!)
-- `explicit-variable-types` - Requires type annotations on all variables
-- `class-property-initialization` - Ensures all properties are initialized
-
-**Location:** `hooks-collection/` with comprehensive README
-**Total:** 36 hooks across 7 categories
+# Kit-specific documentation:
+# - [kit]/.claude/rules/CLAUDE.md
+# - [kit]/.claude/rules/skills-reference.md
+```
 
 ---
 
-## 🎓 Skill Levels & Learning Path
+## 📐 Design Patterns
 
-### Level 1: Beginner (Starter Kit)
-**Location:** `starter-kit/.claude/`
-**Focus:** Learning fundamentals
-**Rules:** `starter-kit/.claude/rules/`
+### Skill Definition Pattern
 
-Use when:
-- New to Claude Code
-- Learning AI-assisted development
-- Building simple projects
-- Need basic automation
+Skills use markdown with this structure:
+```markdown
+---
+name: skill-name
+description: Brief description
+---
 
-### Level 2: Intermediate (Intermediate Kit)
-**Location:** `intermediate-kit/.claude/`
-**Focus:** Production-ready workflows
-**Rules:** `intermediate-kit/.claude/rules/`
+# Skill Name
 
-Use when:
-- Building production applications
-- Working with frameworks (React, Vue, Django, etc.)
-- Need advanced automation
-- Implementing CI/CD pipelines
+## Purpose
+What this skill does
 
-### Level 3: Advanced (Examples)
-**Location:** `examples/advanced/.claude/`
-**Focus:** Complex integrations
-**Rules:** `examples/advanced/.claude/rules/`
+## Activation
+When to activate (phrases, patterns)
 
-Use when:
-- Building enterprise applications
-- Implementing security compliance
-- Performance optimization at scale
-- Complex DevOps workflows
+## Instructions
+Step-by-step instructions for Claude Code
 
-### Level 4: Advanced Pack (Enterprise) ✨
-**Location:** `advanced-kit/.claude/`
-**Focus:** Enterprise-grade systems
-**Rules:** `advanced-kit/.claude/rules/CLAUDE.md`
-
-Use when:
-- Building enterprise distributed systems (microservices, event-driven)
-- Requiring compliance frameworks (SOC2, HIPAA, GDPR, PCI-DSS)
-- Implementing full observability stacks (tracing, metrics, logging)
-- Building internal developer platforms
-- Managing multi-cloud architectures
-- Orchestrating complex deployments
-- Leading technical teams and initiatives
-
-**Capabilities:**
-- 15 enterprise skills (architecture, compliance, observability, platform)
-- 20 advanced commands (deployment, incident response, compliance)
-- 10 specialist consultant agents (architects, SRE, compliance, security)
-- Production-critical hooks (compliance enforcement, cost monitoring)
-- Full compliance automation (SOC2, HIPAA, GDPR, PCI-DSS)
-
-**Quick Start:**
-```bash
-cp -r advanced-kit/.claude /path/to/enterprise/project/
-Use enterprise-architect to design the architecture
-/compliance-scan soc2
+## Examples
+Usage examples
 ```
 
-### Level 5: Master (Examples)
-**Location:** `examples/master/.claude/`
-**Focus:** Master-level patterns and plugin ecosystems
-**Rules:** `examples/master/.claude/rules/`
+### Command Pattern
 
-Use when:
-- Building distributed systems
-- Custom framework development
-- Advanced security implementations
-- Complex architectural patterns
-- Creating reusable plugin ecosystems
+Commands use markdown with kebab-case naming:
+```markdown
+# Command Name
 
-### Specialized Kits
+## Description
+What this command does
 
-#### Productivity Skills Kit
-**Location:** `productivity-skills/.claude/`
-**Focus:** Personal and team productivity
-**Contents:** 6 skills, 13 commands, 4 agents
+## Usage
+/command-name [arguments]
 
-Use when:
-- Managing meetings and documentation
-- Writing professional communications
-- Planning projects and strategies
-- Breaking down complex tasks
-- Improving personal productivity workflows
-
-**Quick Start:**
-```bash
-cp -r productivity-skills/starter-kit/.claude /path/to/your/project/
-# Use brainstorm-facilitator for ideation
-/agenda "Team planning session"
+## Implementation
+How to execute this command
 ```
 
-#### Competitive AI Frameworks Kit 🆕
-**Location:** `competitive-ai-frameworks/.claude/`
-**Focus:** AI-powered code competitions
-**Contents:** 3 skills, 3 commands, 12 team-based agents
+### Agent Pattern
 
-Use when:
-- Participating in coding competitions
-- Running simulated bug hunts
-- Competitive code quality analysis
-- Team-based development challenges
-- User flow testing competitions
+Agents define specialized consultants:
+```markdown
+# Agent Name
 
-**Quick Start:**
-```bash
-cp -r competitive-ai-frameworks/.claude /path/to/your/project/
-/run-bug-hunt
-# Team-based agents will coordinate the competition
+## Expertise
+Domain of expertise
+
+## When to Use
+Situations to activate this agent
+
+## Workflow
+How this agent operates
 ```
 
-#### Eliza OS Kit 🆕
-**Location:** `eliza-os-kit/.claude/`
-**Focus:** ElizaOS agent and character development
-**Contents:** 6 skills, 8 commands, 6 specialist agents
+### Hook Pattern
 
-Use when:
-- Building ElizaOS characters and agents
-- Developing ElizaOS plugins
-- Managing character knowledge bases
-- Optimizing memory systems
-- Deploying ElizaOS agents
-
-**Quick Start:**
-```bash
-cp -r eliza-os-kit/.claude /path/to/elizaos/project/
-Use character-generator to create a new character
-/dev-agent "Start ElizaOS development environment"
+Hooks use shell scripts with JSON configuration:
+```json
+{
+  "type": "hook-type",
+  "description": "What this hook does",
+  "match": "pattern-to-match"
+}
 ```
-
-**Documentation:**
-- `eliza-os-kit/.claude/rules/CLAUDE.md` - Complete ElizaOS integration guide
-- `eliza-os-kit/.claude/rules/elizaos-core-runtime.md` - Runtime documentation
-- `eliza-os-kit/.claude/rules/elizaos-plugin-patterns.md` - Plugin development patterns
-- `eliza-os-kit/.claude/rules/plugin-registry.md` - Plugin registry reference
-
-#### Railway Deployment Kit 🆕
-**Location:** `railway-deployment-kit/.claude/`
-**Focus:** Railway.app deployment and infrastructure management
-**Contents:** 5 skills, 6 commands, 4 specialist agents
-
-Use when:
-- Deploying applications to Railway.app
-- Managing PostgreSQL databases on Railway
-- Setting up MinIO object storage (S3-compatible)
-- Implementing Qdrant vector databases for AI
-- Managing multi-environment deployments
-- Configuring private networking
-- Building RAG systems and AI applications
-
-**Quick Start:**
-```bash
-cp -r railway-deployment-kit/.claude /path/to/your/project/
-# Install Railway CLI
-npm i -g @railway/cli
-railway login
-# Use the initialization command
-/railway-init-project
-```
-
-**Skills:**
-- `railway-deployment-automator` - Complete deployment automation
-- `minio-storage-manager` - S3-compatible object storage management
-- `railway-postgres-manager` - PostgreSQL operations and migrations
-- `railway-qdrant-manager` - Vector database for AI applications
-- `railway-environment-manager` - Environment and variable management
-
-**Agents:**
-- `railway-deployment-specialist` - Deployment and infrastructure expert
-- `railway-database-architect` - Database design and optimization
-- `railway-storage-specialist` - MinIO and object storage expert
-- `railway-ai-specialist` - AI/ML and vector database consultant
-
-**Documentation:**
-- `railway-deployment-kit/README.md` - Complete usage guide
-- `railway-deployment-kit/.claude/rules/CLAUDE.md` - Railway platform knowledge
-- `railway-deployment-kit/templates/` - Configuration templates
 
 ---
 
-## 🔐 Security Guidelines
+## 🎯 File Organization Principles
 
-### Always Check Before:
-- Committing `.env` files
-- Force pushing to main/master
-- Deleting files recursively
-- Running database migrations
-- Executing Docker operations
+### 1. Kit-Based vs Example-Based
 
-### Built-in Protections:
-- Secret detection in commits
-- Sensitive file warnings
-- Destructive operation confirmations
-- Package installation validation
+**Kit-Based** (`.claude/skills/*.md`):
+- Comprehensive, production-ready implementations
+- 200-300+ lines of detailed guidance
+- Multiple activation phrases
+- Framework-specific examples
+- Used when copying entire kits
 
----
+**Example-Based** (`examples/*/SKILL.md`):
+- Learning-focused, concise implementations
+- 100-150 lines
+- Quick reference format
+- Progressive complexity
+- Used for understanding patterns
 
-## ⚠️ Knowledge Cutoff Awareness
+### 2. Duplicate Implementations
 
-### CRITICAL: AI Model Knowledge Has Cutoff Dates
+10 skills have both kit and example versions:
+- api-documentation-generator
+- database-migration-helper
+- django-model-helper
+- express-api-generator
+- fastapi-generator
+- graphql-schema-generator
+- nextjs-page-generator
+- react-component-generator
+- testing-framework-helper
+- vue-component-generator
 
-**Your knowledge cutoff:** January 2025 (Claude Sonnet 4.5) or July 2025 (future models)
+**Why?** Kit versions for production use, example versions for learning.
 
-**What this means:**
-- Package versions, APIs, and types may have changed since your training
-- Framework features may be deprecated or replaced
-- Security vulnerabilities may exist in versions you suggest
-- Breaking changes may have occurred in dependencies
+### 3. Hook Organization
 
-### Verification Protocol - ALWAYS FOLLOW
-
-**Before using ANY package, API, or framework feature:**
-
-1. **Check current versions** - Don't assume your knowledge is current
-   ```bash
-   npm view <package> version
-   pip index versions <package>
-   ```
-
-2. **Verify API compatibility** - Endpoints and methods change
-   ```bash
-   npm view <package> readme
-   # Or use WebFetch to check official docs
-   ```
-
-3. **Review breaking changes** - Check changelogs since cutoff
-   ```bash
-   npm view <package> versions --json
-   # Look for major version bumps
-   ```
-
-4. **Ask users about their versions** - When uncertain, confirm
-   ```
-   "What version of [framework] are you using? My knowledge
-   cutoff is [date], so I want to ensure compatibility."
-   ```
-
-### Knowledge Cutoff Hooks
-
-**Automatic reminders via hooks:**
-- `package-installation-verification` - Before npm/pip/yarn commands
-- `import-usage-verification` - Before writing import statements
-- `api-endpoint-verification` - Before using third-party APIs
-- `framework-feature-verification` - Before framework-specific code
-- `type-definition-verification` - Before TypeScript type usage
-
-**Location:** `hooks-collection/knowledge-cutoff/`
-
-### Version Checker Skill
-
-**Use the `version-checker` skill to:**
-- Verify package versions before installation
-- Check for breaking changes since cutoff
-- Validate API endpoint compatibility
-- Confirm TypeScript type definitions are current
-- Review framework feature compatibility
-
-**Activation:**
-- "check version of [package]"
-- "verify [API] is still valid"
-- "check for breaking changes in [package]"
-
-### High-Risk Areas - ALWAYS Verify
-
-**Critical packages that change frequently:**
-- 🔐 **Security/Auth:** Auth0, NextAuth, Passport, OAuth libraries
-- 💳 **Payments:** Stripe, PayPal, Square (errors = financial loss)
-- ☁️ **Cloud SDKs:** AWS, GCP, Azure (breaking changes common)
-- ⚛️ **Frameworks:** React, Next.js, Vue, Angular (rapid evolution)
-- 🗄️ **ORMs:** Prisma, TypeORM, Sequelize (query syntax changes)
-- 🔨 **Build Tools:** Vite, Webpack, esbuild (config changes)
-- 🧪 **Testing:** Jest, Vitest, Playwright (API updates)
-
-### The Golden Rule
-
-**"When in doubt, verify. Never assume your knowledge is current."**
-
-Better to:
-1. Acknowledge uncertainty
-2. Verify current information
-3. Implement with confidence
-
-Than to:
-1. Assume knowledge is current
-2. Implement outdated patterns
-3. Cause bugs and frustration
-
-### Documentation
-
-**See:** `.claude/rules/knowledge-cutoff-awareness.md` for complete verification protocol
+Hooks are organized by category:
+```
+hooks-collection/
+├── development-safety/     # 5 hooks (prevent mistakes)
+├── production-deployment/  # 5 hooks (deployment safety)
+├── code-quality/          # 5 hooks (enforce standards)
+├── security-enforcement/  # 5 hooks (security checks)
+├── performance-monitoring/# 5 hooks (performance tracking)
+├── knowledge-cutoff/      # 5 hooks (verify assumptions)
+└── strict-typing/         # 6 hooks (TypeScript strict mode)
+```
 
 ---
 
-## 🔧 Strict Type Checking & Class-Based Patterns
+## ⚠️ Critical Safety Systems
 
-### CRITICAL: TypeScript Strict Mode Required
+### 1. Knowledge Cutoff Awareness
 
-This project enforces **STRICT TYPE CHECKING** and **CLASS-BASED ARCHITECTURE**.
+**Location:** `.claude/rules/knowledge-cutoff-awareness.md`
 
-**Core principles:**
-1. **Zero tolerance for `any`** - All types must be explicit
-2. **Classes over interfaces** - Use classes for all data structures
-3. **Explicit return types** - All functions must declare return types
-4. **No non-null assertions** - Handle undefined/null explicitly
-5. **Initialize all properties** - No undefined class fields
-6. **Explicit variable types** - No reliance on type inference
+Claude Code MUST verify current information before using packages, APIs, or frameworks:
 
-### Strict Typing Hooks (6 NEW!) 🆕
+**Verification Protocol:**
+1. Check current package versions
+2. Verify API compatibility
+3. Review breaking changes since knowledge cutoff
+4. Ask users about their versions when uncertain
 
-**Automatic enforcement of strict patterns:**
-- `no-any-type` - Prevents use of `any` type (ERROR)
-- `prefer-classes-over-interfaces` - Enforces classes for data structures
-- `explicit-return-types` - Requires return types on all functions
-- `no-non-null-assertions` - Prevents non-null assertions (!)
-- `explicit-variable-types` - Requires type annotations on all variables
-- `class-property-initialization` - Ensures all properties are initialized
+**Hooks:** 5 hooks in `hooks-collection/knowledge-cutoff/`
+- `package-installation-verification.json`
+- `import-usage-verification.json`
+- `api-endpoint-verification.json`
+- `framework-feature-verification.json`
+- `type-definition-verification.json`
 
-**Location:** `hooks-collection/strict-typing/`
+**Skill:** `version-checker` in `.claude/skills/`
 
-### Class Builder Skill
+### 2. Strict TypeScript Type Checking
 
-**Use the `class-builder` skill to:**
-- Generate strictly-typed domain entities
-- Create value objects with validation
-- Build service classes with dependency injection
-- Generate repository classes
-- Create proper DTOs for serialization
+**Location:** `.claude/rules/strict-typing-class-patterns.md`
 
-**Activation:**
-- "create a class for [entity]"
-- "generate [Model] class"
-- "build TypeScript class for [domain object]"
-
-### When to Use Classes vs Interfaces
-
-**✅ ALWAYS use classes for:**
-- Domain entities (User, Product, Order)
-- Value objects (Email, Money, Address)
-- Services (UserService, EmailService)
-- Repositories (UserRepository)
-- Any data structure with behavior
-
-**✅ Interfaces ONLY for:**
-- Service contracts (IEmailService, IUserRepository)
-- Polymorphic behavior (IHandler, IProcessor)
-- Third-party API contracts
-
-**❌ NEVER use interfaces for:**
-- Data structures
-- Domain models
-- DTOs (use `type` instead)
-
-### Why Classes Over Interfaces?
-
-**Benefits of classes:**
-- ✅ Encapsulation with private fields
-- ✅ Validation logic lives with data
-- ✅ Constructor guarantees valid state
-- ✅ Runtime type checking (`instanceof`)
-- ✅ Methods and data together
-- ✅ Single source of truth
-
-**Problems with interfaces:**
-- ❌ No encapsulation
-- ❌ No validation
-- ❌ No behavior/methods
-- ❌ Compile-time only
-- ❌ Easy to create invalid states
-
-### Configuration Templates
-
-**TypeScript:** `templates/tsconfig.strict.json`
-- All strict compiler options enabled
-- `strictNullChecks`, `noImplicitAny`, `strictPropertyInitialization`
-- Additional checks: `noUncheckedIndexedAccess`, `noImplicitOverride`
-
-**ESLint:** `templates/.eslintrc.strict.json`
-- Enforces explicit types everywhere
-- No `any` allowed
-- Explicit return types required
+This project enforces:
+- Zero `any` types
+- Explicit return types on all functions
+- Classes over interfaces for data structures
 - No non-null assertions
-- Naming conventions (private fields with `_` prefix, interfaces with `I` prefix)
+- Full property initialization
 
-### Documentation
+**Hooks:** 6 hooks in `hooks-collection/strict-typing/`
+- `no-any-type.json`
+- `prefer-classes-over-interfaces.json`
+- `explicit-return-types.json`
+- `no-non-null-assertions.json`
+- `explicit-variable-types.json`
+- `class-property-initialization.json`
 
-**See:** `.claude/rules/strict-typing-class-patterns.md` for complete guidelines
+**Skill:** `class-builder` in `.claude/skills/`
 
----
-
-## 🎯 Design Decisions
-
-### Why This Structure?
-1. **Progressive Learning** - Start simple, scale complexity
-2. **Separation of Concerns** - Each kit serves specific needs
-3. **Production-Ready** - All intermediate+ examples are battle-tested
-4. **Security-First** - Built-in protections and validations
-5. **Framework Agnostic** - Supports 25+ frameworks across 12+ languages
-
-### Technology Choices
-- **TypeScript First** - Modern React, Vue, Next.js examples
-- **ORM Support** - Django, SQLAlchemy, Prisma patterns
-- **Testing Focus** - Jest, pytest, vitest, Mocha coverage
-- **Container Ready** - Docker, Kubernetes, multi-stage builds
-- **CI/CD Native** - GitHub Actions, GitLab CI patterns
+**Templates:**
+- `templates/tsconfig.strict.json` - TypeScript strict config
+- `templates/.eslintrc.strict.json` - ESLint strict rules
 
 ---
 
-## 📚 Important Files to Reference
+## 📊 Skill Distribution
 
-### Core Documentation
-- `README.md` - Main project guide (377 lines)
-- `IMPLEMENTATION_PROGRESS.md` - Detailed skill tracking (850+ lines)
-- `SKILLS_STATUS.md` - Quick reference
-- `MILESTONE_60_PERCENT.md` - Achievement summary
+Total: 87 unique skills
 
-### Templates
-- `templates/skill-template.md` - Create new skills
-- `templates/command-template.md` - Create new commands
-- `templates/subagent-template.md` - Create new agents
+**By Level:**
+- Core: 2 skills (2.3%)
+- Beginner: 13 skills (15%)
+- Intermediate: 35 skills (40%)
+- Advanced: 25 skills (29%)
+- Specialized: 15 skills (17%)
 
-### Guides
-- `resources/guides/getting-started.md` - Beginner guide
-- `resources/guides/best-practices.md` - Best practices
-- `resources/guides/security.md` - Security guidelines
-- `resources/guides/troubleshooting.md` - Common issues
+**By Domain:**
+- Frontend Development: 15 skills
+- Backend Development: 12 skills
+- DevOps/Infrastructure: 14 skills
+- Testing/Quality: 7 skills
+- Security: 6 skills
+- Data/AI: 5 skills
+- Productivity: 7 skills
+- Observability: 4 skills
+- Platform Engineering: 10 skills
+- Other: 7 skills
+
+**By Kit:**
+- Starter Kit: 5 skills
+- Intermediate Kit: 10 skills
+- Advanced Kit: 15 skills
+- Productivity: 6 skills
+- Competitive AI: 3 skills
+- Eliza OS: 6 skills
+- Railway Deployment: 5 skills
+- Niche Skills (examples): 25 skills
+- Emerging Tech (examples): 10 skills
+- Beginner Simple (examples): 6 skills
 
 ---
 
-## 🚀 Quick Start References
+## 🔍 Finding Components
 
-### To Use Starter Kit:
+### Finding Skills
+
 ```bash
-cp -r starter-kit/.claude /path/to/your/project/
-# Available: 5 skills, 12 commands, 4 agents
-# See: starter-kit/.claude/rules/
+# All skills in a kit
+ls -1 [kit-name]/.claude/skills/
+
+# Search for specific skill
+find . -name "*query-optimizer*" -path "*/.claude/skills/*"
+
+# Example skills (learning format)
+find examples/ -name "SKILL.md" -exec grep -l "pattern" {} \;
 ```
 
-### To Use Intermediate Kit:
+### Finding Commands
+
 ```bash
-cp -r intermediate-kit/.claude /path/to/your/project/
-# Available: 10 skills, 15 commands, 6 agents
-# See: intermediate-kit/.claude/rules/
+# All commands in a kit
+ls -1 [kit-name]/.claude/commands/
+
+# Search for specific command
+find . -name "*deploy*" -path "*/.claude/commands/*"
 ```
 
-### To Use Specific Skills:
+### Finding Agents
+
 ```bash
-cp examples/intermediate/performance-skills/bundle-analyzer/.claude/skills/bundle-analyzer.md \
-   /path/to/your/project/.claude/skills/
+# All agents in a kit
+ls -1 [kit-name]/.claude/agents/
+
+# List all available agents
+find . -name "*.md" -path "*/.claude/agents/*"
+```
+
+### Finding Hooks
+
+```bash
+# By category
+ls -1 hooks-collection/[category]/
+
+# All hooks
+find hooks-collection/ -name "*.json" -o -name "*.sh"
 ```
 
 ---
 
-## 🔍 Context Import Patterns
+## 📚 Important Reference Files
 
-When working in specific areas, Claude Code will automatically import relevant context:
+### Must-Read for Understanding
 
-- **Root level** - This CLAUDE.md file
-- **Kit level** - Kit-specific CLAUDE.md + rules
-- **Subdirectory level** - Directory-specific rules on demand
+1. **README.md** - User-facing overview, quick start, project stats
+2. **CLAUDE.md** (this file) - Claude Code operational guidance
+3. **IMPLEMENTATION_PROGRESS.md** - Detailed skill tracking (87 skills documented)
+4. **SKILLS_REFERENCE.md** - Complete skills directory with descriptions
 
----
+### Contributing
 
-## 📖 Rule Files Organization
+1. **CONTRIBUTING.md** - How to contribute (150+ lines)
+2. **templates/** - Templates for creating new components
+   - `skill-template.md`
+   - `commands/basic-command-template.md`
+   - `commands/workflow-command-template.md`
+   - `subagent-template.md`
 
-Rules are organized hierarchically:
+### Documentation Structure
 
 ```
-.claude/rules/
-├── CLAUDE.md              # Level-specific overview
-├── skills-reference.md    # All available skills
-├── commands-reference.md  # All available commands
-├── agents-reference.md    # All available subagents
-├── hooks-reference.md     # Hook configurations
-├── mcp-reference.md       # MCP server integrations
-├── frameworks/            # Framework-specific rules
-│   ├── react.md
-│   ├── vue.md
-│   ├── django.md
-│   └── express.md
-├── workflows/             # Workflow-specific rules
-│   ├── testing.md
-│   ├── deployment.md
-│   ├── security.md
-│   └── performance.md
-└── domains/               # Domain-specific rules
-    ├── frontend.md
-    ├── backend.md
-    ├── devops.md
-    └── data-science.md
+docs/
+├── getting-started/     # Quick start guides
+├── guides/             # Comprehensive guides
+│   ├── best-practices.md
+│   ├── implementation.md
+│   └── troubleshooting.md
+├── reference/          # Reference catalogs
+│   ├── skills-catalog.md
+│   └── master-index.md
+└── architecture/       # Design decisions
+    ├── project-structure.md
+    └── milestones.md
 ```
 
 ---
 
-## 💡 Best Practices for This Project
+## 🎓 Educational Content
 
-### When Adding New Skills:
-1. Choose appropriate level (beginner/intermediate/advanced)
-2. Update IMPLEMENTATION_PROGRESS.md
-3. Add to relevant rules directory
-4. Test with multiple phrasings
-5. Document in level-specific CLAUDE.md
+### Skool Directory
 
-### When Creating Examples:
-1. Include comprehensive comments
-2. Add README.md with usage
-3. Reference in rules files
-4. Test all code paths
-5. Document security considerations
+**Location:** `skool/`
 
-### When Modifying Configurations:
-1. Test changes incrementally
-2. Update relevant documentation
-3. Check all references
-4. Validate hook syntax
-5. Verify MCP connections
-
----
-
-## 🎭 Project Philosophy
-
-**Education First** - Every configuration teaches a concept
-**Production Ready** - All intermediate+ examples are tested
-**Security Minded** - Built-in protections and validations
-**Framework Agnostic** - Support diverse tech stacks
-**Progressive Enhancement** - Start simple, scale up
-
----
-
-## 🔗 External References
-
-### Official Documentation
-- Claude Code Docs: https://docs.claude.com/en/docs/claude-code/
-- Skills Guide: https://docs.claude.com/en/docs/claude-code/skills
-- Hooks Reference: https://docs.claude.com/en/docs/claude-code/hooks
-
-### Community Resources
-- GitHub Issues: https://github.com/anthropics/claude-code/issues
-- Best Practices: (Community articles and guides)
-
----
-
-### Additional Resources
-
-#### Modern Commands Collection
-**Location:** `modern-commands/`
-**Contents:** 10 modern workflow commands organized by domain
-**Domains:** ai-ml-workflows, data, devops, edge-operations, observability, platform-engineering, security
-
-Modern commands are organized as standalone markdown files outside the `.claude` structure for easy distribution and customization.
-
-#### Specialized Agents
-**Location:** `specialized-agents/`
-**Contents:** 4 specialized consultant agents
-- `edge-computing-specialist` - Edge deployment expertise
-- `ml-ops-engineer` - MLOps and model lifecycle
-- `platform-architect` - Platform engineering
-- `webassembly-expert` - WebAssembly optimization
-
-These agents can be integrated into any kit for specialized consulting on advanced topics.
-
-#### Framework Rules
-**Location:** `framework-rules/`
-**Contents:** 8 modern web framework rules
-**Frameworks:** Angular, Astro, Fresh, Nuxt3, Qwik, Remix, SolidJS, SvelteKit
-
-Copy framework-specific rules to your `.claude/rules/frameworks/` directory for framework-optimized assistance.
-
-#### Educational Content
-**Skool Directory:** `skool/`
+Contains:
 - Advanced tutorials
 - Framework guides
 - Game development genres
@@ -863,17 +460,224 @@ Copy framework-specific rules to your `.claude/rules/frameworks/` directory for 
 - Project showcases
 - Monetization strategies
 
-**Skool Courses:** `skool-courses/`
-- Structured curriculum with 3 levels (Beginner → Intermediate → Advanced)
-- Downloadable templates
-- Bonus resources
-- Complete course materials
+### Skool Courses
+
+**Location:** `skool-courses/`
+
+Structured curriculum with 3 levels:
+- Beginner
+- Intermediate
+- Advanced
+
+Includes downloadable templates and bonus resources.
 
 ---
 
-**Last Updated:** 2025-11-03
-**Project Status:** 100% COMPLETE - All Documented (87 skills, 80+ commands, 36 hooks, 46 agents, 17 frameworks)
+## 🚀 Adding New Components
+
+### Adding a New Skill
+
+1. Choose appropriate kit level (starter/intermediate/advanced/specialized)
+2. Copy template: `templates/skill-template.md`
+3. Create: `[kit]/.claude/skills/skill-name.md`
+4. Update: `IMPLEMENTATION_PROGRESS.md`
+5. Update: `[kit]/.claude/rules/skills-reference.md`
+6. Test activation phrases
+
+### Adding a New Command
+
+1. Choose appropriate kit
+2. Copy template: `templates/commands/basic-command-template.md`
+3. Create: `[kit]/.claude/commands/command-name.md`
+4. Use kebab-case naming
+5. Document parameters and usage
+
+### Adding a New Agent
+
+1. Choose appropriate kit
+2. Copy template: `templates/subagent-template.md`
+3. Create: `[kit]/.claude/agents/agent-name.md`
+4. Define expertise area clearly
+5. Document when to activate
+
+### Adding a New Hook
+
+1. Choose category in `hooks-collection/`
+2. Create JSON configuration or shell script
+3. Test thoroughly
+4. Document triggering conditions
+5. Update `hooks-collection/README.md`
+
+---
+
+## 🔗 External Integration
+
+### MCP Servers
+
+The project documents integration with 20+ MCP servers:
+- Source Control: GitHub, GitLab
+- Databases: PostgreSQL, MongoDB, MySQL, SQLite
+- Communication: Slack, Discord
+- Cloud: AWS, GCP, Azure
+- Monitoring: Sentry, Datadog, New Relic
+- DevOps: Docker, Kubernetes, Terraform
+
+### Framework Support
+
+17 frameworks with dedicated rules in `framework-rules/`:
+- React, Vue, Next.js, Nuxt3
+- Angular, Svelte, SvelteKit
+- Astro, Fresh, Qwik, Remix, SolidJS
+- Django, FastAPI, Express
+- And more
+
+---
+
+## 💡 Best Practices for This Repository
+
+### When Working on Documentation
+
+1. **Maintain Consistency** - Follow established patterns
+2. **Update Multiple Files** - Documentation is interconnected
+3. **Verify Counts** - Skill/command/agent counts must be accurate
+4. **Test Examples** - All code examples should work
+5. **Use Templates** - Templates ensure consistency
+
+### When Adding Skills
+
+1. **Progressive Complexity** - Start simple, scale up
+2. **Clear Activation** - Multiple activation phrases
+3. **Framework Agnostic** - Support diverse tech stacks where possible
+4. **Production Ready** - All intermediate+ should be tested
+5. **Security Minded** - Include security considerations
+
+### When Modifying Structure
+
+1. **Preserve Hierarchy** - Maintain level-based organization
+2. **Update References** - Check all files referencing changed paths
+3. **Test Integration** - Verify kits still work when copied
+4. **Document Changes** - Update CHANGELOG.md
+
+---
+
+## 🔐 Security Considerations
+
+This repository contains:
+- ✅ Configuration files (safe)
+- ✅ Documentation (safe)
+- ✅ Shell scripts for hooks (reviewed)
+- ✅ No secrets or credentials
+- ✅ No executable code beyond hooks
+
+### Built-in Security Features
+
+36 hooks provide automatic protection:
+- Secret detection in commits
+- .env file protection
+- Force push prevention
+- Destructive operation confirmation
+- Dependency vulnerability scanning
+- CORS configuration checks
+- Security header validation
+- License compliance checks
+
+---
+
+## 📊 Project Statistics
+
+| Metric | Count |
+|--------|-------|
+| Total Skills | 87 |
+| Total Commands | 80+ |
+| Total Hooks | 36 |
+| Total Agents | 46 |
+| Framework Rules | 17 |
+| Specialized Kits | 4 |
+| Lines of Documentation | 100,000+ |
+| Code Examples | 500+ |
+| Technologies Covered | 25+ |
+
+---
+
+## 🎯 Project Philosophy
+
+1. **Education First** - Every configuration teaches a concept
+2. **Production Ready** - All intermediate+ examples are tested
+3. **Security Minded** - Built-in protections and validations
+4. **Framework Agnostic** - Support diverse tech stacks
+5. **Progressive Enhancement** - Start simple, scale up
+
+---
+
+## 🔄 Git Workflow
+
+### Current Branch
+
+Branch: `claude/claude-skill-exploration-011CUftgTCDaCU11qRo3vUHK`
+
+This is also the main branch for this repository.
+
+### Recent Activity
+
+Recent PRs have added:
+- Railway Deployment Kit (PR #32)
+- Documentation audit discovering 87 skills (PR #31)
+- Repository reorganization (PR #30)
+- Knowledge cutoff awareness system (PR #28)
+- Strict TypeScript patterns (PR #28)
+
+### Commit Message Format
+
+Follow conventional commits:
+```
+<type>(<scope>): <subject>
+
+Types:
+- feat: New feature
+- fix: Bug fix
+- docs: Documentation changes
+- refactor: Code refactoring
+- test: Testing updates
+- chore: Maintenance
+```
+
+---
+
+## 🎓 Learning Path Recommendation
+
+For Claude Code instances working in this repository:
+
+1. **Understand Structure First** - Read this CLAUDE.md
+2. **Review README.md** - User-facing overview
+3. **Check IMPLEMENTATION_PROGRESS.md** - Detailed skill tracking
+4. **Examine Templates** - Understand patterns
+5. **Look at Examples** - See implementations
+6. **Test Changes** - Copy to test project
+
+---
+
+## 🤝 Collaboration Guidelines
+
+When working on this repository:
+
+1. **Preserve Existing Work** - 100% complete, maintain quality
+2. **Follow Templates** - Use provided templates
+3. **Update Documentation** - Keep all docs in sync
+4. **Test Thoroughly** - Copy and test configurations
+5. **Maintain Counts** - Skill/command/agent numbers must be accurate
+
+---
+
+## 📞 Support Resources
+
+- **Documentation:** `docs/` directory
+- **Issues:** GitHub issue tracker
+- **Discussions:** GitHub discussions
+- **Contributing:** See CONTRIBUTING.md
+- **Official Docs:** https://docs.claude.com/en/docs/claude-code/
+
+---
+
+**Project Status:** ✅ 100% COMPLETE - All 87 Skills Documented
+**Last Updated:** November 5, 2025
 **Maintainer:** Claudius Skills Project Team
-
-**Documentation Audit:** November 3, 2025 - Comprehensive repository audit completed, revealing 87 total skills (32 previously undocumented). All skills now fully documented across CLAUDE.md, SKILLS_REFERENCE.md, and IMPLEMENTATION_PROGRESS.md.
-
