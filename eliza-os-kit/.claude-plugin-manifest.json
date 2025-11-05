@@ -1,0 +1,43 @@
+{
+  "name": "eliza-os-kit",
+  "displayName": "Claudius Skills - Eliza OS Development Kit",
+  "description": "Complete ElizaOS development toolkit for building AI agents with character generation, deployment, and plugin development",
+  "version": "1.0.0",
+  "author": {
+    "name": "Claudius Skills Project",
+    "email": "dexploarer@gmail.com",
+    "url": "https://github.com/Dexploarer/claudius-skills"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Dexploarer/claudius-skills.git",
+    "directory": "eliza-os-kit"
+  },
+  "license": "MIT",
+  "tags": ["elizaos", "ai-agents", "framework", "deployment", "character-ai"],
+  "category": "specialized",
+  "stats": {
+    "skills": 6,
+    "commands": 8,
+    "agents": 6
+  },
+  "bestFor": [
+    "Building AI agents with ElizaOS",
+    "Character AI development",
+    "Agent deployment and management",
+    "Knowledge base integration",
+    "Custom plugin development"
+  ],
+  "includes": [
+    "Character generation and design",
+    "Agent deployment workflows",
+    "Knowledge base management",
+    "Memory architecture",
+    "Plugin development",
+    "Testing and debugging tools"
+  ],
+  "framework": "ElizaOS",
+  "documentation": {
+    "guide": ".claude/rules/CLAUDE.md"
+  }
+}

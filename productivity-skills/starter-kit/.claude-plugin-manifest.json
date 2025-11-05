@@ -1,0 +1,38 @@
+{
+  "name": "productivity-starter",
+  "displayName": "Claudius Skills - Productivity Starter Kit",
+  "description": "Personal and team productivity skills for brainstorming, email, meetings, and reports",
+  "version": "1.0.0",
+  "author": {
+    "name": "Claudius Skills Project",
+    "email": "dexploarer@gmail.com",
+    "url": "https://github.com/Dexploarer/claudius-skills"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Dexploarer/claudius-skills.git",
+    "directory": "productivity-skills/starter-kit"
+  },
+  "license": "MIT",
+  "tags": ["productivity", "workflow", "personal", "team", "communication"],
+  "category": "productivity",
+  "stats": {
+    "skills": 5,
+    "commands": 13,
+    "agents": 4
+  },
+  "bestFor": [
+    "Personal productivity workflows",
+    "Team collaboration",
+    "Meeting management",
+    "Content creation",
+    "Communication efficiency"
+  ],
+  "includes": [
+    "Brainstorming sessions",
+    "Email composition",
+    "Meeting notes and summaries",
+    "Report writing",
+    "Task management"
+  ]
+}

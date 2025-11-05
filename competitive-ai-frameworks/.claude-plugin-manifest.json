@@ -1,0 +1,42 @@
+{
+  "name": "competitive-ai",
+  "displayName": "Claudius Skills - Competitive AI Frameworks",
+  "description": "AI-powered code competition skills with team-based agents for bug hunting, quality analysis, and flow testing",
+  "version": "1.0.0",
+  "author": {
+    "name": "Claudius Skills Project",
+    "email": "dexploarer@gmail.com",
+    "url": "https://github.com/Dexploarer/claudius-skills"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Dexploarer/claudius-skills.git",
+    "directory": "competitive-ai-frameworks"
+  },
+  "license": "MIT",
+  "tags": ["competition", "ai", "team-based", "quality", "testing"],
+  "category": "specialized",
+  "stats": {
+    "skills": 3,
+    "commands": 3,
+    "agents": 12
+  },
+  "bestFor": [
+    "AI-powered code competitions",
+    "Team-based code challenges",
+    "Quality assurance workflows",
+    "Comprehensive testing strategies"
+  ],
+  "includes": [
+    "Bug hunting with coordinated teams",
+    "Code quality analysis",
+    "User flow testing",
+    "Team coordination (3 teams of 4 agents each)",
+    "Competitive scoring and reporting"
+  ],
+  "teamStructure": {
+    "teams": 3,
+    "rolesPerTeam": ["Coordinator", "Tester", "Reviewer", "Documenter"],
+    "totalAgents": 12
+  }
+}

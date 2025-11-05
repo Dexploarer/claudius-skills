@@ -1,0 +1,40 @@
+{
+  "name": "railway-deployment",
+  "displayName": "Claudius Skills - Railway Deployment Kit",
+  "description": "Automated Railway.app deployment skills for configuration, environment management, and monitoring",
+  "version": "1.0.0",
+  "author": {
+    "name": "Claudius Skills Project",
+    "email": "dexploarer@gmail.com",
+    "url": "https://github.com/Dexploarer/claudius-skills"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Dexploarer/claudius-skills.git",
+    "directory": "railway-deployment-kit"
+  },
+  "license": "MIT",
+  "tags": ["railway", "deployment", "devops", "automation", "paas"],
+  "category": "specialized",
+  "stats": {
+    "skills": 5
+  },
+  "bestFor": [
+    "Automating deployments to Railway.app",
+    "Railway configuration management",
+    "Environment setup and secrets",
+    "Database deployment",
+    "Production monitoring"
+  ],
+  "includes": [
+    "Railway configuration generation",
+    "Deployment automation",
+    "Environment variable management",
+    "Database setup and migrations",
+    "Monitoring integration"
+  ],
+  "platform": "Railway.app",
+  "requirements": {
+    "external": ["Railway CLI (optional)"]
+  }
+}

@@ -32,14 +32,39 @@ A comprehensive, production-ready collection of **Claude Code extensibility conf
 
 ---
 
-## ⚡ NEW: External Repository Access
+## ⚡ NEW: Plugin Marketplace
 
-**Use Claudius Skills in ANY project with one command!**
+**Install any Claudius Skills kit as a Claude Code plugin!**
 
-You don't need to clone this repository anymore. Simply run our bootstrap installer in your project:
+### Method 1: Plugin Marketplace (Easiest!)
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/Dexploarer/claudius-skills/main/external-repo-bootstrap/install.sh | bash
+# In Claude Code terminal
+/plugin marketplace add Dexploarer/claudius-skills
+/plugin install starter-kit
+```
+
+Choose from 10 plugins:
+- **starter-kit** - Learning essentials (5 skills, 12 commands, 4 agents)
+- **intermediate-kit** - Production frameworks (10 skills, 15 commands, 6 agents)
+- **advanced-kit** - Enterprise systems (15 skills, 20 commands, 10 agents)
+- **productivity-starter** - Team productivity (5 skills, 13 commands)
+- **competitive-ai** - AI competitions (3 skills, 12 agents)
+- **eliza-os-kit** - ElizaOS development (6 skills, 8 commands)
+- **railway-deployment** - Railway.app automation (5 skills)
+- **hooks-collection** - Production hooks (36 hooks)
+- **framework-rules** - Framework configs (17 frameworks)
+
+**→ [Complete Plugin Marketplace Guide](PLUGIN_MARKETPLACE.md)**
+
+---
+
+## ⚡ Alternative: External Repository Access
+
+**Use Claudius Skills in ANY project with intelligent setup!**
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/Dexploarer/claudius-skills/main/external-repo-bootstrap/install.sh | bash -s -- --merge
 ```
 
 **No SSH keys required!** All access is via HTTPS - works for everyone without any GitHub account or SSH setup.
@@ -56,8 +81,6 @@ The setup agent will:
 2. ✅ Recommend appropriate skills, commands, and agents
 3. ✅ Install everything automatically
 4. ✅ Keep your configuration up-to-date with `/claudius-update`
-
-**This is the recommended way to use Claudius Skills!**
 
 **→ [Complete External Repo Access Guide](EXTERNAL_REPO_ACCESS.md)**
 
