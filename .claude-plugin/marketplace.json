@@ -1,0 +1,295 @@
+{
+  "name": "claudius-skills",
+  "displayName": "Claudius Skills Marketplace",
+  "description": "Production-ready Claude Code extensibility configurations for developers at every level",
+  "version": "1.0.0",
+  "owner": {
+    "name": "Claudius Skills Project",
+    "email": "dexploarer@gmail.com",
+    "url": "https://github.com/Dexploarer/claudius-skills"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Dexploarer/claudius-skills.git"
+  },
+  "plugins": [
+    {
+      "name": "starter-kit",
+      "displayName": "Starter Kit",
+      "description": "5 essential skills, 12 commands, 4 agents for learning Claude Code",
+      "version": "1.0.0",
+      "source": "./starter-kit",
+      "category": "beginner",
+      "tags": ["beginner", "learning", "essentials", "starter"],
+      "stats": {
+        "skills": 5,
+        "commands": 12,
+        "agents": 4
+      },
+      "bestFor": "Learning Claude Code, simple projects",
+      "includes": [
+        "README generation",
+        "Code explanation",
+        "Bug finding",
+        "Testing helpers",
+        "Git workflows"
+      ]
+    },
+    {
+      "name": "intermediate-kit",
+      "displayName": "Intermediate Kit",
+      "description": "10 framework skills, 15 commands, 6 agents for production applications",
+      "version": "1.0.0",
+      "source": "./intermediate-kit",
+      "category": "intermediate",
+      "tags": ["production", "frameworks", "modern-web", "api"],
+      "stats": {
+        "skills": 10,
+        "commands": 15,
+        "agents": 6
+      },
+      "bestFor": "Production applications, modern frameworks",
+      "includes": [
+        "React components",
+        "Vue components",
+        "Next.js pages",
+        "Django models",
+        "FastAPI endpoints",
+        "Express routes",
+        "GraphQL schemas",
+        "API documentation",
+        "Database migrations",
+        "Testing frameworks"
+      ]
+    },
+    {
+      "name": "advanced-kit",
+      "displayName": "Advanced Kit",
+      "description": "15 enterprise skills, 20 commands, 10 agents for enterprise systems",
+      "version": "1.0.0",
+      "source": "./advanced-kit",
+      "category": "advanced",
+      "tags": ["enterprise", "microservices", "observability", "compliance"],
+      "stats": {
+        "skills": 15,
+        "commands": 20,
+        "agents": 10
+      },
+      "bestFor": "Enterprise systems, compliance, observability",
+      "includes": [
+        "Microservices architecture",
+        "Distributed tracing",
+        "Compliance automation",
+        "Security scanning",
+        "Performance optimization",
+        "Incident management",
+        "SRE workflows",
+        "Platform engineering"
+      ]
+    },
+    {
+      "name": "productivity-starter",
+      "displayName": "Productivity Starter Kit",
+      "description": "5 productivity skills, 13 commands, 4 agents for personal productivity",
+      "version": "1.0.0",
+      "source": "./productivity-skills/starter-kit",
+      "category": "productivity",
+      "tags": ["productivity", "workflow", "personal", "team"],
+      "stats": {
+        "skills": 5,
+        "commands": 13,
+        "agents": 4
+      },
+      "bestFor": "Personal and team productivity workflows",
+      "includes": [
+        "Brainstorming sessions",
+        "Email composition",
+        "Meeting notes",
+        "Report writing",
+        "Task management"
+      ]
+    },
+    {
+      "name": "productivity-intermediate",
+      "displayName": "Productivity Intermediate Kit",
+      "description": "1 advanced productivity skill for presentation generation",
+      "version": "1.0.0",
+      "source": "./productivity-skills/intermediate-kit",
+      "category": "productivity",
+      "tags": ["productivity", "presentations", "advanced"],
+      "stats": {
+        "skills": 1,
+        "commands": 0,
+        "agents": 0
+      },
+      "bestFor": "Advanced productivity and presentation creation",
+      "includes": [
+        "Presentation generation"
+      ]
+    },
+    {
+      "name": "competitive-ai",
+      "displayName": "Competitive AI Frameworks",
+      "description": "3 competition skills, 3 commands, 12 team agents for AI competitions",
+      "version": "1.0.0",
+      "source": "./competitive-ai-frameworks",
+      "category": "specialized",
+      "tags": ["competition", "ai", "team-based", "quality"],
+      "stats": {
+        "skills": 3,
+        "commands": 3,
+        "agents": 12
+      },
+      "bestFor": "AI-powered code competitions and team challenges",
+      "includes": [
+        "Bug hunting",
+        "Code quality analysis",
+        "User flow testing",
+        "Team coordination",
+        "Competitive scoring"
+      ]
+    },
+    {
+      "name": "eliza-os-kit",
+      "displayName": "Eliza OS Development Kit",
+      "description": "6 ElizaOS skills, 8 commands, 6 agents for building AI agents",
+      "version": "1.0.0",
+      "source": "./eliza-os-kit",
+      "category": "specialized",
+      "tags": ["elizaos", "ai-agents", "framework", "deployment"],
+      "stats": {
+        "skills": 6,
+        "commands": 8,
+        "agents": 6
+      },
+      "bestFor": "Building AI agents with ElizaOS framework",
+      "includes": [
+        "Character generation",
+        "Agent deployment",
+        "Knowledge base management",
+        "Memory architecture",
+        "Plugin development",
+        "Testing and debugging"
+      ]
+    },
+    {
+      "name": "railway-deployment",
+      "displayName": "Railway Deployment Kit",
+      "description": "5 Railway deployment skills for deployment automation",
+      "version": "1.0.0",
+      "source": "./railway-deployment-kit",
+      "category": "specialized",
+      "tags": ["railway", "deployment", "devops", "automation"],
+      "stats": {
+        "skills": 5,
+        "commands": 0,
+        "agents": 0
+      },
+      "bestFor": "Automating deployments to Railway.app",
+      "includes": [
+        "Railway configuration",
+        "Deployment automation",
+        "Environment management",
+        "Database setup",
+        "Monitoring integration"
+      ]
+    },
+    {
+      "name": "hooks-collection",
+      "displayName": "Production Hooks Collection",
+      "description": "36 production hooks across 7 categories for automation",
+      "version": "1.0.0",
+      "source": "./hooks-collection",
+      "category": "enhancement",
+      "tags": ["hooks", "automation", "safety", "quality"],
+      "stats": {
+        "hooks": 36
+      },
+      "bestFor": "Event-driven automation and safety checks",
+      "includes": [
+        "Development safety (5 hooks)",
+        "Production deployment (5 hooks)",
+        "Code quality (5 hooks)",
+        "Security enforcement (5 hooks)",
+        "Performance monitoring (5 hooks)",
+        "Knowledge cutoff awareness (5 hooks)",
+        "Strict typing (6 hooks)"
+      ]
+    },
+    {
+      "name": "framework-rules",
+      "displayName": "Framework Integration Rules",
+      "description": "17 framework-specific configuration rules",
+      "version": "1.0.0",
+      "source": "./framework-rules",
+      "category": "enhancement",
+      "tags": ["frameworks", "rules", "configuration"],
+      "stats": {
+        "frameworks": 17
+      },
+      "bestFor": "Framework-specific best practices and configurations",
+      "includes": [
+        "React",
+        "Vue",
+        "Next.js",
+        "Nuxt3",
+        "Angular",
+        "Svelte",
+        "SvelteKit",
+        "Astro",
+        "Fresh",
+        "Qwik",
+        "Remix",
+        "SolidJS",
+        "Django",
+        "FastAPI",
+        "Express",
+        "NestJS",
+        "Spring Boot"
+      ]
+    }
+  ],
+  "categories": {
+    "beginner": {
+      "name": "Beginner",
+      "description": "For learning Claude Code and simple projects",
+      "order": 1
+    },
+    "intermediate": {
+      "name": "Intermediate",
+      "description": "For production applications and modern frameworks",
+      "order": 2
+    },
+    "advanced": {
+      "name": "Advanced",
+      "description": "For enterprise systems and complex architectures",
+      "order": 3
+    },
+    "specialized": {
+      "name": "Specialized",
+      "description": "Domain-specific kits for particular use cases",
+      "order": 4
+    },
+    "productivity": {
+      "name": "Productivity",
+      "description": "For personal and team productivity workflows",
+      "order": 5
+    },
+    "enhancement": {
+      "name": "Enhancements",
+      "description": "Hooks, rules, and additional configurations",
+      "order": 6
+    }
+  },
+  "metadata": {
+    "totalPlugins": 10,
+    "totalSkills": 87,
+    "totalCommands": 86,
+    "totalAgents": 50,
+    "totalHooks": 36,
+    "totalFrameworks": 17,
+    "completionStatus": "100%",
+    "license": "MIT",
+    "lastUpdated": "2025-11-05"
+  }
+}

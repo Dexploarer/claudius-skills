@@ -1,0 +1,69 @@
+{
+  "name": "intermediate-kit",
+  "displayName": "Claudius Skills - Intermediate Kit",
+  "description": "Framework-specific skills, production commands, and specialist agents for modern web applications",
+  "version": "1.0.0",
+  "author": {
+    "name": "Claudius Skills Project",
+    "email": "dexploarer@gmail.com",
+    "url": "https://github.com/Dexploarer/claudius-skills"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Dexploarer/claudius-skills.git",
+    "directory": "intermediate-kit"
+  },
+  "license": "MIT",
+  "tags": ["production", "frameworks", "modern-web", "api", "database"],
+  "category": "intermediate",
+  "stats": {
+    "skills": 10,
+    "commands": 15,
+    "agents": 6,
+    "total": 31
+  },
+  "requirements": {
+    "claudeCode": ">=2.0.0"
+  },
+  "bestFor": [
+    "Production applications",
+    "Modern web frameworks (React, Vue, Next.js)",
+    "Backend APIs (Django, FastAPI, Express)",
+    "Database-driven applications",
+    "Full-stack development"
+  ],
+  "includes": [
+    "React component generation",
+    "Vue component generation",
+    "Next.js page generation",
+    "Django model helpers",
+    "FastAPI endpoint generation",
+    "Express route generation",
+    "GraphQL schema generation",
+    "API documentation generation",
+    "Database migration helpers",
+    "Testing framework integration"
+  ],
+  "frameworks": [
+    "React",
+    "Vue",
+    "Next.js",
+    "Django",
+    "FastAPI",
+    "Express",
+    "GraphQL"
+  ],
+  "installation": {
+    "auto": true,
+    "steps": [
+      "Plugin will automatically install all skills, commands, and agents",
+      "Framework detection is automatic",
+      "Skills activate based on project structure",
+      "Recommended for production-ready applications"
+    ]
+  },
+  "documentation": {
+    "readme": "README.md",
+    "guide": ".claude/rules/CLAUDE.md"
+  }
+}

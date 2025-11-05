@@ -1,0 +1,169 @@
+{
+  "name": "starter-kit",
+  "displayName": "Claudius Skills - Starter Kit",
+  "description": "Essential skills, commands, and agents for learning Claude Code and building simple projects",
+  "version": "1.0.0",
+  "author": {
+    "name": "Claudius Skills Project",
+    "email": "dexploarer@gmail.com",
+    "url": "https://github.com/Dexploarer/claudius-skills"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Dexploarer/claudius-skills.git",
+    "directory": "starter-kit"
+  },
+  "license": "MIT",
+  "tags": ["beginner", "learning", "essentials", "starter"],
+  "category": "beginner",
+  "components": {
+    "skills": [
+      {
+        "name": "bug-finder",
+        "file": ".claude/skills/bug-finder.md",
+        "description": "Automatically find and suggest fixes for bugs in code"
+      },
+      {
+        "name": "code-explainer",
+        "file": ".claude/skills/code-explainer.md",
+        "description": "Explain code in natural language with examples"
+      },
+      {
+        "name": "git-helper",
+        "file": ".claude/skills/git-helper.md",
+        "description": "Assist with git workflows and common git operations"
+      },
+      {
+        "name": "readme-generator",
+        "file": ".claude/skills/readme-generator.md",
+        "description": "Generate comprehensive README files for projects"
+      },
+      {
+        "name": "test-helper",
+        "file": ".claude/skills/test-helper.md",
+        "description": "Help write and organize tests for any framework"
+      }
+    ],
+    "commands": [
+      {
+        "name": "clean",
+        "file": ".claude/commands/clean.md",
+        "description": "Clean up code formatting and remove unused code"
+      },
+      {
+        "name": "commit",
+        "file": ".claude/commands/commit.md",
+        "description": "Create well-formatted git commits"
+      },
+      {
+        "name": "debug",
+        "file": ".claude/commands/debug.md",
+        "description": "Debug code and find issues"
+      },
+      {
+        "name": "deps",
+        "file": ".claude/commands/deps.md",
+        "description": "Manage project dependencies"
+      },
+      {
+        "name": "docs",
+        "file": ".claude/commands/docs.md",
+        "description": "Generate documentation"
+      },
+      {
+        "name": "explain",
+        "file": ".claude/commands/explain.md",
+        "description": "Explain code or concepts"
+      },
+      {
+        "name": "quickfix",
+        "file": ".claude/commands/quickfix.md",
+        "description": "Quick fixes for common issues"
+      },
+      {
+        "name": "refactor",
+        "file": ".claude/commands/refactor.md",
+        "description": "Refactor code for better quality"
+      },
+      {
+        "name": "review",
+        "file": ".claude/commands/review.md",
+        "description": "Review code for issues and improvements"
+      },
+      {
+        "name": "setup",
+        "file": ".claude/commands/setup.md",
+        "description": "Set up new projects"
+      },
+      {
+        "name": "test",
+        "file": ".claude/commands/test.md",
+        "description": "Write and run tests"
+      },
+      {
+        "name": "todo",
+        "file": ".claude/commands/todo.md",
+        "description": "Manage TODO items"
+      }
+    ],
+    "agents": [
+      {
+        "name": "code-reviewer",
+        "file": ".claude/agents/code-reviewer.md",
+        "description": "Specialized agent for comprehensive code reviews"
+      },
+      {
+        "name": "debug-helper",
+        "file": ".claude/agents/debug-helper.md",
+        "description": "Expert debugging assistant"
+      },
+      {
+        "name": "doc-writer",
+        "file": ".claude/agents/doc-writer.md",
+        "description": "Documentation generation specialist"
+      },
+      {
+        "name": "test-writer",
+        "file": ".claude/agents/test-writer.md",
+        "description": "Test creation and organization expert"
+      }
+    ]
+  },
+  "stats": {
+    "skills": 5,
+    "commands": 12,
+    "agents": 4,
+    "total": 21
+  },
+  "requirements": {
+    "claudeCode": ">=2.0.0"
+  },
+  "bestFor": [
+    "Learning Claude Code fundamentals",
+    "Simple projects and prototypes",
+    "Getting started with AI-assisted development",
+    "Understanding skill, command, and agent patterns"
+  ],
+  "includes": [
+    "README generation",
+    "Code explanation and documentation",
+    "Bug finding and fixing",
+    "Test writing and organization",
+    "Git workflow assistance",
+    "Code review and refactoring",
+    "Quick fixes and cleanup"
+  ],
+  "installation": {
+    "auto": true,
+    "steps": [
+      "Plugin will automatically install all skills, commands, and agents to .claude/ directory",
+      "No additional configuration required",
+      "Skills activate automatically based on context",
+      "Commands available via /command-name"
+    ]
+  },
+  "documentation": {
+    "readme": "README.md",
+    "guide": ".claude/rules/CLAUDE.md"
+  }
+}

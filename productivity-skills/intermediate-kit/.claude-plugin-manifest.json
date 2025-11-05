@@ -1,0 +1,33 @@
+{
+  "name": "productivity-intermediate",
+  "displayName": "Claudius Skills - Productivity Intermediate Kit",
+  "description": "Advanced productivity skill for professional presentation generation",
+  "version": "1.0.0",
+  "author": {
+    "name": "Claudius Skills Project",
+    "email": "dexploarer@gmail.com",
+    "url": "https://github.com/Dexploarer/claudius-skills"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Dexploarer/claudius-skills.git",
+    "directory": "productivity-skills/intermediate-kit"
+  },
+  "license": "MIT",
+  "tags": ["productivity", "presentations", "advanced", "business"],
+  "category": "productivity",
+  "stats": {
+    "skills": 1
+  },
+  "bestFor": [
+    "Professional presentation creation",
+    "Business proposals",
+    "Technical talks",
+    "Stakeholder communications"
+  ],
+  "includes": [
+    "Presentation generation with structure and flow",
+    "Slide content optimization",
+    "Visual suggestions"
+  ]
+}

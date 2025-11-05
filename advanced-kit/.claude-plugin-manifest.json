@@ -1,0 +1,73 @@
+{
+  "name": "advanced-kit",
+  "displayName": "Claudius Skills - Advanced Kit",
+  "description": "Enterprise-grade skills for microservices, observability, compliance, and platform engineering",
+  "version": "1.0.0",
+  "author": {
+    "name": "Claudius Skills Project",
+    "email": "dexploarer@gmail.com",
+    "url": "https://github.com/Dexploarer/claudius-skills"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Dexploarer/claudius-skills.git",
+    "directory": "advanced-kit"
+  },
+  "license": "MIT",
+  "tags": ["enterprise", "microservices", "observability", "compliance", "sre", "platform-engineering"],
+  "category": "advanced",
+  "stats": {
+    "skills": 15,
+    "commands": 20,
+    "agents": 10,
+    "total": 45
+  },
+  "requirements": {
+    "claudeCode": ">=2.0.0"
+  },
+  "bestFor": [
+    "Enterprise systems and architectures",
+    "Microservices development",
+    "Observability and monitoring",
+    "Compliance automation (SOC2, HIPAA, GDPR, PCI-DSS)",
+    "Site Reliability Engineering (SRE)",
+    "Platform engineering and golden paths"
+  ],
+  "includes": [
+    "Microservices architecture patterns",
+    "Distributed tracing implementation",
+    "Compliance automation and scanning",
+    "Security vulnerability detection",
+    "Performance optimization and profiling",
+    "Incident management workflows",
+    "SRE best practices",
+    "Platform engineering templates",
+    "Canary deployments",
+    "Service mesh configuration"
+  ],
+  "complianceFrameworks": [
+    "SOC2",
+    "HIPAA",
+    "GDPR",
+    "PCI-DSS"
+  ],
+  "observabilityTools": [
+    "Distributed tracing",
+    "Metrics collection",
+    "Log aggregation",
+    "APM integration"
+  ],
+  "installation": {
+    "auto": true,
+    "steps": [
+      "Plugin will automatically install all enterprise-grade skills",
+      "Compliance checks activate based on project requirements",
+      "Observability patterns integrate with existing monitoring",
+      "Recommended for production enterprise systems"
+    ]
+  },
+  "documentation": {
+    "readme": "README.md",
+    "guide": ".claude/rules/CLAUDE.md"
+  }
+}
