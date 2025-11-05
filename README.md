@@ -34,16 +34,21 @@ A comprehensive, production-ready collection of **Claude Code extensibility conf
 
 ## ⚡ NEW: External Repository Access
 
-**Use Claudius Skills in ANY project with one command!**
+**Use Claudius Skills in ANY project - no manual copying needed!**
 
-You don't need to clone this repository anymore. Simply run our bootstrap installer in your project:
+Simply copy the lightweight bootstrap to your project:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/Dexploarer/claudius-skills/main/external-repo-bootstrap/install.sh | bash
+# Clone this repo once
+git clone https://github.com/Dexploarer/claudius-skills.git ~/.claudius-skills
+
+# Copy bootstrap to your project (only ~4 files)
+cp -r ~/.claudius-skills/external-repo-bootstrap/.claude /path/to/your/project/
 ```
 
 Then in Claude Code:
 ```bash
+cd /path/to/your/project
 claude
 # Say: "setup claudius for my project"
 # Or: /claudius-setup

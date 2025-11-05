@@ -25,10 +25,11 @@ The **Claudius Skills Bootstrap** is a minimal `.claude` setup that you can copy
 Copy the bootstrap to your project:
 
 ```bash
-# From within the claudius-skills repository
-cp -r external-repo-bootstrap/.claude /path/to/your/project/
+# Option A: From a local clone of this repository
+git clone https://github.com/Dexploarer/claudius-skills.git ~/.claudius-skills
+cp -r ~/.claudius-skills/external-repo-bootstrap/.claude /path/to/your/project/
 
-# Or download directly from GitHub
+# Option B: Download and extract
 curl -L https://github.com/Dexploarer/claudius-skills/archive/main.zip -o claudius.zip
 unzip claudius.zip
 cp -r claudius-skills-main/external-repo-bootstrap/.claude /path/to/your/project/
@@ -65,17 +66,20 @@ Say: **"/claudius-setup"**
 
 ### Method 3: One-Line Install Script
 
-We provide a one-line installer script:
+We provide a one-line installer script (available after PR merge):
 
 ```bash
+# NOTE: This will work once the PR is merged to main
 curl -fsSL https://raw.githubusercontent.com/Dexploarer/claudius-skills/main/external-repo-bootstrap/install.sh | bash
+
+# For now, use Method 1 or 2 above
 ```
 
-This script:
-- Creates `.claude` directory
-- Copies bootstrap files
-- Clones claudius-skills repository to `~/.claudius-skills`
-- Runs initial setup wizard
+This script will:
+- Create `.claude` directory
+- Copy bootstrap files
+- Clone claudius-skills repository to `~/.claudius-skills`
+- Run initial setup wizard
 
 ---
 

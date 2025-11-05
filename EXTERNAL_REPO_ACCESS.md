@@ -90,18 +90,21 @@ The **Claudius Skills External Repo Access System** allows any developer to:
 
 ## 🚀 Installation Methods
 
-### Method 1: One-Line Installer (Easiest)
+### Method 1: One-Line Installer (Easiest - Available After PR Merge)
 
 ```bash
+# NOTE: This will work once the PR is merged to main
 curl -fsSL https://raw.githubusercontent.com/Dexploarer/claudius-skills/main/external-repo-bootstrap/install.sh | bash
+
+# For now, use Method 2 below
 ```
 
-This script:
-- ✅ Clones repository to `~/.claudius-skills`
-- ✅ Creates `.claude/` structure in current directory
-- ✅ Copies bootstrap files (skill, agent, commands)
-- ✅ Verifies installation
-- ✅ Provides next steps
+This script will:
+- ✅ Clone repository to `~/.claudius-skills`
+- ✅ Create `.claude/` structure in current directory
+- ✅ Copy bootstrap files (skill, agent, commands)
+- ✅ Verify installation
+- ✅ Provide next steps
 
 ### Method 2: Manual Bootstrap Copy
 
@@ -1074,8 +1077,15 @@ Submit PR to benefit everyone!
 ## Quick Start Command
 
 ```bash
-# One command to rule them all
-curl -fsSL https://raw.githubusercontent.com/Dexploarer/claudius-skills/main/external-repo-bootstrap/install.sh | bash && claude
+# Clone once
+git clone https://github.com/Dexploarer/claudius-skills.git ~/.claudius-skills
+
+# Copy bootstrap to your project
+cp -r ~/.claudius-skills/external-repo-bootstrap/.claude /path/to/your/project/
+
+# Start Claude Code
+cd /path/to/your/project && claude
+# Then say: "setup claudius for my project"
 ```
 
 🎉 **That's it! You now have full access to Claudius Skills from any repository!**
