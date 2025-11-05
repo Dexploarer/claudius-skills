@@ -88,6 +88,23 @@ The **Claudius Skills External Repo Access System** allows any developer to:
 
 ---
 
+## ✅ Requirements
+
+**Minimal Requirements:**
+- ✅ Git installed (`git --version`)
+- ✅ Internet connection
+- ✅ Claude Code CLI
+
+**No SSH Setup Required!**
+- ❌ No SSH keys needed
+- ❌ No GitHub authentication required for public repository
+- ✅ All access via HTTPS (works everywhere)
+- ✅ SSH mentioned only as optional fallback for network issues
+
+All installation methods use HTTPS by default, making it accessible to everyone without any GitHub account setup or SSH key configuration.
+
+---
+
 ## 🚀 Installation Methods
 
 ### Method 1: One-Line Installer (Easiest)
@@ -880,7 +897,10 @@ git --version
 # Check connectivity
 ping github.com
 
-# Try SSH instead
+# Ensure HTTPS clone is working (default, no SSH keys required)
+git clone https://github.com/Dexploarer/claudius-skills.git ~/.claudius-skills
+
+# Only if HTTPS fails due to firewall/proxy, try SSH (requires SSH key setup)
 git clone git@github.com:Dexploarer/claudius-skills.git ~/.claudius-skills
 
 # Check firewall/proxy
