@@ -3,8 +3,6 @@
 # Claudius Skills Bootstrap Installer
 # https://github.com/Dexploarer/claudius-skills
 
-set -e
-
 # Colors for output
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -16,6 +14,56 @@ NC='\033[0m' # No Color
 REPO_URL="https://github.com/Dexploarer/claudius-skills.git"
 REPO_PATH="$HOME/.claudius-skills"
 BOOTSTRAP_URL="https://raw.githubusercontent.com/Dexploarer/claudius-skills/main/external-repo-bootstrap"
+
+# Show usage
+show_usage() {
+    echo "Claudius Skills Bootstrap Installer"
+    echo ""
+    echo "Usage: $0 [OPTIONS]"
+    echo ""
+    echo "Options:"
+    echo "  --merge    Merge with existing .claude directory (keep existing files)"
+    echo "  --backup   Backup existing .claude and create fresh installation"
+    echo "  --force    Same as --merge (skip interactive prompts)"
+    echo "  -h, --help Show this help message"
+    echo ""
+    echo "Examples:"
+    echo "  # Interactive installation"
+    echo "  curl -fsSL https://raw.githubusercontent.com/Dexploarer/claudius-skills/main/external-repo-bootstrap/install.sh | bash -s -- --merge"
+    echo ""
+    echo "  # Download and run"
+    echo "  curl -fsSL https://raw.githubusercontent.com/Dexploarer/claudius-skills/main/external-repo-bootstrap/install.sh -o install.sh"
+    echo "  bash install.sh --merge"
+}
+
+# Parse command-line arguments
+MODE=""
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        --merge)
+            MODE="merge"
+            shift
+            ;;
+        --backup)
+            MODE="backup"
+            shift
+            ;;
+        --force)
+            MODE="force"
+            shift
+            ;;
+        -h|--help)
+            show_usage
+            exit 0
+            ;;
+        *)
+            echo -e "${RED}Unknown option: $1${NC}"
+            echo ""
+            show_usage
+            exit 1
+            ;;
+    esac
+done
 
 echo -e "${BLUE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
 echo -e "${BLUE}  Claudius Skills Bootstrap Installer${NC}"
@@ -37,29 +85,41 @@ echo -e "${GREEN}✓ Git installed${NC}"
 if ! git rev-parse --git-dir > /dev/null 2>&1; then
     echo -e "${YELLOW}⚠ Not in a git repository${NC}"
     echo "This installer works best when run from a git repository."
-    read -p "Continue anyway? (y/n) " -n 1 -r
-    echo
-    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-        exit 1
+    if [ -z "$MODE" ]; then
+        read -p "Continue anyway? (y/n) " -n 1 -r < /dev/tty
+        echo
+        if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+            exit 1
+        fi
     fi
 fi
 
 echo ""
 echo -e "${YELLOW}Step 1: Setting up repository access...${NC}"
 
+# Save current directory
+ORIGINAL_DIR=$(pwd)
+
 # Clone or update the main repository
 if [ -d "$REPO_PATH" ]; then
     echo -e "${BLUE}Repository already exists at $REPO_PATH${NC}"
     echo "Updating to latest version..."
-    cd "$REPO_PATH"
-    git fetch origin
-    git pull origin main
+    (cd "$REPO_PATH" && git fetch origin && git pull origin main) || {
+        echo -e "${RED}✗ Failed to update repository${NC}"
+        exit 1
+    }
     echo -e "${GREEN}✓ Repository updated${NC}"
 else
     echo "Cloning repository to $REPO_PATH..."
-    git clone "$REPO_URL" "$REPO_PATH"
+    git clone "$REPO_URL" "$REPO_PATH" || {
+        echo -e "${RED}✗ Failed to clone repository${NC}"
+        exit 1
+    }
     echo -e "${GREEN}✓ Repository cloned${NC}"
 fi
+
+# Return to original directory
+cd "$ORIGINAL_DIR"
 
 echo ""
 echo -e "${YELLOW}Step 2: Installing bootstrap to current directory...${NC}"
@@ -71,33 +131,49 @@ echo "Current directory: $CURRENT_DIR"
 # Check if .claude already exists
 if [ -d ".claude" ]; then
     echo -e "${YELLOW}⚠ .claude directory already exists${NC}"
-    echo "Choose an option:"
-    echo "  1) Merge (add new files, keep existing)"
-    echo "  2) Backup and replace"
-    echo "  3) Cancel"
-    read -p "Enter choice (1-3): " -n 1 -r
-    echo
 
-    case $REPLY in
-        1)
+    # Determine action based on MODE or interactive input
+    if [ -n "$MODE" ]; then
+        CHOICE="$MODE"
+    else
+        echo "Choose an option:"
+        echo "  1) Merge (add new files, keep existing)"
+        echo "  2) Backup and replace"
+        echo "  3) Cancel"
+        read -p "Enter choice (1-3): " -n 1 -r < /dev/tty
+        echo
+
+        case $REPLY in
+            1) CHOICE="merge" ;;
+            2) CHOICE="backup" ;;
+            3) CHOICE="cancel" ;;
+            *)
+                echo -e "${RED}Invalid choice${NC}"
+                exit 1
+                ;;
+        esac
+    fi
+
+    case $CHOICE in
+        merge|force)
             echo -e "${BLUE}Merging with existing .claude directory...${NC}"
             # Create any missing subdirectories
             mkdir -p .claude/{skills,commands,subagents,rules}
             echo -e "${GREEN}✓ Will merge files${NC}"
             ;;
-        2)
+        backup)
             BACKUP_DIR=".claude.backup.$(date +%Y%m%d_%H%M%S)"
             mv .claude "$BACKUP_DIR"
             echo -e "${GREEN}✓ Backed up to $BACKUP_DIR${NC}"
             mkdir -p .claude/{skills,commands,subagents,rules}
             echo -e "${GREEN}✓ Created fresh .claude directory structure${NC}"
             ;;
-        3)
+        cancel)
             echo "Installation cancelled"
             exit 1
             ;;
         *)
-            echo -e "${RED}Invalid choice${NC}"
+            echo -e "${RED}Invalid mode: $CHOICE${NC}"
             exit 1
             ;;
     esac
@@ -110,13 +186,22 @@ fi
 # Copy bootstrap files
 echo "Copying bootstrap files..."
 
-cp "$REPO_PATH/external-repo-bootstrap/.claude/skills/claudius-installer.md" .claude/skills/
+if ! cp "$REPO_PATH/external-repo-bootstrap/.claude/skills/claudius-installer.md" .claude/skills/ 2>/dev/null; then
+    echo -e "${RED}✗ Failed to copy claudius-installer skill${NC}"
+    exit 1
+fi
 echo -e "${GREEN}✓ Copied claudius-installer skill${NC}"
 
-cp "$REPO_PATH/external-repo-bootstrap/.claude/subagents/claudius-setup-agent.md" .claude/subagents/
+if ! cp "$REPO_PATH/external-repo-bootstrap/.claude/subagents/claudius-setup-agent.md" .claude/subagents/ 2>/dev/null; then
+    echo -e "${RED}✗ Failed to copy claudius-setup-agent${NC}"
+    exit 1
+fi
 echo -e "${GREEN}✓ Copied claudius-setup-agent${NC}"
 
-cp "$REPO_PATH/external-repo-bootstrap/.claude/commands/"*.md .claude/commands/
+if ! cp "$REPO_PATH/external-repo-bootstrap/.claude/commands/"*.md .claude/commands/ 2>/dev/null; then
+    echo -e "${RED}✗ Failed to copy setup commands${NC}"
+    exit 1
+fi
 echo -e "${GREEN}✓ Copied setup commands${NC}"
 
 echo ""
