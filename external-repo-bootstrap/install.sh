@@ -71,21 +71,41 @@ echo "Current directory: $CURRENT_DIR"
 # Check if .claude already exists
 if [ -d ".claude" ]; then
     echo -e "${YELLOW}⚠ .claude directory already exists${NC}"
-    read -p "Backup and continue? (y/n) " -n 1 -r
+    echo "Choose an option:"
+    echo "  1) Merge (add new files, keep existing)"
+    echo "  2) Backup and replace"
+    echo "  3) Cancel"
+    read -p "Enter choice (1-3): " -n 1 -r
     echo
-    if [[ $REPLY =~ ^[Yy]$ ]]; then
-        BACKUP_DIR=".claude.backup.$(date +%Y%m%d_%H%M%S)"
-        mv .claude "$BACKUP_DIR"
-        echo -e "${GREEN}✓ Backed up to $BACKUP_DIR${NC}"
-    else
-        echo "Installation cancelled"
-        exit 1
-    fi
-fi
 
-# Create .claude directory structure
-mkdir -p .claude/{skills,commands,subagents,rules}
-echo -e "${GREEN}✓ Created .claude directory structure${NC}"
+    case $REPLY in
+        1)
+            echo -e "${BLUE}Merging with existing .claude directory...${NC}"
+            # Create any missing subdirectories
+            mkdir -p .claude/{skills,commands,subagents,rules}
+            echo -e "${GREEN}✓ Will merge files${NC}"
+            ;;
+        2)
+            BACKUP_DIR=".claude.backup.$(date +%Y%m%d_%H%M%S)"
+            mv .claude "$BACKUP_DIR"
+            echo -e "${GREEN}✓ Backed up to $BACKUP_DIR${NC}"
+            mkdir -p .claude/{skills,commands,subagents,rules}
+            echo -e "${GREEN}✓ Created fresh .claude directory structure${NC}"
+            ;;
+        3)
+            echo "Installation cancelled"
+            exit 1
+            ;;
+        *)
+            echo -e "${RED}Invalid choice${NC}"
+            exit 1
+            ;;
+    esac
+else
+    # Create .claude directory structure
+    mkdir -p .claude/{skills,commands,subagents,rules}
+    echo -e "${GREEN}✓ Created .claude directory structure${NC}"
+fi
 
 # Copy bootstrap files
 echo "Copying bootstrap files..."
