@@ -3,6 +3,10 @@
   "name": "claudius-skills-marketplace",
   "version": "1.0.0",
   "description": "Production-ready Claude Code extensibility configurations covering all five pillars: Skills (87), Slash Commands (80+), Hooks (36), Subagents (46), and MCP Servers (20+). Progressive learning from beginner to enterprise level.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Dexploarer/claudius-skills.git"
+  },
   "owner": {
     "name": "Claudius Skills Team",
     "email": "dexploarer@gmail.com",
@@ -15,7 +19,7 @@
       "description": "Core skills and rules: version-checker, class-builder, knowledge cutoff awareness, and strict TypeScript patterns",
       "author": {
         "name": "Claudius Skills Team",
-        "email": "dexploarer@gmail.com
+        "email": "dexploarer@gmail.com"
       },
       "source": ".",
       "category": "development",

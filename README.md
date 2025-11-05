@@ -42,6 +42,8 @@ You don't need to clone this repository anymore. Simply run our bootstrap instal
 curl -fsSL https://raw.githubusercontent.com/Dexploarer/claudius-skills/main/external-repo-bootstrap/install.sh | bash
 ```
 
+**No SSH keys required!** All access is via HTTPS - works for everyone without any GitHub account or SSH setup.
+
 Then in Claude Code:
 ```bash
 claude

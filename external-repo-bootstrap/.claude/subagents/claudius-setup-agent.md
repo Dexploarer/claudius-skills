@@ -386,7 +386,10 @@ git --version
 # Check network
 ping github.com
 
-# Try with SSH instead
+# Ensure HTTPS clone is working (default, no SSH keys required)
+git clone https://github.com/Dexploarer/claudius-skills.git ~/.claudius-skills
+
+# Only if HTTPS fails due to firewall/proxy, try SSH (requires SSH key setup)
 git clone git@github.com:Dexploarer/claudius-skills.git ~/.claudius-skills
 ```
 
