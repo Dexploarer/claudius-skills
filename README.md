@@ -4,15 +4,15 @@
 
 <div align="center">
 
-[![Skills](https://img.shields.io/badge/Skills-57-orange)]()
-[![Commands](https://img.shields.io/badge/Commands-80+-purple)]()
+[![Skills](https://img.shields.io/badge/Skills-87-orange)]()
+[![Commands](https://img.shields.io/badge/Commands-86-purple)]()
 [![Hooks](https://img.shields.io/badge/Hooks-36-blue)]()
-[![Agents](https://img.shields.io/badge/Agents-46-red)]()
+[![Agents](https://img.shields.io/badge/Agents-50-red)]()
 [![Frameworks](https://img.shields.io/badge/Frameworks-17-yellow)]()
 [![Status](https://img.shields.io/badge/Status-100%25%20Complete-brightgreen)]()
 [![License](https://img.shields.io/badge/License-MIT-green)]()
 
-[Quick Start](#-quick-start) • [Choose Your Kit](#-choose-your-kit) • [Documentation](docs/) • [Examples](examples/)
+[External Repo Access](#-new-external-repository-access) • [Quick Start](#-quick-start-manual-method) • [Choose Your Kit](#-choose-your-kit) • [Documentation](docs/) • [Examples](examples/)
 
 </div>
 
@@ -24,15 +24,44 @@ A comprehensive, production-ready collection of **Claude Code extensibility conf
 
 | Pillar | What It Does | Count |
 |--------|-------------|-------|
-| **Skills** | Automatically activate based on context | 57 |
-| **Slash Commands** | Manual shortcuts (`/command`) | 80+ |
+| **Skills** | Automatically activate based on context | 87 |
+| **Slash Commands** | Manual shortcuts (`/command`) | 86 |
 | **Hooks** | Event-driven automation | 36 |
-| **Agents** | Specialized AI consultants | 46 |
+| **Agents** | Specialized AI consultants | 50 |
 | **MCP Servers** | External service integrations | 20+ |
 
 ---
 
-## 🚀 Quick Start
+## ⚡ NEW: External Repository Access
+
+**Use Claudius Skills in ANY project with one command!**
+
+You don't need to clone this repository anymore. Simply run our bootstrap installer in your project:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/Dexploarer/claudius-skills/main/external-repo-bootstrap/install.sh | bash
+```
+
+Then in Claude Code:
+```bash
+claude
+# Say: "setup claudius for my project"
+# Or: /claudius-setup
+```
+
+The setup agent will:
+1. ✅ Analyze your project (frameworks, complexity, needs)
+2. ✅ Recommend appropriate skills, commands, and agents
+3. ✅ Install everything automatically
+4. ✅ Keep your configuration up-to-date with `/claudius-update`
+
+**This is the recommended way to use Claudius Skills!**
+
+**→ [Complete External Repo Access Guide](EXTERNAL_REPO_ACCESS.md)**
+
+---
+
+## 🚀 Quick Start (Manual Method)
 
 ### 1. Clone the Repository
 

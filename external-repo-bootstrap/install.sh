@@ -1,0 +1,162 @@
+#!/bin/bash
+
+# Claudius Skills Bootstrap Installer
+# https://github.com/Dexploarer/claudius-skills
+
+set -e
+
+# Colors for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+NC='\033[0m' # No Color
+
+# Configuration
+REPO_URL="https://github.com/Dexploarer/claudius-skills.git"
+REPO_PATH="$HOME/.claudius-skills"
+BOOTSTRAP_URL="https://raw.githubusercontent.com/Dexploarer/claudius-skills/main/external-repo-bootstrap"
+
+echo -e "${BLUE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+echo -e "${BLUE}  Claudius Skills Bootstrap Installer${NC}"
+echo -e "${BLUE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+echo ""
+
+# Check prerequisites
+echo -e "${YELLOW}Checking prerequisites...${NC}"
+
+# Check git
+if ! command -v git &> /dev/null; then
+    echo -e "${RED}✗ Git is not installed${NC}"
+    echo "Please install git and try again"
+    exit 1
+fi
+echo -e "${GREEN}✓ Git installed${NC}"
+
+# Check if running in a git repository
+if ! git rev-parse --git-dir > /dev/null 2>&1; then
+    echo -e "${YELLOW}⚠ Not in a git repository${NC}"
+    echo "This installer works best when run from a git repository."
+    read -p "Continue anyway? (y/n) " -n 1 -r
+    echo
+    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+        exit 1
+    fi
+fi
+
+echo ""
+echo -e "${YELLOW}Step 1: Setting up repository access...${NC}"
+
+# Clone or update the main repository
+if [ -d "$REPO_PATH" ]; then
+    echo -e "${BLUE}Repository already exists at $REPO_PATH${NC}"
+    echo "Updating to latest version..."
+    cd "$REPO_PATH"
+    git fetch origin
+    git pull origin main
+    echo -e "${GREEN}✓ Repository updated${NC}"
+else
+    echo "Cloning repository to $REPO_PATH..."
+    git clone "$REPO_URL" "$REPO_PATH"
+    echo -e "${GREEN}✓ Repository cloned${NC}"
+fi
+
+echo ""
+echo -e "${YELLOW}Step 2: Installing bootstrap to current directory...${NC}"
+
+# Get current directory
+CURRENT_DIR=$(pwd)
+echo "Current directory: $CURRENT_DIR"
+
+# Check if .claude already exists
+if [ -d ".claude" ]; then
+    echo -e "${YELLOW}⚠ .claude directory already exists${NC}"
+    read -p "Backup and continue? (y/n) " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        BACKUP_DIR=".claude.backup.$(date +%Y%m%d_%H%M%S)"
+        mv .claude "$BACKUP_DIR"
+        echo -e "${GREEN}✓ Backed up to $BACKUP_DIR${NC}"
+    else
+        echo "Installation cancelled"
+        exit 1
+    fi
+fi
+
+# Create .claude directory structure
+mkdir -p .claude/{skills,commands,subagents,rules}
+echo -e "${GREEN}✓ Created .claude directory structure${NC}"
+
+# Copy bootstrap files
+echo "Copying bootstrap files..."
+
+cp "$REPO_PATH/external-repo-bootstrap/.claude/skills/claudius-installer.md" .claude/skills/
+echo -e "${GREEN}✓ Copied claudius-installer skill${NC}"
+
+cp "$REPO_PATH/external-repo-bootstrap/.claude/subagents/claudius-setup-agent.md" .claude/subagents/
+echo -e "${GREEN}✓ Copied claudius-setup-agent${NC}"
+
+cp "$REPO_PATH/external-repo-bootstrap/.claude/commands/"*.md .claude/commands/
+echo -e "${GREEN}✓ Copied setup commands${NC}"
+
+echo ""
+echo -e "${YELLOW}Step 3: Verifying installation...${NC}"
+
+# Verify files
+REQUIRED_FILES=(
+    ".claude/skills/claudius-installer.md"
+    ".claude/subagents/claudius-setup-agent.md"
+    ".claude/commands/claudius-setup.md"
+    ".claude/commands/claudius-update.md"
+    ".claude/commands/claudius-info.md"
+)
+
+ALL_PRESENT=true
+for file in "${REQUIRED_FILES[@]}"; do
+    if [ -f "$file" ]; then
+        echo -e "${GREEN}✓ $file${NC}"
+    else
+        echo -e "${RED}✗ $file missing${NC}"
+        ALL_PRESENT=false
+    fi
+done
+
+if [ "$ALL_PRESENT" = false ]; then
+    echo -e "${RED}Installation incomplete. Please check the errors above.${NC}"
+    exit 1
+fi
+
+echo ""
+echo -e "${GREEN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+echo -e "${GREEN}  Installation Complete! 🎉${NC}"
+echo -e "${GREEN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+echo ""
+echo -e "${BLUE}What's been installed:${NC}"
+echo "  • Repository cloned to: $REPO_PATH"
+echo "  • Bootstrap installed to: $CURRENT_DIR/.claude"
+echo "  • Skills: 1 (claudius-installer)"
+echo "  • Commands: 3 (/claudius-setup, /claudius-update, /claudius-info)"
+echo "  • Agents: 1 (claudius-setup-agent)"
+echo ""
+echo -e "${BLUE}Next steps:${NC}"
+echo "  1. Start Claude Code:"
+echo -e "     ${YELLOW}claude${NC}"
+echo ""
+echo "  2. Run the setup wizard:"
+echo -e "     ${YELLOW}Say: \"setup claudius for my project\"${NC}"
+echo -e "     ${YELLOW}Or: /claudius-setup${NC}"
+echo ""
+echo "  3. Try your new capabilities:"
+echo -e "     ${YELLOW}Say: \"create a Button component\"${NC}"
+echo -e "     ${YELLOW}Or: /test${NC}"
+echo ""
+echo -e "${BLUE}Documentation:${NC}"
+echo "  • Bootstrap guide: $CURRENT_DIR/external-repo-bootstrap/README.md"
+echo "  • Main repository: $REPO_PATH/README.md"
+echo "  • Online: https://github.com/Dexploarer/claudius-skills"
+echo ""
+echo -e "${BLUE}Support:${NC}"
+echo "  • Issues: https://github.com/Dexploarer/claudius-skills/issues"
+echo "  • Discussions: https://github.com/Dexploarer/claudius-skills/discussions"
+echo ""
+echo -e "${GREEN}Happy coding! 🚀${NC}"
