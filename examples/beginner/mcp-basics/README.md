@@ -515,6 +515,37 @@ A: Yes! Share `.mcp.json.template` files (without real credentials).
 
 ---
 
+## 🚀 Advanced: Code Execution Pattern (98.7% Token Savings!)
+
+Once you're comfortable with basic MCP, consider upgrading to Anthropic's **filesystem-based code execution pattern** for massive performance gains.
+
+**Traditional MCP (this guide):**
+- ✅ Easy to learn
+- ✅ Simple setup
+- ✅ Great for beginners
+- ❌ Higher token usage
+
+**Code Execution Pattern (advanced):**
+- ✅ 98.7% token savings
+- ✅ Better performance
+- ✅ Enhanced privacy
+- ✅ Reusable skills
+- ℹ️ Requires code execution environment
+
+**Learn more:**
+- **Example:** `examples/advanced/mcp-code-execution/README.md`
+- **Skill:** `advanced-kit/.claude/skills/mcp-code-execution.md`
+- **Templates:** `templates/mcp-code-execution/`
+- **Blog Post:** https://www.anthropic.com/engineering/code-execution-with-mcp
+
+**When to upgrade:**
+- Processing large datasets (1,000+ rows)
+- Multi-step workflows (5+ operations)
+- Privacy-sensitive data (PII)
+- High-frequency MCP usage
+
+---
+
 **Ready to get started? Pick an example and dive in!**
 
 Recommended order:
@@ -522,5 +553,8 @@ Recommended order:
 2. 📁 filesystem-server (very useful)
 3. 🐙 github-server (powerful)
 4. 🗄️ sqlite-server (data access)
+
+**Then level up:**
+5. 🚀 Code execution pattern (98.7% token savings!)
 
 Happy integrating! 🚀

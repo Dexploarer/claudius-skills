@@ -398,6 +398,42 @@ See: `@intermediate-kit/.claude/rules/mcp-reference.md`
 
 ---
 
-**Last Updated:** 2025-11-01
+## 🎓 Next Level: Code Execution Pattern
+
+Once you master basic MCP, learn about Anthropic's advanced **code execution pattern**:
+
+**Benefits:**
+- 🚀 98.7% token savings
+- ⚡ 75% latency reduction
+- 🔒 Better privacy (PII tokenization)
+- 📦 Reusable skills
+
+**When to Use:**
+- Large datasets (1,000+ items)
+- Multi-step workflows
+- Privacy-sensitive data
+- High-frequency MCP operations
+
+**Resources:**
+- **Example:** `@examples/advanced/mcp-code-execution/README.md`
+- **Skill:** `@advanced-kit/.claude/skills/mcp-code-execution.md`
+- **Templates:** `@templates/mcp-code-execution/`
+- **Blog:** https://www.anthropic.com/engineering/code-execution-with-mcp
+
+**Pattern Comparison:**
+
+```typescript
+// Traditional (this guide) - Simple, good for learning
+const issues = await callTool('github_list_issues', { repo: 'react' });
+
+// Code execution (advanced) - 98.7% token savings
+import { listIssues } from './servers/github';
+const issues = await listIssues({ repo: 'facebook/react' });
+```
+
+---
+
+**Last Updated:** 2025-11-05
 **Recommended for Beginners:** GitHub, SQLite, Slack
 **Level:** Beginner (Starter Kit)
+**Advanced Pattern:** Code execution (see resources above)
