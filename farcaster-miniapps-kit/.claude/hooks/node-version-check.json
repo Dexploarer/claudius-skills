@@ -1,0 +1,6 @@
+{
+  "type": "user_prompt_submit",
+  "description": "Verify Node.js version is 22.11.0 or higher",
+  "match": "(npm install|pnpm add).*(farcaster|miniapp)",
+  "script": "#!/bin/bash\necho '🔍 Checking Node.js version...'\n\nif command -v node &> /dev/null; then\n  NODE_VERSION=$(node --version | cut -d'v' -f2)\n  REQUIRED_VERSION=\"22.11.0\"\n\n  if [ \"$(printf '%s\\n' \"$REQUIRED_VERSION\" \"$NODE_VERSION\" | sort -V | head -n1)\" != \"$REQUIRED_VERSION\" ]; then\n    echo '❌ Node.js version must be 22.11.0 or higher'\n    echo \"   Current version: $NODE_VERSION\"\n    exit 1\n  fi\n\n  echo \"✅ Node.js version OK: $NODE_VERSION\"\nelse\n  echo '⚠️  Node.js not found'\nfi"
+}

@@ -1,0 +1,6 @@
+{
+  "type": "user_prompt_submit",
+  "description": "Validate manifest configuration before deployment",
+  "match": "(deploy|push|publish).*(manifest|miniapp)",
+  "script": "#!/bin/bash\necho '🔍 Validating Farcaster manifest...'\n\nif [ ! -f 'minikit.config.ts' ]; then\n  echo '❌ minikit.config.ts not found'\n  exit 1\nfi\n\nif ! grep -q 'version.*:.*\"1\"' minikit.config.ts; then\n  echo '⚠️  Warning: manifest version should be \"1\"'\nfi\n\nif ! grep -q 'https://' minikit.config.ts; then\n  echo '❌ All URLs must use HTTPS'\n  exit 1\nfi\n\necho '✅ Manifest validation passed'"
+}

@@ -1,0 +1,6 @@
+{
+  "type": "tool_call_submit",
+  "description": "Check that sdk.actions.ready() is called in code",
+  "match": "Write.*\\.tsx?",
+  "script": "#!/bin/bash\necho '🔍 Checking for sdk.actions.ready() call...'\n\nif echo \"$TOOL_CALL_ARGS\" | grep -q 'useEffect\\|componentDidMount'; then\n  if echo \"$TOOL_CALL_ARGS\" | grep -q 'sdk\\.actions\\.ready'; then\n    echo '✅ sdk.actions.ready() found'\n  else\n    echo '⚠️  Warning: useEffect/componentDidMount found but no sdk.actions.ready() call'\n    echo '   This may cause infinite loading screen!'\n  fi\nfi"
+}

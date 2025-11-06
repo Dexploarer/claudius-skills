@@ -1,0 +1,6 @@
+{
+  "type": "tool_call_submit",
+  "description": "Ensure all URLs use HTTPS (no tunnel URLs in production)",
+  "match": "Write.*manifest|embed",
+  "script": "#!/bin/bash\necho '🔍 Checking for HTTPS URLs...'\n\nif echo \"$TOOL_CALL_ARGS\" | grep -E 'http://|ngrok\\.io|trycloudflare\\.com|localhost'; then\n  echo '⚠️  Warning: Found non-HTTPS or tunnel URL'\n  echo '   Tunnel URLs only work in development!'\n  echo '   Use production HTTPS domain for deployment'\nfi"
+}
