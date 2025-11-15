@@ -1,2 +1,7 @@
 *.pyc
 results/*.json
+.env
+.env.local
+node_modules/
+dist/
+*.log

@@ -281,6 +281,121 @@ const QUALITY_BONUS_MAX = 20;       // Up to 20 points for report quality
 const SPEED_BONUS_MAX = 1.3;        // Up to 30% bonus for fast discovery
 ```
 
+## 🔗 GitHub Integration (Optional)
+
+### Automatic Issue Creation
+
+Competition findings can be automatically submitted as GitHub issues for streamlined bug tracking and team collaboration.
+
+### Setup
+
+1. **Create a GitHub Personal Access Token**
+
+   Visit: https://github.com/settings/tokens
+
+   Required scopes:
+   - `repo` (for private repositories)
+   - `public_repo` (for public repositories only)
+
+2. **Configure Environment Variables**
+
+   ```bash
+   # Copy the example configuration
+   cp .env.example .env
+
+   # Edit .env with your credentials
+   GITHUB_TOKEN=ghp_your_token_here
+   GITHUB_OWNER=your-username-or-org
+   GITHUB_REPO=your-repository-name
+   ```
+
+3. **Optional Configuration**
+
+   ```bash
+   # Minimum severity to create issues (critical, high, medium, low)
+   GITHUB_MIN_SEVERITY=high
+
+   # Labels to apply (comma-separated)
+   GITHUB_LABELS=bug-hunting,security,automated
+
+   # Assignees (comma-separated GitHub usernames)
+   GITHUB_ASSIGNEES=developer1,developer2
+
+   # Milestone number
+   GITHUB_MILESTONE=5
+
+   # Mode: auto (create automatically) or manual (require explicit command)
+   GITHUB_ISSUE_MODE=manual
+   ```
+
+### Usage
+
+**Check Configuration:**
+```bash
+/create-github-issues --check-config
+```
+
+**Preview Issues (Dry Run):**
+```bash
+/create-github-issues --framework bug-hunting --dry-run
+```
+
+**Create Issues:**
+```bash
+# After running a competition
+/run-bug-hunt --target ./src --rounds 5
+
+# Create GitHub issues for findings
+/create-github-issues --framework bug-hunting
+
+# Create only critical severity issues
+/create-github-issues --framework bug-hunting --severity critical
+
+# Create issues for all frameworks
+/create-github-issues --framework all
+```
+
+### Issue Format
+
+Created GitHub issues include:
+
+- **Title:** `[Bug Hunting Championship] 🔴 CRITICAL: SQL Injection in login endpoint`
+- **Body:** Detailed description, location, code snippet, and recommendations
+- **Labels:** Configured labels (e.g., `bug-hunting`, `security`, `automated`)
+- **Assignees:** Configured team members
+- **Milestone:** If configured
+
+### Automatic vs Manual Mode
+
+**Manual Mode (Default):**
+```bash
+GITHUB_ISSUE_MODE=manual
+```
+- Issues only created when explicitly requested via command
+- Safer for testing and review
+
+**Automatic Mode:**
+```bash
+GITHUB_ISSUE_MODE=auto
+```
+- Issues automatically created after each competition
+- Useful for CI/CD integration
+
+### Security Considerations
+
+- ⚠️ Never commit `.env` file to version control
+- ✅ Use `.env.example` for documentation only
+- ✅ Rotate tokens periodically
+- ✅ Use minimum required token permissions
+- ✅ Review code snippets before submission to avoid exposing sensitive data
+
+### Related Components
+
+- **Skill:** `github-issue-reporter` - Handles automatic integration
+- **Command:** `/create-github-issues` - Manual issue creation
+- **Module:** `core/github-integration.ts` - Core functionality
+- **Config:** `.env.example` - Configuration template
+
 ## 📁 Project Structure
 
 ```
@@ -289,11 +404,13 @@ competitive-ai-frameworks/
 │   ├── skills/                       # Automated capabilities
 │   │   ├── bug-hunting-simulator.md
 │   │   ├── code-quality-analyzer.md
-│   │   └── user-flow-tester.md
+│   │   ├── user-flow-tester.md
+│   │   └── github-issue-reporter.md # GitHub integration (optional)
 │   ├── commands/                     # Manual shortcuts
 │   │   ├── run-bug-hunt.md
 │   │   ├── run-quality-check.md
-│   │   └── run-flow-test.md
+│   │   ├── run-flow-test.md
+│   │   └── create-github-issues.md  # Manual issue creation
 │   ├── subagents/                    # Team AI specialists
 │   │   ├── team1-automated-scanner.md
 │   │   ├── team2-manual-reviewer.md
@@ -303,6 +420,10 @@ competitive-ai-frameworks/
 │   │   └── scoring-tracker.json
 │   └── rules/                        # Framework rules
 │       └── CLAUDE.md
+├── core/                             # Core modules
+│   ├── agent_pool.ts                # Agent management
+│   ├── github-integration.ts        # GitHub API integration
+│   └── index.ts
 ├── frameworks/                       # Core implementations
 │   ├── bug-hunting/
 │   │   ├── coordinator.py           # Orchestrates teams
@@ -325,10 +446,14 @@ competitive-ai-frameworks/
 │   ├── scoring-system.md
 │   ├── reinforcement-learning.md
 │   └── extending-frameworks.md
-└── scripts/                          # Utility scripts
-    ├── setup.sh
-    ├── run-simulation.sh
-    └── analyze-results.py
+├── scripts/                          # Utility scripts
+│   ├── setup.sh
+│   ├── run-simulation.sh
+│   └── analyze-results.py
+├── .env.example                      # GitHub integration config template
+├── .gitignore                        # Git ignore rules
+├── package.json                      # Node.js dependencies
+└── tsconfig.json                     # TypeScript configuration
 ```
 
 ## 📈 Example Results
