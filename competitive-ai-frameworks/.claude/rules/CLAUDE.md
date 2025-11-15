@@ -283,11 +283,13 @@ competitive-ai-frameworks/
 │   ├── skills/                    # Automatic capabilities
 │   │   ├── bug-hunting-simulator.md
 │   │   ├── code-quality-analyzer.md
-│   │   └── user-flow-tester.md
+│   │   ├── user-flow-tester.md
+│   │   └── github-issue-reporter.md  # GitHub integration (optional)
 │   ├── commands/                  # Manual shortcuts
 │   │   ├── run-bug-hunt.md
 │   │   ├── run-quality-check.md
-│   │   └── run-flow-test.md
+│   │   ├── run-flow-test.md
+│   │   └── create-github-issues.md   # Manual issue creation
 │   ├── subagents/                 # Team specialists
 │   │   ├── team1-automated-scanner.md
 │   │   ├── team2-manual-reviewer.md
@@ -297,6 +299,10 @@ competitive-ai-frameworks/
 │   │   └── scoring-tracker.json
 │   └── rules/                     # Framework rules
 │       └── CLAUDE.md (this file)
+├── core/                          # Core modules
+│   ├── agent_pool.ts             # Agent management
+│   ├── github-integration.ts     # GitHub API integration
+│   └── index.ts
 ├── frameworks/                    # Core implementations
 │   ├── bug-hunting/
 │   │   ├── coordinator.py
@@ -367,6 +373,238 @@ Edit `frameworks/*/reinforcement.py`:
 LEARNING_RATE = 0.2  # Faster adaptation
 EXPLORATION_RATE = 0.15  # More exploration
 ```
+
+---
+
+## 🔗 GitHub Integration (Optional Feature)
+
+### Overview
+
+Competition findings can be automatically submitted as GitHub issues for streamlined bug tracking and team collaboration. This is an **optional feature** that requires user configuration.
+
+### When to Use
+
+Activate GitHub integration when:
+- User mentions "create github issues" or "report to github"
+- User asks to "export findings to github"
+- User requests "github integration" after competition
+- User has configured `.env` file with GitHub credentials
+
+### Prerequisites Check
+
+**ALWAYS verify before attempting GitHub integration:**
+
+```typescript
+import { isGitHubIntegrationEnabled, getConfigStatus } from './core/github-integration';
+
+// Check if .env exists and has required fields
+if (!isGitHubIntegrationEnabled()) {
+  console.log('ℹ️  GitHub integration not configured (optional)');
+  console.log('To enable: copy .env.example to .env and set GITHUB_TOKEN');
+  return;
+}
+
+// Display current configuration
+console.log(getConfigStatus());
+```
+
+### Configuration Requirements
+
+User must create `.env` file with:
+
+**Required:**
+- `GITHUB_TOKEN` - Personal Access Token from https://github.com/settings/tokens
+- `GITHUB_OWNER` - Repository owner (username or organization)
+- `GITHUB_REPO` - Repository name
+
+**Optional:**
+- `GITHUB_MIN_SEVERITY` - Minimum severity (critical|high|medium|low)
+- `GITHUB_LABELS` - Comma-separated labels
+- `GITHUB_ASSIGNEES` - Comma-separated GitHub usernames
+- `GITHUB_MILESTONE` - Milestone number
+- `GITHUB_ISSUE_MODE` - auto or manual (default: manual)
+
+### Workflow
+
+1. **Check Configuration**
+   ```bash
+   /create-github-issues --check-config
+   ```
+
+2. **Preview Issues (Dry Run)**
+   ```bash
+   /create-github-issues --framework bug-hunting --dry-run
+   ```
+
+3. **Create Actual Issues**
+   ```bash
+   /create-github-issues --framework bug-hunting
+   ```
+
+### Integration Points
+
+**Skills:**
+- `github-issue-reporter.md` - Handles automatic GitHub integration
+- Activates on user request when `.env` is configured
+
+**Commands:**
+- `/create-github-issues` - Manual issue creation command
+- Supports dry-run mode and severity filtering
+
+**Core Module:**
+- `core/github-integration.ts` - All GitHub API functionality
+- Functions for config loading, issue formatting, API calls
+
+### Issue Format
+
+Created issues follow this structure:
+
+**Title:** `[Framework Name] 🔴 SEVERITY: Issue Title`
+
+**Body includes:**
+- Finding details (severity, category, team, score)
+- Full description
+- File location and line number
+- Code snippet (if available)
+- Remediation recommendations
+- Finding ID for tracking
+
+**Metadata:**
+- Labels from configuration
+- Assignees (if configured)
+- Milestone (if configured)
+
+### Security Considerations
+
+**CRITICAL - Never commit `.env` file:**
+- Add `.env` to `.gitignore`
+- Use `.env.example` for documentation only
+- Token must have minimum required scopes
+- Review code snippets before submission
+
+**Token Permissions:**
+- `repo` scope for private repositories
+- `public_repo` scope for public repositories only
+
+### Error Handling
+
+Handle GitHub API errors gracefully:
+
+**Configuration Missing:**
+```
+❌ GitHub integration not configured
+→ Inform user this is optional
+→ Show how to set up if desired
+→ Continue without GitHub integration
+```
+
+**Invalid Token:**
+```
+❌ GitHub API error (401): Bad credentials
+→ Ask user to verify GITHUB_TOKEN
+→ Suggest creating new token
+→ Provide token creation URL
+```
+
+**Rate Limit:**
+```
+❌ GitHub API error (403): Rate limit exceeded
+→ Inform user to wait or use different token
+→ Suggest reducing issue creation frequency
+```
+
+### Modes
+
+**Manual Mode (Default):**
+```bash
+GITHUB_ISSUE_MODE=manual
+```
+- Issues only created on explicit command
+- Safer for testing and review
+- User has full control
+
+**Auto Mode:**
+```bash
+GITHUB_ISSUE_MODE=auto
+```
+- Issues created automatically after competition
+- Useful for CI/CD pipelines
+- User should be notified of created issues
+
+### Best Practices
+
+1. **Always offer dry-run first**
+   - Preview issues before creating
+   - User can review and adjust configuration
+
+2. **Respect user's severity threshold**
+   - Only create issues meeting configured minimum
+   - Allow override via command flag
+
+3. **Provide clear feedback**
+   - Show how many issues created/skipped/failed
+   - Display URLs of created issues
+   - Report any errors clearly
+
+4. **Handle absence gracefully**
+   - GitHub integration is OPTIONAL
+   - Never block core functionality if not configured
+   - Simply inform user it's available if interested
+
+### Example Usage
+
+```typescript
+// After bug hunting competition completes
+if (isGitHubIntegrationEnabled()) {
+  const config = loadGitHubConfig();
+
+  if (config.issueMode === 'auto') {
+    console.log('📤 Creating GitHub issues (auto mode)...');
+    const results = await processFindings(findings, 'Bug Hunting', config);
+    console.log(`✅ Created ${results.created} GitHub issues`);
+  } else {
+    console.log('💡 GitHub integration available.');
+    console.log('   Run: /create-github-issues --framework bug-hunting');
+  }
+} else {
+  console.log('💡 Optional: Configure GitHub integration to auto-create issues');
+  console.log('   See .env.example for setup instructions');
+}
+```
+
+### Integration Module API
+
+**Key Functions:**
+
+```typescript
+// Check if enabled
+isGitHubIntegrationEnabled(): boolean
+
+// Load configuration
+loadGitHubConfig(): GitHubConfig | null
+
+// Get status display
+getConfigStatus(): string
+
+// Check severity threshold
+meetsThreshold(finding, config): boolean
+
+// Format issue
+formatGitHubIssue(finding, framework): GitHubIssue
+
+// Create issue
+createGitHubIssue(issue, config): Promise<Result>
+
+// Process batch
+processFindings(findings, framework, config, dryRun): Promise<Results>
+```
+
+### Related Components
+
+- **Skill:** `.claude/skills/github-issue-reporter.md`
+- **Command:** `.claude/commands/create-github-issues.md`
+- **Module:** `core/github-integration.ts`
+- **Config:** `.env.example`
 
 ---
 
