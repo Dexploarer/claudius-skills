@@ -63,34 +63,43 @@ Set up the competitive framework:
    - **Team 2:** Manual Reviewers (logic flaws, business logic)
    - **Team 3:** Fuzzers (runtime bugs, race conditions)
 
-2. Configure the scoring engine (CVSS-based)
+2. Create results directory for tracking findings
 
-3. Initialize reinforcement learning weights
+3. Initialize scoring and tracking
 
-Example command:
-```bash
-cd competitive-ai-frameworks/frameworks/bug-hunting
-python coordinator.py \
-  --target /path/to/codebase \
-  --rounds 5 \
-  --output ./results \
-  --visualize
-```
+**IMPORTANT:** This skill uses the Task tool to spawn actual Claude agents for each team, enabling real AI-powered security analysis.
 
 ### Step 4: Run Competition Rounds
 
 For each round (typically 5 rounds):
 
-1. **Team 1 hunts** using automated pattern matching
-2. **Team 2 hunts** using deep code review
-3. **Team 3 hunts** using fuzzing and behavioral analysis
-4. **Score bugs** based on:
+1. **Spawn Team 1 Agent** using Task tool:
+   - Use subagent_type="general-purpose"
+   - Load context from `.claude/subagents/team1-automated-scanner.md`
+   - Prompt: "You are Team 1: Automated Scanner. Analyze {target_path} for security vulnerabilities using pattern matching and static analysis. Focus on: SQL injection, XSS, command injection, hardcoded secrets, insecure crypto. Read relevant files, use Grep for patterns, report findings in JSON format with vuln_type, location, severity (critical/high/medium/low), cvss_score, description, proof_of_concept, and remediation."
+   - Collect findings from agent output
+
+2. **Spawn Team 2 Agent** using Task tool:
+   - Use subagent_type="general-purpose"
+   - Load context from `.claude/subagents/team2-manual-reviewer.md`
+   - Prompt: "You are Team 2: Manual Reviewer. Perform deep code review of {target_path} for business logic vulnerabilities. Focus on: authentication bypasses, authorization flaws, IDOR, privilege escalation, session management, race conditions in business logic. Read code files thoroughly, trace data flows, understand application logic. Report findings in JSON format."
+   - Collect findings from agent output
+
+3. **Spawn Team 3 Agent** using Task tool:
+   - Use subagent_type="general-purpose"
+   - Load context from `.claude/subagents/team3-fuzzer.md`
+   - Prompt: "You are Team 3: Fuzzer & Behavioral Analyst. Analyze {target_path} for edge cases and runtime vulnerabilities. Focus on: race conditions, TOCTOU bugs, resource exhaustion, input validation bypasses, error handling flaws. Examine concurrent code, state management, input boundaries. Report findings in JSON format."
+   - Collect findings from agent output
+
+4. **Score all findings** based on:
    - Severity (CVSS score)
    - Uniqueness (first to find bonus)
    - Quality (report completeness)
    - Speed (time to discover)
-5. **Update weights** via reinforcement learning
-6. **Display progress** to user
+
+5. **Track and deduplicate** findings across teams
+
+6. **Display progress** showing each team's discoveries
 
 ### Step 5: Analyze and Present Results
 

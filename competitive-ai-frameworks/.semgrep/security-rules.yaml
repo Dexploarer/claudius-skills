@@ -1,0 +1,350 @@
+rules:
+  # SQL Injection Rules
+  - id: sql-injection-string-concat
+    pattern-either:
+      - pattern: $DB.execute($QUERY + $VAR)
+      - pattern: $DB.execute($QUERY % $VAR)
+      - pattern: $DB.execute(f"... {$VAR} ...")
+      - pattern: $DB.query($QUERY + $VAR)
+      - pattern: cursor.execute($QUERY + $VAR)
+    message: "Potential SQL injection via string concatenation. Use parameterized queries."
+    severity: ERROR
+    languages: [python, javascript, typescript]
+    metadata:
+      cwe: CWE-89
+      owasp: A03:2021 - Injection
+      cvss: 8.5
+
+  - id: sql-injection-format-string
+    patterns:
+      - pattern-either:
+          - pattern: $DB.execute("... %s ..." % ...)
+          - pattern: $DB.execute("...".format(...))
+      - pattern-not: $DB.execute("..." % ())
+    message: "Potential SQL injection via string formatting"
+    severity: ERROR
+    languages: [python]
+    metadata:
+      cwe: CWE-89
+      cvss: 8.5
+
+  # XSS Rules
+  - id: xss-inner-html
+    pattern-either:
+      - pattern: $EL.innerHTML = $VAR
+      - pattern: $EL.outerHTML = $VAR
+    message: "Potential XSS via innerHTML assignment. Use textContent or sanitize input."
+    severity: ERROR
+    languages: [javascript, typescript]
+    metadata:
+      cwe: CWE-79
+      owasp: A03:2021 - Injection
+      cvss: 6.5
+
+  - id: xss-dangerously-set-inner-html
+    pattern: <$X dangerouslySetInnerHTML={{...}} />
+    message: "Using dangerouslySetInnerHTML - potential XSS if content is not sanitized"
+    severity: WARNING
+    languages: [javascript, typescript, tsx]
+    metadata:
+      cwe: CWE-79
+      cvss: 6.5
+
+  - id: xss-document-write
+    pattern-either:
+      - pattern: document.write($VAR)
+      - pattern: document.writeln($VAR)
+    message: "Potential XSS via document.write()"
+    severity: ERROR
+    languages: [javascript, typescript]
+    metadata:
+      cwe: CWE-79
+      cvss: 6.5
+
+  # Command Injection Rules
+  - id: command-injection-shell-true
+    patterns:
+      - pattern-either:
+          - pattern: subprocess.$METHOD(..., shell=True, ...)
+          - pattern: subprocess.$METHOD(..., shell=True)
+      - pattern-not: subprocess.$METHOD("...", shell=True)
+      - pattern-not: subprocess.$METHOD(['...'], shell=True)
+    message: "Command injection risk - shell=True with dynamic input. Use shell=False."
+    severity: ERROR
+    languages: [python]
+    metadata:
+      cwe: CWE-78
+      owasp: A03:2021 - Injection
+      cvss: 9.0
+
+  - id: command-injection-os-system
+    pattern-either:
+      - pattern: os.system($CMD)
+      - pattern: os.popen($CMD)
+    message: "Dangerous use of os.system() or os.popen(). Use subprocess with argument list."
+    severity: ERROR
+    languages: [python]
+    metadata:
+      cwe: CWE-78
+      cvss: 9.0
+
+  - id: command-injection-child-process
+    pattern-either:
+      - pattern: child_process.exec($CMD, ...)
+      - pattern: cp.exec($CMD, ...)
+    message: "Command injection risk - exec() interprets shell commands. Use execFile()."
+    severity: ERROR
+    languages: [javascript, typescript]
+    metadata:
+      cwe: CWE-78
+      cvss: 9.0
+
+  # Hardcoded Secrets
+  - id: hardcoded-password
+    pattern-either:
+      - pattern: password = "..."
+      - pattern: PASSWORD = "..."
+      - pattern: pwd = "..."
+    message: "Potential hardcoded password"
+    severity: WARNING
+    languages: [python, javascript, typescript, java, go]
+    metadata:
+      cwe: CWE-798
+      owasp: A07:2021 - Identification and Authentication Failures
+      cvss: 7.5
+
+  - id: hardcoded-api-key
+    pattern-regex: (api[_-]?key|apikey|api[_-]?secret)\s*=\s*["'][A-Za-z0-9+/=]{20,}["']
+    message: "Potential hardcoded API key"
+    severity: ERROR
+    languages: [python, javascript, typescript, java, go]
+    metadata:
+      cwe: CWE-798
+      cvss: 7.5
+
+  - id: hardcoded-aws-credentials
+    pattern-regex: (AWS_SECRET_ACCESS_KEY|aws_secret_access_key)\s*=\s*["'][A-Za-z0-9+/]{40}["']
+    message: "Hardcoded AWS secret access key detected"
+    severity: ERROR
+    languages: [python, javascript, typescript]
+    metadata:
+      cwe: CWE-798
+      cvss: 9.0
+
+  # Insecure Crypto
+  - id: weak-hash-md5
+    pattern-either:
+      - pattern: hashlib.md5(...)
+      - pattern: crypto.createHash('md5')
+      - pattern: MessageDigest.getInstance("MD5")
+    message: "MD5 is cryptographically broken. Use SHA-256 or better."
+    severity: WARNING
+    languages: [python, javascript, typescript, java]
+    metadata:
+      cwe: CWE-327
+      owasp: A02:2021 - Cryptographic Failures
+      cvss: 5.0
+
+  - id: weak-hash-sha1
+    pattern-either:
+      - pattern: hashlib.sha1(...)
+      - pattern: crypto.createHash('sha1')
+      - pattern: MessageDigest.getInstance("SHA-1")
+    message: "SHA-1 is deprecated. Use SHA-256 or better."
+    severity: WARNING
+    languages: [python, javascript, typescript, java]
+    metadata:
+      cwe: CWE-327
+      cvss: 5.0
+
+  - id: insecure-random
+    pattern-either:
+      - pattern: random.Random()
+      - pattern: Math.random()
+    message: "Non-cryptographic random number generator. Use secrets or crypto module."
+    severity: WARNING
+    languages: [python, javascript, typescript]
+    metadata:
+      cwe: CWE-338
+      cvss: 5.0
+
+  # Authentication Vulnerabilities
+  - id: jwt-none-algorithm
+    patterns:
+      - pattern-either:
+          - pattern: |
+              jwt.decode(..., algorithms=[..., "none", ...])
+          - pattern: |
+              algorithms = [..., "none", ...]
+              ...
+              jwt.decode(..., algorithms=$ALGS)
+    message: "JWT accepts 'none' algorithm - CRITICAL authentication bypass vulnerability"
+    severity: ERROR
+    languages: [python, javascript, typescript]
+    metadata:
+      cwe: CWE-287
+      owasp: A07:2021 - Identification and Authentication Failures
+      cvss: 9.8
+
+  - id: jwt-no-verify
+    pattern-either:
+      - pattern: jwt.decode(..., verify=False)
+      - pattern: jwt.decode(..., options={ verifySignature: false })
+    message: "JWT signature verification disabled - authentication bypass"
+    severity: ERROR
+    languages: [python, javascript, typescript]
+    metadata:
+      cwe: CWE-287
+      cvss: 9.8
+
+  # Path Traversal
+  - id: path-traversal
+    patterns:
+      - pattern-either:
+          - pattern: open($PATH + $VAR, ...)
+          - pattern: readFile($PATH + $VAR, ...)
+          - pattern: File($PATH + $VAR)
+      - pattern-not: open("..." + "...", ...)
+    message: "Potential path traversal vulnerability. Validate and sanitize file paths."
+    severity: ERROR
+    languages: [python, javascript, typescript, java]
+    metadata:
+      cwe: CWE-22
+      owasp: A01:2021 - Broken Access Control
+      cvss: 7.5
+
+  - id: path-join-tainted
+    patterns:
+      - pattern: os.path.join($BASE, $VAR)
+      - pattern-not: os.path.join($BASE, "...")
+    message: "Potential path traversal in path.join(). Validate user input."
+    severity: WARNING
+    languages: [python]
+    metadata:
+      cwe: CWE-22
+      cvss: 7.5
+
+  # SSRF
+  - id: ssrf-requests
+    patterns:
+      - pattern-either:
+          - pattern: requests.$METHOD($URL, ...)
+          - pattern: requests.$METHOD(url=$URL, ...)
+      - pattern-not: requests.$METHOD("https://...", ...)
+    message: "Potential SSRF vulnerability. Validate and allowlist URLs."
+    severity: ERROR
+    languages: [python]
+    metadata:
+      cwe: CWE-918
+      owasp: A10:2021 - Server-Side Request Forgery
+      cvss: 8.0
+
+  - id: ssrf-fetch
+    patterns:
+      - pattern: fetch($URL, ...)
+      - pattern-not: fetch("https://...", ...)
+    message: "Potential SSRF in fetch(). Validate URL destinations."
+    severity: ERROR
+    languages: [javascript, typescript]
+    metadata:
+      cwe: CWE-918
+      cvss: 8.0
+
+  # Deserialization
+  - id: unsafe-pickle
+    pattern-either:
+      - pattern: pickle.loads($DATA)
+      - pattern: pickle.load($FILE)
+    message: "Unsafe pickle deserialization can lead to remote code execution"
+    severity: ERROR
+    languages: [python]
+    metadata:
+      cwe: CWE-502
+      owasp: A08:2021 - Software and Data Integrity Failures
+      cvss: 9.8
+
+  - id: unsafe-yaml-load
+    pattern: yaml.load($DATA)
+    message: "Unsafe YAML deserialization. Use yaml.safe_load() instead."
+    severity: ERROR
+    languages: [python]
+    metadata:
+      cwe: CWE-502
+      cvss: 9.8
+
+  # XXE
+  - id: xxe-vulnerable-parser
+    pattern-either:
+      - pattern: xml.etree.ElementTree.parse($FILE)
+      - pattern: xml.etree.ElementTree.fromstring($DATA)
+    message: "XML parser vulnerable to XXE attacks. Disable external entities."
+    severity: ERROR
+    languages: [python]
+    metadata:
+      cwe: CWE-611
+      owasp: A05:2021 - Security Misconfiguration
+      cvss: 7.5
+
+  # Code Injection
+  - id: code-injection-eval
+    pattern-either:
+      - pattern: eval($CODE)
+      - pattern: exec($CODE)
+    message: "Dangerous use of eval()/exec() - remote code execution risk"
+    severity: ERROR
+    languages: [python, javascript, typescript]
+    metadata:
+      cwe: CWE-94
+      owasp: A03:2021 - Injection
+      cvss: 9.8
+
+  # IDOR (Pattern-based detection)
+  - id: idor-missing-authz-check
+    patterns:
+      - pattern-either:
+          - pattern: |
+              def $FUNC(..., $ID, ...):
+                  ...
+                  $OBJ = $MODEL.get($ID)
+                  ...
+          - pattern: |
+              function $FUNC(..., $ID, ...) {
+                  ...
+                  $OBJ = $MODEL.findById($ID)
+                  ...
+              }
+      - pattern-not-inside: |
+          ...
+          if $USER.id == $OBJ.user_id:
+              ...
+      - pattern-not-inside: |
+          ...
+          if $OBJ.user_id == $USER.id:
+              ...
+    message: "Potential IDOR - no ownership verification before accessing object by ID"
+    severity: WARNING
+    languages: [python, javascript, typescript]
+    metadata:
+      cwe: CWE-639
+      owasp: A01:2021 - Broken Access Control
+      cvss: 7.5
+
+  # Race Conditions
+  - id: toctou-race-condition
+    patterns:
+      - pattern: |
+          if $VAR $OP $THRESHOLD:
+              ...
+              $VAR = $VAR - $AMOUNT
+      - pattern-not-inside: |
+          with $LOCK:
+              ...
+      - pattern-not-inside: |
+          @transaction
+              ...
+    message: "Potential TOCTOU race condition. Use locks or transactions."
+    severity: WARNING
+    languages: [python]
+    metadata:
+      cwe: CWE-367
+      cvss: 9.1
